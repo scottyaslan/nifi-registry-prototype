@@ -1,0 +1,28 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/nifi-flow-registry.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/css3";
+@import "compass/reset";
+@import "globalVars";
+@import "basicElements";
+@import "structureElements";
+@import "../node_modules/fontAwesome/scss/fontAwesome";
+@import '../node_modules/@angular/material/core/theming/all-theme';
+// Include the base styles for Angular Material core. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+@include mat-core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$nifi-flow-registry-primary: mat-palette($mat-indigo);
+$nifi-flow-registry-accent: mat-palette($mat-pink, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$nifi-flow-registry-warn: mat-palette($mat-red);
+// Create the theme object (a Sass map containing all of the palettes).
+$nifi-flow-registry-theme: mat-light-theme($nifi-flow-registry-primary, $nifi-flow-registry-accent, $nifi-flow-registry-warn);
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($nifi-flow-registry-theme);

@@ -1,25 +1,43 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/nifi-flow-registry.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "compass/css3";
-@import "compass/reset";
 @import "globalVars";
 @import "basicElements";
 @import "structureElements";
-@import "../node_modules/fontAwesome/scss/fontAwesome";
-@import '../node_modules/@angular/material/core/theming/all-theme';
+@import "node_modules/@angular/material/core/theming/all-theme";
 // Include the base styles for Angular Material core. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
-@include mat-core();
+@include mat-core;
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$nifi-flow-registry-primary: mat-palette($mat-indigo);
-$nifi-flow-registry-accent: mat-palette($mat-pink, A200, A100, A400);
+$nifi-registry-base: (50: #728E9B, 100: #728E9B, 200: #004849, 300: #775351, 400: #728E9B, 500: #728E9B, 600: #728E9B, 700: #728E9B, 800: #728E9B, 900: rgba(249, 250, 251, 0.97), A100: #728E9B, A200: #728E9B, A400: #728E9B, A700: #728E9B, contrast: (50: $black-87-opacity, 100: $black-87-opacity, 200: $black-87-opacity, 300: white, 400: white, 500: $white-87-opacity, 600: $white-87-opacity, 700: $white-87-opacity, 800: $white-87-opacity, 900: $white-87-opacity, A100: $black-87-opacity, A200: white, A400: white, A700: $white-87-opacity));
+$nifi-registry-tint: (50: #728E9B, 100: #728E9B, 200: #CCDADB, 300: #728E9B, 400: #AABBC3, 500: #728E9B, 600: #C7D2D7, 700: #728E9B, 800: #E3E8EB, 900: #728E9B, A100: #728E9B, A200: #728E9B, A400: #728E9B, A700: #728E9B, contrast: (50: $black-87-opacity, 100: $black-87-opacity, 200: $black-87-opacity, 300: white, 400: white, 500: $white-87-opacity, 600: $white-87-opacity, 700: $white-87-opacity, 800: $white-87-opacity, 900: $white-87-opacity, A100: $black-87-opacity, A200: white, A400: white, A700: $white-87-opacity));
+$nifi-registry-warn: (50: #BA554A, 100: #BA554A, 200: #BA554A, 300: #BA554A, 400: #BA554A, 500: #BA554A, 600: #BA554A, 700: #BA554A, 800: #BA554A, 900: #BA554A, A100: #BA554A, A200: #BA554A, A400: #BA554A, A700: #BA554A, contrast: (50: $black-87-opacity, 100: $black-87-opacity, 200: $black-87-opacity, 300: white, 400: white, 500: $white-87-opacity, 600: $white-87-opacity, 700: $white-87-opacity, 800: $white-87-opacity, 900: $white-87-opacity, A100: $black-87-opacity, A200: white, A400: white, A700: $white-87-opacity));
+$nifi-flow-registry-primary: mat-palette($nifi-registry-base);
+$nifi-flow-registry-accent: mat-palette($nifi-registry-tint, 600, 200, 800);
 // The warn palette is optional (defaults to red).
-$nifi-flow-registry-warn: mat-palette($mat-red);
+$nifi-flow-registry-warn: mat-palette($nifi-registry-warn);
 // Create the theme object (a Sass map containing all of the palettes).
 $nifi-flow-registry-theme: mat-light-theme($nifi-flow-registry-primary, $nifi-flow-registry-accent, $nifi-flow-registry-warn);
 // Include theme styles for core and each component used in your app.

@@ -14,3 +14,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+function NfRegistryExplorer() {
+    this.title = "Nifi Registry Explorer!!!";
+};
+
+NfRegistryExplorer.prototype = {
+    constructor: NfRegistryExplorer,
+    getName: function() {
+        return 'Windstorm';
+    }
+};

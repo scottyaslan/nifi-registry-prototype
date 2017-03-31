@@ -14,6 +14,8 @@
             'app': 'src/js',
 
             // angular bundles
+            '@angular/material': 'npm:@angular/material/bundles/material.umd.js',
+            '@angular/flex-layout': 'npm:@angular/flex-layout/bundles/flex-layout.umd.js',
             '@angular/animations': 'npm:@angular/animations/bundles/animations.umd.js',
             '@angular/animations/browser': 'npm:@angular/animations/bundles/animations-browser.umd.js',
             '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
@@ -32,12 +34,20 @@
             // other libraries
             'rxjs': 'npm:rxjs',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-            'nf.RegistryComponent': 'nifi-registry/src/js/nf-registry-component.js'
+            'hammerjs': 'npm:hammerjs/hammer.min.js',
+
+            // Nifi Registry Core
+            'nf.Registry': 'nifi-registry/src/js/nf-registry.js',
+            'nf.PageNotFoundComponent': 'nifi-registry/src/js/nf-registry-page-not-found.js',
+            'nf.RegistryExplorer': 'nifi-registry/src/js/nf-registry-explorer.js',
+            'nf.RegistryManager': 'nifi-registry/src/js/nf-registry-manager.js',
+            'nf.RegistrySettings': 'nifi-registry/src/js/nf-registry-settings.js',
+            'nf.RegistryUsers': 'nifi-registry/src/js/nf-registry-users.js'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
             app: {
-                main: 'nifi-registry/src/js/main.js',
+                main: 'nifi-registry/src/js/nf-registry-bootstrap.js',
                 defaultExtension: 'js',
                 meta: {
                     './*.js': {

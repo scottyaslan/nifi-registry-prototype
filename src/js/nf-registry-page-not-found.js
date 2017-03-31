@@ -15,13 +15,10 @@
  * limitations under the License.
  */
 
-function NfRegistryComponent() {
-    this.title = "Hero Detail";
+function NfPageNotFoundComponent() {
+    this.title = "Page Not Found!!!!";
 };
 
-NfRegistryComponent.prototype = {
-    constructor: NfRegistryComponent,
-    getName: function() {
-        return 'Windstorm';
-    }
+NfPageNotFoundComponent.prototype = {
+    constructor: NfPageNotFoundComponent
 };

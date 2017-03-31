@@ -1,0 +1,35 @@
+<md-toolbar class="mat-elevation-z5">
+    <img id="nifi-logo" src="nifi-registry/src/images/nifi-flow-registry-icon.png">
+    <h1>Flow Registry</h1>
+    <div fxFlex="1 1 auto" ></div>
+    <button color="primary" md-icon-button>
+        <i class="fa fa-bell-o" aria-hidden="true"></i>
+    </button>
+    <button color="primary" md-icon-button>
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    <button color="primary" md-icon-button [mdMenuTriggerFor]="menu">
+        <i class="fa fa-ellipsis-h " aria-hidden="true"></i>
+    </button>
+    <md-menu #menu="mdMenu">
+        <button routerLink="nifi-registry/explorer" md-menu-item>
+            <span>Explorer</span>
+        </button>
+        <button routerLink="nifi-registry/manager" md-menu-item>
+            <span>Manager</span>
+        </button>
+        <button routerLink="nifi-registry/settings" md-menu-item>
+            <span>Settings</span>
+        </button>
+        <button routerLink="nifi-registry/users" md-menu-item>
+            <span>Users</span>
+        </button>
+        <button routerLink="nifi-registry/undefinedRoute" md-menu-item>
+            <span>Undefined Route</span>
+        </button>
+        <button routerLink="nifi-registry/anotherUndefinedRoute" md-menu-item disabled>
+            <span>Another Undefined Route</span>
+        </button>
+    </md-menu>
+</md-toolbar>
+<router-outlet></router-outlet>

@@ -1,0 +1,25 @@
+<div>
+    <div class="grid grid-pad" *ngIf="nfRegistryService.bucket">
+        <button id="dropletActionMenu" [mdMenuTriggerFor]="dropletActionMenu"  md-raised-button class="regular-button dropdown">
+            Actions<i class="fa fa-caret-down" aria-hidden="true"></i>
+        </button>
+        <md-menu class="regular-button-menu" #dropletActionMenu="mdMenu" [overlapTrigger]="false">
+            <button md-menu-item>
+                <span>Option 1</span>
+            </button>
+            <button md-menu-item disabled>
+                <span>Option 2</span>
+            </button>
+        </md-menu>
+        <div class="list-header description">Name:</div>
+        <md-list>
+            <md-list-item [attr.focus]="((droplet.id === nfRegistryService.selectedDropletId) || (droplet.checked)) ? '' : null" *ngFor="let droplet of nfRegistryService.bucket.droplets" routerLink="/nifi-registry/explorer/{{nfRegistryService.registry.id}}/{{nfRegistryService.bucket.id}}/{{droplet.id}}">
+                <span md-line> {{droplet.name}} </span>
+                <md-checkbox class="nf-checkbox" [(ngModel)]="droplet.checked"></md-checkbox>
+            </md-list-item>
+        </md-list>
+    </div>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

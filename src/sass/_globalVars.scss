@@ -15,64 +15,84 @@
  * limitations under the License.
  */
 
+/* Begin Global Variables */
+$grey1: #333333;
+$grey2: #666666;
+$grey3: #999999;
+$grey4: #CCCCCC;
+$grey5: #EEEEEE;
+$grey6: #FAFAFA;
+$grey7: #DDDDDD;
+$blue1: #1491C1;
+$blue2: #E7f6Fc;
+$blue3: #A7DFF2;
+$red1: #EF6162;
+$red2: #D14A50;
+$orange1: #E98A40;
+$orange2: #D3702D;
+$green1: #1EB475;
 
-/* Begin Global Variables *******************************************/
+$primaryColor: #3FAE2A;
+$primaryColorHover: #429929;
+$primaryColorDisabled: #D1E8D1;
+$secondaryColor: $green1;
+$textBodyColor: $grey2;
+$text2Color: $grey1;
+$text3Color: $grey3;
+$linkColor: $blue1;
+$linkColorDisabled: $textBodyColor;
+$errorColor: $red1;
+$warningColor: $orange1;
+$bgPrimary: #EBECF1;
+$bgSecondary: #FFFFFF;
+$bgNavigation: #313D54;
+$bgRegular: $bgSecondary;
+$bgRegularHover: #808793;
 
+$buttonBgColorPrimary: $primaryColor;
+$buttonBgColorPrimaryHover: $primaryColorHover;
+$buttonBgColorPrimaryDisabled: $primaryColor;
+$buttonBgColorPrimarySelected: $primaryColor;
+$buttonBgColorSecondary: $bgSecondary;
+$buttonBgColorSecondaryHover: $primaryColorHover;
+$buttonBgColorSecondaryDisabled: $primaryColor;
+$buttonBgColorSecondarySelected: $bgSecondary;
+$buttonBgColorRegular: $bgRegular;
+$buttonBgColorRegularHover: $bgRegularHover;
+$buttonBgColorRegularDisabled: $bgRegularHover;
+$buttonBgColorRegularSelected: $bgSecondary;
 
-/* Heights
- *******************************/
+$buttonBorderColorSecondary: $primaryColor;
+$buttonBorderColorSecondaryHover: $buttonBgColorSecondaryHover;
+$buttonBorderColorSecondaryDisabled: $buttonBgColorSecondaryHover;
+$buttonBorderColorSecondarySelected: $primaryColor;
+$buttonBorderColorRegular: #CFD3D7;
+$buttonBorderColorRegularHover: $buttonBgColorRegularHover;
+$buttonBorderColorRegularDisabled: $buttonBgColorRegularHover;
+$buttonBorderColorRegularSelected: #CFD3D7;
 
-$headerHeight: 40px;
+$buttonFontPrimaryColor: $bgSecondary;
+$buttonFontPrimaryColorHover: $bgSecondary;
+$buttonFontPrimaryColorDisabled: $primaryColorDisabled;
+$buttonFontPrimaryColorSelected: $textBodyColor;
+$buttonFontSecondaryColor: $primaryColorHover;
+$buttonFontSecondaryColorHover: $bgSecondary;
+$buttonFontSecondaryColorDisabled: $primaryColorDisabled;
+$buttonFontSecondaryColorSelected: $primaryColorHover;
+$buttonFontRegularColor: $textBodyColor;
+$buttonFontRegularColorHover: $bgSecondary;
+$buttonFontRegularColorDisabled: $primaryColorDisabled;
+$buttonFontRegularColorSelected: $textBodyColor;
 
-/* Backgrounds
- *******************************/
-
-$bgColorPrimary: #021B2C;
-$bgColorSecondary: #e9eaed;
-$bgColorLight: #fff;
-
-/* Text
- *******************************/
+/* Text */
 
 $fontPrimary: "Roboto",
 sans-serif;
 $fontSecondary: "Robot Slab",
 sans-serif;
-$textBodyColor
-: #666666;
-$text2Color: #333333;
-$textColor: #999999;
+$fontMedium: "Roboto Medium",
+sans-serif;
+$fontLight: "Roboto Light",
+sans-serif;
 
-/* Borders
- *******************************/
-
-$borderColorPrimary: #dcdedd;
-$borderColorSecondary: #cccccc;
-$borderWidthPrimary: 1px;
-$roundedBorderRadius: 4px;
-$roundedBorderRadiusSmall: 2px;
-
-/* Links
- *******************************/
-
-$linkColorPrimary: #3b5998;
-
-/* Buttons
- *******************************/
-
-$buttonDefaultBgColorTop: #fff;
-$buttonDefaultBgColorBottom: #f7f7f9;
-$buttonDefaultBorderColorTop: #d9d9d9;
-$buttonDefaultBorderColorLeft: #cecece;
-$buttonDefaultBorderColorRight: #cecece;
-$buttonDefaultBorderColorBottom: #b7b7b9;
-$buttonGroupBgColor: #fafbfb;
-$buttonGroupBgColorHover: #fff;
-
-/* Forms
-*********************************/
-
-$controlColorFocus: #999999;
-
-/*End Global Variables *********************************************/
-
+/*End Global Variables */

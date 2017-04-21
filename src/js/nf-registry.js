@@ -15,10 +15,15 @@
  * limitations under the License.
  */
 
-function NfRegistry() {
-    this.selectedRegistryId;
+function NfRegistry(nfRegistryService) {
+    this.nfRegistryService = nfRegistryService;
 };
 
 NfRegistry.prototype = {
-    constructor: NfRegistry
+    constructor: NfRegistry,
+    ngOnInit: function() {
+        this.nfRegistryService.getRegistries().then(registries => this.nfRegistryService.registries = registries);
+    }
 };
+
+module.exports = NfRegistry;

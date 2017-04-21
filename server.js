@@ -85,6 +85,30 @@ var NifiRegistry = function() {
         self.app.get('/nifi-registry', function(req, res) {
             res.render('src/index.html');
         });
+        self.app.get('/nifi-registry/explorer', function(req, res) {
+            res.render('src/index.html');
+        });
+        self.app.get('/nifi-registry/settings/:registryId', function(req, res) {
+            res.render('src/index.html');
+        });
+        self.app.get('/nifi-registry/manage/:registryId/:bucketId', function(req, res) {
+            res.render('src/index.html');
+        });
+        self.app.get('/nifi-registry/manage/:registryId/:bucketId/:userId', function(req, res) {
+            res.render('src/index.html');
+        });
+        self.app.get('/nifi-registry/users-and-groups/:registryId', function(req, res) {
+            res.render('src/index.html');
+        });
+        self.app.get('/nifi-registry/explorer/:registryId', function(req, res) {
+            res.render('src/index.html');
+        });
+        self.app.get('/nifi-registry/explorer/:registryId/:bucketId', function(req, res) {
+            res.render('src/index.html');
+        });
+        self.app.get('/nifi-registry/explorer/:registryId/:bucketId/:dropletId', function(req, res) {
+            res.render('src/index.html');
+        });
     };
     /*
      *   Initialize Server

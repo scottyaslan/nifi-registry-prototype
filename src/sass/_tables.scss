@@ -1,0 +1,188 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* Tables */
+
+.title {
+    font-size: 20px;
+    color: $grey1;
+}
+
+.table-header {
+    font-size: 12px;
+    color: $grey3;
+}
+
+.table-footer {
+    font-size: 12px;
+    color: $grey3;
+}
+
+#nf-registry-bucket-viewer .mat-icon-button {
+    color: $linkColor;
+}
+
+#nf-registry-bucket-viewer .mat-button-focus-overlay, #nf-registry-bucket-viewer .mat-button-ripple {
+    display: none;
+}
+
+#nf-registry-bucket-viewer .mat-icon-button, #nf-registry-bucket-viewer .mat-mini-fab {
+    width: 32px;
+    height: 32px;
+}
+
+#nf-registry-bucket-viewer .mat-list .mat-list-item, #nf-registry-bucket-viewer .mat-nav-list .mat-list-item {
+    border-bottom: 1px solid $grey5;
+    border-top: 1px solid $bgSecondary;
+    border-right: 1px solid $bgSecondary;
+    border-left: 1px solid $bgSecondary;
+}
+
+#nf-registry-bucket-viewer .mat-list .mat-list-item .mat-list-item-content, #nf-registry-bucket-viewer .mat-nav-list .mat-list-item .mat-list-item-content {
+    font-size: 13px;
+    height: 32px;
+    color: $grey2;
+}
+
+#nf-registry-bucket-viewer .mat-list .mat-list-item:hover, #nf-registry-bucket-viewer .mat-nav-list .mat-list-item:hover {
+    background-color: $blue2;
+    border: 1px solid $blue3;
+}
+
+#nf-registry-bucket-viewer .mat-list .mat-list-item[focus], #nf-registry-bucket-viewer .mat-nav-list .mat-list-item[focus] {
+    background-color: $grey5;
+    border: 1px solid $grey5;
+}
+
+#nf-registry-bucket-viewer .mat-list .mat-list-item:focus, #nf-registry-bucket-viewer .mat-nav-list .mat-list-item:focus {
+    background-color: $grey5;
+    border: 1px solid $grey5;
+}
+
+#nf-registry-bucket-viewer .mat-list .mat-list-item-focus, #nf-registry-bucket-viewer .mat-nav-list .mat-list-item-focus {
+    background-color: $grey5;
+}
+
+#nf-registry-bucket-viewer .mat-list, #nf-registry-bucket-viewer .mat-nav-list {
+    padding-top: 0px;
+}
+
+#nf-registry-droplet-viewer .mat-icon-button {
+    color: $linkColor;
+}
+
+#nf-registry-droplet-viewer .mat-button-focus-overlay, #nf-registry-droplet-viewer .mat-button-ripple {
+    display: none;
+}
+
+#nf-registry-droplet-viewer .mat-icon-button, #nf-registry-droplet-viewer .mat-mini-fab {
+    width: 32px;
+    height: 32px;
+}
+
+#nf-registry-droplet-viewer .mat-list .mat-list-item, #nf-registry-droplet-viewer .mat-nav-list .mat-list-item {
+    border-bottom: 1px solid $grey5;
+    border-top: 1px solid $bgSecondary;
+    border-right: 1px solid $bgSecondary;
+    border-left: 1px solid $bgSecondary;
+}
+
+#nf-registry-droplet-viewer .mat-list .mat-list-item .mat-list-item-content, #nf-registry-droplet-viewer .mat-nav-list .mat-list-item .mat-list-item-content {
+    font-size: 13px;
+    height: 32px;
+    color: $grey2;
+}
+
+#nf-registry-droplet-viewer .mat-list .mat-list-item:hover, #nf-registry-droplet-viewer .mat-nav-list .mat-list-item:hover {
+    background-color: $blue2;
+    border: 1px solid $blue3;
+}
+
+#nf-registry-droplet-viewer .mat-list .mat-list-item[focus], #nf-registry-droplet-viewer .mat-nav-list .mat-list-item[focus] {
+    background-color: $grey5;
+    border: 1px solid $grey5;
+}
+
+#nf-registry-droplet-viewer .mat-list .mat-list-item:focus, #nf-registry-droplet-viewer .mat-nav-list .mat-list-item:focus {
+    background-color: $grey5;
+    border: 1px solid $grey5;
+}
+
+#nf-registry-droplet-viewer .mat-list .mat-list-item-focus, #nf-registry-droplet-viewer .mat-nav-list .mat-list-item-focus {
+    background-color: $grey5;
+}
+
+#nf-registry-droplet-viewer .mat-list .mat-list-item:focus, #nf-registry-droplet-viewer .mat-nav-list .mat-list-item-:focus {
+    border: 1px solid $grey5;
+}
+
+#nf-registry-droplet-viewer .mat-list, #nf-registry-droplet-viewer .mat-nav-list {
+    padding-top: 0px;
+}
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-icon-button {
+    color: $linkColor;
+}
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-button-focus-overlay, #nf-registry-bucket-manager-users-and-groups-viewer .mat-button-ripple {
+    display: none;
+}
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-icon-button, #nf-registry-bucket-manager-users-and-groups-viewer .mat-mini-fab {
+    width: 32px;
+    height: 32px;
+}
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list .mat-list-item, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list .mat-list-item {
+    border-bottom: 1px solid $grey5;
+    border-top: 1px solid $bgSecondary;
+    border-right: 1px solid $bgSecondary;
+    border-left: 1px solid $bgSecondary;
+}
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list .mat-list-item .mat-list-item-content, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list .mat-list-item .mat-list-item-content {
+    font-size: 13px;
+    height: 32px;
+    color: $grey2;
+}
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list .mat-list-item:hover, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list .mat-list-item:hover {
+    background-color: $blue2;
+    border: 1px solid $blue3;
+}
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list .mat-list-item[focus], #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list .mat-list-item[focus] {
+    background-color: $grey5;
+    border: 1px solid $grey5;
+}
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list .mat-list-item:focus, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list .mat-list-item:focus {
+    background-color: $grey5;
+    border: 1px solid $grey5;
+}
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list .mat-list-item-focus, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list .mat-list-item-focus {
+    background-color: $grey5;
+}
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list .mat-list-item:focus, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list .mat-list-item-:focus {
+    border: 1px solid $grey5;
+}
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list {
+    padding-top: 0px;
+}

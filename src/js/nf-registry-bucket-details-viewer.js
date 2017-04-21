@@ -15,10 +15,12 @@
  * limitations under the License.
  */
 
-function NfRegistryUsers() {
-    this.title = "Nifi Registry Users and Groups!!!";
+function NfRegistryBucketDetailsViewer(nfRegistryService) {
+    this.nfRegistryService = nfRegistryService;
 };
 
-NfRegistryUsers.prototype = {
-    constructor: NfRegistryUsers
+NfRegistryBucketDetailsViewer.prototype = {
+    constructor: NfRegistryBucketDetailsViewer
 };
+
+module.exports = NfRegistryBucketDetailsViewer;

@@ -15,33 +15,35 @@
  * limitations under the License.
  */
 
-function NfRegistrySettings(nfRegistryService, ActivatedRoute) {
+function NfRegistryViewer(nfRegistryService, ActivatedRoute) {
     this.subscription$;
     this.route = ActivatedRoute;
     this.nfRegistryService = nfRegistryService;
 };
 
-NfRegistrySettings.prototype = {
-    constructor: NfRegistrySettings,
+NfRegistryViewer.prototype = {
+    constructor: NfRegistryViewer,
     ngOnInit: function() {
         var self = this;
         /**
          * The switchMap operator maps the id in the Observable route
          * parameters to a new Observable, the result of the
-         * this.nfRegistryService.getBucket() method. If a user re-navigates to this
-         * component while a getBucket request is still processing, switchMap
-         * cancels the old request and then calls this.nfRegistryService.getBucket() again.
+         * this.nfRegistryService.getRegistry() method. If a user re-navigates to this
+         * component while a getRegistry request is still processing, switchMap
+         * cancels the old request and then calls this.nfRegistryService.getRegistry() again.
          */
         this.subscription$ = this.route.params
             .switchMap(function(params) {
                 self.nfRegistryService.selectedRegistryId = params['registryId'];
+                delete self.nfRegistryService.selectedBucketId;
                 return self.nfRegistryService.getRegistry(params['registryId']);
             })
             .subscribe(registry => this.nfRegistryService.registry = registry);
     },
     ngOnDestroy: function() {
         this.subscription$.unsubscribe();
+        delete this.nfRegistryService.selectedRegistryId;
     }
 };
 
-module.exports = NfRegistrySettings;
+module.exports = NfRegistryViewer;

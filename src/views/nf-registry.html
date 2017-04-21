@@ -1,29 +1,36 @@
-<md-toolbar class="mat-elevation-z5">
-    <img id="nifi-logo" src="nifi-registry/src/images/nifi-flow-registry-icon.png">
-    <h1>Flow Registry</h1>
-    <div fxFlex="1 1 auto" ></div>
-    <button color="primary" md-icon-button>
+<md-toolbar id="toolbar" class="mat-elevation-z5">
+    <img style="left: -17px; position: relative;" id="nifi-logo" src="nifi-registry/src/images/nifi-flow-registry-icon.png">
+    <md-select name="registry" *ngIf="nfRegistryService.registries" [(ngModel)]="nfRegistryService.registry.id">
+        <md-option *ngFor="let registry of nfRegistryService.registries" [value]="registry.id" routerLink="/nifi-registry/explorer/{{registry.id}}">
+            {{registry.name}}
+        </md-option>
+    </md-select>
+    <div fxFlex="1 1 auto">
+        <a class="link" *ngIf="nfRegistryService.selectedBucketId" routerLink="/nifi-registry/explorer/{{nfRegistryService.registry.id}}/{{nfRegistryService.bucket.id}}"> / {{nfRegistryService.bucket.name}}</a>
+        <a class="link" *ngIf="nfRegistryService.selectedDropletId" routerLink="/nifi-registry/explorer/{{nfRegistryService.registry.id}}/{{nfRegistryService.bucket.id}}/{{nfRegistryService.droplet.id}}"> / {{nfRegistryService.droplet.name}}</a>
+    </div>
+    <button mdTooltip="Alerts" color="primary" md-icon-button>
         <i class="fa fa-bell-o" aria-hidden="true"></i>
     </button>
-    <button color="primary" md-icon-button>
+    <button mdTooltip="Search" color="primary" md-icon-button>
         <i class="fa fa-search" aria-hidden="true"></i>
     </button>
-    <button color="primary" md-icon-button [mdMenuTriggerFor]="menu">
+    <button mdTooltip="Menu" color="primary" md-icon-button [mdMenuTriggerFor]="globalMenu">
         <i class="fa fa-ellipsis-h " aria-hidden="true"></i>
     </button>
-    <md-menu #menu="mdMenu">
+    <md-menu class="primary-icon-button-menu" #globalMenu="mdMenu" [overlapTrigger]="false">
         <button routerLink="nifi-registry/explorer" md-menu-item>
             <span>Explorer</span>
         </button>
-        <button routerLink="nifi-registry/manager" md-menu-item>
+       <!--  <button *ngIf="(nfRegistryService.registry && nfRegistryService.bucket)" routerLink="nifi-registry/manage/{{nfRegistryService.registry.id}}/{{nfRegistryService.bucket.id}}" md-menu-item>
             <span>Manager</span>
         </button>
-        <button routerLink="nifi-registry/settings" md-menu-item>
+        <button *ngIf="nfRegistryService.registry" routerLink="nifi-registry/settings/{{nfRegistryService.registry.id}}" md-menu-item>
             <span>Settings</span>
         </button>
-        <button routerLink="nifi-registry/users" md-menu-item>
+        <button *ngIf="nfRegistryService.registry" routerLink="nifi-registry/users-and-groups/{{nfRegistryService.registry.id}}" md-menu-item>
             <span>Users</span>
-        </button>
+        </button> -->
         <button routerLink="nifi-registry/undefinedRoute" md-menu-item>
             <span>Undefined Route</span>
         </button>
@@ -32,4 +39,6 @@
         </button>
     </md-menu>
 </md-toolbar>
-<router-outlet></router-outlet>
+<div id="nf-registry-viewer">
+    <router-outlet></router-outlet>
+</div>

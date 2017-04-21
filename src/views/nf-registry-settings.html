@@ -1,0 +1,14 @@
+<div id="nf-registry-settings-left-container">
+    <div class="header">Registry Name</div>
+    <div class="description">{{nfRegistryService.registry.name}}</div>
+    <div class="header">Registry Icon</div>
+    <i class="fa fa-plus"></i>
+
+</div>
+<div id="nf-registry-settings-right-container">
+    <div class="header">Tags</div>
+    <div class="description">NiFi users can apply tags to a flow when saving. Single tag usage is permitted per use, per bucket. I fthe user has write access to that bucket. When NiFi users import a flow, they will see all tags applied to that version of the flow.</div>
+</div>
+<div class="nf-registry-button-container">
+    <button class="primary-button done-button" md-button routerLink="/nifi-registry/explorer/{{nfRegistryService.registry.id}}">Done</button>
+</div>

@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-function NfRegistrySettings(nfRegistryService, ActivatedRoute) {
+function NfRegistryUsersAndGroups(nfRegistryService, ActivatedRoute) {
     this.subscription$;
     this.route = ActivatedRoute;
     this.nfRegistryService = nfRegistryService;
 };
 
-NfRegistrySettings.prototype = {
-    constructor: NfRegistrySettings,
+NfRegistryUsersAndGroups.prototype = {
+    constructor: NfRegistryUsersAndGroups,
     ngOnInit: function() {
         var self = this;
         /**
@@ -44,4 +44,4 @@ NfRegistrySettings.prototype = {
     }
 };
 
-module.exports = NfRegistrySettings;
+module.exports = NfRegistryUsersAndGroups;

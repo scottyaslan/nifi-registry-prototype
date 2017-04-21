@@ -1,4 +1,4 @@
-   /*
+/*
 * Licensed to the Apache Software Foundation (ASF) under one or more
 * contributor license agreements.  See the NOTICE file distributed with
 * this work for additional information regarding copyright ownership.
@@ -14,114 +14,119 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-   
-   @font-face {
-       font-family: 'Roboto';
-       font-style: normal;
-       font-weight: 300;
-       src: local("Roboto Light"), local("Roboto-Light"), url("../../node_modules/roboto-fontface/fonts/Roboto/Roboto-Light.ttf") format("truetype");
-   }
-   
-   @font-face {
-       font-family: 'Roboto';
-       font-style: italic;
-       font-weight: 300;
-       src: local("Roboto LightItalic"), local("Roboto-LightItalic"), url("../../node_modules/roboto-fontface/fonts/Roboto/Roboto-LightItalic.ttf") format("truetype");
-   }
-   
-   @font-face {
-       font-family: 'Roboto';
-       font-style: normal;
-       font-weight: normal;
-       src: local("Roboto Regular"), local("Roboto-Regular"), url("../../node_modules/roboto-fontface/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
-   }
-   
-   @font-face {
-       font-family: 'Roboto';
-       font-style: normal;
-       font-weight: 500;
-       src: local("Roboto Medium"), local("Roboto-Medium"), url("../../node_modules/roboto-fontface/fonts/Roboto/Roboto-Medium.ttf") format("truetype");
-   }
-   
-   @font-face {
-       font-family: 'Roboto';
-       font-style: normal;
-       font-weight: bold;
-       src: local("Roboto Bold"), local("Roboto-Bold"), url("../../node_modules/roboto-fontface/fonts/Roboto/Roboto-Bold.ttf") format("truetype");
-   }
-   
-   @font-face {
-       font-family: 'Roboto';
-       font-style: italic;
-       font-weight: normal;
-       src: local("Roboto Italic"), local("Roboto-Italic"), url("../../node_modules/roboto-fontface/fonts/Roboto/Roboto-Italic.ttf") format("truetype");
-   }
-   
-   @font-face {
-       font-family: 'Roboto Slab';
-       font-style: normal;
-       font-weight: normal;
-       src: local("RobotoSlab Regular"), local("RobotoSlab-Regular"), url("../../node_modules/roboto-fontface/fonts/Roboto_Slab/RobotoSlab-Regular.ttf") format("truetype");
-   }
-   
-   @font-face {
-       font-family: 'Roboto Slab';
-       font-style: normal;
-       font-weight: bold;
-       src: local("RobotoSlab Bold"), local("RobotoSlab-Bold"), url("../../node_modules/roboto-fontface/fonts/Roboto_Slab/RobotoSlab-Bold.ttf") format("truetype");
-   }
-   
-   body,
-   html {
-       height: 100%;
-   }
-   
-   body,
-   button,
-   input,
-   label,
-   select,
-   td,
-   textarea {
-       font-family: $fontPrimary;
-       font-size: 14px;
-   }
-   
-   body {
-       line-height: 1.5em;
-       margin: 0;
-       padding: 0;
-       text-align: left;
-       color: $textBodyColor;
-   }
-   
-   strong {
-       font-weight: bold;
-   }
-   
-   em {
-       font-style: italic;
-   }
-   
-   h1,
-   h2,
-   h3,
-   h4,
-   h5,
-   h6 {
-       font-family: $fontPrimary;
-       font-weight: normal;
-       font-style: normal;
-       line-height: 1;
-       background: #FFFFFF;
-   }
-   
-   h1 {
-       font-size: 20px;
-       color: $text2Color;
-   }
-   
-   h2 {
-       font-size: 16px;
-       color: $textBodyColor;
-   }
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    src: local("Roboto Light"), local("Roboto-Light"), url("../../node_modules/roboto-fontface/fonts/Roboto/Roboto-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 300;
+    src: local("Roboto LightItalic"), local("Roboto-LightItalic"), url("../../node_modules/roboto-fontface/fonts/Roboto/Roboto-LightItalic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    src: local("Roboto Regular"), local("Roboto-Regular"), url("../../node_modules/roboto-fontface/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    src: local("Roboto Medium"), local("Roboto-Medium"), url("../../node_modules/roboto-fontface/fonts/Roboto/Roboto-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    src: local("Roboto Bold"), local("Roboto-Bold"), url("../../node_modules/roboto-fontface/fonts/Roboto/Roboto-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: normal;
+    src: local("Roboto Italic"), local("Roboto-Italic"), url("../../node_modules/roboto-fontface/fonts/Roboto/Roboto-Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: normal;
+    src: local("RobotoSlab Regular"), local("RobotoSlab-Regular"), url("../../node_modules/roboto-fontface/fonts/Roboto_Slab/RobotoSlab-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: bold;
+    src: local("RobotoSlab Bold"), local("RobotoSlab-Bold"), url("../../node_modules/roboto-fontface/fonts/Roboto_Slab/RobotoSlab-Bold.ttf") format("truetype");
+}
+
+body,
+html {
+    height: 100%;
+}
+
+body,
+button,
+input,
+label,
+select,
+td,
+textarea {
+    font-family: $fontPrimary;
+    font-size: 14px;
+}
+
+body {
+    line-height: 1.5em;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color: $textBodyColor;
+}
+
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $fontPrimary;
+    font-weight: normal;
+    font-style: normal;
+    background: $bgSecondary;
+}
+
+h1 {
+    font-size: 20px;
+    color: $text2Color;
+}
+
+h2 {
+    font-size: 16px;
+    color: $textBodyColor;
+}
+
+table {
+  font-family: $fontPrimary;
+  font-size: 13px;
+  color: $grey2;
+}

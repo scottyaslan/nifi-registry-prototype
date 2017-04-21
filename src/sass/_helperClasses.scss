@@ -16,128 +16,64 @@
  */
 
 
-/* Backgrounds
-**************************/
+/* Text */
 
-.bgSecondary {
-    background: $bgColorSecondary;
+.header {
+    font-family: $fontMedium;
+    font-size: 16px;
+    color: $text2Color;
 }
 
-
-/* Text
-**************************/
-
-.textCenter {
-    text-align: center;
+.details-header {
+    height: 92px;
 }
 
-.textSecondary {
-    font-family: $fontSecondary;
+.details-header-container {
+    position: relative;
+    top: 12px;
+    left: 10px;
 }
 
-.textColorSecondary {
-    color: $textColorSecondary;
+.description {
+    font-family: $fontLight;
+    font-size: 12px;
+    color: $textBodyColor;
 }
 
-.textColorLight {
-    color: $textColorLight;
+.description i {
+    padding-right: 5px;
 }
 
-.textColorDark {
-    color: $textColorDark;
+.label {
+    font-family: $fontMedium;
+    font-size: 14px;
+    color: $textBodyColor;
+    text-transform: uppercase;
 }
 
-
-/* Borders
-**************************/
-
-.roundAll {
-    -webkit-border-radius: $roundedBorderRadius;
-    -moz-border-radius: $roundedBorderRadius;
-    border-radius: $roundedBorderRadius;
+.units {
+    font-family: $fontLight;
+    font-size: 14px;
+    color: $textBodyColor;
 }
 
-.roundTop {
-    -webkit-border-top-left-radius: $roundedBorderRadius;
-    -webkit-border-top-right-radius: $roundedBorderRadius;
-    -moz-border-radius-topleft: $roundedBorderRadius;
-    -moz-border-radius-topright: $roundedBorderRadius;
-    border-top-left-radius: $roundedBorderRadius;
-    border-top-right-radius: $roundedBorderRadius;
+.list-header {
+    border-bottom: 1px solid #ccc;
+    padding: 60px 10px 10px 10px;
 }
 
-.roundLeft {
-    -webkit-border-top-left-radius: $roundedBorderRadius;
-    -webkit-border-bottom-left-radius: $roundedBorderRadius;
-    -moz-border-radius-topleft: $roundedBorderRadius;
-    -moz-border-radius-bottomleft: $roundedBorderRadius;
-    border-top-left-radius: $roundedBorderRadius;
-    border-bottom-left-radius: $roundedBorderRadius;
-}
-
-.roundRight {
-    -webkit-border-top-right-radius: $roundedBorderRadius;
-    -webkit-border-bottom-right-radius: $roundedBorderRadius;
-    -moz-border-radius-topright: $roundedBorderRadius;
-    -moz-border-radius-bottomright: $roundedBorderRadius;
-    border-top-right-radius: $roundedBorderRadius;
-    border-bottom-right-radius: $roundedBorderRadius;
-}
-
-.roundBottom {
-    -webkit-border-bottom-right-radius: $roundedBorderRadius;
-    -webkit-border-bottom-left-radius: $roundedBorderRadius;
-    -moz-border-radius-bottomright: $roundedBorderRadius;
-    -moz-border-radius-bottomleft: $roundedBorderRadius;
-    border-bottom-right-radius: $roundedBorderRadius;
-    border-bottom-left-radius: $roundedBorderRadius;
-}
-
-.borderAll {
-    border: $borderWidthPrimary solid $borderColorPrimary;
-    border-bottom-color: $borderColorSecondary;
-}
-
-.borderLeft {
-    border-left: $borderWidthPrimary solid $borderColorPrimary;
-}
-
-.borderRight {
-    border-right: $borderWidthPrimary solid $borderColorPrimary;
-}
-
-.borderTop {
-    border-top: $borderWidthPrimary solid $borderColorPrimary;
-}
-
-.borderBottom {
-    border-bottom: $borderWidthPrimary solid $borderColorSecondary;
-}
-
-
-/* faux horizontal rules
-**************************/
-
-.hr {
-    width: 100%;
-    height: 1px;
-    background: $borderColorPrimary;
-    margin: 5px 0 10px 0;
-}
-
-
-/* Misc
-**************************/
-
-.pull-right {
+.dropdown > span > i {
     float: right;
+    margin-left: 15px;
 }
 
-.inner {
-    margin: 0 40px;
+.mat-list-item:focus {
+    outline: none;
 }
 
-.clear {
-    width: 100%;
-    clear: both;
+
+/* Padding */
+
+.padding2035 {
+    padding: 20px 35px;
 }

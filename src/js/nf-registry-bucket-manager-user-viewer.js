@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-function NfRegistrySettings(nfRegistryService, ActivatedRoute) {
+function NfRegistryBucketManagerUserViewer(nfRegistryService, ActivatedRoute) {
     this.subscription$;
     this.route = ActivatedRoute;
     this.nfRegistryService = nfRegistryService;
 };
 
-NfRegistrySettings.prototype = {
-    constructor: NfRegistrySettings,
+NfRegistryBucketManagerUserViewer.prototype = {
+    constructor: NfRegistryBucketManagerUserViewer,
     ngOnInit: function() {
         var self = this;
         /**
@@ -34,14 +34,15 @@ NfRegistrySettings.prototype = {
          */
         this.subscription$ = this.route.params
             .switchMap(function(params) {
-                self.nfRegistryService.selectedRegistryId = params['registryId'];
-                return self.nfRegistryService.getRegistry(params['registryId']);
+                self.nfRegistryService.selectedUserId = params['userId'];
+                return self.nfRegistryService.getUser(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId, params['userId']);
             })
-            .subscribe(registry => this.nfRegistryService.registry = registry);
+            .subscribe(user => this.nfRegistryService.user = user);
     },
     ngOnDestroy: function() {
         this.subscription$.unsubscribe();
+        delete this.nfRegistryService.selectedUserId;
     }
 };
 
-module.exports = NfRegistrySettings;
+module.exports = NfRegistryBucketManagerUserViewer;

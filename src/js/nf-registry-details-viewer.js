@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-function NfPageNotFoundComponent() {
-    this.title = "Page Not Found!!!!";
+function NfRegistryDetailsViewer(nfRegistryService) {
+    this.nfRegistryService = nfRegistryService;
 };
 
-NfPageNotFoundComponent.prototype = {
-    constructor: NfPageNotFoundComponent
+NfRegistryDetailsViewer.prototype = {
+    constructor: NfRegistryDetailsViewer
 };
 
-module.exports = NfPageNotFoundComponent;
+module.exports = NfRegistryDetailsViewer;

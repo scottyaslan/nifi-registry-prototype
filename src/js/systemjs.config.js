@@ -13,6 +13,9 @@
             // our app is within the app folder
             'app': 'src/js',
 
+            // jquery bundles
+            'jquery': 'npm:jquery/dist/jquery.min.js',
+
             // angular bundles
             '@angular/material': 'npm:@angular/material/bundles/material.umd.js',
             '@angular/flex-layout': 'npm:@angular/flex-layout/bundles/flex-layout.umd.js',
@@ -33,16 +36,25 @@
 
             // other libraries
             'rxjs': 'npm:rxjs',
+            'switchMap': 'npm:rxjs/add/operator/switchMap',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             'hammerjs': 'npm:hammerjs/hammer.min.js',
 
             // Nifi Registry Core
             'nf.Registry': 'nifi-registry/src/js/nf-registry.js',
+            'nf.RegistryService': 'nifi-registry/src/js/nf-registry.service.js',
             'nf.PageNotFoundComponent': 'nifi-registry/src/js/nf-registry-page-not-found.js',
             'nf.RegistryExplorer': 'nifi-registry/src/js/nf-registry-explorer.js',
-            'nf.RegistryManager': 'nifi-registry/src/js/nf-registry-manager.js',
+            'nf.RegistryBucketPermissionsManager': 'nifi-registry/src/js/nf-registry-bucket-permissions-manager.js',
+            'nf.RegistryBucketPermissionsManagerUserViewer': 'nifi-registry/src/js/nf-registry-bucket-manager-user-viewer.js',
             'nf.RegistrySettings': 'nifi-registry/src/js/nf-registry-settings.js',
-            'nf.RegistryUsers': 'nifi-registry/src/js/nf-registry-users.js'
+            'nf.RegistryUsersAndGroups': 'nifi-registry/src/js/nf-registry-users-and-groups.js',
+            'nf.RegistryViewer': 'nifi-registry/src/js/nf-registry-viewer.js',
+            'nf.RegistryBucketViewer': 'nifi-registry/src/js/nf-registry-bucket-viewer.js',
+            'nf.RegistryDropletViewer': 'nifi-registry/src/js/nf-registry-droplet-viewer.js',
+            'nf.RegistryDetailsViewer': 'nifi-registry/src/js/nf-registry-details-viewer.js',
+            'nf.RegistryBucketDetailsViewer': 'nifi-registry/src/js/nf-registry-bucket-details-viewer.js',
+            'nf.RegistryDropletDetailsViewer': 'nifi-registry/src/js/nf-registry-droplet-details-viewer.js'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {

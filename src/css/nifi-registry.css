@@ -3,13 +3,13 @@
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
+ * (the 'License'); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -17,7 +17,7 @@
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/nifi-flow-registry.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+ * <link href='/stylesheets/nifi-flow-registry.css' media='screen, projection' rel='stylesheet' type='text/css' /> */
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -34,22 +34,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/* Begin Global Variables *******************************************/
-/* Heights
- *******************************/
-/* Backgrounds
- *******************************/
-/* Text
- *******************************/
-/* Borders
- *******************************/
-/* Links
- *******************************/
-/* Buttons
- *******************************/
-/* Forms
-*********************************/
-/*End Global Variables *********************************************/
+/* Begin Global Variables */
+/* Text */
+/*End Global Variables */
 /*
 * Licensed to the Apache Software Foundation (ASF) under one or more
 * contributor license agreements.  See the NOTICE file distributed with
@@ -150,7 +137,6 @@ h6 {
   font-family: "Roboto", sans-serif;
   font-weight: normal;
   font-style: normal;
-  line-height: 1;
   background: #FFFFFF; }
 
 h1 {
@@ -159,6 +145,11 @@ h1 {
 
 h2 {
   font-size: 16px;
+  color: #666666; }
+
+table {
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
   color: #666666; }
 
 /*
@@ -177,6 +168,891 @@ h2 {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/* Text */
+.header {
+  font-family: "Roboto Medium", sans-serif;
+  font-size: 16px;
+  color: #333333; }
+
+.details-header {
+  height: 92px; }
+
+.details-header-container {
+  position: relative;
+  top: 12px;
+  left: 10px; }
+
+.description {
+  font-family: "Roboto Light", sans-serif;
+  font-size: 12px;
+  color: #666666; }
+
+.description i {
+  padding-right: 5px; }
+
+.label {
+  font-family: "Roboto Medium", sans-serif;
+  font-size: 14px;
+  color: #666666;
+  text-transform: uppercase; }
+
+.units {
+  font-family: "Roboto Light", sans-serif;
+  font-size: 14px;
+  color: #666666; }
+
+.list-header {
+  border-bottom: 1px solid #ccc;
+  padding: 60px 10px 10px 10px; }
+
+.dropdown > span > i {
+  float: right;
+  margin-left: 15px; }
+
+.mat-list-item:focus {
+  outline: none; }
+
+/* Padding */
+.padding2035 {
+  padding: 20px 35px; }
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+#toolbar {
+  min-width: 900px;
+  background-color: #FFFFFF;
+  position: absolute;
+  z-index: 1000; }
+
+#nf-registry-bucket-manager-users-and-groups-viewer {
+  position: absolute;
+  top: 0px;
+  bottom: 64px;
+  left: 0px;
+  width: 50%;
+  border-right: 1px solid #CCCCCC; }
+
+#nf-registry-bucket-manager-users-and-groups-details-viewer {
+  position: absolute;
+  top: 0px;
+  bottom: 64px;
+  right: 0px;
+  width: 50%; }
+
+.nf-registry-button-container {
+  position: absolute;
+  bottom: 0px;
+  height: 64px;
+  left: 0px;
+  right: 0px;
+  border-top: 1px solid #CCCCCC; }
+
+#nf-registry-viewer {
+  position: absolute;
+  top: 64px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  min-width: 900px; }
+
+#nf-registry-bucket-viewer {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  width: 299px;
+  border-right: 1px solid #CCCCCC; }
+
+#nf-registry-droplet-viewer {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 300px;
+  width: 299px;
+  border-right: 1px solid #CCCCCC; }
+
+#nf-registry-details-viewer {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 600px;
+  right: 0px;
+  min-width: 300px; }
+
+#nf-registry-settings-left-container {
+  position: absolute;
+  top: 0px;
+  bottom: 64px;
+  left: 0px;
+  width: 500px;
+  padding: 30px 35px; }
+
+#nf-registry-settings-right-container {
+  position: absolute;
+  top: 0px;
+  bottom: 64px;
+  left: 535px;
+  right: 0px;
+  padding: 30px 35px; }
+
+#nf-registry-users-and-groups-left-container {
+  position: absolute;
+  top: 0px;
+  bottom: 64px;
+  left: 0px;
+  right: 50%;
+  padding: 30px 35px; }
+
+#nf-registry-users-and-groups-right-container {
+  position: absolute;
+  top: 0px;
+  bottom: 64px;
+  left: 50%;
+  right: 0px;
+  padding: 30px 35px; }
+
+#bucketActionMenu {
+  float: right;
+  margin-right: 20px;
+  margin-top: 15px; }
+
+#dropletActionMenu {
+  float: right;
+  margin-right: 20px;
+  margin-top: 15px; }
+
+#dropletVersionActionMenu {
+  position: absolute;
+  right: 25px; }
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one or more
+* contributor license agreements.  See the NOTICE file distributed with
+* this work for additional information regarding copyright ownership.
+* The ASF licenses this file to You under the Apache License, Version 2.0
+* (the "License"); you may not use this file except in compliance with
+* the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+/* Buttons */
+button {
+  height: 34px;
+  font-family: "Roboto", sans-serif;
+  font-weight: normal !important;
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: normal !important;
+  border: 1px solid;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12) !important; }
+
+.primary-button.mat-button.mat-primary {
+  color: #FFFFFF;
+  background-color: #3FAE2A;
+  border: 1px solid #3FAE2A; }
+
+.primary-button.mat-button.mat-primary:hover {
+  color: #FFFFFF;
+  background-color: #429929; }
+
+.primary-button.mat-button.mat-primary:focus
+.primary-button.mat-mini-fab.mat-primary:focus {
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.primary-button.mat-button.mat-primary[disabled] {
+  color: #D1E8D1;
+  background-color: #3FAE2A;
+  opacity: .6; }
+
+.primary-button.mat-button.mat-primary[disabled]:hover {
+  background-color: #3FAE2A;
+  opacity: .6; }
+
+.secondary-button.mat-button.mat-accent {
+  color: #429929;
+  border: 1px solid #3FAE2A; }
+
+.secondary-button.mat-button.mat-accent:hover {
+  color: #FFFFFF;
+  background-color: #429929;
+  border: 1px solid #429929; }
+
+.secondary-button.mat-button.mat-accent:focus {
+  color: #429929;
+  background-color: #FFFFFF;
+  border: 1px solid #3FAE2A;
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.secondary-button.mat-button.mat-accent[disabled] {
+  color: #D1E8D1;
+  background-color: #3FAE2A;
+  opacity: .6; }
+
+.secondary-button.mat-button.mat-accent[disabled]:hover {
+  background-color: #3FAE2A;
+  opacity: .6; }
+
+.regular-button.mat-button {
+  color: #666666;
+  background-color: #FFFFFF;
+  border: 1px solid #CFD3D7; }
+
+.regular-button.mat-button:hover {
+  color: #FFFFFF;
+  background-color: #808793;
+  border: 1px solid #808793; }
+
+.regular-button.mat-button:focus {
+  color: #666666;
+  background-color: #FFFFFF;
+  border: 1px solid #CFD3D7;
+  opacity: 60%;
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.regular-button.mat-button[disabled][disabled] {
+  color: #D1E8D1;
+  background-color: #808793;
+  border: 1px solid #808793;
+  opacity: .6; }
+
+.warn-button.mat-button.mat-warn {
+  color: #FFFFFF;
+  background-color: #EF6162;
+  border: 1px solid #EF6162; }
+
+.warn-button.mat-button.mat-warn:hover {
+  color: #FFFFFF;
+  background-color: #D14A50;
+  border: 1px solid #EF6162; }
+
+.warn-button.mat-button.mat-warn:focus {
+  background-color: #EF6162;
+  border: 1px solid #CFD3D7;
+  opacity: 60%;
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.warn-button.mat-button.mat-warn[disabled][disabled] {
+  color: #D1E8D1;
+  background-color: #EF6162;
+  border: 1px solid #EF6162;
+  opacity: .6; }
+
+.warn-button.mat-button.mat-warn[disabled]:hover {
+  background-color: #EF6162;
+  opacity: .6; }
+
+.critical-button.mat-button {
+  color: #FFFFFF;
+  background-color: #E98A40;
+  border: 1px solid #E98A40; }
+
+.critical-button.mat-button:hover {
+  color: #FFFFFF;
+  background-color: #D3702D;
+  border: 1px solid #D3702D; }
+
+.critical-button.mat-button:focus {
+  background-color: #D3702D;
+  border: 1px solid #CFD3D7;
+  opacity: 60%;
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.critical-button.mat-button[disabled][disabled] {
+  color: #D1E8D1;
+  background-color: #E98A40;
+  border: 1px solid #E98A40;
+  opacity: .6; }
+
+.primary-button.mat-raised-button.mat-primary {
+  border: 1px solid #3FAE2A; }
+
+.primary-button.mat-raised-button.mat-primary:hover {
+  background-color: #429929; }
+
+.primary-button.mat-raised-button.mat-primary:focus {
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.primary-button.mat-raised-button.mat-primary[disabled] {
+  color: #D1E8D1;
+  background-color: #3FAE2A;
+  opacity: .6; }
+
+.secondary-button.mat-raised-button.mat-accent {
+  color: #429929;
+  border: 1px solid #3FAE2A; }
+
+.secondary-button.mat-raised-button.mat-accent:hover {
+  color: #FFFFFF;
+  background-color: #429929;
+  border: 1px solid #429929; }
+
+.secondary-button.mat-raised-button.mat-accent:focus {
+  color: #429929;
+  background-color: #FFFFFF;
+  border: 1px solid #3FAE2A;
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.secondary-button.mat-raised-button.mat-accent[disabled] {
+  color: #D1E8D1;
+  background-color: #3FAE2A;
+  opacity: .6; }
+
+.regular-button.mat-raised-button {
+  color: #666666;
+  background-color: #FFFFFF;
+  border: 1px solid #CFD3D7; }
+
+.regular-button.mat-raised-button:hover {
+  color: #FFFFFF;
+  background-color: #808793;
+  border: 1px solid #808793; }
+
+.regular-button.mat-raised-button:focus {
+  color: #666666;
+  background-color: #FFFFFF;
+  border: 1px solid #CFD3D7;
+  opacity: 60%;
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.regular-button.mat-raised-button[disabled][disabled] {
+  color: #D1E8D1;
+  background-color: #808793;
+  border: 1px solid #808793;
+  opacity: .6; }
+
+.warn-button.mat-raised-button.mat-warn {
+  border: 1px solid #EF6162; }
+
+.warn-button.mat-raised-button.mat-warn:hover {
+  color: #FFFFFF;
+  background-color: #D14A50;
+  border: 1px solid #EF6162; }
+
+.warn-button.mat-raised-button.mat-warn:focus {
+  background-color: #EF6162;
+  border: 1px solid #CFD3D7;
+  opacity: 60%;
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.warn-button.mat-raised-button.mat-warn[disabled][disabled] {
+  color: #D1E8D1;
+  background-color: #EF6162;
+  border: 1px solid #EF6162;
+  opacity: .6; }
+
+.critical-button.mat-raised-button {
+  color: #FFFFFF;
+  background-color: #E98A40;
+  border: 1px solid #E98A40; }
+
+.critical-button.mat-raised-button:hover {
+  color: #FFFFFF;
+  background-color: #D3702D;
+  border: 1px solid #D3702D; }
+
+.critical-button.mat-raised-button:focus {
+  background-color: #D3702D;
+  border: 1px solid #CFD3D7;
+  opacity: 60%;
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.critical-button.mat-raised-button[disabled][disabled] {
+  color: #D1E8D1;
+  background-color: #E98A40;
+  border: 1px solid #E98A40;
+  opacity: .6; }
+
+.primary-button.mat-raised-button {
+  color: #FFFFFF;
+  border: 1px solid #3FAE2A;
+  background-color: #3FAE2A; }
+
+.primary-button.mat-raised-button:hover {
+  color: #FFFFFF;
+  background-color: #429929; }
+
+.primary-button.mat-raised-button:focus {
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.primary-button.mat-raised-button[disabled] {
+  color: #D1E8D1 !important;
+  background-color: #3FAE2A !important;
+  opacity: .6; }
+
+.secondary-button.mat-raised-button {
+  color: #429929;
+  border: 1px solid #3FAE2A; }
+
+.secondary-button.mat-raised-button:hover {
+  color: #FFFFFF;
+  background-color: #429929;
+  border: 1px solid #429929; }
+
+.secondary-button.mat-raised-button:focus {
+  color: #429929;
+  background-color: #FFFFFF;
+  border: 1px solid #3FAE2A;
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.secondary-button.mat-raised-button[disabled] {
+  color: #D1E8D1 !important;
+  background-color: #3FAE2A !important;
+  opacity: .6; }
+
+.warn-button.mat-raised-button {
+  color: #FFFFFF;
+  border: 1px solid #EF6162;
+  background-color: #EF6162; }
+
+.warn-button.mat-raised-button:hover {
+  color: #FFFFFF;
+  background-color: #D14A50;
+  border: 1px solid #EF6162; }
+
+.warn-button.mat-raised-button:focus {
+  background-color: #EF6162;
+  border: 1px solid #CFD3D7;
+  opacity: 60%;
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.warn-button.mat-raised-button[disabled][disabled] {
+  color: #D1E8D1;
+  background-color: #EF6162;
+  border: 1px solid #EF6162;
+  opacity: .6; }
+
+.critical-button.mat-raised-button {
+  color: #FFFFFF;
+  background-color: #E98A40;
+  border: 1px solid #E98A40; }
+
+.critical-button.mat-raised-button:hover {
+  color: #FFFFFF;
+  background-color: #D3702D;
+  border: 1px solid #D3702D; }
+
+.critical-button.mat-raised-button:focus {
+  background-color: #D3702D;
+  border: 1px solid #CFD3D7;
+  opacity: 60%;
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.critical-button.mat-raised-button[disabled][disabled] {
+  color: #D1E8D1;
+  background-color: #E98A40;
+  border: 1px solid #E98A40;
+  opacity: .6; }
+
+.primary-button.mat-button {
+  color: #FFFFFF;
+  border: 1px solid #3FAE2A;
+  background-color: #3FAE2A; }
+
+.primary-button.mat-button:hover {
+  color: #FFFFFF;
+  background-color: #429929; }
+
+.primary-button.mat-button:focus {
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.primary-button.mat-button[disabled] {
+  color: #D1E8D1 !important;
+  background-color: #3FAE2A !important;
+  opacity: .6; }
+
+.secondary-button.mat-button {
+  color: #429929;
+  border: 1px solid #3FAE2A; }
+
+.secondary-button.mat-button:hover {
+  color: #FFFFFF;
+  background-color: #429929;
+  border: 1px solid #429929; }
+
+.secondary-button.mat-button:focus {
+  color: #429929;
+  background-color: #FFFFFF;
+  border: 1px solid #3FAE2A;
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.secondary-button.mat-button[disabled] {
+  color: #D1E8D1 !important;
+  background-color: #3FAE2A !important;
+  opacity: .6; }
+
+.warn-button.mat-button {
+  color: #FFFFFF;
+  border: 1px solid #EF6162;
+  background-color: #EF6162; }
+
+.warn-button.mat-button:hover {
+  color: #FFFFFF;
+  background-color: #D14A50;
+  border: 1px solid #EF6162; }
+
+.warn-button.mat-button:focus {
+  background-color: #EF6162;
+  border: 1px solid #CFD3D7;
+  opacity: 60%;
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.warn-button.mat-button[disabled][disabled] {
+  color: #D1E8D1;
+  background-color: #EF6162;
+  border: 1px solid #EF6162;
+  opacity: .6; }
+
+.critical-button.mat-button {
+  color: #FFFFFF;
+  background-color: #E98A40;
+  border: 1px solid #E98A40; }
+
+.critical-button.mat-button:hover {
+  color: #FFFFFF;
+  background-color: #D3702D;
+  border: 1px solid #D3702D; }
+
+.critical-button.mat-button:focus {
+  background-color: #D3702D;
+  border: 1px solid #CFD3D7;
+  opacity: 60%;
+  box-shadow: 0px 0px 2px 0px #1391c1; }
+
+.critical-button.mat-button[disabled][disabled] {
+  color: #D1E8D1;
+  background-color: #E98A40;
+  border: 1px solid #E98A40;
+  opacity: .6; }
+
+.nf-registry-button-container .done-button {
+  float: right;
+  margin-right: 15px;
+  margin-top: 15px; }
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one or more
+* contributor license agreements.  See the NOTICE file distributed with
+* this work for additional information regarding copyright ownership.
+* The ASF licenses this file to You under the Apache License, Version 2.0
+* (the "License"); you may not use this file except in compliance with
+* the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+/* Checkboxes */
+.nf-checkbox .mat-checkbox-inner-container {
+  height: 10px;
+  width: 10px; }
+
+.nf-checkbox .mat-checkbox-frame {
+  height: 10px;
+  width: 10px;
+  border-color: #DDDDDD; }
+
+.nf-checkbox.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.nf-checkbox.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #1491C1; }
+
+.nf-checkbox .mat-checkbox-inner-container:hover {
+  background-color: #1491C1;
+  border-radius: 2px; }
+
+.nf-checkbox .mat-checkbox-background {
+  height: 10px;
+  width: 10px; }
+
+#nf-registry-bucket-viewer .mat-checkbox-ripple {
+  left: -10px;
+  top: -10px;
+  right: -10px;
+  bottom: -10px; }
+
+#nf-registry-droplet-viewer .mat-checkbox-ripple {
+  left: -10px;
+  top: -10px;
+  right: -10px;
+  bottom: -10px; }
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one or more
+* contributor license agreements.  See the NOTICE file distributed with
+* this work for additional information regarding copyright ownership.
+* The ASF licenses this file to You under the Apache License, Version 2.0
+* (the "License"); you may not use this file except in compliance with
+* the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+/* Links */
+.link {
+  color: #1491C1;
+  font-size: 14px;
+  text-decoration: none; }
+
+.link:hover {
+  text-decoration: underline; }
+
+.link .disabled {
+  color: #666666;
+  text-decoration: none; }
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one or more
+* contributor license agreements.  See the NOTICE file distributed with
+* this work for additional information regarding copyright ownership.
+* The ASF licenses this file to You under the Apache License, Version 2.0
+* (the "License"); you may not use this file except in compliance with
+* the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+/* Tooltips */
+.mat-tooltip {
+  background: #666666 !important;
+  opacity: .9;
+  box-shadow: inset 0px 0px 3px 0px #1391c1; }
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one or more
+* contributor license agreements.  See the NOTICE file distributed with
+* this work for additional information regarding copyright ownership.
+* The ASF licenses this file to You under the Apache License, Version 2.0
+* (the "License"); you may not use this file except in compliance with
+* the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+/* Menus */
+button.mat-menu-item {
+  font-size: 14px;
+  color: #666666;
+  min-width: 200px;
+  text-transform: none;
+  height: 24px; }
+
+.regular-button-menu .mat-menu-item:hover {
+  color: #FFFFFF;
+  background-color: #808793 !important; }
+
+button.mat-menu-item[disabled]:hover {
+  color: rgba(0, 0, 0, 0.38);
+  background-color: #FFFFFF !important; }
+
+.mat-menu-panel {
+  border-radius: 2px; }
+
+.mat-menu-content {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important; }
+
+.primary-button-menu .mat-menu-item:hover {
+  color: #FFFFFF;
+  background-color: #429929 !important; }
+
+.primary-icon-button-menu .mat-menu-item:hover {
+  color: #FFFFFF;
+  background-color: #429929 !important; }
+
+.regular-icon-button-menu .mat-menu-item:hover {
+  color: #FFFFFF;
+  background-color: #808793 !important; }
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* Tables */
+.title {
+  font-size: 20px;
+  color: #333333; }
+
+.table-header {
+  font-size: 12px;
+  color: #999999; }
+
+.table-footer {
+  font-size: 12px;
+  color: #999999; }
+
+#nf-registry-bucket-viewer .mat-icon-button {
+  color: #1491C1; }
+
+#nf-registry-bucket-viewer .mat-button-focus-overlay, #nf-registry-bucket-viewer .mat-button-ripple {
+  display: none; }
+
+#nf-registry-bucket-viewer .mat-icon-button, #nf-registry-bucket-viewer .mat-mini-fab {
+  width: 32px;
+  height: 32px; }
+
+#nf-registry-bucket-viewer .mat-list .mat-list-item, #nf-registry-bucket-viewer .mat-nav-list .mat-list-item {
+  border-bottom: 1px solid #EEEEEE;
+  border-top: 1px solid #FFFFFF;
+  border-right: 1px solid #FFFFFF;
+  border-left: 1px solid #FFFFFF; }
+
+#nf-registry-bucket-viewer .mat-list .mat-list-item .mat-list-item-content, #nf-registry-bucket-viewer .mat-nav-list .mat-list-item .mat-list-item-content {
+  font-size: 13px;
+  height: 32px;
+  color: #666666; }
+
+#nf-registry-bucket-viewer .mat-list .mat-list-item:hover, #nf-registry-bucket-viewer .mat-nav-list .mat-list-item:hover {
+  background-color: #E7f6Fc;
+  border: 1px solid #A7DFF2; }
+
+#nf-registry-bucket-viewer .mat-list .mat-list-item[focus], #nf-registry-bucket-viewer .mat-nav-list .mat-list-item[focus] {
+  background-color: #EEEEEE;
+  border: 1px solid #EEEEEE; }
+
+#nf-registry-bucket-viewer .mat-list .mat-list-item:focus, #nf-registry-bucket-viewer .mat-nav-list .mat-list-item:focus {
+  background-color: #EEEEEE;
+  border: 1px solid #EEEEEE; }
+
+#nf-registry-bucket-viewer .mat-list .mat-list-item-focus, #nf-registry-bucket-viewer .mat-nav-list .mat-list-item-focus {
+  background-color: #EEEEEE; }
+
+#nf-registry-bucket-viewer .mat-list, #nf-registry-bucket-viewer .mat-nav-list {
+  padding-top: 0px; }
+
+#nf-registry-droplet-viewer .mat-icon-button {
+  color: #1491C1; }
+
+#nf-registry-droplet-viewer .mat-button-focus-overlay, #nf-registry-droplet-viewer .mat-button-ripple {
+  display: none; }
+
+#nf-registry-droplet-viewer .mat-icon-button, #nf-registry-droplet-viewer .mat-mini-fab {
+  width: 32px;
+  height: 32px; }
+
+#nf-registry-droplet-viewer .mat-list .mat-list-item, #nf-registry-droplet-viewer .mat-nav-list .mat-list-item {
+  border-bottom: 1px solid #EEEEEE;
+  border-top: 1px solid #FFFFFF;
+  border-right: 1px solid #FFFFFF;
+  border-left: 1px solid #FFFFFF; }
+
+#nf-registry-droplet-viewer .mat-list .mat-list-item .mat-list-item-content, #nf-registry-droplet-viewer .mat-nav-list .mat-list-item .mat-list-item-content {
+  font-size: 13px;
+  height: 32px;
+  color: #666666; }
+
+#nf-registry-droplet-viewer .mat-list .mat-list-item:hover, #nf-registry-droplet-viewer .mat-nav-list .mat-list-item:hover {
+  background-color: #E7f6Fc;
+  border: 1px solid #A7DFF2; }
+
+#nf-registry-droplet-viewer .mat-list .mat-list-item[focus], #nf-registry-droplet-viewer .mat-nav-list .mat-list-item[focus] {
+  background-color: #EEEEEE;
+  border: 1px solid #EEEEEE; }
+
+#nf-registry-droplet-viewer .mat-list .mat-list-item:focus, #nf-registry-droplet-viewer .mat-nav-list .mat-list-item:focus {
+  background-color: #EEEEEE;
+  border: 1px solid #EEEEEE; }
+
+#nf-registry-droplet-viewer .mat-list .mat-list-item-focus, #nf-registry-droplet-viewer .mat-nav-list .mat-list-item-focus {
+  background-color: #EEEEEE; }
+
+#nf-registry-droplet-viewer .mat-list .mat-list-item:focus, #nf-registry-droplet-viewer .mat-nav-list .mat-list-item-:focus {
+  border: 1px solid #EEEEEE; }
+
+#nf-registry-droplet-viewer .mat-list, #nf-registry-droplet-viewer .mat-nav-list {
+  padding-top: 0px; }
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-icon-button {
+  color: #1491C1; }
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-button-focus-overlay, #nf-registry-bucket-manager-users-and-groups-viewer .mat-button-ripple {
+  display: none; }
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-icon-button, #nf-registry-bucket-manager-users-and-groups-viewer .mat-mini-fab {
+  width: 32px;
+  height: 32px; }
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list .mat-list-item, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list .mat-list-item {
+  border-bottom: 1px solid #EEEEEE;
+  border-top: 1px solid #FFFFFF;
+  border-right: 1px solid #FFFFFF;
+  border-left: 1px solid #FFFFFF; }
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list .mat-list-item .mat-list-item-content, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list .mat-list-item .mat-list-item-content {
+  font-size: 13px;
+  height: 32px;
+  color: #666666; }
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list .mat-list-item:hover, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list .mat-list-item:hover {
+  background-color: #E7f6Fc;
+  border: 1px solid #A7DFF2; }
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list .mat-list-item[focus], #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list .mat-list-item[focus] {
+  background-color: #EEEEEE;
+  border: 1px solid #EEEEEE; }
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list .mat-list-item:focus, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list .mat-list-item:focus {
+  background-color: #EEEEEE;
+  border: 1px solid #EEEEEE; }
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list .mat-list-item-focus, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list .mat-list-item-focus {
+  background-color: #EEEEEE; }
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list .mat-list-item:focus, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list .mat-list-item-:focus {
+  border: 1px solid #EEEEEE; }
+
+#nf-registry-bucket-manager-users-and-groups-viewer .mat-list, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list {
+  padding-top: 0px; }
+
 /**
  * Applies styles for users in high contrast mode. Note that this only applies
  * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`
@@ -377,7 +1253,7 @@ h2 {
 
 .mat-option.mat-selected {
   background: rgba(0, 0, 0, 0.04);
-  color: #728e9b; }
+  color: #3fae2a; }
 
 .mat-option.mat-active {
   background: rgba(0, 0, 0, 0.04);
@@ -392,11 +1268,11 @@ h2 {
 .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
   border: none; }
   .mat-pseudo-checkbox-checked.mat-primary, .mat-pseudo-checkbox-indeterminate.mat-primary {
-    background: #728e9b; }
+    background: #3fae2a; }
   .mat-pseudo-checkbox-checked.mat-accent, .mat-pseudo-checkbox-indeterminate.mat-accent {
-    background: #728e9b; }
+    background: #3fae2a; }
   .mat-pseudo-checkbox-checked.mat-warn, .mat-pseudo-checkbox-indeterminate.mat-warn {
-    background: #ba554a; }
+    background: #313d54; }
   .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-disabled, .mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-disabled {
     background: #b0b0b0; }
 
@@ -411,30 +1287,30 @@ h2 {
     color: rgba(0, 0, 0, 0.87); }
 
 .mat-button.mat-button-focus.mat-primary .mat-button-focus-overlay, .mat-icon-button.mat-button-focus.mat-primary .mat-button-focus-overlay, .mat-raised-button.mat-button-focus.mat-primary .mat-button-focus-overlay, .mat-fab.mat-button-focus.mat-primary .mat-button-focus-overlay, .mat-mini-fab.mat-button-focus.mat-primary .mat-button-focus-overlay {
-  background-color: rgba(114, 142, 155, 0.12); }
+  background-color: rgba(63, 174, 42, 0.12); }
 
 .mat-button.mat-button-focus.mat-accent .mat-button-focus-overlay, .mat-icon-button.mat-button-focus.mat-accent .mat-button-focus-overlay, .mat-raised-button.mat-button-focus.mat-accent .mat-button-focus-overlay, .mat-fab.mat-button-focus.mat-accent .mat-button-focus-overlay, .mat-mini-fab.mat-button-focus.mat-accent .mat-button-focus-overlay {
-  background-color: rgba(199, 210, 215, 0.12); }
+  background-color: rgba(255, 255, 255, 0.12); }
 
 .mat-button.mat-button-focus.mat-warn .mat-button-focus-overlay, .mat-icon-button.mat-button-focus.mat-warn .mat-button-focus-overlay, .mat-raised-button.mat-button-focus.mat-warn .mat-button-focus-overlay, .mat-fab.mat-button-focus.mat-warn .mat-button-focus-overlay, .mat-mini-fab.mat-button-focus.mat-warn .mat-button-focus-overlay {
-  background-color: rgba(186, 85, 74, 0.12); }
+  background-color: rgba(239, 97, 98, 0.12); }
 
 .mat-button, .mat-icon-button {
   background: transparent; }
   .mat-button.mat-primary, .mat-icon-button.mat-primary {
-    color: #728e9b; }
+    color: #3fae2a; }
   .mat-button.mat-accent, .mat-icon-button.mat-accent {
-    color: #c7d2d7; }
+    color: white; }
   .mat-button.mat-warn, .mat-icon-button.mat-warn {
-    color: #ba554a; }
+    color: #ef6162; }
   .mat-button.mat-primary[disabled], .mat-button.mat-accent[disabled], .mat-button.mat-warn[disabled], .mat-button[disabled][disabled], .mat-icon-button.mat-primary[disabled], .mat-icon-button.mat-accent[disabled], .mat-icon-button.mat-warn[disabled], .mat-icon-button[disabled][disabled] {
     color: rgba(0, 0, 0, 0.38); }
   .mat-button:hover.mat-primary .mat-button-focus-overlay, .mat-icon-button:hover.mat-primary .mat-button-focus-overlay {
-    background-color: rgba(114, 142, 155, 0.12); }
+    background-color: rgba(63, 174, 42, 0.12); }
   .mat-button:hover.mat-accent .mat-button-focus-overlay, .mat-icon-button:hover.mat-accent .mat-button-focus-overlay {
-    background-color: rgba(199, 210, 215, 0.12); }
+    background-color: rgba(255, 255, 255, 0.12); }
   .mat-button:hover.mat-warn .mat-button-focus-overlay, .mat-icon-button:hover.mat-warn .mat-button-focus-overlay {
-    background-color: rgba(186, 85, 74, 0.12); }
+    background-color: rgba(239, 97, 98, 0.12); }
 
 .mat-raised-button, .mat-fab, .mat-mini-fab {
   color: rgba(0, 0, 0, 0.87);
@@ -444,20 +1320,20 @@ h2 {
   .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
     color: rgba(255, 255, 255, 0.87); }
   .mat-raised-button.mat-warn, .mat-fab.mat-warn, .mat-mini-fab.mat-warn {
-    color: rgba(255, 255, 255, 0.87); }
+    color: white; }
   .mat-raised-button.mat-primary[disabled], .mat-raised-button.mat-accent[disabled], .mat-raised-button.mat-warn[disabled], .mat-raised-button[disabled][disabled], .mat-fab.mat-primary[disabled], .mat-fab.mat-accent[disabled], .mat-fab.mat-warn[disabled], .mat-fab[disabled][disabled], .mat-mini-fab.mat-primary[disabled], .mat-mini-fab.mat-accent[disabled], .mat-mini-fab.mat-warn[disabled], .mat-mini-fab[disabled][disabled] {
     color: rgba(0, 0, 0, 0.38); }
   .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
-    background-color: #728e9b; }
+    background-color: #3fae2a; }
   .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
-    background-color: #c7d2d7; }
+    background-color: white; }
   .mat-raised-button.mat-warn, .mat-fab.mat-warn, .mat-mini-fab.mat-warn {
-    background-color: #ba554a; }
+    background-color: #ef6162; }
   .mat-raised-button.mat-primary[disabled], .mat-raised-button.mat-accent[disabled], .mat-raised-button.mat-warn[disabled], .mat-raised-button[disabled][disabled], .mat-fab.mat-primary[disabled], .mat-fab.mat-accent[disabled], .mat-fab.mat-warn[disabled], .mat-fab[disabled][disabled], .mat-mini-fab.mat-primary[disabled], .mat-mini-fab.mat-accent[disabled], .mat-mini-fab.mat-warn[disabled], .mat-mini-fab[disabled][disabled] {
     background-color: rgba(0, 0, 0, 0.12); }
 
 .mat-fab, .mat-mini-fab {
-  background-color: #c7d2d7;
+  background-color: white;
   color: rgba(255, 255, 255, 0.87); }
 
 .mat-button-toggle {
@@ -493,13 +1369,13 @@ h2 {
   background-color: #fafafa; }
 
 .mat-checkbox-indeterminate.mat-primary .mat-checkbox-background, .mat-checkbox-checked.mat-primary .mat-checkbox-background {
-  background-color: #728e9b; }
+  background-color: #3fae2a; }
 
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: #728e9b; }
+  background-color: #3fae2a; }
 
 .mat-checkbox-indeterminate.mat-warn .mat-checkbox-background, .mat-checkbox-checked.mat-warn .mat-checkbox-background {
-  background-color: #ba554a; }
+  background-color: #313d54; }
 
 .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background, .mat-checkbox-disabled.mat-checkbox-indeterminate .mat-checkbox-background {
   background-color: #b0b0b0; }
@@ -508,13 +1384,13 @@ h2 {
   border-color: #b0b0b0; }
 
 .mat-checkbox:not(.mat-checkbox-disabled).mat-primary .mat-checkbox-ripple .mat-ripple-element {
-  background-color: rgba(114, 142, 155, 0.26); }
+  background-color: rgba(63, 174, 42, 0.26); }
 
 .mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
-  background-color: rgba(199, 210, 215, 0.26); }
+  background-color: rgba(255, 255, 255, 0.26); }
 
 .mat-checkbox:not(.mat-checkbox-disabled).mat-warn .mat-checkbox-ripple .mat-ripple-element {
-  background-color: rgba(186, 85, 74, 0.26); }
+  background-color: rgba(239, 97, 98, 0.26); }
 
 .mat-chip:not(.mat-basic-chip) {
   background-color: #e0e0e0;
@@ -524,51 +1400,51 @@ h2 {
   background-color: #808080;
   color: rgba(255, 255, 255, 0.87); }
   .mat-chip.mat-chip-selected:not(.mat-basic-chip).mat-primary {
-    background-color: #728e9b;
+    background-color: #3fae2a;
     color: rgba(255, 255, 255, 0.87); }
   .mat-chip.mat-chip-selected:not(.mat-basic-chip).mat-accent {
-    background-color: #728e9b;
+    background-color: #3fae2a;
     color: rgba(255, 255, 255, 0.87); }
   .mat-chip.mat-chip-selected:not(.mat-basic-chip).mat-warn {
-    background-color: #ba554a;
+    background-color: #313d54;
     color: rgba(255, 255, 255, 0.87); }
 
 .mat-dialog-container {
   background: white; }
 
 .mat-icon.mat-primary {
-  color: #728e9b; }
+  color: #3fae2a; }
 
 .mat-icon.mat-accent {
-  color: #c7d2d7; }
+  color: white; }
 
 .mat-icon.mat-warn {
-  color: #ba554a; }
+  color: #ef6162; }
 
 .mat-input-placeholder {
   color: rgba(0, 0, 0, 0.38); }
   .mat-input-placeholder.mat-focused {
-    color: #728e9b; }
+    color: #3fae2a; }
     .mat-input-placeholder.mat-focused.mat-accent {
-      color: #c7d2d7; }
+      color: white; }
     .mat-input-placeholder.mat-focused.mat-warn {
-      color: #ba554a; }
+      color: #ef6162; }
 
 .mat-input-element:disabled {
   color: rgba(0, 0, 0, 0.38); }
 
 input.mat-input-element:-webkit-autofill + .mat-input-placeholder .mat-placeholder-required,
 .mat-input-placeholder.mat-float.mat-focused .mat-placeholder-required {
-  color: #c7d2d7; }
+  color: white; }
 
 .mat-input-underline {
   border-color: rgba(0, 0, 0, 0.12); }
   .mat-input-underline .mat-input-ripple {
-    background-color: #728e9b; }
+    background-color: #3fae2a; }
     .mat-input-underline .mat-input-ripple.mat-accent {
-      background-color: #c7d2d7; }
+      background-color: white; }
     .mat-input-underline .mat-input-ripple.mat-warn {
-      background-color: #ba554a; }
+      background-color: #ef6162; }
 
 .mat-list .mat-list-item, .mat-nav-list .mat-list-item {
   color: black; }
@@ -597,78 +1473,78 @@ input.mat-input-element:-webkit-autofill + .mat-input-placeholder .mat-placehold
     background: rgba(0, 0, 0, 0.04); }
 
 .mat-progress-bar-background {
-  background: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20version%3D%271.1%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xmlns%3Axlink%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%27%20x%3D%270px%27%20y%3D%270px%27%20enable-background%3D%27new%200%200%205%202%27%20xml%3Aspace%3D%27preserve%27%20viewBox%3D%270%200%205%202%27%20preserveAspectRatio%3D%27none%20slice%27%3E%3Ccircle%20cx%3D%271%27%20cy%3D%271%27%20r%3D%271%27%20fill%3D%27%23728e9b%27%2F%3E%3C%2Fsvg%3E"); }
+  background: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20version%3D%271.1%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xmlns%3Axlink%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%27%20x%3D%270px%27%20y%3D%270px%27%20enable-background%3D%27new%200%200%205%202%27%20xml%3Aspace%3D%27preserve%27%20viewBox%3D%270%200%205%202%27%20preserveAspectRatio%3D%27none%20slice%27%3E%3Ccircle%20cx%3D%271%27%20cy%3D%271%27%20r%3D%271%27%20fill%3D%27%2377da64%27%2F%3E%3C%2Fsvg%3E"); }
 
 .mat-progress-bar-buffer {
-  background-color: #728e9b; }
+  background-color: #77da64; }
 
 .mat-progress-bar-fill::after {
-  background-color: #728e9b; }
+  background-color: white; }
 
 .mat-progress-bar.mat-accent .mat-progress-bar-background {
-  background: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20version%3D%271.1%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xmlns%3Axlink%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%27%20x%3D%270px%27%20y%3D%270px%27%20enable-background%3D%27new%200%200%205%202%27%20xml%3Aspace%3D%27preserve%27%20viewBox%3D%270%200%205%202%27%20preserveAspectRatio%3D%27none%20slice%27%3E%3Ccircle%20cx%3D%271%27%20cy%3D%271%27%20r%3D%271%27%20fill%3D%27%23728e9b%27%2F%3E%3C%2Fsvg%3E"); }
+  background: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20version%3D%271.1%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xmlns%3Axlink%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%27%20x%3D%270px%27%20y%3D%270px%27%20enable-background%3D%27new%200%200%205%202%27%20xml%3Aspace%3D%27preserve%27%20viewBox%3D%270%200%205%202%27%20preserveAspectRatio%3D%27none%20slice%27%3E%3Ccircle%20cx%3D%271%27%20cy%3D%271%27%20r%3D%271%27%20fill%3D%27%2377da64%27%2F%3E%3C%2Fsvg%3E"); }
 
 .mat-progress-bar.mat-accent .mat-progress-bar-buffer {
-  background-color: #728e9b; }
+  background-color: #77da64; }
 
 .mat-progress-bar.mat-accent .mat-progress-bar-fill::after {
-  background-color: #c7d2d7; }
+  background-color: white; }
 
 .mat-progress-bar.mat-warn .mat-progress-bar-background {
-  background: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20version%3D%271.1%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xmlns%3Axlink%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%27%20x%3D%270px%27%20y%3D%270px%27%20enable-background%3D%27new%200%200%205%202%27%20xml%3Aspace%3D%27preserve%27%20viewBox%3D%270%200%205%202%27%20preserveAspectRatio%3D%27none%20slice%27%3E%3Ccircle%20cx%3D%271%27%20cy%3D%271%27%20r%3D%271%27%20fill%3D%27%23ba554a%27%2F%3E%3C%2Fsvg%3E"); }
+  background: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20version%3D%271.1%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xmlns%3Axlink%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%27%20x%3D%270px%27%20y%3D%270px%27%20enable-background%3D%27new%200%200%205%202%27%20xml%3Aspace%3D%27preserve%27%20viewBox%3D%270%200%205%202%27%20preserveAspectRatio%3D%27none%20slice%27%3E%3Ccircle%20cx%3D%271%27%20cy%3D%271%27%20r%3D%271%27%20fill%3D%27%23984c12%27%2F%3E%3C%2Fsvg%3E"); }
 
 .mat-progress-bar.mat-warn .mat-progress-bar-buffer {
-  background-color: #ba554a; }
+  background-color: #984c12; }
 
 .mat-progress-bar.mat-warn .mat-progress-bar-fill::after {
-  background-color: #ba554a; }
+  background-color: #ec9857; }
 
 .mat-progress-spinner path, .mat-progress-circle path, .mat-spinner path {
-  stroke: #728e9b; }
+  stroke: white; }
 
 .mat-progress-spinner.mat-accent path, .mat-progress-circle.mat-accent path, .mat-spinner.mat-accent path {
-  stroke: #c7d2d7; }
+  stroke: white; }
 
 .mat-progress-spinner.mat-warn path, .mat-progress-circle.mat-warn path, .mat-spinner.mat-warn path {
-  stroke: #ba554a; }
+  stroke: #ec9857; }
 
 .mat-radio-outer-circle {
   border-color: rgba(0, 0, 0, 0.54); }
   .mat-radio-checked .mat-radio-outer-circle {
-    border-color: #c7d2d7; }
+    border-color: white; }
   .mat-radio-disabled .mat-radio-outer-circle {
     border-color: rgba(0, 0, 0, 0.38); }
 
 .mat-radio-inner-circle {
-  background-color: #c7d2d7; }
+  background-color: white; }
   .mat-radio-disabled .mat-radio-inner-circle {
     background-color: rgba(0, 0, 0, 0.38); }
 
 .mat-radio-ripple .mat-ripple-element {
-  background-color: rgba(199, 210, 215, 0.26); }
+  background-color: rgba(255, 255, 255, 0.26); }
   .mat-radio-disabled .mat-radio-ripple .mat-ripple-element {
     background-color: rgba(0, 0, 0, 0.38); }
 
 .mat-select-trigger {
   color: rgba(0, 0, 0, 0.38); }
   .mat-select:focus:not(.mat-select-disabled) .mat-select-trigger {
-    color: #728e9b; }
+    color: #3fae2a; }
   .mat-select.ng-invalid.ng-touched:not(.mat-select-disabled) .mat-select-trigger {
-    color: #ba554a; }
+    color: #ef6162; }
 
 .mat-select-underline {
   background-color: rgba(0, 0, 0, 0.12); }
   .mat-select:focus:not(.mat-select-disabled) .mat-select-underline {
-    background-color: #728e9b; }
+    background-color: #3fae2a; }
   .mat-select.ng-invalid.ng-touched:not(.mat-select-disabled) .mat-select-underline {
-    background-color: #ba554a; }
+    background-color: #ef6162; }
 
 .mat-select-arrow {
   color: rgba(0, 0, 0, 0.38); }
   .mat-select:focus:not(.mat-select-disabled) .mat-select-arrow {
-    color: #728e9b; }
+    color: #3fae2a; }
   .mat-select.ng-invalid.ng-touched:not(.mat-select-disabled) .mat-select-arrow {
-    color: #ba554a; }
+    color: #ef6162; }
 
 .mat-select-content, .mat-select-panel-done-animating {
   background: white; }
@@ -692,40 +1568,40 @@ input.mat-input-element:-webkit-autofill + .mat-input-placeholder .mat-placehold
   background-color: rgba(0, 0, 0, 0.6); }
 
 .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-  background-color: #728e9b; }
+  background-color: #3fae2a; }
 
 .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-  background-color: rgba(114, 142, 155, 0.5); }
+  background-color: rgba(63, 174, 42, 0.5); }
 
 .mat-slide-toggle.mat-slide-toggle-focused:not(.mat-checked) .mat-ink-ripple {
   background-color: rgba(0, 0, 0, 0.12); }
 
 .mat-slide-toggle.mat-slide-toggle-focused .mat-ink-ripple {
-  background-color: rgba(114, 142, 155, 0.26); }
+  background-color: rgba(63, 174, 42, 0.26); }
 
 .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-  background-color: #728e9b; }
+  background-color: #3fae2a; }
 
 .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-  background-color: rgba(114, 142, 155, 0.5); }
+  background-color: rgba(63, 174, 42, 0.5); }
 
 .mat-slide-toggle.mat-primary.mat-slide-toggle-focused:not(.mat-checked) .mat-ink-ripple {
   background-color: rgba(0, 0, 0, 0.12); }
 
 .mat-slide-toggle.mat-primary.mat-slide-toggle-focused .mat-ink-ripple {
-  background-color: rgba(114, 142, 155, 0.26); }
+  background-color: rgba(63, 174, 42, 0.26); }
 
 .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-  background-color: #ba554a; }
+  background-color: #313d54; }
 
 .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-  background-color: rgba(186, 85, 74, 0.5); }
+  background-color: rgba(49, 61, 84, 0.5); }
 
 .mat-slide-toggle.mat-warn.mat-slide-toggle-focused:not(.mat-checked) .mat-ink-ripple {
   background-color: rgba(0, 0, 0, 0.12); }
 
 .mat-slide-toggle.mat-warn.mat-slide-toggle-focused .mat-ink-ripple {
-  background-color: rgba(186, 85, 74, 0.26); }
+  background-color: rgba(49, 61, 84, 0.26); }
 
 .mat-disabled .mat-slide-toggle-thumb {
   background-color: #bdbdbd; }
@@ -743,13 +1619,13 @@ input.mat-input-element:-webkit-autofill + .mat-input-placeholder .mat-placehold
   background-color: rgba(0, 0, 0, 0.26); }
 
 .mat-slider-track-fill {
-  background-color: #c7d2d7; }
+  background-color: white; }
 
 .mat-slider-thumb {
-  background-color: #c7d2d7; }
+  background-color: white; }
 
 .mat-slider-thumb-label {
-  background-color: #c7d2d7; }
+  background-color: white; }
 
 .mat-slider-thumb-label-text {
   color: rgba(255, 255, 255, 0.87); }
@@ -793,23 +1669,23 @@ input.mat-input-element:-webkit-autofill + .mat-input-placeholder .mat-placehold
     border-bottom: none; }
 
 .mat-tab-label:focus {
-  background-color: rgba(114, 142, 155, 0.3); }
+  background-color: rgba(119, 218, 100, 0.3); }
 
 .mat-ink-bar {
-  background-color: #728e9b; }
+  background-color: #3fae2a; }
 
 .mat-toolbar {
   background: whitesmoke;
   color: rgba(0, 0, 0, 0.87); }
   .mat-toolbar.mat-primary {
-    background: #728e9b;
+    background: #3fae2a;
     color: rgba(255, 255, 255, 0.87); }
   .mat-toolbar.mat-accent {
-    background: #c7d2d7;
+    background: white;
     color: rgba(255, 255, 255, 0.87); }
   .mat-toolbar.mat-warn {
-    background: #ba554a;
-    color: rgba(255, 255, 255, 0.87); }
+    background: #ef6162;
+    color: white; }
 
 .mat-tooltip {
   background: rgba(97, 97, 97, 0.9); }

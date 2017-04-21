@@ -15,10 +15,12 @@
  * limitations under the License.
  */
 
-function NfRegistryManager() {
-    this.title = "Nifi Registry Manager!!!";
+function NfRegistryDropletDetailsViewer(nfRegistryService) {
+    this.nfRegistryService = nfRegistryService;
 };
 
-NfRegistryManager.prototype = {
-    constructor: NfRegistryManager
+NfRegistryDropletDetailsViewer.prototype = {
+    constructor: NfRegistryDropletDetailsViewer
 };
+
+module.exports = NfRegistryDropletDetailsViewer;

@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-function NfRegistrySettings(nfRegistryService, ActivatedRoute) {
+function NfRegistryDropletViewer(nfRegistryService, ActivatedRoute) {
     this.subscription$;
     this.route = ActivatedRoute;
     this.nfRegistryService = nfRegistryService;
 };
 
-NfRegistrySettings.prototype = {
-    constructor: NfRegistrySettings,
+NfRegistryDropletViewer.prototype = {
+    constructor: NfRegistryDropletViewer,
     ngOnInit: function() {
         var self = this;
         /**
@@ -34,14 +34,15 @@ NfRegistrySettings.prototype = {
          */
         this.subscription$ = this.route.params
             .switchMap(function(params) {
-                self.nfRegistryService.selectedRegistryId = params['registryId'];
-                return self.nfRegistryService.getRegistry(params['registryId']);
+                self.nfRegistryService.selectedDropletId = params['dropletId'];
+                return self.nfRegistryService.getDroplet(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId, params['dropletId']);
             })
-            .subscribe(registry => this.nfRegistryService.registry = registry);
+            .subscribe(droplet => this.nfRegistryService.droplet = droplet);
     },
     ngOnDestroy: function() {
         this.subscription$.unsubscribe();
+        delete this.nfRegistryService.selectedDropletId;
     }
 };
 
-module.exports = NfRegistrySettings;
+module.exports = NfRegistryDropletViewer;

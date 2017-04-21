@@ -1,0 +1,20 @@
+<md-toolbar class="details-header">
+    <div class="details-header-container">
+        <div class="description">Droplet</div>
+        <div class="header">{{nfRegistryService.droplet.name}}</div>
+    </div>
+</md-toolbar>
+<div class="padding2035">
+    <button id="dropletVersionActionMenu" [mdMenuTriggerFor]="dropletVersionActionMenu" md-raised-button class="regular-button dropdown">
+        Actions<i class="fa fa-caret-down" aria-hidden="true"></i>
+    </button>
+    <md-menu class="regular-button-menu" #dropletVersionActionMenu="mdMenu" [overlapTrigger]="false">
+        <button md-menu-item>
+            <span>Option 1</span>
+        </button>
+        <button md-menu-item disabled>
+            <span>Option 2</span>
+        </button>
+    </md-menu>
+    <div class="header">Versions ({{nfRegistryService.droplet.versions?.length}})</div>
+</div>

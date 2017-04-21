@@ -15,13 +15,12 @@
  * limitations under the License.
  */
 
-function NfRegistryExplorer() {
-    this.title = "Nifi Registry Explorer!!!";
+function NfRegistryExplorer(nfRegistryService) {
+    this.nfRegistryService = nfRegistryService;
 };
 
 NfRegistryExplorer.prototype = {
-    constructor: NfRegistryExplorer,
-    getName: function() {
-        return 'Windstorm';
-    }
+    constructor: NfRegistryExplorer
 };
+
+module.exports = NfRegistryExplorer;

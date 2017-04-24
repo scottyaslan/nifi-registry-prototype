@@ -169,17 +169,21 @@ table {
  * limitations under the License.
  */
 /* Text */
+.camel-case {
+  text-transform: capitalize; }
+
 .header {
   font-family: "Roboto Medium", sans-serif;
   font-size: 16px;
-  color: #333333; }
+  color: #333333;
+  padding-bottom: 10px; }
 
 .details-header {
   height: 92px; }
 
 .details-header-container {
   position: relative;
-  top: 12px;
+  top: 22px;
   left: 10px; }
 
 .description {
@@ -244,7 +248,8 @@ table {
   bottom: 64px;
   left: 0px;
   width: 50%;
-  border-right: 1px solid #CCCCCC; }
+  border-right: 1px solid #CCCCCC;
+  z-index: 1; }
 
 #nf-registry-bucket-manager-users-and-groups-details-viewer {
   position: absolute;
@@ -1051,6 +1056,48 @@ button.mat-menu-item[disabled]:hover {
   border: 1px solid #EEEEEE; }
 
 #nf-registry-bucket-manager-users-and-groups-viewer .mat-list, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list {
+  padding-top: 0px; }
+
+#nf-registry-users-and-groups-viewer .mat-icon-button {
+  color: #1491C1; }
+
+#nf-registry-users-and-groups-viewer .mat-button-focus-overlay, #nf-registry-users-and-groups-viewer .mat-button-ripple {
+  display: none; }
+
+#nf-registry-users-and-groups-viewer .mat-icon-button, #nf-registry-users-and-groups-viewer .mat-mini-fab {
+  width: 32px;
+  height: 32px; }
+
+#nf-registry-users-and-groups-viewer .mat-list .mat-list-item, #nf-registry-users-and-groups-viewer .mat-nav-list .mat-list-item {
+  border-bottom: 1px solid #EEEEEE;
+  border-top: 1px solid #FFFFFF;
+  border-right: 1px solid #FFFFFF;
+  border-left: 1px solid #FFFFFF; }
+
+#nf-registry-users-and-groups-viewer .mat-list .mat-list-item .mat-list-item-content, #nf-registry-users-and-groups-viewer .mat-nav-list .mat-list-item .mat-list-item-content {
+  font-size: 13px;
+  height: 32px;
+  color: #666666; }
+
+#nf-registry-users-and-groups-viewer .mat-list .mat-list-item:hover, #nf-registry-users-and-groups-viewer .mat-nav-list .mat-list-item:hover {
+  background-color: #E7f6Fc;
+  border: 1px solid #A7DFF2; }
+
+#nf-registry-users-and-groups-viewer .mat-list .mat-list-item[focus], #nf-registry-users-and-groups-viewer .mat-nav-list .mat-list-item[focus] {
+  background-color: #EEEEEE;
+  border: 1px solid #EEEEEE; }
+
+#nf-registry-users-and-groups-viewer .mat-list .mat-list-item:focus, #nf-registry-users-and-groups-viewer .mat-nav-list .mat-list-item:focus {
+  background-color: #EEEEEE;
+  border: 1px solid #EEEEEE; }
+
+#nf-registry-users-and-groups-viewer .mat-list .mat-list-item-focus, #nf-registry-users-and-groups-viewer .mat-nav-list .mat-list-item-focus {
+  background-color: #EEEEEE; }
+
+#nf-registry-users-and-groups-viewer .mat-list .mat-list-item:focus, #nf-registry-users-and-groups-viewer .mat-nav-list .mat-list-item-:focus {
+  border: 1px solid #EEEEEE; }
+
+#nf-registry-users-and-groups-viewer .mat-list, #nf-registry-users-and-groups-viewer .mat-nav-list {
   padding-top: 0px; }
 
 /**

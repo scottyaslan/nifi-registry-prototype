@@ -123,6 +123,19 @@ NfRegistryService.prototype = {
                         }
                     });
             });
+    },
+    getUserCount: function() {
+        var authUserCount = 0;
+        if (this.registry) {
+            for (var i = 0; i < this.registry.buckets.length; i++) {
+                for (var j = 0; j < this.registry.buckets[i].users; j++) {
+                    if (this.registry.buckets[i].users[j].type === 'user') {
+                        ++authUserCount;
+                    }
+                }
+            }
+        }
+        return authUserCount;
     }
 };
 

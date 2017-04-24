@@ -186,3 +186,56 @@
 #nf-registry-bucket-manager-users-and-groups-viewer .mat-list, #nf-registry-bucket-manager-users-and-groups-viewer .mat-nav-list {
     padding-top: 0px;
 }
+
+#nf-registry-users-and-groups-viewer .mat-icon-button {
+    color: $linkColor;
+}
+
+#nf-registry-users-and-groups-viewer .mat-button-focus-overlay, #nf-registry-users-and-groups-viewer .mat-button-ripple {
+    display: none;
+}
+
+#nf-registry-users-and-groups-viewer .mat-icon-button, #nf-registry-users-and-groups-viewer .mat-mini-fab {
+    width: 32px;
+    height: 32px;
+}
+
+#nf-registry-users-and-groups-viewer .mat-list .mat-list-item, #nf-registry-users-and-groups-viewer .mat-nav-list .mat-list-item {
+    border-bottom: 1px solid $grey5;
+    border-top: 1px solid $bgSecondary;
+    border-right: 1px solid $bgSecondary;
+    border-left: 1px solid $bgSecondary;
+}
+
+#nf-registry-users-and-groups-viewer .mat-list .mat-list-item .mat-list-item-content, #nf-registry-users-and-groups-viewer .mat-nav-list .mat-list-item .mat-list-item-content {
+    font-size: 13px;
+    height: 32px;
+    color: $grey2;
+}
+
+#nf-registry-users-and-groups-viewer .mat-list .mat-list-item:hover, #nf-registry-users-and-groups-viewer .mat-nav-list .mat-list-item:hover {
+    background-color: $blue2;
+    border: 1px solid $blue3;
+}
+
+#nf-registry-users-and-groups-viewer .mat-list .mat-list-item[focus], #nf-registry-users-and-groups-viewer .mat-nav-list .mat-list-item[focus] {
+    background-color: $grey5;
+    border: 1px solid $grey5;
+}
+
+#nf-registry-users-and-groups-viewer .mat-list .mat-list-item:focus, #nf-registry-users-and-groups-viewer .mat-nav-list .mat-list-item:focus {
+    background-color: $grey5;
+    border: 1px solid $grey5;
+}
+
+#nf-registry-users-and-groups-viewer .mat-list .mat-list-item-focus, #nf-registry-users-and-groups-viewer .mat-nav-list .mat-list-item-focus {
+    background-color: $grey5;
+}
+
+#nf-registry-users-and-groups-viewer .mat-list .mat-list-item:focus, #nf-registry-users-and-groups-viewer .mat-nav-list .mat-list-item-:focus {
+    border: 1px solid $grey5;
+}
+
+#nf-registry-users-and-groups-viewer .mat-list, #nf-registry-users-and-groups-viewer .mat-nav-list {
+    padding-top: 0px;
+}

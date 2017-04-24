@@ -1,4 +1,4 @@
-(function(NfRegistry, NfRegistryDetailsViewer, NfRegistryService, NfRegistryExplorer, NfRegistryBucketDetailsViewer, NfRegistryBucketPermissionsManager, NfRegistryBucketPermissionsManagerUserViewer, NfRegistrySettings, NfRegistryUsersAndGroups, NfRegistryViewer, NfRegistryBucketViewer, NfRegistryDropletViewer, NfRegistryDropletDetailsViewer, NfPageNotFoundComponent, $, ngCore, ngCommon, ngPlatformBrowser, ngPlatformBrowserDynamic, ngMaterialModule, ngFormsModule, ngRouter, ngAnimations, ngFlexLayout, switchMap) {
+(function(NfRegistry, NfRegistryDetailsViewer, NfRegistryService, NfRegistryExplorer, NfRegistryBucketDetailsViewer, NfRegistryBucketPermissionsManager, NfRegistryBucketUserOrGroupPermissionsViewer, NfRegistryBucketUserPermissionsViewer, NfRegistryBucketGroupPermissionsViewer, NfRegistrySettings, NfRegistryUsersAndGroups, NfRegistryViewer, NfRegistryBucketViewer, NfRegistryDropletViewer, NfRegistryDropletDetailsViewer, NfPageNotFoundComponent, $, ngCore, ngCommon, ngPlatformBrowser, ngPlatformBrowserDynamic, ngMaterialModule, ngFormsModule, ngRouter, ngAnimations, ngFlexLayout, switchMap) {
     'use strict';
 
     NfPageNotFoundComponent.annotations = [
@@ -91,14 +91,34 @@
     // inject services
     NfRegistryBucketViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
 
-    NfRegistryBucketPermissionsManagerUserViewer.annotations = [
+    NfRegistryBucketUserOrGroupPermissionsViewer.annotations = [
         new ngCore.Component({
-            templateUrl: `nifi-registry/src/views/nf-registry-bucket-users-and-groups-manager.html`
+            templateUrl: `nifi-registry/src/views/nf-registry-bucket-user-or-group-permissions-viewer.html`
         })
     ];
 
     // inject services
-    NfRegistryBucketPermissionsManagerUserViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+    NfRegistryBucketUserOrGroupPermissionsViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+
+    NfRegistryBucketUserPermissionsViewer.annotations = [
+        new ngCore.Component({
+            selector: 'nf-registry-bucket-user-permissions-viewer',
+            templateUrl: `nifi-registry/src/views/nf-registry-bucket-user-permissions-viewer.html`
+        })
+    ];
+
+    // inject services
+    NfRegistryBucketUserPermissionsViewer.parameters = [NfRegistryService];
+
+    NfRegistryBucketGroupPermissionsViewer.annotations = [
+        new ngCore.Component({
+            selector: 'nf-registry-bucket-group-permissions-viewer',
+            templateUrl: `nifi-registry/src/views/nf-registry-bucket-group-permissions-viewer.html`
+        })
+    ];
+
+    // inject services
+    NfRegistryBucketGroupPermissionsViewer.parameters = [NfRegistryService];
 
     NfRegistryDropletViewer.annotations = [
         new ngCore.Component({
@@ -155,7 +175,7 @@
                         component: NfRegistryBucketPermissionsManager,
                         children: [{
                                 path: ':userId',
-                                component: NfRegistryBucketPermissionsManagerUserViewer
+                                component: NfRegistryBucketUserOrGroupPermissionsViewer
                             }]
                             // as: "registry-manager",
                             // canActivate: [AuthGuard] //https://scotch.io/tutorials/routing-angular-2-single-page-apps-with-the-component-router
@@ -179,7 +199,7 @@
                     { path: '**', component: NfPageNotFoundComponent }
                 ])
             ],
-            declarations: [NfRegistry, NfRegistryDetailsViewer, NfRegistryExplorer, NfRegistryBucketDetailsViewer, NfRegistryBucketPermissionsManager, NfRegistryBucketPermissionsManagerUserViewer, NfRegistrySettings, NfRegistryUsersAndGroups, NfRegistryViewer, NfRegistryBucketViewer, NfRegistryDropletViewer, NfRegistryDropletDetailsViewer, NfPageNotFoundComponent],
+            declarations: [NfRegistry, NfRegistryDetailsViewer, NfRegistryExplorer, NfRegistryBucketDetailsViewer, NfRegistryBucketPermissionsManager, NfRegistryBucketUserOrGroupPermissionsViewer, NfRegistryBucketUserPermissionsViewer, NfRegistryBucketGroupPermissionsViewer, NfRegistrySettings, NfRegistryUsersAndGroups, NfRegistryViewer, NfRegistryBucketViewer, NfRegistryDropletViewer, NfRegistryDropletDetailsViewer, NfPageNotFoundComponent],
             //creates a service singletons to be available to all components of the app.
             providers: [NfRegistryService],
             bootstrap: [NfRegistry]
@@ -196,4 +216,4 @@
             $(this).find('.mat-checkbox-frame').css('border-color', '#DDDDDD');
         });
     });
-}(require('nf.Registry'), require('nf.RegistryDetailsViewer'), require('nf.RegistryService'), require('nf.RegistryExplorer'), require('nf.RegistryBucketDetailsViewer'), require('nf.RegistryBucketPermissionsManager'), require('nf.RegistryBucketPermissionsManagerUserViewer'), require('nf.RegistrySettings'), require('nf.RegistryUsersAndGroups'), require('nf.RegistryViewer'), require('nf.RegistryBucketViewer'), require('nf.RegistryDropletViewer'), require('nf.RegistryDropletDetailsViewer'), require('nf.PageNotFoundComponent'), require('jquery'), require('@angular/core'), require('@angular/common'), require('@angular/platform-browser'), require('@angular/platform-browser-dynamic'), require('@angular/material'), require('@angular/forms'), require('@angular/router'), require('@angular/platform-browser/animations'), require('@angular/flex-layout')), require('switchMap'));
+}(require('nf.Registry'), require('nf.RegistryDetailsViewer'), require('nf.RegistryService'), require('nf.RegistryExplorer'), require('nf.RegistryBucketDetailsViewer'), require('nf.RegistryBucketPermissionsManager'), require('nf.RegistryBucketUserOrGroupPermissionsViewer'), require('nf.RegistryBucketUserPermissionsViewer'), require('nf.RegistryBucketGroupPermissionsViewer'), require('nf.RegistrySettings'), require('nf.RegistryUsersAndGroups'), require('nf.RegistryViewer'), require('nf.RegistryBucketViewer'), require('nf.RegistryDropletViewer'), require('nf.RegistryDropletDetailsViewer'), require('nf.PageNotFoundComponent'), require('jquery'), require('@angular/core'), require('@angular/common'), require('@angular/platform-browser'), require('@angular/platform-browser-dynamic'), require('@angular/material'), require('@angular/forms'), require('@angular/router'), require('@angular/platform-browser/animations'), require('@angular/flex-layout')), require('switchMap'));

@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-function NfRegistryBucketManagerUserViewer(nfRegistryService, ActivatedRoute) {
+function NfRegistryBucketUserOrGroupPermissionsViewer(nfRegistryService, ActivatedRoute) {
     this.subscription$;
     this.route = ActivatedRoute;
     this.nfRegistryService = nfRegistryService;
 };
 
-NfRegistryBucketManagerUserViewer.prototype = {
-    constructor: NfRegistryBucketManagerUserViewer,
+NfRegistryBucketUserOrGroupPermissionsViewer.prototype = {
+    constructor: NfRegistryBucketUserOrGroupPermissionsViewer,
     ngOnInit: function() {
         var self = this;
         /**
@@ -45,4 +45,4 @@ NfRegistryBucketManagerUserViewer.prototype = {
     }
 };
 
-module.exports = NfRegistryBucketManagerUserViewer;
+module.exports = NfRegistryBucketUserOrGroupPermissionsViewer;

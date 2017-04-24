@@ -18,10 +18,15 @@
 
 /* Text */
 
+.camel-case {
+    text-transform: capitalize;
+}
+
 .header {
     font-family: $fontMedium;
     font-size: 16px;
     color: $text2Color;
+    padding-bottom: 10px;
 }
 
 .details-header {
@@ -30,7 +35,7 @@
 
 .details-header-container {
     position: relative;
-    top: 12px;
+    top: 22px;
     left: 10px;
 }
 

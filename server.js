@@ -67,15 +67,15 @@ var NifiRegistry = function() {
         app.use(app.router);
         app.use('/nifi-registry', express.static(path.join(__dirname, './')));
         // Handle 404
-        app.use(function(req, res) {
-            res.status(400);
-            res.render('src/400.html');
-        });
-        // Handle 500
-        app.use(function(error, req, res, next) {
-            res.status(500);
-            res.render('src/500.html');
-        });
+        // app.use(function(req, res) {
+        //     res.status(400);
+        //     res.render('src/400.html');
+        // });
+        // // Handle 500
+        // app.use(function(error, req, res, next) {
+        //     res.status(500);
+        //     res.render('src/500.html');
+        // });
         // development only
         if ('development' == app.get('env')) {
             app.use(express.errorHandler());
@@ -83,32 +83,51 @@ var NifiRegistry = function() {
     };
     self.routes = function() {
         self.app.get('/nifi-registry', function(req, res) {
-            res.render('src/index.html');
+            res.render('src/webapp/index.html');
         });
-        self.app.get('/nifi-registry/explorer', function(req, res) {
-            res.render('src/index.html');
+        self.app.get('/nifi-registry/fluid-design-system', function(req, res) {
+            res.render('src/webapp/index.html');
         });
         self.app.get('/nifi-registry/settings/:registryId', function(req, res) {
-            res.render('src/index.html');
+            res.render('src/webapp/index.html');
         });
         self.app.get('/nifi-registry/manage/:registryId/:bucketId', function(req, res) {
-            res.render('src/index.html');
+            res.render('src/webapp/index.html');
         });
         self.app.get('/nifi-registry/manage/:registryId/:bucketId/:userId', function(req, res) {
-            res.render('src/index.html');
+            res.render('src/webapp/index.html');
         });
         self.app.get('/nifi-registry/users-and-groups/:registryId', function(req, res) {
-            res.render('src/index.html');
+            res.render('src/webapp/index.html');
         });
-        self.app.get('/nifi-registry/explorer/:registryId', function(req, res) {
-            res.render('src/index.html');
+        self.app.get('/nifi-registry/explorer', function(req, res) {
+            res.render('src/webapp/index.html');
         });
-        self.app.get('/nifi-registry/explorer/:registryId/:bucketId', function(req, res) {
-            res.render('src/index.html');
+        self.app.get('/nifi-registry/explorer/list', function(req, res) {
+            res.render('src/webapp/index.html');
         });
-        self.app.get('/nifi-registry/explorer/:registryId/:bucketId/:dropletId', function(req, res) {
-            res.render('src/index.html');
+        self.app.get('/nifi-registry/explorer/list/:registryId', function(req, res) {
+            res.render('src/webapp/index.html');
         });
+        self.app.get('/nifi-registry/explorer/list/:registryId/:bucketId', function(req, res) {
+            res.render('src/webapp/index.html');
+        });
+        self.app.get('/nifi-registry/explorer/list/:registryId/:bucketId/:dropletId', function(req, res) {
+            res.render('src/webapp/index.html');
+        });
+        self.app.get('/nifi-registry/explorer/grid-list', function(req, res) {
+            res.render('src/webapp/index.html');
+        });
+        self.app.get('/nifi-registry/explorer/grid-list/:registryId', function(req, res) {
+            res.render('src/webapp/index.html');
+        });
+        self.app.get('/nifi-registry/explorer/grid-list/:registryId/:bucketId', function(req, res) {
+            res.render('src/webapp/index.html');
+        });
+        self.app.get('/nifi-registry/explorer/grid-list/:registryId/:bucketId/:dropletId', function(req, res) {
+            res.render('src/webapp/index.html');
+        });
+
     };
     /*
      *   Initialize Server

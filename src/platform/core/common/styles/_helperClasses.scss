@@ -1,0 +1,84 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+/* Text */
+
+.camel-case {
+    text-transform: capitalize;
+}
+
+.header {
+    font-family: $fontMedium;
+    font-size: 16px;
+    color: $text2Color;
+    padding-bottom: 10px;
+}
+
+.details-header {
+    height: 92px;
+}
+
+.details-header-container {
+    position: relative;
+    top: 22px;
+    left: 10px;
+}
+
+.description {
+    font-family: $fontLight;
+    font-size: 12px;
+    color: $textBodyColor;
+}
+
+.description i {
+    padding-right: 5px;
+}
+
+.label {
+    font-family: $fontMedium;
+    font-size: 14px;
+    color: $textBodyColor;
+    text-transform: uppercase;
+}
+
+.units {
+    font-family: $fontLight;
+    font-size: 14px;
+    color: $textBodyColor;
+}
+
+.list-header {
+    border-bottom: 1px solid #ccc;
+    padding: 60px 10px 10px 10px;
+}
+
+.dropdown > span > i {
+    float: right;
+    margin-left: 15px;
+}
+
+.mat-list-item:focus {
+    outline: none;
+}
+
+
+/* Padding */
+
+.padding2035 {
+    padding: 20px 35px;
+}

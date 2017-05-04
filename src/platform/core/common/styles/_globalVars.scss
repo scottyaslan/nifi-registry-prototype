@@ -1,0 +1,107 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* Begin Global Variables */
+$grey1: #333333;
+$grey2: #666666;
+$grey3: #999999;
+$grey4: #CCCCCC;
+$grey5: #EEEEEE;
+$grey6: #FAFAFA;
+$grey7: #DDDDDD;
+$blue1: #1491C1;
+$blue2: #E7f6Fc;
+$blue3: #A7DFF2;
+$red1: #EF6162;
+$red2: #D14A50;
+$orange1: #E98A40;
+$orange2: #D3702D;
+$green1: #1EB475;
+
+$primaryColor: #3FAE2A;
+$primaryColorHover: #429929;
+$buttonFontColor: #FFFFFF;
+$buttonFontColorDisabled: #D1E8D1;
+$secondaryColor: $green1;
+$textBodyColor: $grey2;
+$text2Color: $grey1;
+$text3Color: $grey3;
+$linkColor: $blue1;
+$linkColorDisabled: $textBodyColor;
+$errorColor: $red1;
+$warningColor: $orange1;
+$bgPrimary: #EBECF1;
+$bgSecondary: #FFFFFF;
+$bgNavigation: #313D54;
+$bgRegular: $bgSecondary;
+$bgRegularHover: #808793;
+
+$buttonBgColorPrimary: $primaryColor;
+$buttonBgColorPrimaryHover: $primaryColorHover;
+$buttonBgColorPrimaryDisabled: $primaryColor;
+$buttonBgColorPrimarySelected: $primaryColor;
+$buttonBgColorSecondary: $bgSecondary;
+$buttonBgColorSecondaryHover: $primaryColorHover;
+$buttonBgColorSecondaryDisabled: $primaryColor;
+$buttonBgColorSecondarySelected: $bgSecondary;
+$buttonBgColorRegular: $bgRegular;
+$buttonBgColorRegularHover: $bgRegularHover;
+$buttonBgColorRegularDisabled: $bgRegularHover;
+$buttonBgColorRegularSelected: $bgSecondary;
+
+$buttonBorderColorSecondary: $primaryColor;
+$buttonBorderColorSecondaryHover: $buttonBgColorSecondaryHover;
+$buttonBorderColorSecondaryDisabled: $buttonBgColorSecondaryHover;
+$buttonBorderColorSecondarySelected: $primaryColor;
+$buttonBorderColorRegular: #CFD3D7;
+$buttonBorderColorRegularHover: $buttonBgColorRegularHover;
+$buttonBorderColorRegularDisabled: $buttonBgColorRegularHover;
+$buttonBorderColorRegularSelected: #CFD3D7;
+
+$buttonFontPrimaryColor: $buttonFontColor;
+$buttonFontPrimaryColorHover: $buttonFontColor;
+$buttonFontPrimaryColorDisabled: $buttonFontColorDisabled;
+$buttonFontPrimaryColorSelected: $buttonFontColor;
+$buttonFontSecondaryColor: $primaryColorHover;
+$buttonFontSecondaryColorHover: $buttonFontColor;
+$buttonFontSecondaryColorDisabled: $buttonFontColorDisabled;
+$buttonFontSecondaryColorSelected: $primaryColorHover;
+$buttonFontRegularColor: $textBodyColor;
+$buttonFontRegularColorHover: $buttonFontColor;
+$buttonFontRegularColorDisabled: $buttonFontColorDisabled;
+$buttonFontRegularColorSelected: $textBodyColor;
+$buttonFontWarnColor: $buttonFontColor;
+$buttonFontWarnColorHover: $buttonFontColor;
+$buttonFontWarnColorDisabled: $buttonFontColorDisabled;
+$buttonFontWarnColorSelected: $buttonFontColor;
+$buttonFontCriticalColor: $buttonFontColor;
+$buttonFontCriticalColorHover: $buttonFontColor;
+$buttonFontCriticalColorDisabled: $buttonFontColorDisabled;
+$buttonFontCriticalColorSelected: $buttonFontColor;
+
+/* Text */
+
+$fontPrimary: "Roboto",
+sans-serif;
+$fontSecondary: "Robot Slab",
+sans-serif;
+$fontMedium: "Roboto Medium",
+sans-serif;
+$fontLight: "Roboto Light",
+sans-serif;
+
+/*End Global Variables */

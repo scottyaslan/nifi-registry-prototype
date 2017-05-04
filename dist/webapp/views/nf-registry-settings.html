@@ -1,0 +1,34 @@
+<div id="nf-registry-settings-left-container">
+    <div class="header">Registry Name</div>
+    <div class="description">{{nfRegistryService.registry.name}}</div>
+
+</div>
+<div id="nf-registry-settings-right-container">
+    <div class="header">Tags</div>
+    <div class="description">NiFi users can apply tags to a flow when saving. Single tag usage is permitted per use, per bucket. I fthe user has write access to that bucket. When NiFi users import a flow, they will see all tags applied to that version of the flow.
+        <button md-raised-button color="fds-primary">Primary</button>
+        <button md-raised-button color="fds-secondary">Secondary</button>
+        <button md-raised-button color="fds-regular">regular</button>
+        <button md-raised-button color="fds-warn">warn</button>
+        <button md-raised-button color="fds-critical">critical</button>
+        <button md-raised-button disabled color="fds-primary">disabled primary</button>
+        <button md-raised-button disabled color="fds-secondary">disabled Secondary</button>
+        <button md-raised-button disabled color="fds-regular">disabled regular</button>
+        <button md-raised-button disabled color="fds-warn">disabled warn</button>
+        <button md-raised-button disabled color="fds-critical">disabled critical</button>
+        <fds-primary-button color="primary">FDS Primary</fds-primary-button>
+        <!-- <button md-button color="fds-primary">Primary</button>
+        <button md-button color="fds-secondary">Secondary</button>
+        <button md-button color="fds-regular">regular</button>
+        <button md-button color="warn">fds-warn</button>
+        <button md-button>critical</button>
+        <button md-button disabled color="fds-primary">disabled primary</button>
+        <button md-button disabled color="fds-secondary">disabled Secondary</button>
+        <button md-button disabled color="fds-regular">disabled regular</button>
+        <button md-button disabled color="fds-warn">disabled warn</button>
+        <button md-button disabled>disabled critical</button> -->
+    </div>
+</div>
+<div class="nf-registry-button-container">
+    <button class="primary-button done-button" md-button routerLink="/nifi-registry/explorer/list/{{nfRegistryService.registry.id}}">Done</button>
+</div>

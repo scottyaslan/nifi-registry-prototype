@@ -16,10 +16,37 @@
 */
 
 
-/* Tooltips */
+/* Panels */
 
-body[fds] .mat-tooltip {
-    background: $grey2;
-    opacity: .9;
-    box-shadow: inset 0px 0px 3px 0px rgba(19, 145, 193, 1);
+body[fds] .mat-card-title {
+    font-size: 20px;
+    color: $grey1;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 0px;
+}
+
+body[fds] .mat-card-subtitle {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    margin-bottom: 0px;
+}
+
+body[fds] .mat-card-content {
+    color: $grey2;
+    padding: 10px 20px 20px 20px;
+    margin: 0px;
+}
+
+body[fds] .mat-card .mat-card-actions:last-child, body[fds] .mat-card .mat-card .mat-card-actions:last-child {
+    padding: 0px 20px 20px 20px;
+    margin: 0px;
+}
+
+body[fds] .fds-panel-menu-button {
+    float: right;
+    top: 10px;
+    right: 10px;
 }

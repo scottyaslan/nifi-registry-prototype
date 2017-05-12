@@ -16,10 +16,16 @@
 */
 
 
-/* Tooltips */
+/* Modals */
 
-body[fds] .mat-tooltip {
-    background: $grey2;
-    opacity: .9;
-    box-shadow: inset 0px 0px 3px 0px rgba(19, 145, 193, 1);
+md-dialog-container.mat-dialog-container {
+    padding: 20px;
 }
+
+// body[fds] .cdk-overlay-backdrop {
+//     background: #808080;
+// }
+
+// body[fds] .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+//     opacity: .5;
+// }

@@ -46,6 +46,7 @@
             'switchMap': 'npm:rxjs/add/operator/switchMap',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             'hammerjs': 'npm:hammerjs/hammer.min.js',
+            'highlight.js/lib': 'npm:highlight.js/lib/highlight.js',
 
             // Fluid Design System bundles
             '@fluid-design-system/core': 'npm:@fluid-design-system/dist/platform/core/fluid-design-system.module.js',

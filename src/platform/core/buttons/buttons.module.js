@@ -23,7 +23,6 @@ var FdsPrimaryButtonComponent = require('./primary/button.component.js');
 FdsPrimaryButtonComponent.annotations = [
     new ngCore.Component({
         moduleId: module.id,
-        properties: ['color:color'],
         selector: 'fds-primary-button',
         templateUrl: './primary/button.component.html',
         // styleUrls: ['./primary/button.component.css']

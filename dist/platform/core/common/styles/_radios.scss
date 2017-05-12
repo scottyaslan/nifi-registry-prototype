@@ -16,10 +16,38 @@
 */
 
 
-/* Tooltips */
+/* Radios */
 
-body[fds] .mat-tooltip {
-    background: $grey2;
-    opacity: .9;
-    box-shadow: inset 0px 0px 3px 0px rgba(19, 145, 193, 1);
+body[fds] .mat-radio-container {
+    height: 12px;
+    width: 12px;
+}
+
+body[fds] .mat-radio-outer-circle {
+    height: 12px;
+    width: 12px;
+    background-color: #FFFFFF;
+    border: 1px solid $grey7;
+}
+
+body[fds] .mat-radio-outer-circle:hover {
+    background-color: $blue1;
+    border-color: $blue1;
+}
+
+body[fds] .mat-radio-checked .mat-radio-outer-circle {
+    border: 1px solid $blue1;
+    background-color: $blue1;
+}
+
+body[fds] .mat-radio-inner-circle {
+    height: 10px;
+    width: 10px;
+    left: 1px;
+    top: 1px;
+    background-color: #FFFFFF;
+}
+
+body[fds] .mat-radio-checked .mat-radio-inner-circle {
+    background-color: #FFFFFF;
 }

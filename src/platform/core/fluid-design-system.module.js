@@ -15,16 +15,30 @@
  * limitations under the License.
  */
 
+var $ = require('jquery');
 var ngCore = require('@angular/core');
+var ngCommon = require('@angular/common');
 var ngForms = require('@angular/forms');
-var ngMaterial = require('@angular/material');
-var ngFlexLayout = require('@angular/flex-layout');
+var ngHttp = require('@angular/http');
+var ngPlatformBrowser = require('@angular/platform-browser');
+var ngAnimations = require('@angular/platform-browser/animations');
 var fdsButtons = require('./buttons/buttons.module.js');
-// var covalentCore = require('@covalent/core');
-// var covalentForms = require('@covalent/dynamic-forms');
+var covalentCore = require('@covalent/core');
+var covalentForms = require('@covalent/dynamic-forms');
 // var covalentHighlight = require('@covalent/highlight');
-// var covalentHttp = require('@covalent/http');
-// var covalentMarkdown = require('@covalent/markdown');
+var covalentHttp = require('@covalent/http');
+var covalentMarkdown = require('@covalent/markdown');
+
+//add fds attr to body tag to allow style overrides
+document.body.setAttribute('fds', '');
+
+//override the hover styles for checkbox borders
+$(document.body).on('mouseenter', '.mat-checkbox-inner-container', function() {
+    $(this).find('.mat-checkbox-frame').css('border-color', '#1491C1');
+});
+$(document.body).on('mouseleave', '.mat-checkbox-inner-container', function() {
+    $(this).find('.mat-checkbox-frame').css('border-color', '#DDDDDD');
+});
 
 function FluidDesignSystemModule() {};
 
@@ -35,24 +49,32 @@ FluidDesignSystemModule.prototype = {
 FluidDesignSystemModule.annotations = [
     new ngCore.NgModule({
         imports: [
+            ngAnimations.BrowserAnimationsModule,
+            ngCommon.CommonModule,
             ngForms.FormsModule,
-            ngMaterial.MaterialModule,
-            ngFlexLayout.FlexLayoutModule,
-            fdsButtons
-            // covalentCore.CovalentCoreModule,
-            // covalentHttp.CovalentHttpModule,
+            ngPlatformBrowser.BrowserModule,
+            ngHttp.HttpModule,
+            ngHttp.JsonpModule,
+            // fdsButtons,
+            covalentCore.CovalentCoreModule,
+            covalentHttp.CovalentHttpModule.forRoot(),
             // covalentHighlight.CovalentHighlightModule,
-            // covalentMarkdown.CovalentMarkdownModule
+            covalentMarkdown.CovalentMarkdownModule,
+            covalentForms.CovalentDynamicFormsModule
         ],
         exports: [
+            ngAnimations.BrowserAnimationsModule,
+            ngCommon.CommonModule,
             ngForms.FormsModule,
-            ngMaterial.MaterialModule,
-            ngFlexLayout.FlexLayoutModule,
-            fdsButtons
-            // covalentCore.CovalentCoreModule,
-            // covalentHttp.CovalentHttpModule,
+            ngPlatformBrowser.BrowserModule,
+            ngHttp.HttpModule,
+            ngHttp.JsonpModule,
+            // fdsButtons,
+            covalentCore.CovalentCoreModule,
+            covalentHttp.CovalentHttpModule,
             // covalentHighlight.CovalentHighlightModule,
-            // covalentMarkdown.CovalentMarkdownModule
+            covalentMarkdown.CovalentMarkdownModule,
+            covalentForms.CovalentDynamicFormsModule
         ],
     })
 ];

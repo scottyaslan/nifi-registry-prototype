@@ -16,10 +16,27 @@
 */
 
 
-/* Tooltips */
+/* Tabs */
 
-body[fds] .mat-tooltip {
-    background: $grey2;
-    opacity: .9;
-    box-shadow: inset 0px 0px 3px 0px rgba(19, 145, 193, 1);
+body[fds] .mat-tab-label {
+    line-height: 72px;
+    text-transform: uppercase;
+    color: $grey2;
+}
+
+body[fds] .mat-tab-label:hover:not([disabled]) {
+    color: $grey1;
+}
+
+body[fds] .mat-tab-label:focus:not([disabled]) {
+    background-color: #FFFFFF;
+}
+
+body[fds] .mat-tab-label-active {
+    color: $grey1;
+}
+
+body[fds] .mat-tab-nav-bar,
+body[fds] .mat-tab-header {
+    border-bottom: 0px;
 }

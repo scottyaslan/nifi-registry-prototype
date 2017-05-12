@@ -16,6 +16,9 @@
  */
 
 var FdsDemo = require('fds.Demo');
+var ngMaterial = require('@angular/material');
+var covalentCore = require('@covalent/core');
+var ngForms = require('@angular/forms');
 var NfRegistry = require('nf.Registry');
 var NfRegistryDetailsViewer = require('nf.RegistryDetailsViewer');
 var NfRegistryService = require('nf.RegistryService');
@@ -38,10 +41,8 @@ var NfPageNotFoundComponent = require('nf.PageNotFoundComponent');
 var $ = require('jquery');
 var fdsCore = require('@fluid-design-system/core');
 var ngCore = require('@angular/core');
-var ngPlatformBrowser = require('@angular/platform-browser');
-var ngPlatformBrowserDynamic = require('@angular/platform-browser-dynamic');
 var ngRouter = require('@angular/router');
-var ngAnimations = require('@angular/platform-browser/animations');
+var ngPlatformBrowserDynamic = require('@angular/platform-browser-dynamic');
 var switchMap = require('switchMap');
 
 FdsDemo.annotations = [
@@ -49,6 +50,8 @@ FdsDemo.annotations = [
         templateUrl: 'nifi-registry/src/webapp/views/fds-demo.html'
     })
 ];
+
+FdsDemo.parameters = [ngMaterial.MdSnackBar, ngMaterial.MdDialog, covalentCore.TdDialogService];
 
 NfPageNotFoundComponent.annotations = [
     new ngCore.Component({
@@ -223,8 +226,7 @@ NfRegistryAppModule.prototype = {
 
 NfRegistryAppModule.annotations = [
     new ngCore.NgModule({
-        imports: [ngPlatformBrowser.BrowserModule,
-            ngAnimations.BrowserAnimationsModule,
+        imports: [
             fdsCore,
             //setting routes
             new ngRouter.RouterModule.forRoot([{
@@ -302,11 +304,11 @@ NfRegistryAppModule.annotations = [
 
 //bootstrap the module
 ngPlatformBrowserDynamic.platformBrowserDynamic().bootstrapModule(NfRegistryAppModule).then(function() {
-    // add hover styles for checkboxes
-    $(document.body).on('mouseenter', '.mat-checkbox-inner-container', function() {
-        $(this).find('.mat-checkbox-frame').css('border-color', '#1491C1');
-    });
-    $(document.body).on('mouseleave', '.mat-checkbox-inner-container', function() {
-        $(this).find('.mat-checkbox-frame').css('border-color', '#DDDDDD');
-    });
+    // // add hover styles for checkboxes
+    // $(document.body).on('mouseenter', '.mat-checkbox-inner-container', function() {
+    //     $(this).find('.mat-checkbox-frame').css('border-color', '#1491C1');
+    // });
+    // $(document.body).on('mouseleave', '.mat-checkbox-inner-container', function() {
+    //     $(this).find('.mat-checkbox-frame').css('border-color', '#DDDDDD');
+    // });
 });

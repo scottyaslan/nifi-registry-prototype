@@ -25,7 +25,7 @@
 .header {
     font-family: $fontMedium;
     font-size: 16px;
-    color: $text2Color;
+    color: $pageHeaderTextColor;
     padding-bottom: 10px;
 }
 
@@ -42,7 +42,7 @@
 .description {
     font-family: $fontLight;
     font-size: 12px;
-    color: $textBodyColor;
+    color: $descriptionTextColor;
 }
 
 .description i {
@@ -52,28 +52,19 @@
 .label {
     font-family: $fontMedium;
     font-size: 14px;
-    color: $textBodyColor;
+    color: $bodyTextColor;
     text-transform: uppercase;
 }
 
 .units {
     font-family: $fontLight;
     font-size: 14px;
-    color: $textBodyColor;
+    color: $bodyTextColor;
 }
 
 .list-header {
     border-bottom: 1px solid #ccc;
     padding: 60px 10px 10px 10px;
-}
-
-.dropdown > span > i {
-    float: right;
-    margin-left: 15px;
-}
-
-.mat-list-item:focus {
-    outline: none;
 }
 
 

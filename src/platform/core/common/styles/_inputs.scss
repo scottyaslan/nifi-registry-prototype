@@ -18,16 +18,35 @@
 
 /* Inputs */
 
-body[fds] input.mat-input-element {
-    border-radius: 2px;
-    color: $grey2;
-    padding: 0px 10px;
-    border: 1px solid $grey8;
-    height: 34px;
+body[fds] .mat-input-wrapper {
+    margin: 0;
+    padding-bottom: 0;
 }
 
-body[fds] input.mat-input-element:focus {
-    color: $grey3;
+body[fds] input.mat-input-element, body[fds] textarea.mat-input-element {
+    border-radius: 2px;
+    color: $grey2;
+    border: 1px solid $grey8;
+    height: 32px;
+    padding: 0px 10px;
+    width: calc(100% - 22px);
+}
+
+body[fds] textarea.mat-input-element {
+    padding: 10px 10px;
+}
+
+body[fds] input.mat-input-element[disabled], body[fds] textarea.mat-input-element[disabled] {
+    background: $grey9;
+    color: $grey10;
+    border: 1px solid $grey9;
+}
+
+body[fds] .mat-input-subscript-wrapper {
+    margin-top: 0;
+}
+
+body[fds] input.mat-input-element:focus, body[fds] textarea.mat-input-element:focus {
     border-color: $blue8;
 }
 
@@ -35,36 +54,32 @@ body[fds] .mat-input-underline {
     display: none;
 }
 
-body[fds] .mat-input-placeholder.mat-empty {
+body[fds] .mat-input-placeholder {
     font-size: 14px;
     color: $grey3;
+    font-weight: 300;
 }
 
-
-
-// body[fds] .mat-focused .mat-input-placeholder.mat-float, .mat-input-placeholder.mat-float:not(.mat-empty) {
-//     transform: translateY(-35px) scale(.75);
-// }
-
-// body[fds] .mat-input-container.mat-focused {
-//     color: $grey3;
-//     border-color: $blue8;
-// }
-
-/* placeholder styles */
-
-*::placeholder {
-    color: $grey3;
+body[fds] .mat-input-placeholder-wrapper {
+    top: -24px;
+    padding-top: 32px;
 }
-*::-webkit-input-placeholder {
-    color: $grey3;
+
+body[fds] .mat-input-placeholder {
+    padding-top: 34px;
+    padding-left: 10px;
 }
-*:-moz-placeholder {
-    color: $grey3;
+
+body[fds] .mat-focused .mat-input-placeholder.mat-float, body[fds] .mat-input-placeholder.mat-float:not(.mat-empty), body[fds] .mat-input-element:-webkit-autofill+.mat-input-placeholder-wrapper .mat-float {
+    transform: translateY(-31px) scale(.75);
 }
-*::-moz-placeholder {
-    color: $grey3;
+
+body[fds] .input-button {
+    left: -3px;
+    margin-right: -3px;
+    z-index: 1;
 }
-*:-ms-input-placeholder {
-    color: $grey3;
+
+body[fds] .input-button.mat-raised-button[disabled] {
+    opacity: 1;
 }

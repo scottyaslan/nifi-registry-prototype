@@ -46,6 +46,7 @@ body[fds] .mat-card .mat-card-actions:last-child, body[fds] .mat-card .mat-card 
 }
 
 body[fds] .fds-panel-menu-button {
-    float: right;
+    position: absolute;
+    right: 0px;
     top: 20px;
 }

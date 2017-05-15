@@ -156,40 +156,67 @@
         <md-divider></md-divider>
         <md-card-content>
             <md-card>
+                <button class="fds-panel-menu-button" mdTooltip="Standard Card Menu" md-icon-button [mdMenuTriggerFor]="standardCardMenu">
+                    <i class="fa fa-ellipsis-v " aria-hidden="true"></i>
+                </button>
+                <md-menu class="primary-icon-button-menu" #standardCardMenu="mdMenu" [overlapTrigger]="false">
+                    <button md-menu-item>
+                        <span>Option1</span>
+                    </button>
+                    <button md-menu-item>
+                        <span>Option2</span>
+                    </button>
+                </md-menu>
                 <md-card-title>
                     <span>Standard Card</span>
                 </md-card-title>
                 <md-card-content>
-                    <button class="fds-panel-menu-button" mdTooltip="Standard Card Menu" md-icon-button [mdMenuTriggerFor]="standardCardMenu">
-                        <i class="fa fa-ellipsis-v " aria-hidden="true"></i>
-                    </button>
-                    <md-menu class="primary-icon-button-menu" #standardCardMenu="mdMenu" [overlapTrigger]="false">
-                        <button md-menu-item>
-                            <span>Option1</span>
-                        </button>
-                        <button md-menu-item>
-                            <span>Option2</span>
-                        </button>
-                    </md-menu>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
                 </md-card-content>
                 <md-card-actions fxLayout="row" fxLayoutAlign="end center">
                     <button md-raised-button color="fds-primary" class="text-upper">Action</button>
                 </md-card-actions>
             </md-card>
+            <pre lang="html">
+                <![CDATA[
+      <!-- Basic Card -->
+      <md-card>
+            <button class="fds-panel-menu-button" mdTooltip="Standard Card Menu" md-icon-button [mdMenuTriggerFor]="standardCardMenu">
+                <i class="fa fa-ellipsis-v " aria-hidden="true"></i>
+            </button>
+            <md-menu class="primary-icon-button-menu" #standardCardMenu="mdMenu" [overlapTrigger]="false">
+                <button md-menu-item>
+                    <span>Option1</span>
+                </button>
+                <button md-menu-item>
+                    <span>Option2</span>
+                </button>
+            </md-menu>
+            <md-card-title>
+                <span>Standard Card</span>
+            </md-card-title>
+            <md-card-content>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+            </md-card-content>
+            <md-card-actions fxLayout="row" fxLayoutAlign="end center">
+                <button md-raised-button color="fds-primary" class="text-upper">Action</button>
+            </md-card-actions>
+        </md-card>
+    ]]>
+            </pre>
             <md-card>
-                <md-card-content>
-                    <button class="fds-panel-menu-button" mdTooltip="Standard Card Menu" md-icon-button [mdMenuTriggerFor]="standardCardMenu">
-                        <i class="fa fa-ellipsis-v " aria-hidden="true"></i>
+                <button class="fds-panel-menu-button" mdTooltip="Standard Card Menu" md-icon-button [mdMenuTriggerFor]="standardCardMenu">
+                    <i class="fa fa-ellipsis-v " aria-hidden="true"></i>
+                </button>
+                <md-menu class="primary-icon-button-menu" #standardCardMenu="mdMenu" [overlapTrigger]="false">
+                    <button md-menu-item>
+                        <span>Option1</span>
                     </button>
-                    <md-menu class="primary-icon-button-menu" #standardCardMenu="mdMenu" [overlapTrigger]="false">
-                        <button md-menu-item>
-                            <span>Option1</span>
-                        </button>
-                        <button md-menu-item>
-                            <span>Option2</span>
-                        </button>
-                    </md-menu>
+                    <button md-menu-item>
+                        <span>Option2</span>
+                    </button>
+                </md-menu>
+                <md-card-content>
                     <md-tab-group>
                         <md-tab>
                             <ng-template md-tab-label>One</ng-template>
@@ -211,11 +238,30 @@
                 <![CDATA[
       <!-- Basic Card -->
       <md-card>
-            <md-card-title>Standard Card</md-card-title>
-            <md-card-subtitle>Subtitle</md-card-subtitle>
+            <button class="fds-panel-menu-button" mdTooltip="Standard Card Menu" md-icon-button [mdMenuTriggerFor]="standardCardMenu">
+                <i class="fa fa-ellipsis-v " aria-hidden="true"></i>
+            </button>
+            <md-menu class="primary-icon-button-menu" #standardCardMenu="mdMenu" [overlapTrigger]="false">
+                <button md-menu-item>
+                    <span>Option1</span>
+                </button>
+                <button md-menu-item>
+                    <span>Option2</span>
+                </button>
+            </md-menu>
             <md-card-content>
-                <p>Standard card with content</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+                <md-tab-group>
+                    <md-tab>
+                        <ng-template md-tab-label>One</ng-template>
+                        <h3 class="md-title">First tab content</h3>
+                        <p>Plaid echo park knausgaard normcore franzen cronut. Pickled humblebrag tofu hoodie, umami salvia farm-to-table schlitz try-hard food truck knausgaard pabst. Yuccie portland jean shorts, authentic mixtape waistcoat gentrify blue bottle. Fixie kickstarter church-key small batch seitan, shabby chic vegan listicle before they sold out. Hammock raw denim flannel tousled seitan you probably haven't heard of them. Trust fund man bun pug, kickstarter artisan selvage letterpress cornhole tote bag butcher locavore. Affogato try-hard kickstarter seitan, DIY pickled hella godard pork belly four loko ugh.</p>
+                    </md-tab>
+                    <md-tab>
+                        <ng-template md-tab-label>Two</ng-template>
+                        <h3 class="md-title">Second tab content</h3>
+                        <p>Hashtag distillery skateboard man bun gochujang, salvia man braid art party meggings heirloom kitsch farm-to-table. Franzen beard fingerstache gentrify, heirloom portland ennui XOXO microdosing kitsch plaid. Chicharrones bushwick chia, banh mi irony tattooed hammock butcher shabby chic taxidermy semiotics marfa post-ironic. Blue bottle keffiyeh farm-to-table ennui, chambray pitchfork art party pinterest artisan pop-up. Etsy banjo marfa, blue bottle kombucha crucifix XOXO tousled beard. Tilde disrupt kale chips bicycle rights skateboard master cleanse hella shoreditch, meditation retro shabby chic vice heirloom. Etsy listicle vice actually, iPhone chia hoodie four loko.</p>
+                    </md-tab>
+                </md-tab-group>
             </md-card-content>
             <md-card-actions fxLayout="row" fxLayoutAlign="end center">
                 <button md-raised-button color="fds-primary" class="text-upper">Action</button>
@@ -434,36 +480,84 @@
         <md-card-content>
             <form>
                 <div layout="row" layout-margin>
-                    <md-input-container flex>
+                    <md-input-container floatPlaceholder="always" flex>
                         <input mdInput placeholder="Company (disabled)" disabled value="Google">
                     </md-input-container>
                 </div>
                 <div layout="row" layout-margin>
-                    <md-input-container flex>
-                        <input mdInput placeholder="First name">
+                    <md-input-container floatPlaceholder="always" flex>
+                        <input mdInput disabled placeholder="First name">
                     </md-input-container>
-                    <md-input-container flex>
+                    <md-input-container floatPlaceholder="always" flex>
                         <input mdInput placeholder="Long Last Name That Will Be Truncated">
                     </md-input-container>
                 </div>
                 <div layout="row" layout-margin>
-                    <md-input-container flex>
+                    <div flex fxLayoutAlign="start center">
+                        <md-input-container floatPlaceholder="always" flex>
+                            <input mdInput placeholder="Button Addon with dropdown">
+                        </md-input-container>
+                        <button class="input-button" color="fds-regular" md-raised-button [mdMenuTriggerFor]="posXMenu">
+                            Select<i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </button>
+                        <md-menu x-position="before" #posXMenu="mdMenu" class="before">
+                            <button md-menu-item> Refresh </button>
+                            <button md-menu-item> Settings </button>
+                            <button md-menu-item> Help </button>
+                            <button md-menu-item disabled> Sign Out </button>
+                        </md-menu>
+                    </div>
+                    <div flex fxLayoutAlign="start center">
+                        <md-input-container floatPlaceholder="always" flex>
+                            <input mdInput placeholder="Button Addon">
+                        </md-input-container>
+                        <button class="input-button" color="fds-regular" md-raised-button>
+                            Search
+                        </button>
+                    </div>
+                </div>
+                <div layout="row" layout-margin>
+                    <div flex fxLayoutAlign="start center">
+                        <md-input-container floatPlaceholder="always" flex>
+                            <input disabled mdInput placeholder="Button Addon with dropdown">
+                        </md-input-container>
+                        <button disabled class="input-button" color="fds-regular" md-raised-button [mdMenuTriggerFor]="posXMenu">
+                            Select<i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </button>
+                        <md-menu x-position="before" #posXMenu="mdMenu" class="before">
+                            <button md-menu-item> Refresh </button>
+                            <button md-menu-item> Settings </button>
+                            <button md-menu-item> Help </button>
+                            <button md-menu-item disabled> Sign Out </button>
+                        </md-menu>
+                    </div>
+                    <div flex fxLayoutAlign="start center">
+                        <md-input-container floatPlaceholder="always" flex>
+                            <input disabled mdInput placeholder="Button Addon">
+                        </md-input-container>
+                        <button disabled class="input-button" color="fds-regular" md-raised-button>
+                            Search
+                        </button>
+                    </div>
+                </div>
+                <div layout="row" layout-margin>
+                    <md-input-container floatPlaceholder="always" flex>
                         <textarea mdInput placeholder="Address" value="1600 Amphitheatre Pkway"></textarea>
                     </md-input-container>
                 </div>
                 <div layout="row" layout-margin>
-                    <md-input-container flex>
-                        <textarea mdInput placeholder="Address 2"></textarea>
+                    <md-input-container floatPlaceholder="always" flex>
+                        <textarea disabled value="Address 2 Value" mdInput placeholder="Address 2"></textarea>
                     </md-input-container>
                 </div>
                 <div layout="row" layout-margin>
-                    <md-input-container flex>
+                    <md-input-container floatPlaceholder="always" flex>
                         <input mdInput placeholder="City">
                     </md-input-container>
-                    <md-input-container flex>
+                    <md-input-container floatPlaceholder="always" flex>
                         <input mdInput placeholder="State">
                     </md-input-container>
-                    <md-input-container flex>
+                    <md-input-container floatPlaceholder="always" flex>
                         <input mdInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
                         <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
                     </md-input-container>
@@ -476,41 +570,41 @@
       <!-- Inputs -->
       <form>
         <div layout="row" layout-margin>
-          <md-input-container flex>
-            <input mdInput placeholder="Company (disabled)" disabled value="Google">
-          </md-input-container>
+            <md-input-container floatPlaceholder="always" flex>
+                <input mdInput placeholder="Company (disabled)" disabled value="Google">
+            </md-input-container>
         </div>
         <div layout="row" layout-margin>
-          <md-input-container flex>
-            <input mdInput placeholder="First name">
-          </md-input-container>
-          <md-input-container flex>
-            <input mdInput placeholder="Long Last Name That Will Be Truncated">
-          </md-input-container>
+            <md-input-container floatPlaceholder="always" flex>
+                <input mdInput disabled placeholder="First name">
+            </md-input-container>
+            <md-input-container floatPlaceholder="always" flex>
+                <input mdInput placeholder="Long Last Name That Will Be Truncated">
+            </md-input-container>
         </div>
         <div layout="row" layout-margin>
-          <md-input-container flex>
-            <textarea mdInput placeholder="Address" value="1600 Amphitheatre Pkway"></textarea>
-          </md-input-container>
+            <md-input-container floatPlaceholder="always" flex>
+                <textarea mdInput placeholder="Address" value="1600 Amphitheatre Pkway"></textarea>
+            </md-input-container>
         </div>
         <div layout="row" layout-margin>
-          <md-input-container flex>
-            <textarea mdInput placeholder="Address 2"></textarea>
-          </md-input-container>
+            <md-input-container floatPlaceholder="always" flex>
+                <textarea disabled value="Address 2 Value" mdInput placeholder="Address 2"></textarea>
+            </md-input-container>
         </div>
         <div layout="row" layout-margin>
-          <md-input-container flex>
-            <input mdInput placeholder="City">
-          </md-input-container>
-          <md-input-container flex>
-            <input mdInput placeholder="State">
-          </md-input-container>
-          <md-input-container flex>
-            <input mdInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
-            <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
-          </md-input-container>
+            <md-input-container floatPlaceholder="always" flex>
+                <input mdInput placeholder="City">
+            </md-input-container>
+            <md-input-container floatPlaceholder="always" flex>
+                <input mdInput placeholder="State">
+            </md-input-container>
+            <md-input-container floatPlaceholder="always" flex>
+                <input mdInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
+                <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
+            </md-input-container>
         </div>
-      </form>
+    </form>
     ]]>
     </pre>
         </md-card-content>

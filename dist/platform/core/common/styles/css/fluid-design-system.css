@@ -571,39 +571,58 @@ body[fds] .mat-tab-header {
 * limitations under the License.
 */
 /* Inputs */
-body[fds] input.mat-input-element {
+body[fds] .mat-input-wrapper {
+  margin: 0;
+  padding-bottom: 0; }
+
+body[fds] input.mat-input-element, body[fds] textarea.mat-input-element {
   border-radius: 2px;
   color: #666666;
-  padding: 0px 10px;
   border: 1px solid #CFD3D7;
-  height: 34px; }
+  height: 32px;
+  padding: 0px 10px;
+  width: calc(100% - 22px); }
 
-body[fds] input.mat-input-element:focus {
-  color: #999999;
+body[fds] textarea.mat-input-element {
+  padding: 10px 10px; }
+
+body[fds] input.mat-input-element[disabled], body[fds] textarea.mat-input-element[disabled] {
+  background: #b2b8c1;
+  color: #dbdee2;
+  border: 1px solid #b2b8c1; }
+
+body[fds] .mat-input-subscript-wrapper {
+  margin-top: 0; }
+
+body[fds] input.mat-input-element:focus, body[fds] textarea.mat-input-element:focus {
   border-color: #1291c1; }
 
 body[fds] .mat-input-underline {
   display: none; }
 
-body[fds] .mat-input-placeholder.mat-empty {
+body[fds] .mat-input-placeholder {
   font-size: 14px;
-  color: #999999; }
+  color: #999999;
+  font-weight: 300; }
 
-/* placeholder styles */
-*::placeholder {
-  color: #999999; }
+body[fds] .mat-input-placeholder-wrapper {
+  top: -24px;
+  padding-top: 32px; }
 
-*::-webkit-input-placeholder {
-  color: #999999; }
+body[fds] .mat-input-placeholder {
+  padding-top: 34px;
+  padding-left: 10px; }
 
-*:-moz-placeholder {
-  color: #999999; }
+body[fds] .mat-focused .mat-input-placeholder.mat-float, body[fds] .mat-input-placeholder.mat-float:not(.mat-empty), body[fds] .mat-input-element:-webkit-autofill + .mat-input-placeholder-wrapper .mat-float {
+  transform: translateY(-31px) scale(0.75); }
 
-*::-moz-placeholder {
-  color: #999999; }
+body[fds] .input-button {
+  left: -3px;
+  margin-right: -3px;
+  z-index: 1; }
 
-*:-ms-input-placeholder {
-  color: #999999; }
+body[fds] .input-button.mat-raised-button[disabled] {
+  opacity: 1; }
 
 /*
 * Licensed to the Apache Software Foundation (ASF) under one or more
@@ -646,7 +665,8 @@ body[fds] .mat-card .mat-card-actions:last-child, body[fds] .mat-card .mat-card 
   margin: 0px; }
 
 body[fds] .fds-panel-menu-button {
-  float: right;
+  position: absolute;
+  right: 0px;
   top: 20px; }
 
 /*

@@ -346,10 +346,10 @@
                         <md-input-container floatPlaceholder="always" flex>
                             <input mdInput placeholder="Button Addon with dropdown">
                         </md-input-container>
-                        <button class="input-button" color="fds-regular" md-raised-button [mdMenuTriggerFor]="posXMenu">
+                        <button class="input-button" color="fds-regular" md-raised-button [mdMenuTriggerFor]="inputButtonAddonMenu">
                             Select<i class="fa fa-caret-down" aria-hidden="true"></i>
                         </button>
-                        <md-menu x-position="before" #posXMenu="mdMenu" class="before">
+                        <md-menu x-position="before" #inputButtonAddonMenu="mdMenu" class="before">
                             <button md-menu-item> Refresh </button>
                             <button md-menu-item> Settings </button>
                             <button md-menu-item> Help </button>
@@ -370,10 +370,10 @@
                         <md-input-container floatPlaceholder="always" flex>
                             <input disabled mdInput placeholder="Button Addon with dropdown">
                         </md-input-container>
-                        <button disabled class="input-button" color="fds-regular" md-raised-button [mdMenuTriggerFor]="posXMenu">
+                        <button disabled class="input-button" color="fds-regular" md-raised-button [mdMenuTriggerFor]="inputButtonDropdownAddonMenu">
                             Select<i class="fa fa-caret-down" aria-hidden="true"></i>
                         </button>
-                        <md-menu x-position="before" #posXMenu="mdMenu" class="before">
+                        <md-menu x-position="before" #inputButtonDropdownAddonMenu="mdMenu" class="before">
                             <button md-menu-item> Refresh </button>
                             <button md-menu-item> Settings </button>
                             <button md-menu-item> Help </button>

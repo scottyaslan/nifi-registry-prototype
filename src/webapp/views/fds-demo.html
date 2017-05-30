@@ -36,10 +36,10 @@
             <p>The core FDS styles need to be included either in your `index.html` or, if you are using the Angular CLI, as a new entry to the "styles" list in .angular-cli.json.</p>
             <pre lang="html">
         <![CDATA[
-        <link href="../node_modules/@covalent/core/common/platform.css" rel="stylesheet">
+        <link href="../node_modules/@fluid-design-system/core/common/styles/css/fluid-design-system.css.min" rel="stylesheet">
           ... or If you are using the Angular CLI...
           "styles": [
-            "../node_modules/@covalent/core/common/platform.scss"
+            "../node_modules/@fluid-design-system/core/common/styles/fluid-design-system.scss"
           ],
         ]]>
     </pre>
@@ -346,10 +346,10 @@
                         <md-input-container floatPlaceholder="always" flex>
                             <input mdInput placeholder="Button Addon with dropdown">
                         </md-input-container>
-                        <button class="input-button" color="fds-regular" md-raised-button [mdMenuTriggerFor]="inputButtonAddonMenu">
+                        <button class="input-button" color="fds-regular" md-raised-button [mdMenuTriggerFor]="inputButtonDropdownAddonMenu">
                             Select<i class="fa fa-caret-down" aria-hidden="true"></i>
                         </button>
-                        <md-menu x-position="before" #inputButtonAddonMenu="mdMenu" class="before">
+                        <md-menu x-position="before" #inputButtonDropdownAddonMenu="mdMenu" [overlapTrigger]="false">
                             <button md-menu-item> Refresh </button>
                             <button md-menu-item> Settings </button>
                             <button md-menu-item> Help </button>
@@ -370,15 +370,9 @@
                         <md-input-container floatPlaceholder="always" flex>
                             <input disabled mdInput placeholder="Button Addon with dropdown">
                         </md-input-container>
-                        <button disabled class="input-button" color="fds-regular" md-raised-button [mdMenuTriggerFor]="inputButtonDropdownAddonMenu">
+                        <button disabled class="input-button" color="fds-regular" md-raised-button>
                             Select<i class="fa fa-caret-down" aria-hidden="true"></i>
                         </button>
-                        <md-menu x-position="before" #inputButtonDropdownAddonMenu="mdMenu" class="before">
-                            <button md-menu-item> Refresh </button>
-                            <button md-menu-item> Settings </button>
-                            <button md-menu-item> Help </button>
-                            <button md-menu-item disabled> Sign Out </button>
-                        </md-menu>
                     </div>
                     <div flex fxLayoutAlign="start center">
                         <md-input-container floatPlaceholder="always" flex>
@@ -439,7 +433,7 @@
                 <button class="input-button" color="fds-regular" md-raised-button [mdMenuTriggerFor]="posXMenu">
                     Select<i class="fa fa-caret-down" aria-hidden="true"></i>
                 </button>
-                <md-menu x-position="before" #posXMenu="mdMenu" class="before">
+                <md-menu x-position="before" #posXMenu="mdMenu">
                     <button md-menu-item> Refresh </button>
                     <button md-menu-item> Settings </button>
                     <button md-menu-item> Help </button>
@@ -463,7 +457,7 @@
                 <button disabled class="input-button" color="fds-regular" md-raised-button [mdMenuTriggerFor]="posXMenu">
                     Select<i class="fa fa-caret-down" aria-hidden="true"></i>
                 </button>
-                <md-menu x-position="before" #posXMenu="mdMenu" class="before">
+                <md-menu x-position="before" #posXMenu="mdMenu">
                     <button md-menu-item> Refresh </button>
                     <button md-menu-item> Settings </button>
                     <button md-menu-item> Help </button>
@@ -542,29 +536,433 @@
         </md-card-content>
     </md-card>
     <md-card>
-        <md-card-title>Lists</md-card-title>
+        <md-card-title>Autocomplete</md-card-title>
         <md-divider></md-divider>
         <md-card-content>
-            <!-- list with links (nav list) -->
-            <h3>Nav list (list with links)</h3>
-            <md-nav-list>
-                <ng-template let-item let-last="last" ngFor [ngForOf]="messages">
-                    <a md-list-item [routerLink]="['/style-guide/material-components']"> {{item.from}} </a>
-                    <md-divider *ngIf="!last"></md-divider>
-                </ng-template>
-            </md-nav-list>
+            <div layout="row">
+                <md-input-container flex="50">
+                    <input mdInput placeholder="State" [mdAutocomplete]="tdAuto" [(ngModel)]="currentState" #modelDir="ngModel" (ngModelChange)="this.tdStates = filterStates(currentState)" [disabled]="tdDisabled">
+                </md-input-container>
+            </div>
+            <div class="push-top">
+                <button md-button (click)="modelDir.reset()" class="text-upper">Reset</button>
+                <button md-button (click)="currentState='California'" class="text-upper">Set value</button>
+                <button md-button (click)="tdDisabled=!tdDisabled" class="text-upper">Toggle disabled</button>
+            </div>
+            <md-autocomplete #tdAuto="mdAutocomplete">
+                <md-option *ngFor="let state of tdStates" [value]="state.name">
+                    <span>{{ state.name }}</span>
+                    <span class="demo-secondary-text"> ({{state.code}}) </span>
+                </md-option>
+            </md-autocomplete>
+            <md-divider class="push-top push-bottom"></md-divider>
             <pre lang="html">
-    <![CDATA[
-      <!-- list with links (nav list) -->
-      <md-nav-list>
-        <ng-template let-item let-last="last" ngFor [ngForOf]="messages">
-          <a md-list-item [routerLink]="..."> { {item.from}}  </a>
-          <md-divider *ngIf="!last"></md-divider>
-        </ng-template>
-      </md-nav-list>
-    ]]>
-    </pre>
+      <![CDATA[
+        <div layout="row">
+          <md-input-container flex="50">
+            <input mdInput placeholder="State" [mdAutocomplete]="tdAuto" [(ngModel)]="currentState" #modelDir="ngModel"
+              (ngModelChange)="this.tdStates = filterStates(currentState)" [disabled]="tdDisabled">
+          </md-input-container>
+        </div>
+        <div class="push-top">
+          <button md-button (click)="modelDir.reset()" class="text-upper">Reset</button>
+          <button md-button (click)="currentState='California'" class="text-upper">Set value</button>
+          <button md-button (click)="tdDisabled=!tdDisabled" class="text-upper">Toggle disabled</button>
+        </div>
+        <md-autocomplete #tdAuto="mdAutocomplete">
+          <md-option *ngFor="let state of tdStates" [value]="state.name">
+            <span>{ { state.name } }</span>
+            <span class="demo-secondary-text"> ({ {state.code} }) </span>
+          </md-option>
+        </md-autocomplete>
+        ]]>
+      </pre>
         </md-card-content>
+    </md-card>
+    <md-card>
+        <md-card-title>Chips</md-card-title>
+        <md-divider></md-divider>
+        <md-card-content>
+            <h3 class="md-title">Chips (with colors)</h3>
+            <md-chip-list>
+                <md-chip *ngFor="let chip of chips" [selected]="chip.selected" color="{{chip.color}}">
+                    {{chip.name}}<i class="fa fa-times" aria-hidden="true"></i>
+                </md-chip>
+            </md-chip-list>
+            <md-divider class="push-top push-bottom"></md-divider>
+            <h3 class="md-title">Chip Stacked (with colors)</h3>
+            <div layout-gt-xs="row">
+                <md-chip-list flex-gt-xs="50" class="mat-chip-list-stacked">
+                    <md-chip *ngFor="let chip of chips" [selected]="chip.selected" color="{{chip.color}}">
+                        {{chip.name}}<i class="fa fa-times" aria-hidden="true"></i>
+                    </md-chip>
+                </md-chip-list>
+            </div>
+            <md-divider class="push-top push-bottom"></md-divider>
+            <pre lang="html">
+      <![CDATA[
+        <h3 class="md-title">Basic Chips (with colors)</h3>
+        <md-chip-list>
+          <md-chip *ngFor="let chip of chips"
+              [selected]="chip.selected"
+              color="{ {chip.color} }">
+              { {chip.name} }
+          </md-chip>
+        </md-chip-list>
+        <md-divider class="push-top push-bottom"></md-divider>
+        <h3 class="md-title">Chip List (with colors)</h3>
+        <div layout-gt-xs="row">
+          <md-chip-list flex-gt-xs="50" class="md-chip-list-stacked">
+            <md-chip *ngFor="let chip of chips"
+                [selected]="chip.selected"
+                color="{ {chip.color} }">
+                { {chip.name} }
+            </md-chip>
+          </md-chip-list>
+        </div>
+        ]]>
+      </pre>
+            <md-divider class="push-top push-bottom"></md-divider>
+            <pre lang="javascript">
+      <![CDATA[
+         color: '';
+         chips: [
+            { name: 'Default', color: '', selected: false },
+            { name: 'Default (selected)', color: '', selected: true },
+            { name: 'Primary', color: 'primary', selected: false },
+            { name: 'Primary (selected)', color: 'primary', selected: true },
+            { name: 'Accent', color: 'accent', selected: false },
+            { name: 'Accent (selected)', color: 'accent', selected: true },
+            { name: 'Warn', color: 'warn', selected: false },
+            { name: 'Warn (selected)', color: 'warn', selected: true },
+          ];
+        ]]>
+      </pre>
+        </md-card-content>
+    </md-card>
+    <md-card>
+        <md-card-content>
+            <md-card-title>Filter</md-card-title>
+            <md-card-subtitle>Autocomplete with chips and no custom inputs</md-card-subtitle>
+            <md-divider></md-divider>
+            <md-tab-group md-stretch-tabs dynamicHeight>
+                <md-tab>
+                    <ng-template md-tab-label>Demo</ng-template>
+                    <div class="push">
+                        <div class="md-body-1">Type and select a preset option:</div>
+                        <td-chips [items]="items" [(ngModel)]="itemsRequireMatch" placeholder="Enter autocomplete strings" [readOnly]="readOnly" requireMatch></td-chips>
+                    </div>
+                </md-tab>
+                <md-tab>
+                    <ng-template md-tab-label>Code</ng-template>
+                    <md-card-content>
+                        <p>HTML:</p>
+                        <pre lang="html">
+                            <![CDATA[
+            <td-chips [items]="items" [(ngModel)]="itemsRequireMatch" placeholder="Enter autocomplete strings" [readOnly]="readOnly" requireMatch></td-chips>
+          ]]>
+                        </pre>
+                        <p>Typescript:</p>
+                        <pre lang="typescript">
+                            <![CDATA[
+            export class ChipsDemoComponent {
+              readOnly: boolean = false;
+
+              items: string[] = [
+                'stepper',
+                'expansion-panel',
+                'markdown',
+                'highlight',
+                'loading',
+                'media',
+                'chips',
+                'http',
+                'json-formatter',
+                'pipes',
+                'need more?',
+              ];
+
+              itemsRequireMatch: string[] = this.items.slice(0, 6);
+
+              toggleReadOnly(): void {
+                this.readOnly = !this.readOnly;
+              }
+            }
+          ]]>
+                        </pre>
+                    </md-card-content>
+                </md-tab>
+            </md-tab-group>
+            <md-divider></md-divider>
+            <md-card-actions>
+                <button md-button color="primary" (click)="toggleReadOnly()" class="text-upper">Toggle ReadOnly</button>
+            </md-card-actions>
+        </md-card-content>
+        <md-card-content>
+            <md-card-title>Autocomplete with custom inputs</md-card-title>
+            <md-card-subtitle>Autocomplete demo allowing custom inputs</md-card-subtitle>
+            <md-divider></md-divider>
+            <md-tab-group md-stretch-tabs dynamicHeight>
+                <md-tab>
+                    <ng-template md-tab-label>Demo</ng-template>
+                    <div class="push">
+                        <div class="md-body-1">Type and select option or enter custom text and press enter:</div>
+                        <td-chips [items]="items" placeholder="Enter any string"></td-chips>
+                    </div>
+                </md-tab>
+                <md-tab>
+                    <ng-template md-tab-label>Code</ng-template>
+                    <md-card-content>
+                        <p>HTML:</p>
+                        <pre lang="html">
+                            <![CDATA[
+            <td-chips [items]="items" placeholder="Enter any string"></td-chips>
+          ]]>
+                        </pre>
+                        <p>Typescript:</p>
+                        <pre lang="typescript">
+                            <![CDATA[
+            export class ChipsDemoComponent {
+
+              items: string[] = [
+                'stepper',
+                'expansion-panel',
+                'markdown',
+                'highlight',
+                'loading',
+                'media',
+                'chips',
+                'http',
+                'json-formatter',
+                'pipes',
+                'need more?',
+              ];
+
+            }
+          ]]>
+                        </pre>
+                    </md-card-content>
+                </md-tab>
+            </md-tab-group>
+        </md-card-content>
+        <md-card-content>
+            <md-card-title>Custom chips</md-card-title>
+            <md-card-subtitle>Demo allowing custom inputs for tags</md-card-subtitle>
+            <md-divider></md-divider>
+            <md-tab-group md-stretch-tabs dynamicHeight>
+                <md-tab>
+                    <ng-template md-tab-label>Demo</ng-template>
+                    <div class="push">
+                        <div class="md-body-1">Type any test and press enter:</div>
+                        <td-chips placeholder="Enter any string"></td-chips>
+                    </div>
+                </md-tab>
+                <md-tab>
+                    <ng-template md-tab-label>Code</ng-template>
+                    <md-card-content>
+                        <p>HTML:</p>
+                        <pre lang="html">
+                            <![CDATA[
+            <td-chips placeholder="Enter any string"></td-chips>
+          ]]>
+                        </pre>
+                        <p>Typescript:</p>
+                        <pre lang="typescript">
+                            <![CDATA[
+            export class ChipsDemoComponent {
+
+            }
+          ]]>
+                        </pre>
+                    </md-card-content>
+                </md-tab>
+            </md-tab-group>
+        </md-card-content>
+    </md-card>
+    <md-card>
+        <md-card-title>Table</md-card-title>
+        <md-card-content>
+            <h4 class="md-subhead">Paging Bar / Filter / Sortable components/ Selectable</h4>
+            <md-divider></md-divider>
+            <md-tab-group md-stretch-tabs>
+                <md-tab>
+                    <ng-template md-tab-label>Demo</ng-template>
+                    <div layout="row" layout-align="space-between center" class="pad-left-sm pad-right-sm" [class.mat-selected-title]="selectedRows.length && selectable">
+                        <span *ngIf="!searchBox.searchVisible" class="table-title push-left-sm">
+                            <span *ngIf="(selectable && !selectedRows.length) || !selectable">Title here</span>
+                        <span *ngIf="selectedRows.length && selectable" class="md-body-1">{{selectedRows.length}} item(s) selected</span>
+                        </span>
+                        <div flex class="push-right-sm" fxLayout="row" fxLayoutAlign="end center">
+                            <td-chips #searchBox [items]="autoCompleteData" (add)="searchAdd($event)" (remove)="searchRemove($event)" class="push-right-sm"></td-chips>
+                            <button color="fds-primary" md-raised-button [mdMenuTriggerFor]="dataTableActionMenu">
+                                Actions<i class="fa fa-caret-down" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <md-menu class="fds-primary-dropdown-button-menu" #dataTableActionMenu="mdMenu" [overlapTrigger]="false">
+                            <button md-menu-item> Settings </button>
+                            <button md-menu-item> Details </button>
+                            <button md-menu-item disabled> Delete </button>
+                        </md-menu>
+                    </div>
+                    <table td-data-table>
+                        <th td-data-table-column [numeric]="column.numeric" (click)="sort($event, column)" [mdTooltip]="column.tooltip" *ngFor="let column of columns">
+                            {{column.label}}
+                            <i *ngIf="column.active && column.sortable && column.sortOrder === 'ASC'" class="fa fa-caret-up" aria-hidden="true"></i>
+                            <i *ngIf="column.active && column.sortable && column.sortOrder === 'DESC'" class="fa fa-caret-down" aria-hidden="true"></i>
+                        </th>
+                        <th td-data-table-column>
+                            <div fxLayout="row" fxLayoutAlign="end center">
+                                <md-checkbox [(ngModel)]="allRowsSelected" [checked]="allRowsSelected" (click)="toggleSelectAll()"></md-checkbox>
+                            </div>
+                        </th>
+                        <tr td-data-table-row [ngClass]="{'selected' : row.checked}" *ngFor="let row of filteredData">
+                            <td td-data-table-cell *ngFor="let column of columns" [numeric]="column.numeric" (click)="row.checked = !row.checked; toggleSelect(row)">
+                                <button md-button *ngIf="column.name === 'comments' && !row['comments']" [class.mat-accent]="!row['comments']" (click)="openDataTablePrompt(row, 'comments')">{{row['comments'] || 'Add Comment'}}</button>
+                                <div *ngIf="column.name !== 'comments' || row['comments']">
+                                    {{column.format ? column.format(row[column.name]) : row[column.name]}}
+                                </div>
+                            </td>
+                            <td td-data-table-cell>
+                                <div *ngIf="row.actions">
+                                    <div *ngIf="row.actions.length < 4" fxLayout="row" fxLayoutAlign="end center">
+                                        <button *ngFor="let action of row.actions" mdTooltip="{{action.tooltip}}" md-icon-button color="accent" [disabled]="action.disabled ? '' : null">
+                                            <i class="{{action.icon}}" aria-hidden="true"></i>
+                                        </button>
+                                        <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)"></md-checkbox>
+                                    </div>
+                                    <div *ngIf="row.actions.length >= 4" fxLayout="row" fxLayoutAlign="end center">
+                                        <button mdTooltip="Actions" md-icon-button [mdMenuTriggerFor]="tableActionMenu">
+                                            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                                        </button>
+                                        <md-menu #tableActionMenu="mdMenu" [overlapTrigger]="false">
+                                            <button *ngFor="let action of row.actions" mdTooltip="{{action.tooltip}}" md-menu-item [disabled]="action.disabled ? '' : null">
+                                                <i class="{{action.icon}}" aria-hidden="true"></i>
+                                                <span>{{action.name}}</span>
+                                            </button>
+                                        </md-menu>
+                                        <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)"></md-checkbox>
+                                    </div>
+                                </div>
+                                <div *ngIf="!row.actions" fxLayout="row" fxLayoutAlign="end center">
+                                    <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)"></md-checkbox>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="md-padding" *ngIf="!filteredData.length > 0" layout="row" layout-align="center center">
+                        <h3>No results to display.</h3>
+                    </div>
+                    <td-paging-bar #pagingBar [pageSizes]="[5, 10, 15, 20]" [total]="filteredTotal" (change)="page($event)">
+                        <span td-paging-bar-label hide-xs>Row per page:</span> {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+                    </td-paging-bar>
+                </md-tab>
+                <md-tab>
+                    <ng-template md-tab-label>Code</ng-template>
+                    <p>HTML:</p>
+                    <pre lang="html">
+                        <![CDATA[
+            <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+              <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+                <span class="md-title">Title here</span>
+              </span>
+              <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
+                <span *ngIf="(selectable && !selectedRows.length) || !selectable" class="md-title">Title here</span>
+                <span *ngIf="selectedRows.length && selectable" class="md-body-1">{{selectedRows.length}} item(s) selected</span>
+              </span>
+              <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Search here" (searchDebounce)="search($event)" flex>
+              </td-search-box>
+            </div>
+            <md-divider></md-divider>
+            <td-data-table
+              #dataTable
+              [data]="filteredData"
+              [columns]="columns"
+              [sortable]="true"
+              [sortBy]="sortBy"
+              [sortOrder]="sortOrder"
+              (sortChange)="sort($event)">
+            </td-data-table>
+            <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
+              <h3>No results to display.</h3>
+            </div>
+            <td-paging-bar #pagingBar [pageSizes]="[5, 10, 15, 20]" [total]="filteredTotal" (change)="page($event)">
+              <span td-paging-bar-label hide-xs>Row per page:</span>
+              { {pagingBar.range} } <span hide-xs>of { {pagingBar.total} }</span>
+            </td-paging-bar>
+          ]]>
+                    </pre>
+                    <p>Javascript:</p>
+                    <pre lang="javascript">
+                        <![CDATA[
+            import { TdDataTableService, TdDataTableSortingOrder, ITdDataTableSortChangeEvent, ITdDataTableColumn } from '@covalent/core';
+            import { IPageChangeEvent } from '@covalent/core';
+            ...
+            })
+            export class Demo {
+              data: any[] = [
+                { sku: '1452-2', item: 'Pork Chops', price: 32.11 },
+                { sku: '1421-0', item: 'Prime Rib', price: 41.15 },
+              ];
+              columns: ITdDataTableColumn[] = [
+                { name: 'sku', label: 'SKU #', tooltip: 'Stock Keeping Unit' },
+                { name: 'item', label: 'Item name' },
+                { name: 'price', label: 'Price (US$)', numeric: true, format: v => v.toFixed(2) },
+              ];
+
+              filteredData: any[] = this.data;
+              filteredTotal: number = this.data.length;
+
+              searchTerm: string = '';
+              fromRow: number = 1;
+              currentPage: number = 1;
+              pageSize: number = 5;
+              sortBy: string = 'sku';
+              sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
+
+              constructor(private _dataTableService: TdDataTableService) {}
+
+              ngOnInit(): void {
+                this.filter();
+              }
+
+              sort(sortEvent: ITdDataTableSortChangeEvent): void {
+                this.sortBy = sortEvent.name;
+                this.sortOrder = sortEvent.order;
+                this.filter();
+              }
+
+              search(searchTerm: string): void {
+                this.searchTerm = searchTerm;
+                this.filter();
+              }
+
+              page(pagingEvent: IPageChangeEvent): void {
+                this.fromRow = pagingEvent.fromRow;
+                this.currentPage = pagingEvent.page;
+                this.pageSize = pagingEvent.pageSize;
+                this.filter();
+              }
+
+              filter(): void {
+                let newData: any[] = this.data;
+                newData = this._dataTableService.filterData(newData, this.searchTerm, true);
+                this.filteredTotal = newData.length;
+                newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
+                newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
+                this.filteredData = newData;
+              }
+            }
+          ]]>
+                    </pre>
+                </md-tab>
+            </md-tab-group>
+        </md-card-content>
+        <md-divider></md-divider>
+        <md-card-actions>
+            <button md-button color="primary" (click)="toggleTooltips()" class="text-upper">
+                Toggle Tooltip ({{areTooltipsOn() ? 'ON' : 'OFF'}})
+            </button>
+        </md-card-actions>
     </md-card>
     <md-card>
         <md-card-title>Checkbox</md-card-title>
@@ -831,6 +1229,52 @@
         </md-card-content>
     </md-card>
     <md-card>
+        <md-card-title>Select</md-card-title>
+        <md-divider></md-divider>
+        <md-card-content>
+            <form>
+                <div layout="row" layout-margin>
+                    <md-select color="accent" floatPlaceholder="never" placeholder="Favorite food" [(ngModel)]="selectedValue" name="food">
+                        <md-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                        </md-option>
+                    </md-select>
+                </div>
+                <div layout="row" layout-margin>
+                    <div flex> Selected food value: {{selectedValue}} </div>
+                </div>
+            </form>
+            <md-divider class="push-top push-bottom"></md-divider>
+            <pre lang="html">
+      <![CDATA[
+        <form>
+          <div layout="row" layout-margin>
+            <md-select flex="50" placeholder="Favorite food" [(ngModel)]="selectedValue" name="food">
+              <md-option *ngFor="let food of foods" [value]="food.value">
+                { {food.viewValue} }
+              </md-option>
+            </md-select>
+          </div>
+          <div layout="row" layout-margin>
+            <div flex> Selected food value: { {selectedValue} } </div>
+          </div>
+        </form>
+        ]]>
+      </pre>
+            <md-divider class="push-top push-bottom"></md-divider>
+            <pre lang="javascript">
+      <![CDATA[
+          selectedValue: '';
+          foods: [
+            {value: 'steak-0', viewValue: 'Steak'},
+            {value: 'pizza-1', viewValue: 'Pizza'},
+            {value: 'tacos-2', viewValue: 'Tacos'}
+          ];
+        ]]>
+      </pre>
+        </md-card-content>
+    </md-card>
+    <md-card>
         <md-card-title>Menus (dropdowns)</md-card-title>
         <md-divider></md-divider>
         <md-card-content>
@@ -846,7 +1290,7 @@
             <button color="fds-regular" md-raised-button [mdMenuTriggerFor]="posXMenu">
                 Before<i class="fa fa-caret-down" aria-hidden="true"></i>
             </button>
-            <md-menu x-position="before" #posXMenu="mdMenu" class="before">
+            <md-menu x-position="before" #posXMenu="mdMenu">
                 <button md-menu-item> Refresh </button>
                 <button md-menu-item> Settings </button>
                 <button md-menu-item> Help </button>
@@ -855,7 +1299,7 @@
             <button color="fds-regular" md-raised-button [mdMenuTriggerFor]="aboveMenu">
                 Above<i class="fa fa-caret-down" aria-hidden="true"></i>
             </button>
-            <md-menu y-position="above" #aboveMenu="mdMenu" class="above">
+            <md-menu y-position="above" #aboveMenu="mdMenu">
                 <button md-menu-item> Refresh </button>
                 <button md-menu-item> Settings </button>
                 <button md-menu-item> Help </button>
@@ -905,7 +1349,7 @@
         <button color="fds-regular" md-raised-button [mdMenuTriggerFor]="posXMenu">
             Before<i class="fa fa-caret-down" aria-hidden="true"></i>
         </button>
-        <md-menu x-position="before" #posXMenu="mdMenu" class="before">
+        <md-menu x-position="before" #posXMenu="mdMenu">
             <button md-menu-item> Refresh </button>
             <button md-menu-item> Settings </button>
             <button md-menu-item> Help </button>
@@ -914,7 +1358,7 @@
         <button color="fds-regular" md-raised-button [mdMenuTriggerFor]="aboveMenu">
             Above<i class="fa fa-caret-down" aria-hidden="true"></i>
         </button>
-        <md-menu y-position="above" #aboveMenu="mdMenu" class="above">
+        <md-menu y-position="above" #aboveMenu="mdMenu">
             <button md-menu-item> Refresh </button>
             <button md-menu-item> Settings </button>
             <button md-menu-item> Help </button>
@@ -1628,157 +2072,6 @@
         <md-divider class="push-top push-bottom"></md-divider>
         <h3 class="md-title">Inverted Slider</h3>
         <md-slider invert min="1" max="100" thumbLabel tickInterval="10" value="2"></md-slider>
-        ]]>
-      </pre>
-        </md-card-content>
-    </md-card>
-    <md-card>
-        <md-card-title>Select</md-card-title>
-        <md-divider></md-divider>
-        <md-card-content>
-            <form>
-                <div layout="row" layout-margin>
-                    <md-select flex="50" placeholder="Favorite food" [(ngModel)]="selectedValue" name="food">
-                        <md-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
-                        </md-option>
-                    </md-select>
-                </div>
-                <div layout="row" layout-margin>
-                    <div flex> Selected food value: {{selectedValue}} </div>
-                </div>
-            </form>
-            <md-divider class="push-top push-bottom"></md-divider>
-            <pre lang="html">
-      <![CDATA[
-        <form>
-          <div layout="row" layout-margin>
-            <md-select flex="50" placeholder="Favorite food" [(ngModel)]="selectedValue" name="food">
-              <md-option *ngFor="let food of foods" [value]="food.value">
-                { {food.viewValue} }
-              </md-option>
-            </md-select>
-          </div>
-          <div layout="row" layout-margin>
-            <div flex> Selected food value: { {selectedValue} } </div>
-          </div>
-        </form>
-        ]]>
-      </pre>
-            <md-divider class="push-top push-bottom"></md-divider>
-            <pre lang="javascript">
-      <![CDATA[
-          selectedValue: '';
-          foods: [
-            {value: 'steak-0', viewValue: 'Steak'},
-            {value: 'pizza-1', viewValue: 'Pizza'},
-            {value: 'tacos-2', viewValue: 'Tacos'}
-          ];
-        ]]>
-      </pre>
-        </md-card-content>
-    </md-card>
-    <md-card>
-        <md-card-title>Autocomplete</md-card-title>
-        <md-divider></md-divider>
-        <md-card-content>
-            <div layout="row">
-                <md-input-container flex="50">
-                    <input mdInput placeholder="State" [mdAutocomplete]="tdAuto" [(ngModel)]="currentState" #modelDir="ngModel" (ngModelChange)="this.tdStates = filterStates(currentState)" [disabled]="tdDisabled">
-                </md-input-container>
-            </div>
-            <div class="push-top">
-                <button md-button (click)="modelDir.reset()" class="text-upper">Reset</button>
-                <button md-button (click)="currentState='California'" class="text-upper">Set value</button>
-                <button md-button (click)="tdDisabled=!tdDisabled" class="text-upper">Toggle disabled</button>
-            </div>
-            <md-autocomplete #tdAuto="mdAutocomplete">
-                <md-option *ngFor="let state of tdStates" [value]="state.name">
-                    <span>{{ state.name }}</span>
-                    <span class="demo-secondary-text"> ({{state.code}}) </span>
-                </md-option>
-            </md-autocomplete>
-            <md-divider class="push-top push-bottom"></md-divider>
-            <pre lang="html">
-      <![CDATA[
-        <div layout="row">
-          <md-input-container flex="50">
-            <input mdInput placeholder="State" [mdAutocomplete]="tdAuto" [(ngModel)]="currentState" #modelDir="ngModel"
-              (ngModelChange)="this.tdStates = filterStates(currentState)" [disabled]="tdDisabled">
-          </md-input-container>
-        </div>
-        <div class="push-top">
-          <button md-button (click)="modelDir.reset()" class="text-upper">Reset</button>
-          <button md-button (click)="currentState='California'" class="text-upper">Set value</button>
-          <button md-button (click)="tdDisabled=!tdDisabled" class="text-upper">Toggle disabled</button>
-        </div>
-        <md-autocomplete #tdAuto="mdAutocomplete">
-          <md-option *ngFor="let state of tdStates" [value]="state.name">
-            <span>{ { state.name } }</span>
-            <span class="demo-secondary-text"> ({ {state.code} }) </span>
-          </md-option>
-        </md-autocomplete>
-        ]]>
-      </pre>
-        </md-card-content>
-    </md-card>
-    <md-card>
-        <md-card-title>Chips</md-card-title>
-        <md-divider></md-divider>
-        <md-card-content>
-            <h3 class="md-title">Chips (with colors)</h3>
-            <md-chip-list>
-                <md-chip *ngFor="let chip of chips" [selected]="chip.selected" color="{{chip.color}}">
-                    {{chip.name}}
-                </md-chip>
-            </md-chip-list>
-            <md-divider class="push-top push-bottom"></md-divider>
-            <h3 class="md-title">Chip Stacked (with colors)</h3>
-            <div layout-gt-xs="row">
-                <md-chip-list flex-gt-xs="50" class="mat-chip-list-stacked">
-                    <md-chip *ngFor="let chip of chips" [selected]="chip.selected" color="{{chip.color}}">
-                        {{chip.name}}
-                    </md-chip>
-                </md-chip-list>
-            </div>
-            <md-divider class="push-top push-bottom"></md-divider>
-            <pre lang="html">
-      <![CDATA[
-        <h3 class="md-title">Basic Chips (with colors)</h3>
-        <md-chip-list>
-          <md-chip *ngFor="let chip of chips"
-              [selected]="chip.selected"
-              color="{ {chip.color} }">
-              { {chip.name} }
-          </md-chip>
-        </md-chip-list>
-        <md-divider class="push-top push-bottom"></md-divider>
-        <h3 class="md-title">Chip List (with colors)</h3>
-        <div layout-gt-xs="row">
-          <md-chip-list flex-gt-xs="50" class="md-chip-list-stacked">
-            <md-chip *ngFor="let chip of chips"
-                [selected]="chip.selected"
-                color="{ {chip.color} }">
-                { {chip.name} }
-            </md-chip>
-          </md-chip-list>
-        </div>
-        ]]>
-      </pre>
-            <md-divider class="push-top push-bottom"></md-divider>
-            <pre lang="javascript">
-      <![CDATA[
-         color: '';
-         chips: [
-            { name: 'Default', color: '', selected: false },
-            { name: 'Default (selected)', color: '', selected: true },
-            { name: 'Primary', color: 'primary', selected: false },
-            { name: 'Primary (selected)', color: 'primary', selected: true },
-            { name: 'Accent', color: 'accent', selected: false },
-            { name: 'Accent (selected)', color: 'accent', selected: true },
-            { name: 'Warn', color: 'warn', selected: false },
-            { name: 'Warn (selected)', color: 'warn', selected: true },
-          ];
         ]]>
       </pre>
         </md-card-content>

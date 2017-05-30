@@ -18,6 +18,10 @@
 
 /* Inputs */
 
+body[fds] .mat-input-container {
+    min-width: 200px;
+}
+
 body[fds] .mat-input-wrapper {
     margin: 0;
     padding-bottom: 0;
@@ -62,12 +66,16 @@ body[fds] .mat-input-placeholder {
 
 body[fds] .mat-input-placeholder-wrapper {
     top: -24px;
-    padding-top: 32px;
+    padding-top: 33px;
 }
 
 body[fds] .mat-input-placeholder {
-    padding-top: 34px;
+    padding-top: 33px;
     padding-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(100% - 37px);
 }
 
 body[fds] .mat-focused .mat-input-placeholder.mat-float, body[fds] .mat-input-placeholder.mat-float:not(.mat-empty), body[fds] .mat-input-element:-webkit-autofill+.mat-input-placeholder-wrapper .mat-float {
@@ -82,4 +90,26 @@ body[fds] .input-button {
 
 body[fds] .input-button.mat-raised-button[disabled] {
     opacity: 1;
+}
+
+body[fds] td-chips .mat-input-placeholder-wrapper::after {
+    content: '\f0b0';
+    display: inline-table;
+    font-family: FontAwesome;
+    float: right;
+    margin: 0 5px;
+    color: $grey3;
+}
+
+body[fds] td-chips input.mat-input-element {
+    border-radius: 2px;
+    color: $grey2;
+    border: 1px solid $grey8;
+    height: 32px;
+    padding: 0px 10px;
+    width: 100%;
+}
+
+body[fds] .mat-hint {
+    color: $grey3;
 }

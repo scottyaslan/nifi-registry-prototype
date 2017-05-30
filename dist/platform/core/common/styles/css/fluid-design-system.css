@@ -158,19 +158,19 @@
   font-family: 'Roboto';
   font-style: italic;
   font-weight: normal;
-  src: local("Roboto Italic"), local("Roboto-Italic"), url("../../../../../../../roboto-fontface/fonts/Roboto/Roboto-Italic.ttf") format("truetype"); }
+  src: local("Roboto Italic"), local("Roboto-Italic"), url("../../../../../../../roboto-fontface/fonts/Roboto/Roboto-RegularItalic.ttf") format("truetype"); }
 
 @font-face {
   font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: normal;
-  src: local("RobotoSlab Regular"), local("RobotoSlab-Regular"), url("../../../../../../../roboto-fontface/fonts/Roboto_Slab/RobotoSlab-Regular.ttf") format("truetype"); }
+  src: local("RobotoSlab Regular"), local("RobotoSlab-Regular"), url("../../../../../../../roboto-fontface/fonts/Roboto-Slab/Roboto-Slab-Regular.ttf") format("truetype"); }
 
 @font-face {
   font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: bold;
-  src: local("RobotoSlab Bold"), local("RobotoSlab-Bold"), url("../../../../../../../roboto-fontface/fonts/Roboto_Slab/RobotoSlab-Bold.ttf") format("truetype"); }
+  src: local("RobotoSlab Bold"), local("RobotoSlab-Bold"), url("../../../../../../../roboto-fontface/fonts/Roboto-Slab/Roboto-Slab-Bold.ttf") format("truetype"); }
 
 body,
 html {
@@ -434,8 +434,8 @@ body[fds] .mat-raised-button.mat-fds-critical[disabled] {
 */
 /* Checkboxes */
 body[fds] .mat-checkbox-inner-container {
-  height: 10px;
-  width: 10px; }
+  height: 10px !important;
+  width: 10px !important; }
 
 body[fds] .mat-checkbox-frame {
   height: 10px;
@@ -451,6 +451,31 @@ body[fds] .mat-checkbox-inner-container:hover {
   border-radius: 2px; }
 
 body[fds] .mat-checkbox-background {
+  height: 10px;
+  width: 10px; }
+
+/* Covalent TdDataTableComponent 'selectable' property checkboxes */
+body[fds] .mat-pseudo-checkbox {
+  height: 10px !important;
+  width: 10px !important;
+  border: 1px solid #DDDDDD; }
+
+body[fds] .mat-pseudo-checkbox:hover {
+  background-color: #1491C1;
+  border: 1px solid #1491C1; }
+
+body[fds] .mat-pseudo-checkbox-checked::after {
+  content: '\f00c';
+  font-size: 8px;
+  font-family: fontawesome;
+  margin-top: -9px;
+  margin-left: -1px;
+  border: none;
+  transform: initial; }
+
+body[fds] .mat-pseudo-checkbox-checked, body[fds] .mat-pseudo-checkbox-indeterminate {
+  background-color: #1491C1;
+  border: 1px solid #1491C1;
   height: 10px;
   width: 10px; }
 
@@ -498,6 +523,52 @@ body[fds] .mat-radio-inner-circle {
 
 body[fds] .mat-radio-checked .mat-radio-inner-circle {
   background-color: #FFFFFF; }
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one or more
+* contributor license agreements.  See the NOTICE file distributed with
+* this work for additional information regarding copyright ownership.
+* The ASF licenses this file to You under the Apache License, Version 2.0
+* (the "License"); you may not use this file except in compliance with
+* the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+/* Chips */
+body[fds] .mat-chip {
+  border-radius: 2px; }
+
+body[fds] .mat-chip i {
+  margin-left: 10px;
+  float: right; }
+
+body[fds] .mat-basic-chip {
+  border-radius: 2px;
+  line-height: 24px;
+  margin: 4px 8px 0 0;
+  font-size: 10px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: #666666; }
+
+body[fds] .mat-basic-chip i {
+  margin-left: 10px;
+  float: right; }
+
+body[fds] .mat-basic-chip md-icon {
+  font-size: 14px;
+  height: 14px;
+  width: 14px;
+  top: 4px;
+  left: 5px;
+  color: #666666; }
 
 /*
 * Licensed to the Apache Software Foundation (ASF) under one or more
@@ -571,6 +642,9 @@ body[fds] .mat-tab-header {
 * limitations under the License.
 */
 /* Inputs */
+body[fds] .mat-input-container {
+  min-width: 200px; }
+
 body[fds] .mat-input-wrapper {
   margin: 0;
   padding-bottom: 0; }
@@ -607,11 +681,15 @@ body[fds] .mat-input-placeholder {
 
 body[fds] .mat-input-placeholder-wrapper {
   top: -24px;
-  padding-top: 32px; }
+  padding-top: 33px; }
 
 body[fds] .mat-input-placeholder {
-  padding-top: 34px;
-  padding-left: 10px; }
+  padding-top: 33px;
+  padding-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: calc(100% - 37px); }
 
 body[fds] .mat-focused .mat-input-placeholder.mat-float, body[fds] .mat-input-placeholder.mat-float:not(.mat-empty), body[fds] .mat-input-element:-webkit-autofill + .mat-input-placeholder-wrapper .mat-float {
   transform: translateY(-31px) scale(0.75); }
@@ -623,6 +701,25 @@ body[fds] .input-button {
 
 body[fds] .input-button.mat-raised-button[disabled] {
   opacity: 1; }
+
+body[fds] td-chips .mat-input-placeholder-wrapper::after {
+  content: '\f0b0';
+  display: inline-table;
+  font-family: FontAwesome;
+  float: right;
+  margin: 0 5px;
+  color: #999999; }
+
+body[fds] td-chips input.mat-input-element {
+  border-radius: 2px;
+  color: #666666;
+  border: 1px solid #CFD3D7;
+  height: 32px;
+  padding: 0px 10px;
+  width: 100%; }
+
+body[fds] .mat-hint {
+  color: #999999; }
 
 /*
 * Licensed to the Apache Software Foundation (ASF) under one or more
@@ -785,6 +882,13 @@ body[fds] td-expansion-panel .td-expansion-panel-header:focus .td-expansion-pane
 * limitations under the License.
 */
 /* Menus */
+body[fds] .mat-menu-panel {
+  border-radius: 2px; }
+
+body[fds] .mat-menu-content {
+  padding-top: 0px;
+  padding-bottom: 0px; }
+
 body[fds] .mat-menu-item {
   font-size: 14px;
   color: #333333;
@@ -801,18 +905,13 @@ body[fds] .mat-menu-item[disabled] {
   color: rgba(0, 0, 0, 0.38);
   background-color: #ffffff; }
 
-body[fds] .mat-menu-panel {
-  border-radius: 2px; }
-
-body[fds] .mat-menu-content {
-  padding-top: 0px;
-  padding-bottom: 0px; }
-
 body[fds] .mat-menu-item .mat-icon {
   font-size: 14px; }
 
 body[fds] .mat-menu-item .fa {
-  font-size: 14px; }
+  font-size: 14px;
+  width: 1em;
+  height: 1em; }
 
 body[fds] .mat-menu-item[disabled] .mat-icon {
   color: rgba(0, 0, 0, 0.38); }
@@ -843,6 +942,28 @@ body[fds] .fds-primary-dropdown-button-menu .mat-menu-item:focus:not([disabled])
 .mat-raised-button .mat-button-wrapper i {
   padding-left: 10px; }
 
+body[fds] .mat-option {
+  font-size: 14px;
+  color: #333333;
+  text-transform: none;
+  height: 24px;
+  line-height: 24px; }
+
+body[fds] .mat-autocomplete-panel.mat-autocomplete-panel-below {
+  top: 0; }
+
+body[fds] .regular-button-menu .mat-option:hover {
+  color: #ffffff;
+  background-color: #808793; }
+
+body[fds] .mat-option:hover:not([disabled]),
+body[fds] .mat-option:focus:not([disabled]) {
+  color: #ffffff;
+  background-color: #808793; }
+
+body[fds] .mat-select-underline {
+  display: none; }
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -860,17 +981,64 @@ body[fds] .fds-primary-dropdown-button-menu .mat-menu-item:focus:not([disabled])
  * limitations under the License.
  */
 /* Tables */
-.title {
+body[fds] table[td-data-table].mat-selectable tbody > tr.td-data-table-row:not([disabled]):hover {
+  background-color: #E7f6Fc; }
+
+body[fds] table[td-data-table].mat-selectable tbody > tr.td-data-table-row.mat-selected {
+  background-color: #EEEEEE; }
+
+body[fds] table[td-data-table] .td-data-table-cell {
+  font-size: 13px;
+  color: #666666; }
+
+body[fds] table[td-data-table] .td-data-table-column {
+  color: #999999;
+  font-weight: normal; }
+
+body[fds] table[td-data-table] .td-data-table-row {
+  height: 34px; }
+
+body[fds] table[td-data-table] .td-data-table-row.selected {
+  background-color: #EEEEEE; }
+
+body[fds] table[td-data-table] tbody .td-data-table-row:hover {
+  background-color: #E7f6Fc; }
+
+body[fds] table[td-data-table] .mat-icon-button {
+  color: #1491C1; }
+
+body[fds] table[td-data-table] .mat-button, body[fds] table[td-data-table] .mat-icon-button, body[fds] table[td-data-table] .mat-raised-button {
+  height: 32px;
+  padding: 0; }
+
+body[fds] table[td-data-table] .mat-button-focus-overlay, body[fds] table[td-data-table] .mat-button-ripple {
+  display: none; }
+
+body[fds] table[td-data-table] .mat-icon-button, body[fds] table[td-data-table] .mat-mini-fab {
+  width: 14px;
+  margin-right: 5px;
+  line-height: 14px; }
+
+body[fds] table[td-data-table] .td-data-table-column .fa-caret-up, body[fds] table[td-data-table] .td-data-table-column .fa-caret-down {
+  color: #1491C1;
+  font-size: 12px;
+  margin-bottom: 2px; }
+
+body[fds] td-paging-bar {
+  color: #999999; }
+
+body[fds] td-paging-bar md-select .mat-select-value, body[fds] td-paging-bar md-select .mat-select-arrow {
+  color: #1491C1; }
+
+body[fds] .table-title {
   font-size: 20px;
-  color: #333333; }
-
-.table-header {
-  font-size: 12px;
-  color: #999999; }
-
-.table-footer {
-  font-size: 12px;
-  color: #999999; }
+  color: #333333;
+  min-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50%;
+  margin-right: 10px; }
 
 .mat-elevation-z0 {
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12); }

@@ -54,21 +54,21 @@
     font-family: 'Roboto';
     font-style: italic;
     font-weight: normal;
-    src: local("Roboto Italic"), local("Roboto-Italic"), url("../../../../../../../roboto-fontface/fonts/Roboto/Roboto-Italic.ttf") format("truetype");
+    src: local("Roboto Italic"), local("Roboto-Italic"), url("../../../../../../../roboto-fontface/fonts/Roboto/Roboto-RegularItalic.ttf") format("truetype");
 }
 
 @font-face {
     font-family: 'Roboto Slab';
     font-style: normal;
     font-weight: normal;
-    src: local("RobotoSlab Regular"), local("RobotoSlab-Regular"), url("../../../../../../../roboto-fontface/fonts/Roboto_Slab/RobotoSlab-Regular.ttf") format("truetype");
+    src: local("RobotoSlab Regular"), local("RobotoSlab-Regular"), url("../../../../../../../roboto-fontface/fonts/Roboto-Slab/Roboto-Slab-Regular.ttf") format("truetype");
 }
 
 @font-face {
     font-family: 'Roboto Slab';
     font-style: normal;
     font-weight: bold;
-    src: local("RobotoSlab Bold"), local("RobotoSlab-Bold"), url("../../../../../../../roboto-fontface/fonts/Roboto_Slab/RobotoSlab-Bold.ttf") format("truetype");
+    src: local("RobotoSlab Bold"), local("RobotoSlab-Bold"), url("../../../../../../../roboto-fontface/fonts/Roboto-Slab/Roboto-Slab-Bold.ttf") format("truetype");
 }
 
 body,

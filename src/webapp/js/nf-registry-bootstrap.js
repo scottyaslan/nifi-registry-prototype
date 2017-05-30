@@ -18,6 +18,7 @@
 var FdsDemo = require('fds.Demo');
 var ngMaterial = require('@angular/material');
 var covalentCore = require('@covalent/core');
+// var slideInDownAnimation = require('@covalent/core');
 var ngForms = require('@angular/forms');
 var NfRegistry = require('nf.Registry');
 var NfRegistryDetailsViewer = require('nf.RegistryDetailsViewer');
@@ -47,11 +48,16 @@ var switchMap = require('switchMap');
 
 FdsDemo.annotations = [
     new ngCore.Component({
-        templateUrl: 'nifi-registry/src/webapp/views/fds-demo.html'
+        templateUrl: 'nifi-registry/src/webapp/views/fds-demo.html',
+        // animations: [slideInDownAnimation],
+        // host: {
+        //   '[@routeAnimation]': 'routeAnimation',
+        //   '[class.heading]': 'headingClass'
+        // }
     })
 ];
 
-FdsDemo.parameters = [ngMaterial.MdSnackBar, ngMaterial.MdDialog, covalentCore.TdDialogService];
+FdsDemo.parameters = [ngMaterial.MdSnackBar, ngMaterial.MdDialog, covalentCore.TdDialogService, covalentCore.TdDataTableService];
 
 NfPageNotFoundComponent.annotations = [
     new ngCore.Component({
@@ -304,11 +310,4 @@ NfRegistryAppModule.annotations = [
 
 //bootstrap the module
 ngPlatformBrowserDynamic.platformBrowserDynamic().bootstrapModule(NfRegistryAppModule).then(function() {
-    // // add hover styles for checkboxes
-    // $(document.body).on('mouseenter', '.mat-checkbox-inner-container', function() {
-    //     $(this).find('.mat-checkbox-frame').css('border-color', '#1491C1');
-    // });
-    // $(document.body).on('mouseleave', '.mat-checkbox-inner-container', function() {
-    //     $(this).find('.mat-checkbox-frame').css('border-color', '#DDDDDD');
-    // });
 });

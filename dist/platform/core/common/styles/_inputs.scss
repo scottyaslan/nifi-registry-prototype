@@ -78,7 +78,7 @@ body[fds] .mat-input-placeholder {
     width: calc(100% - 37px);
 }
 
-body[fds] .mat-focused .mat-input-placeholder.mat-float, body[fds] .mat-input-placeholder.mat-float:not(.mat-empty), body[fds] .mat-input-element:-webkit-autofill+.mat-input-placeholder-wrapper .mat-float {
+body[fds] .mat-input-placeholder.mat-float:not(.mat-empty) {
     transform: translateY(-31px) scale(.75);
 }
 

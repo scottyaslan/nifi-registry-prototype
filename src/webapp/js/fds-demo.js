@@ -21,9 +21,93 @@ var NUMBER_FORMAT = v => v;
 var DECIMAL_FORMAT = v => v.toFixed(2);
 
 function FdsDemo(snackBarService, dialog, TdDialogService, TdDataTableService) {
+
+    //<editor-fold desc="Snack Bars">
+
     this.snackBarService = snackBarService;
+
+    //</editor-fold>
+
+    //<editor-fold desc="Dialog">
+
     this.dialog = dialog;
+
+    //</editor-fold>
+
+    //<editor-fold desc="Simple Dialogs">
+
     this.dialogService = TdDialogService;
+
+    //</editor-fold>
+
+    //<editor-fold desc="Expansion Panel">
+
+    this.expandCollapseExpansion1Msg = 'No expanded/collapsed detected yet';
+    this.expansion1 = false;
+    this.disabled = false;
+
+    //</editor-fold>
+
+    //<editor-fold desc="Autocomplete">
+
+    this.currentState = '';
+    this.reactiveStates = '';
+    this.tdStates = [];
+    this.tdDisabled = false;
+    this.states = [
+        { code: 'AL', name: 'Alabama' },
+        { code: 'AK', name: 'Alaska' },
+        { code: 'AZ', name: 'Arizona' },
+        { code: 'AR', name: 'Arkansas' },
+        { code: 'CA', name: 'California' },
+        { code: 'CO', name: 'Colorado' },
+        { code: 'CT', name: 'Connecticut' },
+        { code: 'DE', name: 'Delaware' },
+        { code: 'FL', name: 'Florida' },
+        { code: 'GA', name: 'Georgia' },
+        { code: 'HI', name: 'Hawaii' },
+        { code: 'ID', name: 'Idaho' },
+        { code: 'IL', name: 'Illinois' },
+        { code: 'IN', name: 'Indiana' },
+        { code: 'IA', name: 'Iowa' },
+        { code: 'KS', name: 'Kansas' },
+        { code: 'KY', name: 'Kentucky' },
+        { code: 'LA', name: 'Louisiana' },
+        { code: 'ME', name: 'Maine' },
+        { code: 'MD', name: 'Maryland' },
+        { code: 'MA', name: 'Massachusetts' },
+        { code: 'MI', name: 'Michigan' },
+        { code: 'MN', name: 'Minnesota' },
+        { code: 'MS', name: 'Mississippi' },
+        { code: 'MO', name: 'Missouri' },
+        { code: 'MT', name: 'Montana' },
+        { code: 'NE', name: 'Nebraska' },
+        { code: 'NV', name: 'Nevada' },
+        { code: 'NH', name: 'New Hampshire' },
+        { code: 'NJ', name: 'New Jersey' },
+        { code: 'NM', name: 'New Mexico' },
+        { code: 'NY', name: 'New York' },
+        { code: 'NC', name: 'North Carolina' },
+        { code: 'ND', name: 'North Dakota' },
+        { code: 'OH', name: 'Ohio' },
+        { code: 'OK', name: 'Oklahoma' },
+        { code: 'OR', name: 'Oregon' },
+        { code: 'PA', name: 'Pennsylvania' },
+        { code: 'RI', name: 'Rhode Island' },
+        { code: 'SC', name: 'South Carolina' },
+        { code: 'SD', name: 'South Dakota' },
+        { code: 'TN', name: 'Tennessee' },
+        { code: 'TX', name: 'Texas' },
+        { code: 'UT', name: 'Utah' },
+        { code: 'VT', name: 'Vermont' },
+        { code: 'VA', name: 'Virginia' },
+        { code: 'WA', name: 'Washington' },
+        { code: 'WV', name: 'West Virginia' },
+        { code: 'WI', name: 'Wisconsin' },
+        { code: 'WY', name: 'Wyoming' },
+    ];
+
+    //</editor-fold>
 
     //<editor-fold desc="Data Tables">
 
@@ -267,42 +351,51 @@ function FdsDemo(snackBarService, dialog, TdDialogService, TdDataTableService) {
     this.itemsRequireMatch = this.items.slice(0, 6);
 
     //</editor-fold>
-};
 
-FdsDemo.prototype = {
-    constructor: FdsDemo,
-    isDisabled: false,
-    isIndeterminate: false,
-    favoriteSeason: 'Autumn',
-    selectedValue: '',
-    color: '',
-    alwaysVisible: false,
+    //<editor-fold desc="Radios">
 
-    chips: [
+    this.favoriteSeason = 'Autumn';
+
+    this.seasonOptions = [
+        'Winter',
+        'Spring',
+        'Summer',
+        'Autumn',
+    ];
+
+    //</editor-fold>
+
+    //<editor-fold desc="Select">
+
+    this.selectedValue = '';
+
+    this.foods = [
+        { value: 'steak-0', viewValue: 'Steak' },
+        { value: 'pizza-1', viewValue: 'Pizza' },
+        { value: 'tacos-2', viewValue: 'Tacos' },
+    ];
+
+    //</editor-fold>
+
+    //<editor-fold desc="Chips">
+
+    this.chips = [
         { name: 'Default', color: '', selected: false },
         { name: 'Default (selected)', color: '', selected: true },
         { name: 'Primary (selected)', color: 'primary', selected: true },
         { name: 'Accent (selected)', color: 'accent', selected: true },
         { name: 'Warn (selected)', color: 'warn', selected: true },
-    ],
+    ];
 
-    foods: [
-        { value: 'steak-0', viewValue: 'Steak' },
-        { value: 'pizza-1', viewValue: 'Pizza' },
-        { value: 'tacos-2', viewValue: 'Tacos' },
-    ],
+    //</editor-fold>
 
-    seasonOptions: [
-        'Winter',
-        'Spring',
-        'Summer',
-        'Autumn',
-    ],
-    user: {
+    //<editor-fold desc="Checkbox">
+
+    this.user = {
         agreesToTOS: false
-    },
+    };
 
-    groceries: [{
+    this.groceries = [{
         bought: true,
         name: 'Seitan',
     }, {
@@ -311,46 +404,13 @@ FdsDemo.prototype = {
     }, {
         bought: false,
         name: 'Organic Eggs',
-    }, ],
+    }, ];
 
-    todos: [{
-        finished: true,
-        name: 'Learn Angular',
-    }, {
-        finished: true,
-        name: 'Learn Angular Material',
-    }, {
-        finished: false,
-        name: 'Build examples',
-    }, {
-        finished: false,
-        name: 'Documentation',
-    }, {
-        finished: false,
-        name: 'Write about your findings',
-    }, {
-        finished: false,
-        name: 'Contribute back to the community',
-    }, ],
+    //</editor-fold>
 
-    messages: [{
-        from: 'Ali Connors',
-        message: 'I will be in your neighborhood',
-        photo: 'https://api.adorable.io/avatars/40/1.png',
-        subject: 'Brunch this weekend?',
-    }, {
-        from: 'Trevor Hansen',
-        message: 'Wish I could but we have plans',
-        photo: 'https://api.adorable.io/avatars/40/2.png',
-        subject: 'Re: Brunch this weekend?',
-    }, {
-        from: 'Sandra Adams',
-        message: 'Do you have Paris recommendations instead?',
-        photo: 'https://api.adorable.io/avatars/40/3.png',
-        subject: 'Re: Brunch this weekend?',
-    }, ],
+    //<editor-fold desc="Slide Toggle">
 
-    systems: [{
+    this.systems = [{
         name: 'Lights',
         on: false,
         color: 'primary',
@@ -362,75 +422,19 @@ FdsDemo.prototype = {
         name: 'T.V.',
         on: true,
         color: 'warn',
-    }, ],
+    }, ];
 
-    house: {
+    this.house = {
         lockHouse: false,
-    },
+    };
 
     //</editor-fold>
+};
+
+FdsDemo.prototype = {
+    constructor: FdsDemo,
 
     //<editor-fold desc="Autocomplete">
-
-    currentState: '',
-
-    reactiveStates: '',
-    tdStates: [],
-
-    tdDisabled: false,
-
-    states: [
-        { code: 'AL', name: 'Alabama' },
-        { code: 'AK', name: 'Alaska' },
-        { code: 'AZ', name: 'Arizona' },
-        { code: 'AR', name: 'Arkansas' },
-        { code: 'CA', name: 'California' },
-        { code: 'CO', name: 'Colorado' },
-        { code: 'CT', name: 'Connecticut' },
-        { code: 'DE', name: 'Delaware' },
-        { code: 'FL', name: 'Florida' },
-        { code: 'GA', name: 'Georgia' },
-        { code: 'HI', name: 'Hawaii' },
-        { code: 'ID', name: 'Idaho' },
-        { code: 'IL', name: 'Illinois' },
-        { code: 'IN', name: 'Indiana' },
-        { code: 'IA', name: 'Iowa' },
-        { code: 'KS', name: 'Kansas' },
-        { code: 'KY', name: 'Kentucky' },
-        { code: 'LA', name: 'Louisiana' },
-        { code: 'ME', name: 'Maine' },
-        { code: 'MD', name: 'Maryland' },
-        { code: 'MA', name: 'Massachusetts' },
-        { code: 'MI', name: 'Michigan' },
-        { code: 'MN', name: 'Minnesota' },
-        { code: 'MS', name: 'Mississippi' },
-        { code: 'MO', name: 'Missouri' },
-        { code: 'MT', name: 'Montana' },
-        { code: 'NE', name: 'Nebraska' },
-        { code: 'NV', name: 'Nevada' },
-        { code: 'NH', name: 'New Hampshire' },
-        { code: 'NJ', name: 'New Jersey' },
-        { code: 'NM', name: 'New Mexico' },
-        { code: 'NY', name: 'New York' },
-        { code: 'NC', name: 'North Carolina' },
-        { code: 'ND', name: 'North Dakota' },
-        { code: 'OH', name: 'Ohio' },
-        { code: 'OK', name: 'Oklahoma' },
-        { code: 'OR', name: 'Oregon' },
-        { code: 'PA', name: 'Pennsylvania' },
-        { code: 'RI', name: 'Rhode Island' },
-        { code: 'SC', name: 'South Carolina' },
-        { code: 'SD', name: 'South Dakota' },
-        { code: 'TN', name: 'Tennessee' },
-        { code: 'TX', name: 'Texas' },
-        { code: 'UT', name: 'Utah' },
-        { code: 'VT', name: 'Vermont' },
-        { code: 'VA', name: 'Virginia' },
-        { code: 'WA', name: 'Washington' },
-        { code: 'WV', name: 'West Virginia' },
-        { code: 'WI', name: 'Wisconsin' },
-        { code: 'WY', name: 'Wyoming' },
-    ],
 
     displayFn: function(value) {
         return value && typeof value === 'object' ? value.name : value;
@@ -440,9 +444,17 @@ FdsDemo.prototype = {
         return val ? this.states.filter((s) => s.name.match(new RegExp(val, 'gi'))) : this.states;
     },
 
+    //</editor-fold>
+
+    //<editor-fold desc="Snack Bars">
+
     showSnackBar: function() {
         var snackBarRef = this.snackBarService.open('Message', 'Action', { duration: 3000 });
     },
+
+    //</editor-fold>
+
+    //<editor-fold desc="Dialog">
 
     openDialog: function() {
         this.dialog.open(NfRegistryExplorer, {
@@ -454,52 +466,6 @@ FdsDemo.prototype = {
     //</editor-fold>
 
     //<editor-fold desc="Expansion Panel">
-
-    expansionAttrs: [{
-        description: 'Sets label of [TdExpansionPanelComponent] header. Defaults to "Click to expand"',
-        name: 'label?',
-        type: 'string',
-    }, {
-        description: 'Sets sublabel of [TdExpansionPanelComponent] header.',
-        name: 'sublabel?',
-        type: 'string',
-    }, {
-        description: 'Toggles [TdExpansionPanelComponent] between expand/collapse.',
-        name: 'expand?',
-        type: 'boolean',
-    }, {
-        description: `Hides icon and disables header, blocks click event and sets [TdExpansionPanelComponent]
-                  to collapse if "true".`,
-        name: 'disabled?',
-        type: 'boolean',
-    }, {
-        description: 'Event emitted when [TdExpansionPanelComponent] is expanded.',
-        name: 'expanded?',
-        type: 'function()',
-    }, {
-        description: 'Event emitted when [TdExpansionPanelComponent] is collapsed.',
-        name: 'collapsed?',
-        type: 'function()',
-    }, {
-        description: `Toggle active state of [TdExpansionPanelComponent]. Retuns "true" if successful, else "false".
-                  Can be accessed by referencing element in local variable.`,
-        name: 'toggle',
-        type: 'function()',
-    }, {
-        description: `Opens [TdExpansionPanelComponent]. Retuns "true" if successful, else "false".
-                  Can be accessed by referencing element in local variable.`,
-        name: 'open',
-        type: 'function()',
-    }, {
-        description: `Closes [TdExpansionPanelComponent]. Retuns "true" if successful, else "false".
-                  Can be accessed by referencing element in local variable.`,
-        name: 'close',
-        type: 'function()',
-    }],
-
-    expandCollapseExpansion1Msg: 'No expanded/collapsed detected yet',
-    expansion1: false,
-    disabled: false,
 
     toggleExpansion1: function() {
         if (!this.disabled) {
@@ -521,60 +487,7 @@ FdsDemo.prototype = {
 
     //</editor-fold>
 
-    //<editor-fold desc="Typeography">
-
-    colors: [
-        'red',
-        'pink',
-        'purple',
-        'deep-purple',
-        'indigo',
-        'blue',
-        'light-blue',
-        'cyan',
-        'teal',
-        'green',
-        'light-green',
-        'lime',
-        'yellow',
-        'amber',
-        'orange',
-        'deep-orange',
-    ],
-
-    neutrals: [
-        'brown',
-        'grey',
-        'blue-grey',
-    ],
-
-    //</editor-fold>
-
-    //<editor-fold desc="Dialogs">
-
-    dialogServiceMethods: [{
-        description: `Opens an alert dialog with the provided config.`,
-        name: 'openAlert',
-        type: 'function(IAlertConfig): MdDialogRef<TdAlertDialogComponent>',
-    }, {
-        description: `Opens a confirm dialog with the provided config.`,
-        name: 'openConfirm',
-        type: 'function(IConfirmConfig): MdDialogRef<TdConfirmDialogComponent>',
-    }, {
-        description: `Opens a prompt dialog with the provided config.`,
-        name: 'openPrompt',
-        type: 'function(IPromptConfig): MdDialogRef<TdPromptDialogComponent>',
-    }, {
-        description: `Wrapper function over the open() method in MdDialog.
-                  Opens a modal dialog containing the given component.`,
-        name: 'open',
-        type: 'function<T>(component: ComponentType<T>, config: MdDialogConfig): MdDialogRef<T>',
-    }, {
-        description: `Wrapper function over the closeAll() method in MdDialog.
-                  Closes all of the currently-open dialogs.`,
-        name: 'closeAll',
-        type: 'function()',
-    }],
+    //<editor-fold desc="Simple Dialogs">
 
     openAlert: function() {
         this.dialogService.openAlert({

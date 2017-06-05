@@ -11,7 +11,7 @@
         // map tells the System loader where to look for things
         map: {
             // our app is within the app folder
-            'app': 'src/webapp/js',
+            'app': 'src/webapp',
 
             // jquery bundles
             'jquery': 'npm:jquery/dist/jquery.min.js',
@@ -52,35 +52,35 @@
             '@fluid-design-system/core': 'npm:@fluid-design-system/dist/platform/core/fluid-design-system.module.js',
 
             // Nifi Registry
-            'fds.Demo': 'nifi-registry/src/webapp/js/fds-demo.js',
-            'nf.Registry': 'nifi-registry/src/webapp/js/nf-registry.js',
-            'nf.RegistryService': 'nifi-registry/src/webapp/js/nf-registry.service.js',
-            'nf.PageNotFoundComponent': 'nifi-registry/src/webapp/js/nf-registry-page-not-found.js',
-            'nf.RegistryExplorer': 'nifi-registry/src/webapp/js/nf-registry-explorer.js',
-            'nf.RegistryExplorerListViewer': 'nifi-registry/src/webapp/js/nf-registry-explorer-list-viewer.js',
-            'nf.RegistryExplorerGridListViewer': 'nifi-registry/src/webapp/js/nf-registry-explorer-grid-list-viewer.js',
-            'nf.RegistryBucketPermissionsManager': 'nifi-registry/src/webapp/js/nf-registry-bucket-permissions-manager.js',
-            'nf.RegistryBucketUserOrGroupPermissionsViewer': 'nifi-registry/src/webapp/js/nf-registry-bucket-user-or-group-permissions-viewer.js',
-            'nf.RegistryBucketUserPermissionsViewer': 'nifi-registry/src/webapp/js/nf-registry-bucket-user-permissions-viewer.js',
-            'nf.RegistryBucketGroupPermissionsViewer': 'nifi-registry/src/webapp/js/nf-registry-bucket-group-permissions-viewer.js',
-            'nf.RegistrySettings': 'nifi-registry/src/webapp/js/nf-registry-settings.js',
-            'nf.RegistryUsersAndGroups': 'nifi-registry/src/webapp/js/nf-registry-users-and-groups.js',
-            'nf.RegistryListViewer': 'nifi-registry/src/webapp/js/nf-registry-list-viewer.js',
-            'nf.RegistryGridListViewer': 'nifi-registry/src/webapp/js/nf-registry-grid-list-viewer.js',
-            'nf.RegistryBucketListViewer': 'nifi-registry/src/webapp/js/nf-registry-bucket-list-viewer.js',
-            'nf.RegistryDropletListViewer': 'nifi-registry/src/webapp/js/nf-registry-droplet-list-viewer.js',
-            'nf.RegistryDetailsViewer': 'nifi-registry/src/webapp/js/nf-registry-details-viewer.js',
-            'nf.RegistryBucketDetailsViewer': 'nifi-registry/src/webapp/js/nf-registry-bucket-details-viewer.js',
-            'nf.RegistryDropletDetailsViewer': 'nifi-registry/src/webapp/js/nf-registry-droplet-details-viewer.js'
+            'fds.Demo': 'nifi-registry/src/webapp/components/fluid-design-system/fds-demo.js',
+            'nf.Registry': 'nifi-registry/src/webapp/nf-registry.js',
+            'nf.RegistryService': 'nifi-registry/src/webapp/services/nf-registry.service.js',
+            'nf.PageNotFoundComponent': 'nifi-registry/src/webapp/components/page-not-found/nf-registry-page-not-found.js',
+            'nf.RegistryExplorer': 'nifi-registry/src/webapp/components/explorer/nf-registry-explorer.js',
+            'nf.RegistryExplorerListViewer': 'nifi-registry/src/webapp/components/explorer/list/nf-registry-explorer-list-viewer.js',
+            'nf.RegistryExplorerGridListViewer': 'nifi-registry/src/webapp/components/explorer/grid-list/nf-registry-explorer-grid-list-viewer.js',
+            'nf.RegistryBucketPermissionsManager': 'nifi-registry/src/webapp/components/manage/bucket/nf-registry-bucket-permissions-manager.js',
+            'nf.RegistryBucketUserOrGroupPermissionsViewer': 'nifi-registry/src/webapp/components/manage/bucket/user-or-group/nf-registry-bucket-user-or-group-permissions-viewer.js',
+            'nf.RegistryBucketUserPermissionsViewer': 'nifi-registry/src/webapp/components/manage/bucket/user-or-group/nf-registry-bucket-user-permissions-viewer.js',
+            'nf.RegistryBucketGroupPermissionsViewer': 'nifi-registry/src/webapp/components/manage/bucket/user-or-group/nf-registry-bucket-group-permissions-viewer.js',
+            'nf.RegistrySettings': 'nifi-registry/src/webapp/components/settings/nf-registry-settings.js',
+            'nf.RegistryUsersAndGroups': 'nifi-registry/src/webapp/components/users-and-groups/nf-registry-users-and-groups.js',
+            'nf.RegistryListViewer': 'nifi-registry/src/webapp/components/explorer/list/registry/nf-registry-list-viewer.js',
+            'nf.RegistryGridListViewer': 'nifi-registry/src/webapp/components/explorer/grid-list/registry/nf-registry-grid-list-viewer.js',
+            'nf.RegistryBucketListViewer': 'nifi-registry/src/webapp/components/explorer/list/registry/bucket/nf-registry-bucket-list-viewer.js',
+            'nf.RegistryDropletListViewer': 'nifi-registry/src/webapp/components/explorer/list/registry/bucket/droplet/nf-registry-droplet-list-viewer.js',
+            'nf.RegistryDetailsViewer': 'nifi-registry/src/webapp/components/explorer/list/registry/nf-registry-details-viewer.js',
+            'nf.RegistryBucketDetailsViewer': 'nifi-registry/src/webapp/components/explorer/list/registry/bucket/nf-registry-bucket-details-viewer.js',
+            'nf.RegistryDropletDetailsViewer': 'nifi-registry/src/webapp/components/explorer/list/registry/bucket/droplet/nf-registry-droplet-details-viewer.js'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
             app: {
-                main: 'nifi-registry/src/webapp/js/nf-registry-bootstrap.js',
+                main: 'nifi-registry/src/webapp/nf-registry-bootstrap.js',
                 defaultExtension: 'js',
                 meta: {
                     './*.js': {
-                        loader: 'nifi-registry/src/webapp/js/systemjs-angular-loader.js'
+                        loader: 'nifi-registry/src/webapp/systemjs-angular-loader.js'
                     }
                 }
             },

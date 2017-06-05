@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-function NfRegistryBucketUserOrGroupPermissionsViewer(nfRegistryService, ActivatedRoute) {
+function NfRegistryBucketPermissionsManager(nfRegistryService, ActivatedRoute) {
     this.subscription$;
     this.route = ActivatedRoute;
     this.nfRegistryService = nfRegistryService;
 };
 
-NfRegistryBucketUserOrGroupPermissionsViewer.prototype = {
-    constructor: NfRegistryBucketUserOrGroupPermissionsViewer,
+NfRegistryBucketPermissionsManager.prototype = {
+    constructor: NfRegistryBucketPermissionsManager,
     ngOnInit: function() {
         var self = this;
         /**
@@ -34,15 +34,20 @@ NfRegistryBucketUserOrGroupPermissionsViewer.prototype = {
          */
         this.subscription$ = this.route.params
             .switchMap(function(params) {
-                self.nfRegistryService.selectedUserId = params['userId'];
-                return self.nfRegistryService.getUser(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId, params['userId']);
+                self.nfRegistryService.selectedRegistryId = params['registryId'];
+                self.nfRegistryService.selectedBucketId = params['bucketId'];
+                return self.nfRegistryService.getRegistry(params['registryId']).then(
+                    function(registry) {
+                        self.nfRegistryService.registry = registry;
+                        return self.nfRegistryService.getBucket(params['registryId'], params['bucketId']);
+                    });
             })
-            .subscribe(user => this.nfRegistryService.user = user);
+            .subscribe(bucket => this.nfRegistryService.bucket = bucket);
     },
     ngOnDestroy: function() {
         this.subscription$.unsubscribe();
-        delete this.nfRegistryService.selectedUserId;
+        delete this.nfRegistryService.selectedDropletId;
     }
 };
 
-module.exports = NfRegistryBucketUserOrGroupPermissionsViewer;
+module.exports = NfRegistryBucketPermissionsManager;

@@ -48,7 +48,7 @@ var switchMap = require('switchMap');
 
 FdsDemo.annotations = [
     new ngCore.Component({
-        templateUrl: 'nifi-registry/src/webapp/views/fds-demo.html',
+        templateUrl: 'nifi-registry/src/webapp/components/fluid-design-system/fds-demo.html',
         // animations: [slideInDownAnimation],
         // host: {
         //   '[@routeAnimation]': 'routeAnimation',
@@ -67,7 +67,7 @@ NfPageNotFoundComponent.annotations = [
 
 NfRegistryExplorer.annotations = [
     new ngCore.Component({
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-explorer.html'
+        templateUrl: 'nifi-registry/src/webapp/components/explorer/nf-registry-explorer.html'
     })
 ];
 
@@ -76,7 +76,7 @@ NfRegistryExplorer.parameters = [NfRegistryService];
 
 NfRegistryExplorerListViewer.annotations = [
     new ngCore.Component({
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-explorer-list-viewer.html'
+        templateUrl: 'nifi-registry/src/webapp/components/explorer/list/nf-registry-explorer-list-viewer.html'
     })
 ];
 
@@ -85,7 +85,7 @@ NfRegistryExplorerListViewer.parameters = [NfRegistryService, ngRouter.Activated
 
 NfRegistryExplorerGridListViewer.annotations = [
     new ngCore.Component({
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-explorer-grid-list-viewer.html'
+        templateUrl: 'nifi-registry/src/webapp/components/explorer/grid-list/nf-registry-explorer-grid-list-viewer.html'
     })
 ];
 
@@ -95,115 +95,12 @@ NfRegistryExplorerGridListViewer.parameters = [NfRegistryService, ngRouter.Activ
 NfRegistryDetailsViewer.annotations = [
     new ngCore.Component({
         selector: 'nf-registry-details-viewer',
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-details-viewer.html'
+        templateUrl: 'nifi-registry/src/webapp/components/explorer/list/registry/nf-registry-details-viewer.html'
     })
 ];
 
 // inject the NfRegistryService
 NfRegistryDetailsViewer.parameters = [NfRegistryService];
-
-NfRegistryDropletDetailsViewer.annotations = [
-    new ngCore.Component({
-        selector: 'nf-registry-droplet-details-viewer',
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-droplet-details-viewer.html'
-    })
-];
-
-// inject the NfRegistryService
-NfRegistryDropletDetailsViewer.parameters = [NfRegistryService];
-
-NfRegistrySettings.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-settings.html'
-    })
-];
-
-// inject the NfRegistryService
-NfRegistrySettings.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryUsersAndGroups.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-users-and-groups.html'
-    })
-];
-
-// inject the NfRegistryService
-NfRegistryUsersAndGroups.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryListViewer.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-list-viewer.html'
-    })
-];
-
-// inject services
-NfRegistryListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryGridListViewer.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-grid-list-viewer.html'
-    })
-];
-
-// inject services
-NfRegistryGridListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryBucketDetailsViewer.annotations = [
-    new ngCore.Component({
-        selector: 'nf-registry-bucket-details-viewer',
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-bucket-details-viewer.html'
-    })
-];
-
-// inject the NfRegistryService
-NfRegistryBucketDetailsViewer.parameters = [NfRegistryService];
-
-NfRegistryBucketPermissionsManager.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-bucket-permissions-manager.html'
-    })
-];
-
-// inject the NfRegistryService
-NfRegistryBucketPermissionsManager.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryBucketListViewer.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-bucket-viewer.html'
-    })
-];
-
-// inject services
-NfRegistryBucketListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryBucketUserOrGroupPermissionsViewer.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-bucket-user-or-group-permissions-viewer.html'
-    })
-];
-
-// inject services
-NfRegistryBucketUserOrGroupPermissionsViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryBucketUserPermissionsViewer.annotations = [
-    new ngCore.Component({
-        selector: 'nf-registry-bucket-user-permissions-viewer',
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-bucket-user-permissions-viewer.html'
-    })
-];
-
-// inject services
-NfRegistryBucketUserPermissionsViewer.parameters = [NfRegistryService];
-
-NfRegistryBucketGroupPermissionsViewer.annotations = [
-    new ngCore.Component({
-        selector: 'nf-registry-bucket-group-permissions-viewer',
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry-bucket-group-permissions-viewer.html'
-    })
-];
-
-// inject services
-NfRegistryBucketGroupPermissionsViewer.parameters = [NfRegistryService];
 
 NfRegistryDropletListViewer.annotations = [
     new ngCore.Component({
@@ -214,10 +111,113 @@ NfRegistryDropletListViewer.annotations = [
 // inject services
 NfRegistryDropletListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
 
+NfRegistryDropletDetailsViewer.annotations = [
+    new ngCore.Component({
+        selector: 'nf-registry-droplet-details-viewer',
+        templateUrl: 'nifi-registry/src/webapp/components/explorer/list/registry/bucket/droplet/nf-registry-droplet-details-viewer.html'
+    })
+];
+
+// inject the NfRegistryService
+NfRegistryDropletDetailsViewer.parameters = [NfRegistryService];
+
+NfRegistrySettings.annotations = [
+    new ngCore.Component({
+        templateUrl: 'nifi-registry/src/webapp/components/settings/nf-registry-settings.html'
+    })
+];
+
+// inject the NfRegistryService
+NfRegistrySettings.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+
+NfRegistryUsersAndGroups.annotations = [
+    new ngCore.Component({
+        templateUrl: 'nifi-registry/src/webapp/components/users-and-groups/nf-registry-users-and-groups.html'
+    })
+];
+
+// inject the NfRegistryService
+NfRegistryUsersAndGroups.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+
+NfRegistryListViewer.annotations = [
+    new ngCore.Component({
+        templateUrl: 'nifi-registry/src/webapp/components/explorer/list/registry/nf-registry-list-viewer.html'
+    })
+];
+
+// inject services
+NfRegistryListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+
+NfRegistryGridListViewer.annotations = [
+    new ngCore.Component({
+        templateUrl: 'nifi-registry/src/webapp/components/explorer/grid-list/registry/nf-registry-grid-list-viewer.html'
+    })
+];
+
+// inject services
+NfRegistryGridListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+
+NfRegistryBucketDetailsViewer.annotations = [
+    new ngCore.Component({
+        selector: 'nf-registry-bucket-details-viewer',
+        templateUrl: 'nifi-registry/src/webapp/components/explorer/list/registry/bucket/nf-registry-bucket-details-viewer.html'
+    })
+];
+
+// inject the NfRegistryService
+NfRegistryBucketDetailsViewer.parameters = [NfRegistryService];
+
+NfRegistryBucketPermissionsManager.annotations = [
+    new ngCore.Component({
+        templateUrl: 'nifi-registry/src/webapp/components/manage/bucket/nf-registry-bucket-permissions-manager.html'
+    })
+];
+
+// inject the NfRegistryService
+NfRegistryBucketPermissionsManager.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+
+NfRegistryBucketListViewer.annotations = [
+    new ngCore.Component({
+        templateUrl: 'nifi-registry/src/webapp/components/explorer/list/registry/bucket/nf-registry-bucket-list-viewer.html'
+    })
+];
+
+// inject services
+NfRegistryBucketListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+
+NfRegistryBucketUserOrGroupPermissionsViewer.annotations = [
+    new ngCore.Component({
+        templateUrl: 'nifi-registry/src/webapp/components/manage/bucket/user-or-group/nf-registry-bucket-user-or-group-permissions-viewer.html'
+    })
+];
+
+// inject services
+NfRegistryBucketUserOrGroupPermissionsViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+
+NfRegistryBucketUserPermissionsViewer.annotations = [
+    new ngCore.Component({
+        selector: 'nf-registry-bucket-user-permissions-viewer',
+        templateUrl: 'nifi-registry/src/webapp/components/manage/bucket/user-or-group/nf-registry-bucket-user-permissions-viewer.html'
+    })
+];
+
+// inject services
+NfRegistryBucketUserPermissionsViewer.parameters = [NfRegistryService];
+
+NfRegistryBucketGroupPermissionsViewer.annotations = [
+    new ngCore.Component({
+        selector: 'nf-registry-bucket-group-permissions-viewer',
+        templateUrl: 'nifi-registry/src/webapp/components/manage/bucket/user-or-group/nf-registry-bucket-group-permissions-viewer.html'
+    })
+];
+
+// inject services
+NfRegistryBucketGroupPermissionsViewer.parameters = [NfRegistryService];
+
 NfRegistry.annotations = [
     new ngCore.Component({
         selector: 'nf-registry-app',
-        templateUrl: 'nifi-registry/src/webapp/views/nf-registry.html'
+        templateUrl: 'nifi-registry/src/webapp/nf-registry.html'
     })
 ];
 
@@ -275,7 +275,7 @@ NfRegistryAppModule.annotations = [
                 path: 'nifi-registry/manage/:registryId/:bucketId',
                 component: NfRegistryBucketPermissionsManager,
                 children: [{
-                        path: ':userId',
+                        path: ':userOrGroupId',
                         component: NfRegistryBucketUserOrGroupPermissionsViewer
                     }]
                     // as: "registry-manager",

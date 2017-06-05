@@ -1,0 +1,3 @@
+<nf-registry-bucket-user-permissions-viewer *ngIf="(nfRegistryService.selectedRegistryId && nfRegistryService.selectedBucketId && nfRegistryService.selectedUserId && (nfRegistryService.user.type === 'user'))">
+</nf-registry-bucket-user-permissions-viewer>
+<nf-registry-bucket-group-permissions-viewer *ngIf="(nfRegistryService.selectedRegistryId && nfRegistryService.selectedBucketId && nfRegistryService.selectedUserId && (nfRegistryService.user.type === 'group'))"></nf-registry-bucket-group-permissions-viewer>

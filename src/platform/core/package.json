@@ -1,18 +1,16 @@
 {
-  "name": "@hortonworks/core",
+  "name": "@fluid-design-system/core",
   "version": "0.0.0",
-  "description": "Hortonworks UI Platform built on Angular Material",
-  "main": "./core.umd.js",
-  "module": "./index.js",
-  "typings": "./index.d.ts",
+  "description": "Fluid Design System atomic UI Platform.",
+  "module": "./fluid-design-system.module.js",
   "keywords": [
-    "hortonworks",
     "fluid design system",
     "angular",
     "material",
     "material design",
     "components",
-    "reusable"
+    "reusable",
+    "covalent"
   ],
   "scripts": {
   },
@@ -28,9 +26,9 @@
     "url": "https://github.com/scottyaslan/nifi-registry/issues"
   },
   "license": "MIT",
-  "author": "Hortonworks UX",
+  "author": "Apache Nifi Registry",
   "contributors": [
-    "Scott Aslan <saslan@hortonworks.com>"
+    "Scott Aslan <scottyaslan@gmail.com>"
   ],
   "dependencies": {
     "@angular/flex-layout": "^2.0.0-beta.7",

@@ -1,6 +1,6 @@
 # core
 
-Core Teradata UI Platform for layouts, icons, custom components and themes. This should be added as a dependency for any project that wants to use layouts, icons and themes for Angular Material.
+Core NiFi Registry UI Platform for layouts, icons, custom components and themes. This should be added as a dependency for any project that wants to use layouts, icons and themes for Angular Material or Teradata Covalent.
 
 The core will have custom components that enforce standards and best practices through built-in design patterns.
 
@@ -10,29 +10,34 @@ The core will have custom components that enforce standards and best practices t
 This component can be installed as npm package.
 
 ```bash
-npm i -save @covalent/core
+npm i -save @fluid-design-system/core
 ```
 
 
 ## Setup
 
-Import the **[CovalentCoreModule]** in your NgModule:
+Import the **[FluidDesignSystemModule]** in your NgModule:
 
-```typescript
-import { CovalentCoreModule } from '@covalent/core';
-@NgModule({
-  imports: [
-    CovalentCoreModule,
+```javascript
+var fdsCore = require('@fluid-design-system/core');
+NfRegistryAppModule.prototype = {
+    constructor: NfRegistryAppModule
+};
+
+NfRegistryAppModule.annotations = [
+    new ngCore.NgModule({
+        imports: [
+            fdsCore,
     ...
   ],
   ...
 })
-export class MyModule {}
+...
 ```
 
 
 ## Styles, Icons and Theming
 
-See [theming](https://teradata.github.io/covalent/#/docs/theme) in the covalent docs for more info
+See [theming](https://nifi-registry.github.io) in the docs for more info.
 
-Core Teradata UI Platform comes with a base CSS file `@covalent/core/common/platform.css` (includes icons). 
+Core NiFi Registry UI Platform comes with a base CSS file `@fluid-design-system/core/common/styles/css/fluid-design-system.css` (includes icons).

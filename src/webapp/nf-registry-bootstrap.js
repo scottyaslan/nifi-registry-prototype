@@ -295,7 +295,13 @@ NfRegistryAppModule.annotations = [
                     // canActivate: [AuthGuard] //https://scotch.io/tutorials/routing-angular-2-single-page-apps-with-the-component-router
             }, {
                 path: 'nifi-registry',
-                redirectTo: '/nifi-registry/explorer/list',
+                redirectTo: '/nifi-registry/fluid-design-system',
+                pathMatch: 'full'
+                    // as: "registry",
+                    // canActivate: [AuthGuard] //https://scotch.io/tutorials/routing-angular-2-single-page-apps-with-the-component-router
+            }, {
+                path: '',
+                redirectTo: '/nifi-registry/fluid-design-system',
                 pathMatch: 'full'
                     // as: "registry",
                     // canActivate: [AuthGuard] //https://scotch.io/tutorials/routing-angular-2-single-page-apps-with-the-component-router
@@ -309,5 +315,4 @@ NfRegistryAppModule.annotations = [
 ];
 
 //bootstrap the module
-ngPlatformBrowserDynamic.platformBrowserDynamic().bootstrapModule(NfRegistryAppModule).then(function() {
-});
+ngPlatformBrowserDynamic.platformBrowserDynamic().bootstrapModule(NfRegistryAppModule).then(function() {});

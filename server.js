@@ -82,6 +82,9 @@ var NifiRegistry = function() {
         }
     };
     self.routes = function() {
+        self.app.get('/', function(req, res) {
+            res.render('src/webapp/index.html');
+        });
         self.app.get('/nifi-registry', function(req, res) {
             res.render('src/webapp/index.html');
         });

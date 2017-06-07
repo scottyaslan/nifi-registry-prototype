@@ -22,14 +22,9 @@ var ngForms = require('@angular/forms');
 var ngHttp = require('@angular/http');
 var ngPlatformBrowser = require('@angular/platform-browser');
 var ngAnimations = require('@angular/platform-browser/animations');
-// var fdsButtons = require('./buttons/buttons.module.js');
 var covalentCore = require('@covalent/core');
-var covalentForms = require('@covalent/dynamic-forms');
-// var covalentHighlight = require('@covalent/highlight');
-var covalentHttp = require('@covalent/http');
-var covalentMarkdown = require('@covalent/markdown');
 
-//add fds attr to body tag to allow style overrides
+//add fds attr to body tag to allow fine grain style overrides
 document.body.setAttribute('fds', '');
 
 //override the hover styles for checkbox borders
@@ -55,12 +50,7 @@ FluidDesignSystemModule.annotations = [
             ngPlatformBrowser.BrowserModule,
             ngHttp.HttpModule,
             ngHttp.JsonpModule,
-            // fdsButtons,
-            covalentCore.CovalentCoreModule,
-            covalentHttp.CovalentHttpModule.forRoot(),
-            // covalentHighlight.CovalentHighlightModule,
-            covalentMarkdown.CovalentMarkdownModule,
-            covalentForms.CovalentDynamicFormsModule
+            covalentCore.CovalentCoreModule
         ],
         exports: [
             ngAnimations.BrowserAnimationsModule,
@@ -69,12 +59,7 @@ FluidDesignSystemModule.annotations = [
             ngPlatformBrowser.BrowserModule,
             ngHttp.HttpModule,
             ngHttp.JsonpModule,
-            // fdsButtons,
-            covalentCore.CovalentCoreModule,
-            covalentHttp.CovalentHttpModule,
-            // covalentHighlight.CovalentHighlightModule,
-            covalentMarkdown.CovalentMarkdownModule,
-            covalentForms.CovalentDynamicFormsModule
+            covalentCore.CovalentCoreModule
         ],
     })
 ];

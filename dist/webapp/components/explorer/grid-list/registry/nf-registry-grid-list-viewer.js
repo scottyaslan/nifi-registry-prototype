@@ -15,6 +15,9 @@
  * limitations under the License.
  */
 
+var NUMBER_FORMAT = v => v;
+var DECIMAL_FORMAT = v => v.toFixed(2);
+
 function NfRegistryGridListViewer(nfRegistryService, ActivatedRoute) {
     this.subscription$;
     this.route = ActivatedRoute;
@@ -23,9 +26,11 @@ function NfRegistryGridListViewer(nfRegistryService, ActivatedRoute) {
 
 NfRegistryGridListViewer.prototype = {
     constructor: NfRegistryGridListViewer,
+
     ngOnInit: function() {
         var self = this;
         self.nfRegistryService.explorerViewType = 'grid-list';
+
         /**
          * The switchMap operator maps the id in the Observable route
          * parameters to a new Observable, the result of the
@@ -33,17 +38,29 @@ NfRegistryGridListViewer.prototype = {
          * component while a getRegistry request is still processing, switchMap
          * cancels the old request and then calls this.nfRegistryService.getRegistry() again.
          */
-        this.subscription$ = this.route.params
-            .switchMap(function(params) {
-                self.nfRegistryService.selectedRegistryId = params['registryId'];
-                delete self.nfRegistryService.selectedBucketId;
-                return self.nfRegistryService.getRegistry(params['registryId']);
+        self.subscription$ = self.route.params
+        .switchMap(function(params) {
+            self.nfRegistryService.selectedRegistryId = params['registryId'];
+            return self.nfRegistryService.getRegistry(params['registryId']);
+        })
+        .subscribe(function(registry) {
+            self.nfRegistryService.registry = registry;
+            self.nfRegistryService.getBuckets(self.nfRegistryService.selectedRegistryId).then(function(buckets) {
+                self.nfRegistryService.buckets = buckets;
+                self.nfRegistryService.getDroplets(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId, self.nfRegistryService.selectedDropletId).then(function(droplets) {
+                    self.nfRegistryService.droplets = self.nfRegistryService.filteredDroplets = droplets;
+                    self.nfRegistryService.filterDroplets();
+                });
             })
-            .subscribe(registry => this.nfRegistryService.registry = registry);
+        });
     },
     ngOnDestroy: function() {
         this.subscription$.unsubscribe();
-        delete this.nfRegistryService.selectedRegistryId;
+        this.nfRegistryService.selectedRegistryId = '';
+        this.nfRegistryService.registry = {};
+        this.nfRegistryService.buckets = [];
+        this.nfRegistryService.droplets = [];
+        this.nfRegistryService.filteredDroplets = [];
     }
 };
 

@@ -36,10 +36,12 @@ var NfRegistryUsersAndGroups = require('nf.RegistryUsersAndGroups');
 var NfRegistryListViewer = require('nf.RegistryListViewer');
 var NfRegistryGridListViewer = require('nf.RegistryGridListViewer');
 var NfRegistryBucketListViewer = require('nf.RegistryBucketListViewer');
+var NfRegistryBucketGridListViewer = require('nf.RegistryBucketGridListViewer');
 var NfRegistryDropletListViewer = require('nf.RegistryDropletListViewer');
+var NfRegistryDropletGridListViewer = require('nf.RegistryDropletGridListViewer');
 var NfRegistryDropletDetailsViewer = require('nf.RegistryDropletDetailsViewer');
 var NfPageNotFoundComponent = require('nf.PageNotFoundComponent');
-var $ = require('jquery');
+// var $ = require('jquery');
 var fdsCore = require('@fluid-design-system/core');
 var ngCore = require('@angular/core');
 var ngRouter = require('@angular/router');
@@ -111,6 +113,15 @@ NfRegistryDropletListViewer.annotations = [
 // inject services
 NfRegistryDropletListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
 
+NfRegistryDropletGridListViewer.annotations = [
+    new ngCore.Component({
+        templateUrl: 'nifi-registry/src/webapp/components/explorer/grid-list/registry/bucket/droplet/nf-registry-droplet-grid-list-viewer.html'
+    })
+];
+
+// inject services
+NfRegistryDropletGridListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+
 NfRegistryDropletDetailsViewer.annotations = [
     new ngCore.Component({
         selector: 'nf-registry-droplet-details-viewer',
@@ -146,7 +157,7 @@ NfRegistryListViewer.annotations = [
 ];
 
 // inject services
-NfRegistryListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+NfRegistryListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute, covalentCore.TdDataTableService];
 
 NfRegistryGridListViewer.annotations = [
     new ngCore.Component({
@@ -185,6 +196,15 @@ NfRegistryBucketListViewer.annotations = [
 // inject services
 NfRegistryBucketListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
 
+NfRegistryBucketGridListViewer.annotations = [
+    new ngCore.Component({
+        templateUrl: 'nifi-registry/src/webapp/components/explorer/grid-list/registry/bucket/nf-registry-bucket-grid-list-viewer.html'
+    })
+];
+
+// inject services
+NfRegistryBucketGridListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+
 NfRegistryBucketUserOrGroupPermissionsViewer.annotations = [
     new ngCore.Component({
         templateUrl: 'nifi-registry/src/webapp/components/manage/bucket/user-or-group/nf-registry-bucket-user-or-group-permissions-viewer.html'
@@ -213,6 +233,8 @@ NfRegistryBucketGroupPermissionsViewer.annotations = [
 
 // inject services
 NfRegistryBucketGroupPermissionsViewer.parameters = [NfRegistryService];
+
+NfRegistryService.parameters = [covalentCore.TdDataTableService];
 
 NfRegistry.annotations = [
     new ngCore.Component({
@@ -258,15 +280,15 @@ NfRegistryAppModule.annotations = [
                         component: NfRegistryExplorerGridListViewer,
                         children: [{
                             path: ':registryId',
-                            component: NfRegistryGridListViewer //,
-                                // children: [{
-                                //     path: ':bucketId',
-                                //     component: NfRegistryBucketGridListViewer,
-                                //     children: [{
-                                //         path: ':dropletId',
-                                //         component: NfRegistryDropletGridListViewer
-                                //     }]
-                                // }]
+                            component: NfRegistryGridListViewer,
+                                children: [{
+                                    path: ':bucketId',
+                                    component: NfRegistryBucketGridListViewer,
+                                    children: [{
+                                        path: ':dropletId',
+                                        component: NfRegistryDropletGridListViewer
+                                    }]
+                                }]
                         }]
                     }]
                     // as: "registry-explorer",
@@ -307,7 +329,7 @@ NfRegistryAppModule.annotations = [
                     // canActivate: [AuthGuard] //https://scotch.io/tutorials/routing-angular-2-single-page-apps-with-the-component-router
             }, { path: '**', component: NfPageNotFoundComponent }])
         ],
-        declarations: [FdsDemo, NfRegistry, NfRegistryDetailsViewer, NfRegistryExplorer, NfRegistryExplorerListViewer, NfRegistryExplorerGridListViewer, NfRegistryBucketDetailsViewer, NfRegistryBucketPermissionsManager, NfRegistryBucketUserOrGroupPermissionsViewer, NfRegistryBucketUserPermissionsViewer, NfRegistryBucketGroupPermissionsViewer, NfRegistrySettings, NfRegistryUsersAndGroups, NfRegistryListViewer, NfRegistryGridListViewer, NfRegistryBucketListViewer, NfRegistryDropletListViewer, NfRegistryDropletDetailsViewer, NfPageNotFoundComponent],
+        declarations: [FdsDemo, NfRegistry, NfRegistryDetailsViewer, NfRegistryExplorer, NfRegistryExplorerListViewer, NfRegistryExplorerGridListViewer, NfRegistryBucketDetailsViewer, NfRegistryBucketPermissionsManager, NfRegistryBucketUserOrGroupPermissionsViewer, NfRegistryBucketUserPermissionsViewer, NfRegistryBucketGroupPermissionsViewer, NfRegistrySettings, NfRegistryUsersAndGroups, NfRegistryListViewer, NfRegistryGridListViewer, NfRegistryBucketListViewer, NfRegistryBucketGridListViewer, NfRegistryDropletListViewer, NfRegistryDropletGridListViewer, NfRegistryDropletDetailsViewer, NfPageNotFoundComponent],
         //creates a service singletons to be available to all components of the app.
         providers: [NfRegistryService],
         bootstrap: [NfRegistry]

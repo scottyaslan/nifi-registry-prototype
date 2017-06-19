@@ -1,1 +1,9 @@
+<md-button-toggle-group class="nf-registry-explorer-view-toggle">
+    <md-button-toggle value="grid-list" routerLink="{{nfRegistryService.getExplorerViewRouterLink('grid-list')}}" [checked]="nfRegistryService.explorerViewType === 'grid-list'">
+        <i class="fa fa-list" aria-hidden="true"></i>
+    </md-button-toggle>
+    <md-button-toggle value="list" routerLink="{{nfRegistryService.getExplorerViewRouterLink('list')}}" [checked]="nfRegistryService.explorerViewType === 'list'">
+        <i class="fa fa-columns" aria-hidden="true"></i>
+    </md-button-toggle>
+</md-button-toggle-group>
 <router-outlet></router-outlet>

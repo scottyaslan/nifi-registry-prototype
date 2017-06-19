@@ -39,7 +39,7 @@ NfRegistryBucketPermissionsManager.prototype = {
                 return self.nfRegistryService.getRegistry(params['registryId']).then(
                     function(registry) {
                         self.nfRegistryService.registry = registry;
-                        return self.nfRegistryService.getBucket(params['registryId'], params['bucketId']);
+                        return self.nfRegistryService.getBuckets(params['registryId'], params['bucketId']);
                     });
             })
             .subscribe(bucket => this.nfRegistryService.bucket = bucket);

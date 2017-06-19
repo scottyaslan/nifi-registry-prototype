@@ -18,17 +18,17 @@
 
 /* Links */
 
-.link {
+body[fds] .link {
     color: $linkColor;
     font-size: 14px;
     text-decoration: none;
 }
 
-.link:hover {
+body[fds] .link:hover {
     text-decoration: underline;
 }
 
-.link .disabled {
+body[fds] .link .disabled {
     color: $linkColorDisabled;
     text-decoration: none;
 }

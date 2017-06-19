@@ -68,7 +68,9 @@
             'nf.RegistryListViewer': 'nifi-registry/src/webapp/components/explorer/list/registry/nf-registry-list-viewer.js',
             'nf.RegistryGridListViewer': 'nifi-registry/src/webapp/components/explorer/grid-list/registry/nf-registry-grid-list-viewer.js',
             'nf.RegistryBucketListViewer': 'nifi-registry/src/webapp/components/explorer/list/registry/bucket/nf-registry-bucket-list-viewer.js',
+            'nf.RegistryBucketGridListViewer': 'nifi-registry/src/webapp/components/explorer/grid-list/registry/bucket/nf-registry-bucket-grid-list-viewer.js',
             'nf.RegistryDropletListViewer': 'nifi-registry/src/webapp/components/explorer/list/registry/bucket/droplet/nf-registry-droplet-list-viewer.js',
+            'nf.RegistryDropletGridListViewer': 'nifi-registry/src/webapp/components/explorer/grid-list/registry/bucket/droplet/nf-registry-droplet-grid-list-viewer.js',
             'nf.RegistryDetailsViewer': 'nifi-registry/src/webapp/components/explorer/list/registry/nf-registry-details-viewer.js',
             'nf.RegistryBucketDetailsViewer': 'nifi-registry/src/webapp/components/explorer/list/registry/bucket/nf-registry-bucket-details-viewer.js',
             'nf.RegistryDropletDetailsViewer': 'nifi-registry/src/webapp/components/explorer/list/registry/bucket/droplet/nf-registry-droplet-details-viewer.js'

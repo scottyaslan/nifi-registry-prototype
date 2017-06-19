@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-function NfRegistryBucketViewer(nfRegistryService, ActivatedRoute) {
+function NfRegistryBucketListViewer(nfRegistryService, ActivatedRoute) {
     this.subscription$;
     this.route = ActivatedRoute;
     this.nfRegistryService = nfRegistryService;
 };
 
-NfRegistryBucketViewer.prototype = {
-    constructor: NfRegistryBucketViewer,
+NfRegistryBucketListViewer.prototype = {
+    constructor: NfRegistryBucketListViewer,
     ngOnInit: function() {
         var self = this;
         /**
@@ -35,14 +35,21 @@ NfRegistryBucketViewer.prototype = {
         this.subscription$ = this.route.params
             .switchMap(function(params) {
                 self.nfRegistryService.selectedBucketId = params['bucketId'];
-                return self.nfRegistryService.getBucket(self.nfRegistryService.selectedRegistryId, params['bucketId']);
+                return self.nfRegistryService.getBuckets(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId);
             })
-            .subscribe(bucket => this.nfRegistryService.bucket = bucket);
+            .subscribe(function(buckets){
+                self.nfRegistryService.bucket = buckets[0];
+                self.nfRegistryService.getDroplets(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId).then(function(droplets) {
+                    self.nfRegistryService.droplets = droplets;
+                });
+            });
     },
     ngOnDestroy: function() {
         this.subscription$.unsubscribe();
-        delete this.nfRegistryService.selectedBucketId;
+        this.nfRegistryService.selectedBucketId = '';
+        this.nfRegistryService.bucket = {};
+        this.nfRegistryService.droplets = [];
     }
 };
 
-module.exports = NfRegistryBucketViewer;
+module.exports = NfRegistryBucketListViewer;

@@ -19,6 +19,7 @@ var NfRegistryExplorer = require('nf.RegistryExplorer');
 
 var NUMBER_FORMAT = v => v;
 var DECIMAL_FORMAT = v => v.toFixed(2);
+var date = new Date();
 
 function FdsDemo(snackBarService, dialog, TdDialogService, TdDataTableService) {
 
@@ -109,9 +110,153 @@ function FdsDemo(snackBarService, dialog, TdDialogService, TdDataTableService) {
 
     //</editor-fold>
 
-    //<editor-fold desc="Data Tables">
+    //<editor-fold desc="Searchable Expansion Panels">
 
     this.dataTableService = TdDataTableService;
+
+    this.droplets = [{
+        id: '23f6cc59-0156-1000-09b4-2b0610089090',
+        name: "Decompression_Circular_Flow",
+        displayName: 'Decompressed Circular flow',
+        type: 'flow',
+        sublabel: 'A sublabel',
+        compliant: {
+            id: '25fd6vv87-3549-0001-05g6-4d4567890765',
+            label: 'Compliant',
+            type: 'certification'
+        },
+        fleet: {
+            id: '23f6cc59-3549-0001-05g6-4d4567890765',
+            label: 'Fleet',
+            type: 'certification'
+        },
+        prod: {
+            id: '52fd6vv87-3549-0001-05g6-4d4567890765',
+            label: 'Production Ready',
+            type: 'certification'
+        },
+        secure: {
+            id: '32f6cc59-3549-0001-05g6-4d4567890765',
+            label: 'Secure',
+            type: 'certification'
+        },
+        versions: [{
+            id: '23f6cc59-0156-1000-06b4-2b0810089090',
+            revision: '1',
+            dependentFlows: [{
+                id: '25fd6vv87-3549-0001-05g6-4d4567890765'
+            }],
+            created: date.setDate(date.getDate() - 1),
+            updated: new Date()
+        }, {
+            id: '25fd6vv87-3549-0001-05g6-4d4567890765',
+            revision: '2',
+            dependentFlows: [{
+                id: '23f6cc59-0156-1000-06b4-2b0810089090'
+            }],
+            created: new Date(),
+            updated: new Date()
+        }],
+        flows: [],
+        extensions: [],
+        assets: [],
+        actions: [{
+            'name': 'Delete',
+            'icon': 'fa fa-close',
+            'tooltip': 'Delete User'
+        }, {
+            'name': 'Manage',
+            'icon': 'fa fa-user',
+            'tooltip': 'Manage User'
+        }, {
+            'name': 'Action 3',
+            'icon': 'fa fa-question',
+            'tooltip': 'Whatever else we want to do...'
+        }]
+    }, {
+        id: '25fd6vv87-3249-0001-05g6-4d4767890765',
+        name: "DateConversion",
+        displayName: 'Date conversion',
+        type: 'asset',
+        sublabel: 'A sublabel',
+        compliant: {
+            id: '25fd6vv34-3549-0001-05g6-4d4567890765',
+            label: 'Compliant',
+            type: 'certification'
+        },
+        prod: {
+            id: '52vn6vv87-3549-0001-05g6-4d4567890765',
+            label: 'Production Ready',
+            type: 'certification'
+        },
+        versions: [{
+            id: '23f6ic59-0156-1000-06b4-2b0810089090',
+            revision: '1',
+            dependentFlows: [{
+                id: '23f6cc19-0156-1000-06b4-2b0810089090'
+            }],
+            created: new Date(),
+            updated: new Date()
+        }],
+        flows: [],
+        extensions: [],
+        assets: [],
+        actions: [{
+            'name': 'Delete',
+            'icon': 'fa fa-close',
+            'tooltip': 'Delete User'
+        }]
+    }, {
+        id: '52fd6vv87-3294-0001-05g6-4d4767890765',
+        name: "nifi-email-bundle",
+        displayName: 'nifi-email-bundle',
+        type: 'extension',
+        sublabel: 'A sublabel',
+        compliant: {
+            id: '33fd6vv87-3549-0001-05g6-4d4567890765',
+            label: 'Compliant',
+            test: {
+                label: 'test'
+            },
+            type: 'certification'
+        },
+        versions: [{
+            id: '23d3cc59-0156-1000-06b4-2b0810089090',
+            revision: '1',
+            dependentFlows: [{
+                id: '23f6cc89-0156-1000-06b4-2b0810089090'
+            }],
+            created: new Date(),
+            updated: new Date()
+        }],
+        flows: [],
+        extensions: [],
+        assets: [],
+        actions: [{
+            'name': 'Delete',
+            'icon': 'fa fa-close',
+            'tooltip': 'Delete User'
+        }, {
+            'name': 'Manage',
+            'icon': 'fa fa-user',
+            'tooltip': 'Manage User'
+        }, ]
+    }];
+
+    this.filteredDroplets = [];
+
+    this.dropletColumns = [
+        { name: 'id', label: 'ID', sortable: true },
+        { name: 'name', label: 'Name', sortable: true },
+        { name: 'displayName', label: 'Display Name', sortable: true },
+        { name: 'sublabel', label: 'Label', sortable: true },
+        { name: 'type', label: 'Type', sortable: true }
+    ];
+
+    this.autoCompleteDroplets = [];
+    this.dropletsSearchTerms = [];
+
+    //</editor-fold>
 
     this.data = [{
         'id': 1,
@@ -518,6 +663,163 @@ FdsDemo.prototype = {
 
     //</editor-fold>
 
+    //<editor-fold desc="Searchable Expansion Panels">
+
+    isDropletFilterChecked: function(term) {
+        return (this.dropletsSearchTerms.indexOf(term) > -1);
+    },
+
+    getDropletTypeCount: function(type) {
+        return this.filteredDroplets.filter(function(droplet) {
+            return droplet.type === type;
+        }).length;
+    },
+
+    getDropletCertificationCount: function(certification) {
+        return this.filteredDroplets.filter(droplet => {
+            return Object.keys(droplet).find((key) => {
+                if (key === certification && droplet[certification].type === 'certification') {
+                    return droplet;
+                }
+            });
+        }).length;
+    },
+
+    getSortBy: function() {
+        var sortByColumnLabel;
+        var arrayLength = this.dropletColumns.length;
+        for (var i = 0; i < arrayLength; i++) {
+            if (this.dropletColumns[i].active === true) {
+                sortByColumnLabel = this.dropletColumns[i].label;
+                break;
+            }
+        }
+        return sortByColumnLabel;
+    },
+
+    sortDroplets: function(sortEvent, column) {
+        if (column.sortable === true) {
+            // toggle column sort order
+            var sortOrder = column.sortOrder = (column.sortOrder === 'ASC') ? 'DESC' : 'ASC';
+            this.filterDroplets(column.name, sortOrder);
+            this.activeColumn = column;
+            //only one column can be actively sorted so we reset all to inactive
+            this.dropletColumns.forEach(c => c.active = false);
+            //and set this column as the actively sorted column
+            column.active = true;
+        }
+    },
+
+    dropletsSearchRemove: function(searchTerm) {
+        this.filterDroplets(this.activeColumn.name, this.activeColumn.sortOrder);
+    },
+
+    dropletsSearchAdd: function(searchTerm) {
+        this.filterDroplets(this.activeColumn.name, this.activeColumn.sortOrder);
+    },
+
+    toggleDropletsFilter: function(searchTerm) {
+        var applySearchTerm = true;
+        // check if the search term is already applied and remove it if true
+        if (this.dropletsSearchTerms.length > 0) {
+            var arrayLength = this.dropletsSearchTerms.length;
+            for (var i = 0; i < arrayLength; i++) {
+                var index = this.dropletsSearchTerms.indexOf(searchTerm);
+                if (index > -1) {
+                    this.dropletsSearchTerms.splice(index, 1);
+                    applySearchTerm = false;
+                }
+            }
+        }
+
+        // if we just removed the search term do NOT apply it again
+        if (applySearchTerm) {
+            this.dropletsSearchTerms.push(searchTerm);
+        }
+
+        this.filterDroplets(this.activeColumn.name, this.activeColumn.sortOrder);
+    },
+
+    filterDroplets: function(sortBy, sortOrder) {
+        // if `sortBy` is `undefined` then find the first sortable column in this.dropletColumns
+        if (sortBy === undefined) {
+            var arrayLength = this.dropletColumns.length;
+            for (var i = 0; i < arrayLength; i++) {
+                if (this.dropletColumns[i].sortable === true) {
+                    sortBy = this.dropletColumns[i].name;
+                    this.activeColumn = this.dropletColumns[i];
+                    //only one column can be actively sorted so we reset all to inactive
+                    this.dropletColumns.forEach(c => c.active = false);
+                    //and set this column as the actively sorted column
+                    this.dropletColumns[i].active = true;
+                    break;
+                }
+            }
+        }
+
+        // if `sortOrder` is `undefined` then use 'ASC'
+        if (sortOrder === undefined) {
+            sortOrder = 'ASC'
+        }
+
+        var newData = this.droplets;
+
+        for (var i = 0; i < this.dropletsSearchTerms.length; i++) {
+            newData = this.filterData(newData, this.dropletsSearchTerms[i], true, this.activeColumn.name);
+        }
+
+        newData = this.dataTableService.sortData(newData, sortBy, sortOrder);
+        this.filteredDroplets = newData;
+        this.getAutoCompleteDroplets();
+    },
+
+    getAutoCompleteDroplets: function() {
+        this.autoCompleteDroplets = [];
+        this.dropletColumns.forEach(c => this.filteredDroplets.forEach(r => (r[c.name.toLowerCase()]) ? this.autoCompleteDroplets.push(r[c.name.toLowerCase()].toString()) : ''));
+    },
+
+    //</editor-fold>
+
+    filterData: function(data, searchTerm, ignoreCase) {
+        var field = '';
+        if (searchTerm.indexOf(":") > -1) {
+            field = searchTerm.split(':')[0].trim();
+            searchTerm = searchTerm.split(':')[1].trim();
+        }
+        var filter = searchTerm ? (ignoreCase ? searchTerm.toLowerCase() : searchTerm) : '';
+
+        if (filter) {
+            data = data.filter(item => {
+                var res = Object.keys(item).find((key) => {
+                    if (field.indexOf(".") > -1) {
+                        var objArray = field.split(".");
+                        var obj = item;
+                        var arrayLength = objArray.length;
+                        for (var i = 0; i < arrayLength; i++) {
+                            try {
+                                obj = obj[objArray[i]];
+                            } catch (e) {
+                                return false;
+                            }
+                        }
+                        var preItemValue = ('' + obj);
+                        var itemValue = ignoreCase ? preItemValue.toLowerCase() : preItemValue;
+                        return itemValue.indexOf(filter) > -1;
+                    } else {
+                        if (key !== field && field !== '') {
+                            return false;
+                        }
+                        var preItemValue = ('' + item[key]);
+                        var itemValue = ignoreCase ? preItemValue.toLowerCase() : preItemValue;
+                        return itemValue.indexOf(filter) > -1;
+                    }
+                });
+                return !(typeof res === 'undefined');
+            });
+        }
+        return data;
+    },
+
     //<editor-fold desc="Data Tables">
 
     sort: function(sortEvent, column) {
@@ -554,25 +856,6 @@ FdsDemo.prototype = {
         this.filter();
     },
 
-    filterData: function(data, searchTerm, ignoreCase, columnName) {
-        var filter = searchTerm ? (ignoreCase ? searchTerm.toLowerCase() : searchTerm) : '';
-        var field = columnName ? (ignoreCase ? columnName.toLowerCase() : columnName) : '';
-        if (filter) {
-            data = data.filter(item => {
-                var res = Object.keys(item).find((key) => {
-                    if (key !== field && field !== '') {
-                        return false;
-                    }
-                    var preItemValue = ('' + item[key]);
-                    var itemValue = ignoreCase ? preItemValue.toLowerCase() : preItemValue;
-                    return itemValue.indexOf(filter) > -1;
-                });
-                return !(typeof res === 'undefined');
-            });
-        }
-        return data;
-    },
-
     filter: function(sortBy, sortOrder) {
         if (this.allRowsSelected) {
             this.toggleSelectAll();
@@ -580,17 +863,8 @@ FdsDemo.prototype = {
         this.deselectAll();
         var newData = this.data;
 
-        if (this.searchTerm.length > 0) {
-            for (var i = 0; i < this.searchTerm.length; i++) {
-                //account for column/field name specific search syntax
-                if (this.searchTerm[i].indexOf(":") > -1) {
-                    newData = this.filterData(newData, this.searchTerm[i].split(':')[1].trim(), true, this.searchTerm[i].split(':')[0].trim());
-                } else { //otherwise search all cells
-                    newData = this.filterData(newData, this.searchTerm[i], true);
-                }
-            }
-        } else {
-            newData = this.dataTableService.filterData(newData, '', true);
+        for (var i = 0; i < this.searchTerm.length; i++) {
+            newData = this.filterData(newData, this.searchTerm[i], true);
         }
         this.filteredTotal = newData.length;
         newData = this.dataTableService.sortData(newData, sortBy, sortOrder);
@@ -664,7 +938,7 @@ FdsDemo.prototype = {
 
     getAutoCompleteData: function() {
         this.autoCompleteData = [];
-        this.columns.forEach(c => this.filteredData.forEach(r => (r[c.name.toLowerCase()]) ? this.autoCompleteData.push(r[c.name.toLowerCase()].toString()):''));
+        this.columns.forEach(c => this.filteredData.forEach(r => (r[c.name.toLowerCase()]) ? this.autoCompleteData.push(r[c.name.toLowerCase()].toString()) : ''));
     },
 
     //</editor-fold>
@@ -681,7 +955,8 @@ FdsDemo.prototype = {
 
     ngOnInit: function() {
         this.filter();
-        this.getAutoCompleteData();
+        this.filterDroplets();
+        this.getAutoCompleteDroplets();
     }
 
     //</editor-fold>

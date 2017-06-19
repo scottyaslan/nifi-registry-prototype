@@ -15,34 +15,30 @@
  * limitations under the License.
  */
 
-function NfRegistryDropletViewer(nfRegistryService, ActivatedRoute) {
+function NfRegistryDropletListViewer(nfRegistryService, ActivatedRoute) {
     this.subscription$;
     this.route = ActivatedRoute;
     this.nfRegistryService = nfRegistryService;
 };
 
-NfRegistryDropletViewer.prototype = {
-    constructor: NfRegistryDropletViewer,
+NfRegistryDropletListViewer.prototype = {
+    constructor: NfRegistryDropletListViewer,
     ngOnInit: function() {
         var self = this;
-        /**
-         * The switchMap operator maps the id in the Observable route
-         * parameters to a new Observable, the result of the
-         * this.nfRegistryService.getBucket() method. If a user re-navigates to this
-         * component while a getBucket request is still processing, switchMap
-         * cancels the old request and then calls this.nfRegistryService.getBucket() again.
-         */
         this.subscription$ = this.route.params
             .switchMap(function(params) {
                 self.nfRegistryService.selectedDropletId = params['dropletId'];
-                return self.nfRegistryService.getDroplet(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId, params['dropletId']);
+                return self.nfRegistryService.getDroplets(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId, self.nfRegistryService.selectedDropletId);
             })
-            .subscribe(droplet => this.nfRegistryService.droplet = droplet);
+            .subscribe(function(droplets) {
+                    self.nfRegistryService.droplet = droplets[0];
+                });
     },
     ngOnDestroy: function() {
         this.subscription$.unsubscribe();
-        delete this.nfRegistryService.selectedDropletId;
+        this.nfRegistryService.selectedDropletId = '';
+        this.nfRegistryService.droplet = {};
     }
 };
 
-module.exports = NfRegistryDropletViewer;
+module.exports = NfRegistryDropletListViewer;

@@ -4,7 +4,7 @@
         Lorem ipsum dolor sit amet, wisi leo elit penatibus porttitor, nunc hendrerit, non habitant enim ridiculus. In bibendum et nibh venenatis laoreet. Dignissim lectus mollis, leo donec ac erat sollicitudin, lobortis suscipit, sed amet duis. Sed occaecati nec iaculis curabitur mi. Proin facilisis fermentum ante eget, scelerisque doloremque tortor neque urna vel, sed arcu mollis accumsan sem nullam porttitor, rhoncus lorem sed hymenaeos pellentesque magna. Consequat erat pede mi sagittis, eleifend lorem pharetra at nonummy ipsum fusce, commodo quis nec sed, in mus ipsum ut, vulputate vulputate mus pellentesque. Rhoncus integer maecenas ac vitae, etiam ut vitae eu purus lectus sodales, sed mi, sed at, arcu in dui. Faucibus lacinia vivamus iaculis, ut tincidunt porta quam mollis. Pede ridiculus odio nec wisi id. Quis nam felis in sit, dapibus vestibulum consectetuer sit sed mauris, lectus tempus, eu tincidunt dignissim ut quis urna donec
     </div>
     <div id="nf-registry-users-and-groups-viewer">
-        <div *ngIf="nfRegistryService.registry">
+        <div *ngIf="nfRegistryService.registry.buckets">
             <div class="list-header description">Authorized Users ({{nfRegistryService.getUserCount()}})</div>
             <md-list>
                 <md-list-item [attr.focus]="((user.id === nfRegistryService.selectedUserId) || (user.checked)) ? '' : null" *ngFor="let user of nfRegistryService.bucket.users">

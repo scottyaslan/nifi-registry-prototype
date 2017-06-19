@@ -807,6 +807,576 @@
         </md-card-content>
     </md-card>
     <md-card>
+        <md-card-title class="pad-bottom-sm">Searchable Expansion Panels</md-card-title>
+        <md-divider></md-divider>
+        <md-card-content>
+            <p>Example table with: Paging Bar / Filter / Sortable Columns / Multi-select with available Actions</p>
+            <md-tab-group md-stretch-tabs>
+                <md-tab>
+                    <ng-template md-tab-label>Demo</ng-template>
+                    <div class="pad-top-md pad-bottom-md pad-right-xxl pad-left-xxl">
+                        <div class="pad-top-md pad-bottom-sm">
+                            <md-button-toggle-group fxLayout="row" fxLayoutAlign="space-between center" class="expansion-panel-filter-toggle-group" multiple>
+                                <md-button-toggle (change)="toggleDropletsFilter('type:asset')" [checked]="isDropletFilterChecked('type:asset')">
+                                    <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                                        <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletTypeCount('asset')}}</div>
+                                        <div class="pad-top-sm" fxFlex="45">Assets</div>
+                                    </div>
+                                </md-button-toggle>
+                                <md-button-toggle (change)="toggleDropletsFilter('type:extension')" [checked]="isDropletFilterChecked('type:extension')">
+                                    <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                                        <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletTypeCount('extension')}}</div>
+                                        <div class="pad-top-sm" fxFlex="45">Extensions</div>
+                                    </div>
+                                </md-button-toggle>
+                                <md-button-toggle (change)="toggleDropletsFilter('type:flow')" [checked]="isDropletFilterChecked('type:flow')">
+                                    <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                                        <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletTypeCount('flow')}}</div>
+                                        <div class="pad-top-sm" fxFlex="45">Flows</div>
+                                    </div>
+                                </md-button-toggle>
+                                <md-button-toggle (change)="toggleDropletsFilter('compliant.label:Compliant')" [checked]="isDropletFilterChecked('compliant.label:Compliant')">
+                                    <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                                        <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletCertificationCount('compliant')}}</div>
+                                        <div class="pad-top-sm" fxFlex="45">Compliant</div>
+                                    </div>
+                                </md-button-toggle>
+                                <md-button-toggle (change)="toggleDropletsFilter('fleet.label:Fleet')" [checked]="isDropletFilterChecked('fleet.label:Fleet')">
+                                    <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                                        <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletCertificationCount('fleet')}}</div>
+                                        <div class="pad-top-sm" fxFlex="45">Fleet</div>
+                                    </div>
+                                </md-button-toggle>
+                                <md-button-toggle (change)="toggleDropletsFilter('prod.label:Production Ready')" [checked]="isDropletFilterChecked('prod.label:Production Ready')">
+                                    <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                                        <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletCertificationCount('prod')}}</div>
+                                        <div class="pad-top-sm" fxFlex="45">Production Ready</div>
+                                    </div>
+                                </md-button-toggle>
+                                <md-button-toggle (change)="toggleDropletsFilter('secure.label:Secure')" [checked]="isDropletFilterChecked('secure.label:Secure')">
+                                    <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                                        <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletCertificationCount('secure')}}</div>
+                                        <div class="pad-top-sm" fxFlex="45">Secure</div>
+                                    </div>
+                                </md-button-toggle>
+                            </md-button-toggle-group>
+                            <button *ngIf="activeColumn" md-button color="primary" (click)="dropletsSearchTerms = [];filterDroplets(activeColumn.name, activeColumn.sortOrder);">Clear Grouping</button>
+                        </div>
+                        <div layout="row" layout-align="space-between center">
+                            <div flex fxLayout="row" fxLayoutAlign="end center">
+                                <td-chips [(ngModel)]="dropletsSearchTerms" [items]="autoCompleteDroplets" (add)="dropletsSearchAdd($event)" (remove)="dropletsSearchRemove($event)" class="push-right-sm"></td-chips>
+                                <span class="pad-right-sm">Sort by:</span>
+                                <button color="fds-primary" md-raised-button [mdMenuTriggerFor]="dropletGridSortMenu">
+                                    {{getSortBy()}}<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <md-menu class="fds-primary-dropdown-button-menu" #dropletGridSortMenu="mdMenu" [overlapTrigger]="false">
+                                <div *ngFor="let column of dropletColumns">
+                                    <button md-menu-item *ngIf="column.sortable" (click)="sortDroplets($event, column);">{{column.label}} {{(column.sortOrder === 'ASC') ? 'DESC' : 'ASC'}}</button>
+                                </div>
+                            </md-menu>
+                        </div>
+                    </div>
+                    <div class="pad-right-xxl pad-left-xxl">
+                        <div *ngFor="let droplet of filteredDroplets">
+                            <td-expansion-panel class="mat-elevation-z5" label={{droplet.label}} sublabel={{droplet.sublabel}} [disabled]="disabled">
+                                <ng-template td-expansion-panel-label>
+                                    <div fxLayout="column" fxLayoutAlign="space-between start">
+                                        <span class="md-title capitalize">{{droplet.displayName}}</span>
+                                        <span class="md-subhead">{{droplet.type}}</span>
+                                    </div>
+                                </ng-template>
+                                <ng-template td-expansion-panel-sublabel>
+                                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                                        <div class="pad-right-xxl pad-left-xxl" fxLayout="column" fxLayoutAlign="space-between start">
+                                            <span class="uppercase">Versions</span> {{droplet.versions.length}}
+                                        </div>
+                                        <div class="pad-right-xxl pad-left-xxl" fxLayout="column" fxLayoutAlign="space-between start">
+                                            <span class="uppercase">Flows</span> {{droplet.flows.length}}
+                                        </div>
+                                        <div class="pad-right-xxl pad-left-xxl" fxLayout="column" fxLayoutAlign="space-between start">
+                                            <span class="uppercase">Extensions</span> {{droplet.extensions.length}}
+                                        </div>
+                                        <div class="pad-right-xxl pad-left-xxl" fxLayout="column" fxLayoutAlign="space-between start">
+                                            <span class="uppercase">Assests</span> {{droplet.assets.length}}
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <div class="md-padding">
+                                    <div fxLayout="column" fxLayoutAlign="space-between stretch">
+                                        <div class="pad-bottom-sm" fxLayout="row" fxLayoutAlign="end center">
+                                            <button color="fds-primary" [mdMenuTriggerFor]="primaryButtonDropdownMenu" md-raised-button>
+                                                Actions<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                            </button>
+                                            <md-menu class="fds-primary-dropdown-button-menu" #primaryButtonDropdownMenu="mdMenu" [overlapTrigger]="false">
+                                                <button md-menu-item *ngFor="let action of droplet.actions">
+                                                    <span>{{action.name}}</span>
+                                                </button>
+                                            </md-menu>
+                                        </div>
+                                        <div fxLayout="row">
+                                            <div fxFlex="25">
+                                                <span class="uppercase">Description</span>
+                                                <p>Blah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah bla</p>
+                                            </div>
+                                            <div fxFlex="50">
+                                                <md-card fxFlex>
+                                                    <md-card-content class="pad-top-sm">
+                                                        <img src="{{droplet.img}}">
+                                                    </md-card-content>
+                                                </md-card>
+                                            </div>
+                                            <div fxFlex="25">
+                                                <span class="uppercase">Change Log</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td-expansion-panel>
+                            <div class="pad-bottom-sm"></div>
+                        </div>
+                    </div>
+                </md-tab>
+                <md-tab>
+                    <ng-template md-tab-label>Code</ng-template>
+                    <p>HTML:</p>
+                    <pre lang="html">
+                        <![CDATA[
+        <div class="pad-top-md pad-bottom-md pad-right-xxl pad-left-xxl">
+            <div class="pad-top-md pad-bottom-sm">
+                <md-button-toggle-group fxLayout="row" fxLayoutAlign="space-between center" class="expansion-panel-filter-toggle-group" multiple>
+                    <md-button-toggle (change)="toggleDropletsFilter('type:asset')" [checked]="isDropletFilterChecked('type:asset')">
+                        <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                            <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletTypeCount('asset')}}</div>
+                            <div class="pad-top-sm" fxFlex="45">Assets</div>
+                        </div>
+                    </md-button-toggle>
+                    <md-button-toggle (change)="toggleDropletsFilter('type:extension')" [checked]="isDropletFilterChecked('type:extension')">
+                        <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                            <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletTypeCount('extension')}}</div>
+                            <div class="pad-top-sm" fxFlex="45">Extensions</div>
+                        </div>
+                    </md-button-toggle>
+                    <md-button-toggle (change)="toggleDropletsFilter('type:flow')" [checked]="isDropletFilterChecked('type:flow')">
+                        <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                            <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletTypeCount('flow')}}</div>
+                            <div class="pad-top-sm" fxFlex="45">Flows</div>
+                        </div>
+                    </md-button-toggle>
+                    <md-button-toggle (change)="toggleDropletsFilter('compliant.label:Compliant')" [checked]="isDropletFilterChecked('compliant.label:Compliant')">
+                        <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                            <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletCertificationCount('compliant')}}</div>
+                            <div class="pad-top-sm" fxFlex="45">Compliant</div>
+                        </div>
+                    </md-button-toggle>
+                    <md-button-toggle (change)="toggleDropletsFilter('fleet.label:Fleet')" [checked]="isDropletFilterChecked('fleet.label:Fleet')">
+                        <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                            <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletCertificationCount('fleet')}}</div>
+                            <div class="pad-top-sm" fxFlex="45">Fleet</div>
+                        </div>
+                    </md-button-toggle>
+                    <md-button-toggle (change)="toggleDropletsFilter('prod.label:Production Ready')" [checked]="isDropletFilterChecked('prod.label:Production Ready')">
+                        <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                            <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletCertificationCount('prod')}}</div>
+                            <div class="pad-top-sm" fxFlex="45">Production Ready</div>
+                        </div>
+                    </md-button-toggle>
+                    <md-button-toggle (change)="toggleDropletsFilter('secure.label:Secure')" [checked]="isDropletFilterChecked('secure.label:Secure')">
+                        <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                            <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletCertificationCount('secure')}}</div>
+                            <div class="pad-top-sm" fxFlex="45">Secure</div>
+                        </div>
+                    </md-button-toggle>
+                </md-button-toggle-group>
+                <button *ngIf="activeColumn" md-button color="primary" (click)="dropletsSearchTerms = [];filterDroplets(activeColumn.name, activeColumn.sortOrder);">Clear Grouping</button>
+            </div>
+            <div layout="row" layout-align="space-between center">
+                <div flex fxLayout="row" fxLayoutAlign="end center">
+                    <td-chips [(ngModel)]="dropletsSearchTerms" [items]="autoCompleteDroplets" (add)="dropletsSearchAdd($event)" (remove)="dropletsSearchRemove($event)" class="push-right-sm"></td-chips>
+                    <span class="pad-right-sm">Sort by:</span>
+                    <button color="fds-primary" md-raised-button [mdMenuTriggerFor]="dropletGridSortMenu">
+                        {{getSortBy()}}<i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <md-menu class="fds-primary-dropdown-button-menu" #dropletGridSortMenu="mdMenu" [overlapTrigger]="false">
+                    <div *ngFor="let column of dropletColumns">
+                        <button md-menu-item *ngIf="column.sortable" (click)="sortDroplets($event, column);">{{column.label}} {{(column.sortOrder === 'ASC') ? 'DESC' : 'ASC'}}</button>
+                    </div>
+                </md-menu>
+            </div>
+        </div>
+        <div class="pad-right-xxl pad-left-xxl">
+            <div *ngFor="let droplet of filteredDroplets">
+                <td-expansion-panel class="mat-elevation-z5" label={{droplet.label}} sublabel={{droplet.sublabel}} [disabled]="disabled">
+                    <ng-template td-expansion-panel-label>
+                        <div fxLayout="column" fxLayoutAlign="space-between start">
+                            <span class="md-title capitalize">{{droplet.displayName}}</span>
+                            <span class="md-subhead">{{droplet.type}}</span>
+                        </div>
+                    </ng-template>
+                    <ng-template td-expansion-panel-sublabel>
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                            <div class="pad-right-xxl pad-left-xxl" fxLayout="column" fxLayoutAlign="space-between start">
+                                <span class="uppercase">Versions</span> {{droplet.versions.length}}
+                            </div>
+                            <div class="pad-right-xxl pad-left-xxl" fxLayout="column" fxLayoutAlign="space-between start">
+                                <span class="uppercase">Flows</span> {{droplet.flows.length}}
+                            </div>
+                            <div class="pad-right-xxl pad-left-xxl" fxLayout="column" fxLayoutAlign="space-between start">
+                                <span class="uppercase">Extensions</span> {{droplet.extensions.length}}
+                            </div>
+                            <div class="pad-right-xxl pad-left-xxl" fxLayout="column" fxLayoutAlign="space-between start">
+                                <span class="uppercase">Assests</span> {{droplet.assets.length}}
+                            </div>
+                        </div>
+                    </ng-template>
+                    <div class="md-padding">
+                        <div fxLayout="column" fxLayoutAlign="space-between stretch">
+                            <div class="pad-bottom-sm" fxLayout="row" fxLayoutAlign="end center">
+                                <button color="fds-primary" [mdMenuTriggerFor]="primaryButtonDropdownMenu" md-raised-button>
+                                    Actions<i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </button>
+                                <md-menu class="fds-primary-dropdown-button-menu" #primaryButtonDropdownMenu="mdMenu" [overlapTrigger]="false">
+                                    <button md-menu-item *ngFor="let action of droplet.actions">
+                                        <span>{{action.name}}</span>
+                                    </button>
+                                </md-menu>
+                            </div>
+                            <div fxLayout="row">
+                                <div fxFlex="25">
+                                    <span class="uppercase">Description</span>
+                                    <p>Blah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah blaBlah blah bla, bla bla, blah blah bla</p>
+                                </div>
+                                <div fxFlex="50">
+                                    <md-card fxFlex>
+                                        <md-card-content class="pad-top-sm">
+                                            <img src="{{droplet.img}}">
+                                        </md-card-content>
+                                    </md-card>
+                                </div>
+                                <div fxFlex="25">
+                                    <span class="uppercase">Change Log</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td-expansion-panel>
+                <div class="pad-bottom-sm"></div>
+            </div>
+        </div>
+          ]]>
+                    </pre>
+                    <p>Javascript:</p>
+                    <pre lang="javascript">
+                        <![CDATA[
+        this.dataTableService = TdDataTableService;
+
+        this.droplets = [{
+            id: '23f6cc59-0156-1000-09b4-2b0610089090',
+            name: "Decompression_Circular_Flow",
+            displayName: 'Decompressed Circular flow',
+            type: 'flow',
+            sublabel: 'A sublabel',
+            compliant: {
+                id: '25fd6vv87-3549-0001-05g6-4d4567890765',
+                label: 'Compliant',
+                type: 'certification'
+            },
+            fleet: {
+                id: '23f6cc59-3549-0001-05g6-4d4567890765',
+                label: 'Fleet',
+                type: 'certification'
+            },
+            prod: {
+                id: '52fd6vv87-3549-0001-05g6-4d4567890765',
+                label: 'Production Ready',
+                type: 'certification'
+            },
+            secure: {
+                id: '32f6cc59-3549-0001-05g6-4d4567890765',
+                label: 'Secure',
+                type: 'certification'
+            },
+            versions: [{
+                id: '23f6cc59-0156-1000-06b4-2b0810089090',
+                revision: '1',
+                dependentFlows: [{
+                    id: '25fd6vv87-3549-0001-05g6-4d4567890765'
+                }],
+                created: date.setDate(date.getDate() - 1),
+                updated: new Date()
+            }, {
+                id: '25fd6vv87-3549-0001-05g6-4d4567890765',
+                revision: '2',
+                dependentFlows: [{
+                    id: '23f6cc59-0156-1000-06b4-2b0810089090'
+                }],
+                created: new Date(),
+                updated: new Date()
+            }],
+            flows: [],
+            extensions: [],
+            assets: [],
+            actions: [{
+                'name': 'Delete',
+                'icon': 'fa fa-close',
+                'tooltip': 'Delete User'
+            }, {
+                'name': 'Manage',
+                'icon': 'fa fa-user',
+                'tooltip': 'Manage User'
+            }, {
+                'name': 'Action 3',
+                'icon': 'fa fa-question',
+                'tooltip': 'Whatever else we want to do...'
+            }]
+        }, {
+            id: '25fd6vv87-3249-0001-05g6-4d4767890765',
+            name: "DateConversion",
+            displayName: 'Date conversion',
+            type: 'asset',
+            sublabel: 'A sublabel',
+            compliant: {
+                id: '25fd6vv34-3549-0001-05g6-4d4567890765',
+                label: 'Compliant',
+                type: 'certification'
+            },
+            prod: {
+                id: '52vn6vv87-3549-0001-05g6-4d4567890765',
+                label: 'Production Ready',
+                type: 'certification'
+            },
+            versions: [{
+                id: '23f6ic59-0156-1000-06b4-2b0810089090',
+                revision: '1',
+                dependentFlows: [{
+                    id: '23f6cc19-0156-1000-06b4-2b0810089090'
+                }],
+                created: new Date(),
+                updated: new Date()
+            }],
+            flows: [],
+            extensions: [],
+            assets: [],
+            actions: [{
+                'name': 'Delete',
+                'icon': 'fa fa-close',
+                'tooltip': 'Delete User'
+            }]
+        }, {
+            id: '52fd6vv87-3294-0001-05g6-4d4767890765',
+            name: "nifi-email-bundle",
+            displayName: 'nifi-email-bundle',
+            type: 'extension',
+            sublabel: 'A sublabel',
+            compliant: {
+                id: '33fd6vv87-3549-0001-05g6-4d4567890765',
+                label: 'Compliant',
+                test: {
+                    label: 'test'
+                },
+                type: 'certification'
+            },
+            versions: [{
+                id: '23d3cc59-0156-1000-06b4-2b0810089090',
+                revision: '1',
+                dependentFlows: [{
+                    id: '23f6cc89-0156-1000-06b4-2b0810089090'
+                }],
+                created: new Date(),
+                updated: new Date()
+            }],
+            flows: [],
+            extensions: [],
+            assets: [],
+            actions: [{
+                'name': 'Delete',
+                'icon': 'fa fa-close',
+                'tooltip': 'Delete User'
+            }, {
+                'name': 'Manage',
+                'icon': 'fa fa-user',
+                'tooltip': 'Manage User'
+            }, ]
+        }];
+
+        this.filteredDroplets = [];
+
+        this.dropletColumns = [
+            { name: 'id', label: 'ID', sortable: true },
+            { name: 'name', label: 'Name', sortable: true },
+            { name: 'displayName', label: 'Display Name', sortable: true },
+            { name: 'sublabel', label: 'Label', sortable: true },
+            { name: 'type', label: 'Type', sortable: true }
+        ];
+
+        this.autoCompleteDroplets = [];
+        this.dropletsSearchTerms = [];
+
+        ...
+
+        isDropletFilterChecked: function(term) {
+            return (this.dropletsSearchTerms.indexOf(term) > -1);
+        },
+
+        getDropletTypeCount: function(type) {
+            return this.filteredDroplets.filter(function(droplet) {
+                return droplet.type === type;
+            }).length;
+        },
+
+        getDropletCertificationCount: function(certification) {
+            return this.filteredDroplets.filter(droplet => {
+                return Object.keys(droplet).find((key) => {
+                    if (key === certification && droplet[certification].type === 'certification') {
+                        return droplet;
+                    }
+                });
+            }).length;
+        },
+
+        getSortBy: function() {
+            var sortByColumnLabel;
+            var arrayLength = this.dropletColumns.length;
+            for (var i = 0; i < arrayLength; i++) {
+                if (this.dropletColumns[i].active === true) {
+                    sortByColumnLabel = this.dropletColumns[i].label;
+                    break;
+                }
+            }
+            return sortByColumnLabel;
+        },
+
+        sortDroplets: function(sortEvent, column) {
+            if (column.sortable === true) {
+                // toggle column sort order
+                var sortOrder = column.sortOrder = (column.sortOrder === 'ASC') ? 'DESC' : 'ASC';
+                this.filterDroplets(column.name, sortOrder);
+                this.activeColumn = column;
+                //only one column can be actively sorted so we reset all to inactive
+                this.dropletColumns.forEach(c => c.active = false);
+                //and set this column as the actively sorted column
+                column.active = true;
+            }
+        },
+
+        dropletsSearchRemove: function(searchTerm) {
+            this.filterDroplets(this.activeColumn.name, this.activeColumn.sortOrder);
+        },
+
+        dropletsSearchAdd: function(searchTerm) {
+            this.filterDroplets(this.activeColumn.name, this.activeColumn.sortOrder);
+        },
+
+        toggleDropletsFilter: function(searchTerm) {
+            var applySearchTerm = true;
+            // check if the search term is already applied and remove it if true
+            if (this.dropletsSearchTerms.length > 0) {
+                var arrayLength = this.dropletsSearchTerms.length;
+                for (var i = 0; i < arrayLength; i++) {
+                    var index = this.dropletsSearchTerms.indexOf(searchTerm);
+                    if (index > -1) {
+                        this.dropletsSearchTerms.splice(index, 1);
+                        applySearchTerm = false;
+                    }
+                }
+            }
+
+            // if we just removed the search term do NOT apply it again
+            if (applySearchTerm) {
+                this.dropletsSearchTerms.push(searchTerm);
+            }
+
+            this.filterDroplets(this.activeColumn.name, this.activeColumn.sortOrder);
+        },
+
+        filterDroplets: function(sortBy, sortOrder) {
+            // if `sortBy` is `undefined` then find the first sortable column in this.dropletColumns
+            if (sortBy === undefined) {
+                var arrayLength = this.dropletColumns.length;
+                for (var i = 0; i < arrayLength; i++) {
+                    if (this.dropletColumns[i].sortable === true) {
+                        sortBy = this.dropletColumns[i].name;
+                        this.activeColumn = this.dropletColumns[i];
+                        //only one column can be actively sorted so we reset all to inactive
+                        this.dropletColumns.forEach(c => c.active = false);
+                        //and set this column as the actively sorted column
+                        this.dropletColumns[i].active = true;
+                        break;
+                    }
+                }
+            }
+
+            // if `sortOrder` is `undefined` then use 'ASC'
+            if (sortOrder === undefined) {
+                sortOrder = 'ASC'
+            }
+
+            var newData = this.droplets;
+
+            for (var i = 0; i < this.dropletsSearchTerms.length; i++) {
+                newData = this.filterData(newData, this.dropletsSearchTerms[i], true, this.activeColumn.name);
+            }
+
+            newData = this.dataTableService.sortData(newData, sortBy, sortOrder);
+            this.filteredDroplets = newData;
+            this.getAutoCompleteDroplets();
+        },
+
+        getAutoCompleteDroplets: function() {
+            this.autoCompleteDroplets = [];
+            this.dropletColumns.forEach(c => this.filteredDroplets.forEach(r => (r[c.name.toLowerCase()]) ? this.autoCompleteDroplets.push(r[c.name.toLowerCase()].toString()) : ''));
+        },
+
+        filterData: function(data, searchTerm, ignoreCase) {
+            var field = '';
+            if (searchTerm.indexOf(":") > -1) {
+                field = searchTerm.split(':')[0].trim();
+                searchTerm = searchTerm.split(':')[1].trim();
+            }
+            var filter = searchTerm ? (ignoreCase ? searchTerm.toLowerCase() : searchTerm) : '';
+
+            if (filter) {
+                data = data.filter(item => {
+                    var res = Object.keys(item).find((key) => {
+                        if (field.indexOf(".") > -1) {
+                            var objArray = field.split(".");
+                            var obj = item;
+                            var arrayLength = objArray.length;
+                            for (var i = 0; i < arrayLength; i++) {
+                                try {
+                                    obj = obj[objArray[i]];
+                                } catch (e) {
+                                    return false;
+                                }
+                            }
+                            var preItemValue = ('' + obj);
+                            var itemValue = ignoreCase ? preItemValue.toLowerCase() : preItemValue;
+                            return itemValue.indexOf(filter) > -1;
+                        } else {
+                            if (key !== field && field !== '') {
+                                return false;
+                            }
+                            var preItemValue = ('' + item[key]);
+                            var itemValue = ignoreCase ? preItemValue.toLowerCase() : preItemValue;
+                            return itemValue.indexOf(filter) > -1;
+                        }
+                    });
+                    return !(typeof res === 'undefined');
+                });
+            }
+            return data;
+        },
+
+        ...
+          ]]>
+                    </pre>
+                </md-tab>
+            </md-tab-group>
+        </md-card-content>
+        <md-divider class="pad-bottom-sm"></md-divider>
+    </md-card>
+    <md-card>
         <md-card-title class="pad-bottom-sm">Table</md-card-title>
         <md-divider></md-divider>
         <md-card-content>
@@ -815,12 +1385,12 @@
                 <md-tab>
                     <ng-template md-tab-label>Demo</ng-template>
                     <div layout="row" layout-align="space-between center" class="pad-left-sm pad-right-sm pad-top-sm" [class.mat-selected-title]="selectedRows.length && selectable">
-                        <span *ngIf="!searchBox.searchVisible" class="table-title push-left-sm">
+                        <span class="table-title push-left-sm">
                             <span *ngIf="(selectable && !selectedRows.length) || !selectable">Title here</span>
                         <span *ngIf="selectedRows.length && selectable" class="md-body-1">{{selectedRows.length}} item(s) selected</span>
                         </span>
                         <div flex class="push-right-sm" fxLayout="row" fxLayoutAlign="end center">
-                            <td-chips #searchBox [items]="autoCompleteData" (add)="searchAdd($event)" (remove)="searchRemove($event)" class="push-right-sm"></td-chips>
+                            <td-chips [items]="autoCompleteData" (add)="searchAdd($event)" (remove)="searchRemove($event)" class="push-right-sm"></td-chips>
                             <button color="fds-primary" md-raised-button [mdMenuTriggerFor]="dataTableActionMenu">
                                 Actions<i class="fa fa-caret-down" aria-hidden="true"></i>
                             </button>
@@ -889,12 +1459,12 @@
                     <pre lang="html">
                         <![CDATA[
         <div layout="row" layout-align="space-between center" class="pad-left-sm pad-right-sm pad-top-sm" [class.mat-selected-title]="selectedRows.length && selectable">
-            <span *ngIf="!searchBox.searchVisible" class="table-title push-left-sm">
+            <span class="table-title push-left-sm">
                 <span *ngIf="(selectable && !selectedRows.length) || !selectable">Title here</span>
             <span *ngIf="selectedRows.length && selectable" class="md-body-1">{ {selectedRows.length} } item(s) selected</span>
             </span>
             <div flex class="push-right-sm" fxLayout="row" fxLayoutAlign="end center">
-                <td-chips #searchBox [items]="autoCompleteData" (add)="searchAdd($event)" (remove)="searchRemove($event)" class="push-right-sm"></td-chips>
+                <td-chips [items]="autoCompleteData" (add)="searchAdd($event)" (remove)="searchRemove($event)" class="push-right-sm"></td-chips>
                 <button color="fds-primary" md-raised-button [mdMenuTriggerFor]="dataTableActionMenu">
                     Actions<i class="fa fa-caret-down" aria-hidden="true"></i>
                 </button>
@@ -1214,18 +1784,39 @@
             this.filter();
         },
 
-        filterData: function(data, searchTerm, ignoreCase, columnName) {
+        filterData: function(data, searchTerm, ignoreCase) {
+            var field = '';
+            if (searchTerm.indexOf(":") > -1) {
+                field = searchTerm.split(':')[0].trim();
+                searchTerm = searchTerm.split(':')[1].trim();
+            }
             var filter = searchTerm ? (ignoreCase ? searchTerm.toLowerCase() : searchTerm) : '';
-            var field = columnName ? (ignoreCase ? columnName.toLowerCase() : columnName) : '';
+
             if (filter) {
                 data = data.filter(item => {
                     var res = Object.keys(item).find((key) => {
-                        if (key !== field && field !== '') {
-                            return false;
+                        if (field.indexOf(".") > -1) {
+                            var objArray = field.split(".");
+                            var obj = item;
+                            var arrayLength = objArray.length;
+                            for (var i = 0; i < arrayLength; i++) {
+                                try {
+                                    obj = obj[objArray[i]];
+                                } catch (e) {
+                                    return false;
+                                }
+                            }
+                            var preItemValue = ('' + obj);
+                            var itemValue = ignoreCase ? preItemValue.toLowerCase() : preItemValue;
+                            return itemValue.indexOf(filter) > -1;
+                        } else {
+                            if (key !== field && field !== '') {
+                                return false;
+                            }
+                            var preItemValue = ('' + item[key]);
+                            var itemValue = ignoreCase ? preItemValue.toLowerCase() : preItemValue;
+                            return itemValue.indexOf(filter) > -1;
                         }
-                        var preItemValue = ('' + item[key]);
-                        var itemValue = ignoreCase ? preItemValue.toLowerCase() : preItemValue;
-                        return itemValue.indexOf(filter) > -1;
                     });
                     return !(typeof res === 'undefined');
                 });

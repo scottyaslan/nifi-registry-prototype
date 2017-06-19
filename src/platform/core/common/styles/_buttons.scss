@@ -82,18 +82,18 @@ body[fds] .mat-button-focus-overlay {
     background-color: transparent;
 }
 
-.mat-raised-button.mat-fds-primary {
+body[fds] .mat-raised-button.mat-fds-primary {
     border: 1px solid $buttonBgColorPrimary;
     background-color: $buttonBgColorPrimary;
     color: $buttonFontPrimaryColor;
 }
 
-.mat-raised-button.mat-fds-primary:hover {
+body[fds] .mat-raised-button.mat-fds-primary:hover {
     background-color: $buttonBgColorPrimaryHover;
     color: $buttonFontPrimaryColorHover;
 }
 
-.mat-raised-button.mat-fds-primary.mat-button-focus {
+body[fds] .mat-raised-button.mat-fds-primary.mat-button-focus {
     color: $buttonFontPrimaryColorSelected;
     background-color: $buttonBgColorPrimarySelected;
 }
@@ -104,18 +104,18 @@ body[fds] .mat-raised-button.mat-fds-primary[disabled] {
     color: $buttonFontPrimaryColorDisabled;
 }
 
-.mat-raised-button.mat-fds-secondary {
+body[fds] .mat-raised-button.mat-fds-secondary {
     color: $buttonFontSecondaryColor;
     border: 1px solid $buttonBorderColorSecondary;
 }
 
-.mat-raised-button.mat-fds-secondary:hover:not([disabled]) {
+body[fds] .mat-raised-button.mat-fds-secondary:hover:not([disabled]) {
     color: $buttonFontSecondaryColorHover;
     background-color: $buttonBgColorSecondaryHover;
     border: 1px solid $buttonBorderColorSecondaryHover;
 }
 
-.mat-raised-button.mat-fds-secondary.mat-button-focus {
+body[fds] .mat-raised-button.mat-fds-secondary.mat-button-focus {
     color: $buttonFontSecondaryColorSelected;
     background-color: $buttonBgColorSecondarySelected;
     border: 1px solid $buttonBorderColorSecondarySelected;
@@ -126,19 +126,19 @@ body[fds] .mat-raised-button.mat-fds-secondary[disabled] {
     background-color: $buttonBgColorPrimaryDisabled;
 }
 
-.mat-raised-button.mat-fds-regular {
+body[fds] .mat-raised-button.mat-fds-regular {
     color: $buttonFontRegularColor;
     background-color: $buttonBgColorRegular;
     border: 1px solid $buttonBorderColorRegular;
 }
 
-.mat-raised-button.mat-fds-regular:hover {
+body[fds] .mat-raised-button.mat-fds-regular:hover {
     color: $buttonFontRegularColorHover;
     background-color: $buttonBgColorRegularHover;
     border: 1px solid $buttonBorderColorRegularHover;
 }
 
-.mat-raised-button.mat-fds-regular.mat-button-focus {
+body[fds] .mat-raised-button.mat-fds-regular.mat-button-focus {
     color: $buttonFontRegularColorSelected;
     background-color: $buttonBgColorRegularSelected;
     border: 1px solid $buttonBorderColorRegularSelected;
@@ -150,19 +150,19 @@ body[fds] .mat-raised-button.mat-fds-regular[disabled] {
     border: 1px solid $buttonBorderColorRegularDisabled;
 }
 
-.mat-raised-button.mat-fds-warn {
+body[fds] .mat-raised-button.mat-fds-warn {
     border: 1px solid $errorColor;
     background-color: $errorColor;
     color: $buttonFontWarnColor;
 }
 
-.mat-raised-button.mat-fds-warn:hover {
+body[fds] .mat-raised-button.mat-fds-warn:hover {
     color: $buttonFontWarnColorHover;
     background-color: $red2;
     border: 1px solid $errorColor;
 }
 
-.mat-raised-button.mat-fds-warn.mat-button-focus {
+body[fds] .mat-raised-button.mat-fds-warn.mat-button-focus {
     color: $buttonFontWarnColorSelected;
     background-color: $errorColor;
     border: 1px solid $buttonBorderColorRegularSelected;
@@ -174,19 +174,19 @@ body[fds] .mat-raised-button.mat-fds-warn[disabled] {
     border: 1px solid $errorColor;
 }
 
-.mat-raised-button.mat-fds-critical {
+body[fds] .mat-raised-button.mat-fds-critical {
     color: $buttonFontCriticalColor;
     background-color: $orange1;
     border: 1px solid $orange1;
 }
 
-.mat-raised-button.mat-fds-critical:hover {
+body[fds] .mat-raised-button.mat-fds-critical:hover {
     color: $buttonFontCriticalColorHover;
     background-color: $orange2;
     border: 1px solid $orange2;
 }
 
-.mat-raised-button.mat-fds-critical.mat-button-focus {
+body[fds] .mat-raised-button.mat-fds-critical.mat-button-focus {
     color: $buttonFontCriticalColorSelected;
     background-color: $orange2;
     border: 1px solid $buttonBorderColorRegularSelected;

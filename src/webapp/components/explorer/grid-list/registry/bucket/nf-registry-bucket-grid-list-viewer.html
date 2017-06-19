@@ -44,7 +44,7 @@
                 </div>
             </md-button-toggle>
         </md-button-toggle-group>
-        <button md-button color="primary" (click)="nfRegistryService.dropletsSearchTerms = [];nfRegistryService.filterDroplets(activeColumn.name, activeColumn.sortOrder);">Clear Grouping</button>
+        <button [disabled]="nfRegistryService.dropletsSearchTerms.length === 0" md-button color="primary" (click)="nfRegistryService.dropletsSearchTerms = [];nfRegistryService.filterDroplets(nfRegistryService.activeColumn.name, nfRegistryService.activeColumn.sortOrder);">Clear Grouping</button>
     </div>
     <div layout="row" layout-align="space-between center">
         <div flex fxLayout="row" fxLayoutAlign="end center">

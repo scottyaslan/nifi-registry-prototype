@@ -66,3 +66,12 @@ body {
     font-size: 20px;
     margin: 0;
 }
+
+#toolbar .mat-select-value-text, #toolbar .mat-select-arrow{
+    color: white;
+}
+
+#toolbar span, #toolbar .link{
+    color: $grey5;
+}
+

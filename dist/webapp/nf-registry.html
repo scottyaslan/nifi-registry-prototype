@@ -1,18 +1,39 @@
 <md-toolbar id="toolbar" class="mat-elevation-z5">
     <img id="nifi-registry-logo" src="nifi-registry/src/webapp/images/registry-logo-web-app.svg">
-    <md-select class="pad-left-xl" name="registry" *ngIf="nfRegistryService.registry" [(ngModel)]="nfRegistryService.registry.id">
-        <md-option *ngFor="let registry of nfRegistryService.registries" [value]="registry.id" routerLink="/nifi-registry/explorer/{{nfRegistryService.explorerViewType}}/{{registry.id}}">
-            {{registry.name}}
-        </md-option>
-    </md-select>
-    <div fxFlex="1 1 auto">
-        <a class="link" *ngIf="nfRegistryService.selectedBucketId" routerLink="/nifi-registry/explorer/{{nfRegistryService.explorerViewType}}/{{nfRegistryService.registry.id}}/{{nfRegistryService.selectedBucketId}}"> / {{nfRegistryService.bucket.name}}</a>
+    <div fxFlex="1 1 auto" class="pad-left-xl">
+        <span *ngIf="nfRegistryService.registry" [mdMenuTriggerFor]="availableRegistriesMenu"> {{nfRegistryService.registry.name}}</span>
 
-        <span class="link" *ngIf="!nfRegistryService.selectedBucketId"> / All Buckets</span>
+        <md-menu #availableRegistriesMenu="mdMenu" [overlapTrigger]="false">
+            <button md-menu-item *ngFor="let registry of nfRegistryService.registries" routerLink="/nifi-registry/explorer/{{nfRegistryService.explorerViewType}}/{{registry.id}}">
+                <span>{{registry.name}}</span>
+            </button>
+        </md-menu>
 
-        <a class="link" *ngIf="nfRegistryService.selectedDropletId" routerLink="/nifi-registry/explorer/{{nfRegistryService.explorerViewType}}/{{nfRegistryService.registry.id}}/{{nfRegistryService.selectedBucketId}}/{{nfRegistryService.selectedDropletId}}"> / {{nfRegistryService.droplet.name}}</a>
+        <span *ngIf="nfRegistryService.selectedBucketId" [mdMenuTriggerFor]="availableBucketsMenu"> / {{nfRegistryService.bucket.name}}</span>
 
-        <span class="link" *ngIf="nfRegistryService.selectedBucketId && !nfRegistryService.selectedDropletId"> / All Droplets</span>
+        <span *ngIf="!nfRegistryService.selectedBucketId" [mdMenuTriggerFor]="availableBucketsMenu"> / All Buckets</span>
+
+        <md-menu #availableBucketsMenu="mdMenu" [overlapTrigger]="false">
+            <button md-menu-item routerLink="/nifi-registry/explorer/{{nfRegistryService.explorerViewType}}/{{nfRegistryService.registry.id}}">
+                <span>All {{nfRegistryService.registry.name}} buckets...</span>
+            </button>
+            <button md-menu-item *ngFor="let bucket of nfRegistryService.buckets" routerLink="/nifi-registry/explorer/{{nfRegistryService.explorerViewType}}/{{nfRegistryService.registry.id}}/{{bucket.id}}">
+                <span>{{bucket.name}}</span>
+            </button>
+        </md-menu>
+
+        <span *ngIf="nfRegistryService.selectedDropletId" [mdMenuTriggerFor]="availableDropletsMenu"> / {{nfRegistryService.droplet.name}}</span>
+
+        <span [mdMenuTriggerFor]="availableDropletsMenu" *ngIf="nfRegistryService.selectedBucketId && !nfRegistryService.selectedDropletId"> / All Droplets</span>
+
+        <md-menu #availableDropletsMenu="mdMenu" [overlapTrigger]="false">
+            <button md-menu-item routerLink="/nifi-registry/explorer/{{nfRegistryService.explorerViewType}}/{{nfRegistryService.registry.id}}/{{nfRegistryService.selectedBucketId}}">
+                <span>All {{nfRegistryService.bucket.name}} droplets...</span>
+            </button>
+            <button md-menu-item *ngFor="let droplet of nfRegistryService.droplets" routerLink="/nifi-registry/explorer/{{nfRegistryService.explorerViewType}}/{{nfRegistryService.registry.id}}/{{nfRegistryService.selectedBucketId}}/{{droplet.id}}">
+                <span>{{droplet.name}}</span>
+            </button>
+        </md-menu>
 
     </div>
     <div id="nifi-registry-alerts-count" *ngIf="nfRegistryService.alerts.length > 0">
@@ -21,7 +42,7 @@
     <button mdTooltip="Alerts" md-icon-button>
         <i class="fa fa-bell" aria-hidden="true"></i>
     </button>
-    <button mdTooltip="Menu" md-icon-button>
+    <button mdTooltip="User???" md-icon-button>
         <i class="fa fa-user " aria-hidden="true"></i>
     </button>
 </md-toolbar>

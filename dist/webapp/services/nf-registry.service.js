@@ -297,46 +297,6 @@ NfRegistryService.prototype = {
                     });
             });
     },
-    // getAllBuckets: function() {
-    //     return this.getRegistries().then(
-    //         function(registries) {
-    //             var allBuckets = [];
-
-    //             registries.find(
-    //                 function(registry) {
-    //                     registry.buckets.find(
-    //                         function(bucket) {
-    //                             allBuckets.push(bucket);
-    //                         });
-    //                 });
-
-    //             return allBuckets;
-    //         });
-    // },
-    // getBuckets: function(registryId, bucketId) {
-    //     var self = this;
-    //     return this.getRegistry(registryId).then(
-    //         function(registry) {
-    //             return registry.buckets.find(
-    //                 function(bucket) {
-    //                     if (bucketId === bucket.id) {
-    //                         return this.bucket = bucket;
-    //                     }
-    //                 });
-    //         });
-    // },
-    // getDroplets: function(registryId, bucketId, dropletId) {
-    //     var self = this;
-    //     return this.getBuckets(registryId, bucketId).then(
-    //         function(bucket) {
-    //             return bucket.droplets.find(
-    //                 function(droplet) {
-    //                     if (dropletId === droplet.id) {
-    //                         return this.droplet = droplet;
-    //                     }
-    //                 });
-    //         });
-    // },
     getBuckets: function(registryIds, bucketIds) {
         var self = this;
         return this.getRegistries().then(

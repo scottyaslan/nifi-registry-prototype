@@ -22,6 +22,7 @@
  * <link href='/stylesheets/nifi-flow-registry.css' media='screen, projection' rel='stylesheet' type='text/css' /> */
 
 @import 'structureElements';
+@import 'helperClasses';
 @import '../../../node_modules/@fluid-design-system/dist/platform/core/common/styles/globalVars';
 
 body {
@@ -43,18 +44,6 @@ body {
     font-size: 9px;
     text-align: center;
     line-height: 14px;
-}
-
-.capitalize {
-    text-transform: capitalize;
-}
-
-.uppercase {
-    text-transform: uppercase;
-}
-
-.td-expansion-content {
-    background: $grey6;
 }
 
 #toolbar {

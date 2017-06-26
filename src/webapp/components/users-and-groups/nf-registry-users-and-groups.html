@@ -7,7 +7,7 @@
         <div *ngIf="nfRegistryService.registry.buckets">
             <div class="list-header description">Authorized Users ({{nfRegistryService.getUserCount()}})</div>
             <md-list>
-                <md-list-item [attr.focus]="((user.id === nfRegistryService.selectedUserId) || (user.checked)) ? '' : null" *ngFor="let user of nfRegistryService.bucket.users">
+                <md-list-item [attr.focus]="((user.id === nfRegistryService.user.id) || (user.checked)) ? '' : null" *ngFor="let user of nfRegistryService.bucket.users">
                     <span md-line class="description">{{user.name}}</span>
                     <button mdTooltip="User Details" md-icon-button>
                         <i class="fa fa-info-circle" aria-hidden="true"></i>

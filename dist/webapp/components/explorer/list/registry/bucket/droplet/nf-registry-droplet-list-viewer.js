@@ -27,8 +27,7 @@ NfRegistryDropletListViewer.prototype = {
         var self = this;
         this.subscription$ = this.route.params
             .switchMap(function(params) {
-                self.nfRegistryService.selectedDropletId = params['dropletId'];
-                return self.nfRegistryService.getDroplets(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId, self.nfRegistryService.selectedDropletId);
+                return self.nfRegistryService.getDroplets(self.nfRegistryService.registry.id, self.nfRegistryService.bucket.id, params['dropletId']);
             })
             .subscribe(function(droplets) {
                     self.nfRegistryService.droplet = droplets[0];
@@ -36,7 +35,6 @@ NfRegistryDropletListViewer.prototype = {
     },
     ngOnDestroy: function() {
         this.subscription$.unsubscribe();
-        this.nfRegistryService.selectedDropletId = '';
         this.nfRegistryService.droplet = {};
     }
 };

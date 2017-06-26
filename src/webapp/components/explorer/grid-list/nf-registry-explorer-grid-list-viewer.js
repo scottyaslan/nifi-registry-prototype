@@ -15,9 +15,8 @@
  * limitations under the License.
  */
 
-function NfRegistryExplorerGridListViewer(nfRegistryService, ActivatedRoute) {
+function NfRegistryExplorerGridListViewer(nfRegistryService) {
     this.subscription$;
-    this.route = ActivatedRoute;
     this.nfRegistryService = nfRegistryService;
 };
 

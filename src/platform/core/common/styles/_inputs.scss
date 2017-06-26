@@ -18,9 +18,9 @@
 
 /* Inputs */
 
-body[fds] .mat-input-container {
-    min-width: 200px;
-}
+// body[fds] .mat-input-container {
+//     min-width: 200px;
+// }
 
 body[fds] .mat-input-wrapper {
     margin: 0;
@@ -76,6 +76,10 @@ body[fds] .mat-input-placeholder {
     overflow: hidden;
     text-overflow: ellipsis;
     width: calc(100% - 37px);
+}
+
+body[fds] md-input-container.mat-focused .mat-input-placeholder {
+    transform: translateY(-28px) scale(0.75);
 }
 
 body[fds] .mat-input-placeholder.mat-float:not(.mat-empty) {

@@ -25,6 +25,7 @@ NfRegistrySettings.prototype = {
     constructor: NfRegistrySettings,
     ngOnInit: function() {
         var self = this;
+        self.nfRegistryService.perspective = 'settings';
         /**
          * The switchMap operator maps the id in the Observable route
          * parameters to a new Observable, the result of the
@@ -34,12 +35,12 @@ NfRegistrySettings.prototype = {
          */
         this.subscription$ = this.route.params
             .switchMap(function(params) {
-                self.nfRegistryService.selectedRegistryId = params['registryId'];
                 return self.nfRegistryService.getRegistry(params['registryId']);
             })
             .subscribe(registry => this.nfRegistryService.registry = registry);
     },
     ngOnDestroy: function() {
+        this.nfRegistryService.perspective = '';
         this.subscription$.unsubscribe();
     }
 };

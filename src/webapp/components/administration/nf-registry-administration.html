@@ -1,0 +1,26 @@
+<div id="nf-registry-explorer-grid-list-side-nav" fxLayout="column" fxLayoutAlign="start stretch">
+    <div class="pad-top-sm">
+        <button md-icon-button routerLink="/nifi-registry/explorer/{{(nfRegistryService.explorerViewType) ? nfRegistryService.explorerViewType : 'grid-list'}}/{{nfRegistryService.registry.id}}">
+            <i class="fa fa-tint" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="pad-top-sm">
+        <button md-icon-button routerLink="/nifi-registry/administration/{{nfRegistryService.registry.id}}">
+            <i class="fa fa-wrench" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+<div id="nifi-registry-administration-perspective">
+    <md-button-toggle-group name="nifi-registry-administration-perspective" fxLayout="row" fxLayoutAlign="space-between center" class="tab-toggle-group">
+        <md-button-toggle [checked]="nfRegistryService.adminPerspective === 'general'" value="general" class="uppercase" routerLink="/nifi-registry/administration/{{nfRegistryService.registry.id}}/general">
+            general
+        </md-button-toggle>
+        <md-button-toggle [checked]="nfRegistryService.adminPerspective === 'users'" value="users" class="uppercase" routerLink="/nifi-registry/administration/{{nfRegistryService.registry.id}}/users">
+            Users
+        </md-button-toggle>
+        <md-button-toggle [checked]="nfRegistryService.adminPerspective === 'workflow'" value="workflow" class="uppercase" routerLink="/nifi-registry/administration/{{nfRegistryService.registry.id}}/workflow">
+            Workflow
+        </md-button-toggle>
+    </md-button-toggle-group>
+</div>
+<router-outlet></router-outlet>

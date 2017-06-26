@@ -42,14 +42,13 @@ NfRegistryListViewer.prototype = {
          */
         self.subscription$ = self.route.params
         .switchMap(function(params) {
-            self.nfRegistryService.selectedRegistryId = params['registryId'];
             return self.nfRegistryService.getRegistry(params['registryId']);
         })
         .subscribe(function(registry) {
             self.nfRegistryService.registry = registry;
-            self.nfRegistryService.getBuckets(self.nfRegistryService.selectedRegistryId).then(function(buckets) {
+            self.nfRegistryService.getBuckets(self.nfRegistryService.registry.id).then(function(buckets) {
                 self.nfRegistryService.buckets = buckets;
-                self.nfRegistryService.getDroplets(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId).then(function(droplets) {
+                self.nfRegistryService.getDroplets(self.nfRegistryService.registry.id, self.nfRegistryService.bucket.id).then(function(droplets) {
                     self.nfRegistryService.droplets = droplets;
                 });
             })
@@ -57,7 +56,6 @@ NfRegistryListViewer.prototype = {
     },
     ngOnDestroy: function() {
         this.subscription$.unsubscribe();
-        this.nfRegistryService.selectedRegistryId = '';
         this.nfRegistryService.registry = {};
         this.nfRegistryService.buckets = [];
         this.nfRegistryService.droplets = [];

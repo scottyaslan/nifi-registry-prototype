@@ -1,0 +1,9 @@
+<div id="nifi-registry-general-administration-perspective" class="mat-elevation-z5">
+    <div layout="row" layout-align="space-between top" class="pad-top-md pad-bottom-sm pad-left-md pad-right-md">
+        <md-input-container flex=50>
+            <input mdInput placeholder="Registry Name" value="{{nfRegistryService.registry.name}}">
+        </md-input-container>
+        <i class="info fa fa-question-circle pad-top-sm pad-left-sm" aria-hidden="true" mdTooltip="The name seen in NiFi to identify this registry."></i>
+    </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,4 +1,4 @@
-<div class="pad-top-md pad-bottom-md pad-right-xxl pad-left-xxl" *ngIf="nfRegistryService.selectedRegistryId && !nfRegistryService.selectedBucketId && !nfRegistryService.selectedDropletId">
+<div class="pad-top-md pad-bottom-md pad-right-xxl pad-left-xxl">
     <div class="pad-top-md pad-bottom-sm">
         <md-button-toggle-group fxLayout="row" fxLayoutAlign="space-between center" class="expansion-panel-filter-toggle-group" multiple>
             <md-button-toggle (change)="nfRegistryService.toggleDropletsFilter('type:asset')" [checked]="nfRegistryService.isDropletFilterChecked('type:asset')">
@@ -44,8 +44,8 @@
                 </div>
             </md-button-toggle>
         </md-button-toggle-group>
-        <div class="nf-registry-droplet-filter-clear-grouping-button-container">
-            <span *ngIf="nfRegistryService.dropletsSearchTerms.length > 0" (click)="nfRegistryService.dropletsSearchTerms = [];nfRegistryService.filterDroplets(nfRegistryService.activeColumn.name, nfRegistryService.activeColumn.sortOrder);"><i class="fa fa-plus-circle fa-rotate-45" aria-hidden="true"></i><span class="pad-left-sm link">Clear Grouping</span></span>
+        <div id="nf-registry-droplet-filter-clear-grouping-button-container">
+            <span *ngIf="nfRegistryService.dropletsSearchTerms.length > 0" (click)="nfRegistryService.dropletsSearchTerms = [];nfRegistryService.filterDroplets(nfRegistryService.activeDropletColumn.name, nfRegistryService.activeDropletColumn.sortOrder);"><i class="fa fa-plus-circle fa-rotate-45" aria-hidden="true"></i><span class="pad-left-sm link">Clear Grouping</span></span>
         </div>
     </div>
     <div layout="row" layout-align="space-between center">
@@ -63,7 +63,7 @@
         </md-menu>
     </div>
 </div>
-<div class="pad-right-xxl pad-left-xxl" *ngIf="nfRegistryService.selectedRegistryId && !nfRegistryService.selectedBucketId && !nfRegistryService.selectedDropletId && nfRegistryService.droplets.length > 0">
+<div id="nifi-registry-explorer-grid-list-viewer-droplet-container" class="pad-right-xxl pad-left-xxl" *ngIf="nfRegistryService.filteredDroplets.length > 0">
     <div *ngFor="let droplet of nfRegistryService.filteredDroplets">
         <td-expansion-panel class="mat-elevation-z5" label={{droplet.label}} sublabel={{droplet.sublabel}} [disabled]="disabled">
             <ng-template td-expansion-panel-label>
@@ -121,5 +121,8 @@
         </td-expansion-panel>
         <div class="pad-bottom-sm"></div>
     </div>
+</div>
+<div class="pad-right-xxl pad-left-xxl" *ngIf="nfRegistryService.filteredDroplets.length <= 0">
+    <p class="text-center">No results match this query.</p>
 </div>
 <router-outlet></router-outlet>

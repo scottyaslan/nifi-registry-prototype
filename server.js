@@ -91,6 +91,12 @@ var NifiRegistry = function() {
         self.app.get('/nifi-registry/fluid-design-system', function(req, res) {
             res.render('src/webapp/index.html');
         });
+        self.app.get('/nifi-registry/administration/:registryId', function(req, res) {
+            res.render('src/webapp/index.html');
+        });
+        self.app.get('/nifi-registry/administration/:registryId/:adminPerpective', function(req, res) {
+            res.render('src/webapp/index.html');
+        });
         self.app.get('/nifi-registry/settings/:registryId', function(req, res) {
             res.render('src/webapp/index.html');
         });

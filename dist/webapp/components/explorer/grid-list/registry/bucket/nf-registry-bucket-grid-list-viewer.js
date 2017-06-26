@@ -35,12 +35,11 @@ NfRegistryBucketGridListViewer.prototype = {
          */
         self.subscription$ = self.route.params
             .switchMap(function(params) {
-                self.nfRegistryService.selectedBucketId = params['bucketId'];
-                return self.nfRegistryService.getBuckets(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId);
+                return self.nfRegistryService.getBuckets(self.nfRegistryService.registry.id, params['bucketId']);
             })
             .subscribe(function(buckets) {
                 self.nfRegistryService.bucket = buckets[0];
-                return self.nfRegistryService.getDroplets(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId, self.nfRegistryService.selectedDropletId).then(function(droplets) {
+                return self.nfRegistryService.getDroplets(self.nfRegistryService.registry.id, self.nfRegistryService.bucket.id, self.nfRegistryService.droplet.id).then(function(droplets) {
                     self.nfRegistryService.droplets = self.nfRegistryService.filteredDroplets = droplets;
                     self.nfRegistryService.filterDroplets();
                 });
@@ -49,11 +48,10 @@ NfRegistryBucketGridListViewer.prototype = {
     ngOnDestroy: function() {
         var self = this;
         this.subscription$.unsubscribe();
-        this.nfRegistryService.selectedBucketId = '';
         this.nfRegistryService.bucket = {};
-        this.nfRegistryService.getBuckets(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId).then(
+        this.nfRegistryService.getBuckets(self.nfRegistryService.registry.id, self.nfRegistryService.bucket.id).then(
             function(buckets) {
-                self.nfRegistryService.getDroplets(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId, self.nfRegistryService.selectedDropletId).then(
+                self.nfRegistryService.getDroplets(self.nfRegistryService.registry.id, self.nfRegistryService.bucket.id, self.nfRegistryService.droplet.id).then(
                     function(droplets) {
                         self.nfRegistryService.droplets = self.nfRegistryService.filteredDroplets = droplets;
                         self.nfRegistryService.filterDroplets();

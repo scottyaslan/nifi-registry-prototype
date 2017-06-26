@@ -31,6 +31,10 @@ var NfRegistryBucketPermissionsManager = require('nf.RegistryBucketPermissionsMa
 var NfRegistryBucketUserOrGroupPermissionsViewer = require('nf.RegistryBucketUserOrGroupPermissionsViewer');
 var NfRegistryBucketUserPermissionsViewer = require('nf.RegistryBucketUserPermissionsViewer');
 var NfRegistryBucketGroupPermissionsViewer = require('nf.RegistryBucketGroupPermissionsViewer');
+var NfRegistryAdministration = require('nf.RegistryAdministration');
+var NfRegistryGeneralAdministration = require('nf.RegistryGeneralAdministration');
+var NfRegistryUsersAdministration = require('nf.RegistryUsersAdministration');
+var NfRegistryWorkflowAdministration = require('nf.RegistryWorkflowAdministration');
 var NfRegistrySettings = require('nf.RegistrySettings');
 var NfRegistryUsersAndGroups = require('nf.RegistryUsersAndGroups');
 var NfRegistryListViewer = require('nf.RegistryListViewer');
@@ -92,7 +96,7 @@ NfRegistryExplorerGridListViewer.annotations = [
 ];
 
 // inject the NfRegistryService
-NfRegistryExplorerGridListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+NfRegistryExplorerGridListViewer.parameters = [NfRegistryService];
 
 NfRegistryDetailsViewer.annotations = [
     new ngCore.Component({
@@ -140,6 +144,42 @@ NfRegistrySettings.annotations = [
 
 // inject the NfRegistryService
 NfRegistrySettings.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+
+NfRegistryAdministration.annotations = [
+    new ngCore.Component({
+        templateUrl: 'nifi-registry/src/webapp/components/administration/nf-registry-administration.html'
+    })
+];
+
+// inject the NfRegistryService
+NfRegistryAdministration.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+
+NfRegistryGeneralAdministration.annotations = [
+    new ngCore.Component({
+        templateUrl: 'nifi-registry/src/webapp/components/administration/general/nf-registry-general-administration.html'
+    })
+];
+
+// inject the NfRegistryService
+NfRegistryGeneralAdministration.parameters = [NfRegistryService];
+
+NfRegistryUsersAdministration.annotations = [
+    new ngCore.Component({
+        templateUrl: 'nifi-registry/src/webapp/components/administration/users/nf-registry-users-administration.html'
+    })
+];
+
+// inject the NfRegistryService
+NfRegistryUsersAdministration.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+
+NfRegistryWorkflowAdministration.annotations = [
+    new ngCore.Component({
+        templateUrl: 'nifi-registry/src/webapp/components/administration/workflow/nf-registry-workflow-administration.html'
+    })
+];
+
+// inject the NfRegistryService
+NfRegistryWorkflowAdministration.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
 
 NfRegistryUsersAndGroups.annotations = [
     new ngCore.Component({
@@ -281,14 +321,14 @@ NfRegistryAppModule.annotations = [
                         children: [{
                             path: ':registryId',
                             component: NfRegistryGridListViewer,
+                            children: [{
+                                path: ':bucketId',
+                                component: NfRegistryBucketGridListViewer,
                                 children: [{
-                                    path: ':bucketId',
-                                    component: NfRegistryBucketGridListViewer,
-                                    children: [{
-                                        path: ':dropletId',
-                                        component: NfRegistryDropletGridListViewer
-                                    }]
+                                    path: ':dropletId',
+                                    component: NfRegistryDropletGridListViewer
                                 }]
+                            }]
                         }]
                     }]
                     // as: "registry-explorer",
@@ -311,6 +351,61 @@ NfRegistryAppModule.annotations = [
                     // as: "registry-settings",
                     // canActivate: [AuthGuard] //https://scotch.io/tutorials/routing-angular-2-single-page-apps-with-the-component-router
             }, {
+                path: 'nifi-registry/administration/:registryId',
+                component: NfRegistryAdministration,
+                children: [{
+                        path: '',
+                        redirectTo: 'general',
+                        pathMatch: 'full'
+                    }, {
+                        path: 'general',
+                        component: NfRegistryGeneralAdministration,
+                        // children: [{
+                        //     path: ':registryId',
+                        //     component: NfRegistryListViewer,
+                        //     children: [{
+                        //         path: ':bucketId',
+                        //         component: NfRegistryBucketListViewer,
+                        //         children: [{
+                        //             path: ':dropletId',
+                        //             component: NfRegistryDropletListViewer
+                        //         }]
+                        //     }]
+                        // }]
+                    }, {
+                        path: 'users',
+                        component: NfRegistryUsersAdministration,
+                        // children: [{
+                        //     path: ':registryId',
+                        //     component: NfRegistryGridListViewer,
+                        //         children: [{
+                        //             path: ':bucketId',
+                        //             component: NfRegistryBucketGridListViewer,
+                        //             children: [{
+                        //                 path: ':dropletId',
+                        //                 component: NfRegistryDropletGridListViewer
+                        //             }]
+                        //         }]
+                        // }]
+                    }, {
+                        path: 'workflow',
+                        component: NfRegistryWorkflowAdministration,
+                        // children: [{
+                        //     path: ':registryId',
+                        //     component: NfRegistryGridListViewer,
+                        //         children: [{
+                        //             path: ':bucketId',
+                        //             component: NfRegistryBucketGridListViewer,
+                        //             children: [{
+                        //                 path: ':dropletId',
+                        //                 component: NfRegistryDropletGridListViewer
+                        //             }]
+                        //         }]
+                        // }]
+                    }]
+                    // as: "registry-administration",
+                    // canActivate: [AuthGuard] //https://scotch.io/tutorials/routing-angular-2-single-page-apps-with-the-component-router
+            }, {
                 path: 'nifi-registry/users-and-groups/:registryId',
                 component: NfRegistryUsersAndGroups
                     // as: "users",
@@ -329,7 +424,7 @@ NfRegistryAppModule.annotations = [
                     // canActivate: [AuthGuard] //https://scotch.io/tutorials/routing-angular-2-single-page-apps-with-the-component-router
             }, { path: '**', component: NfPageNotFoundComponent }])
         ],
-        declarations: [FdsDemo, NfRegistry, NfRegistryDetailsViewer, NfRegistryExplorer, NfRegistryExplorerListViewer, NfRegistryExplorerGridListViewer, NfRegistryBucketDetailsViewer, NfRegistryBucketPermissionsManager, NfRegistryBucketUserOrGroupPermissionsViewer, NfRegistryBucketUserPermissionsViewer, NfRegistryBucketGroupPermissionsViewer, NfRegistrySettings, NfRegistryUsersAndGroups, NfRegistryListViewer, NfRegistryGridListViewer, NfRegistryBucketListViewer, NfRegistryBucketGridListViewer, NfRegistryDropletListViewer, NfRegistryDropletGridListViewer, NfRegistryDropletDetailsViewer, NfPageNotFoundComponent],
+        declarations: [FdsDemo, NfRegistry, NfRegistryDetailsViewer, NfRegistryExplorer, NfRegistryExplorerListViewer, NfRegistryExplorerGridListViewer, NfRegistryBucketDetailsViewer, NfRegistryBucketPermissionsManager, NfRegistryBucketUserOrGroupPermissionsViewer, NfRegistryBucketUserPermissionsViewer, NfRegistryBucketGroupPermissionsViewer, NfRegistrySettings, NfRegistryAdministration, NfRegistryGeneralAdministration, NfRegistryUsersAdministration, NfRegistryWorkflowAdministration, NfRegistryUsersAndGroups, NfRegistryListViewer, NfRegistryGridListViewer, NfRegistryBucketListViewer, NfRegistryBucketGridListViewer, NfRegistryDropletListViewer, NfRegistryDropletGridListViewer, NfRegistryDropletDetailsViewer, NfPageNotFoundComponent],
         //creates a service singletons to be available to all components of the app.
         providers: [NfRegistryService],
         bootstrap: [NfRegistry]

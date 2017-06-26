@@ -20,7 +20,13 @@ function NfRegistryExplorer(nfRegistryService) {
 };
 
 NfRegistryExplorer.prototype = {
-    constructor: NfRegistryExplorer
+    constructor: NfRegistryExplorer,
+    ngOnInit: function() {
+        this.nfRegistryService.perspective = 'explorer';
+    },
+    ngOnDestroy: function() {
+        this.nfRegistryService.perspective = '';
+    }
 };
 
 module.exports = NfRegistryExplorer;

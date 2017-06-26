@@ -281,27 +281,123 @@
                     <md-icon>format_align_justify</md-icon>
                 </md-button-toggle>
             </md-button-toggle-group>
-            <md-button-toggle-group multiple>
-                <md-button-toggle>Flour</md-button-toggle>
-                <md-button-toggle>Eggs</md-button-toggle>
-                <md-button-toggle>Sugar</md-button-toggle>
-                <md-button-toggle>Milk</md-button-toggle>
+            <div fxLayout="row" class="pad-top-md pad-bot-md"></div>
+            <md-button-toggle-group name="onOffToggle" class="on-off-toggle-group">
+                <md-button-toggle value="on" [checked]="true">
+                    ON
+                </md-button-toggle>
+                <md-button-toggle value="off" class="off-toggle">
+                    OFF
+                </md-button-toggle>
+            </md-button-toggle-group>
+            <div fxLayout="row" class="pad-top-md pad-bot-md"></div>
+            <md-button-toggle-group fxLayout="row" fxLayoutAlign="space-between center" class="expansion-panel-filter-toggle-group" multiple>
+                <md-button-toggle>
+                    <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                        <div class="md-display-1 pad-top-sm" fxFlex="55">34</div>
+                        <div class="pad-top-sm" fxFlex="45">Assets</div>
+                    </div>
+                </md-button-toggle>
+                <md-button-toggle>
+                    <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                        <div class="md-display-1 pad-top-sm" fxFlex="55">300</div>
+                        <div class="pad-top-sm" fxFlex="45">Extensions</div>
+                    </div>
+                </md-button-toggle>
+                <md-button-toggle>
+                    <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                        <div class="md-display-1 pad-top-sm" fxFlex="55">5000</div>
+                        <div class="pad-top-sm" fxFlex="45">Flows</div>
+                    </div>
+                </md-button-toggle>
+                <md-button-toggle>
+                    <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                        <div class="md-display-1 pad-top-sm" fxFlex="55">0</div>
+                        <div class="pad-top-sm" fxFlex="45">Certifications</div>
+                    </div>
+                </md-button-toggle>
+            </md-button-toggle-group>
+            <div fxLayout="row" class="pad-top-md pad-bot-md"></div>
+            <md-button-toggle-group name="nifi-registry-administration-perspective" fxLayout="row" class="tab-toggle-group">
+                <md-button-toggle value="general" class="uppercase">
+                    general
+                </md-button-toggle>
+                <div fxLayout="row" class="pad-left-md"></div>
+                <md-button-toggle value="users" class="uppercase">
+                    Users
+                </md-button-toggle>
+                <div fxLayout="row" class="pad-left-md"></div>
+                <md-button-toggle value="workflow" class="uppercase">
+                    Workflow
+                </md-button-toggle>
             </md-button-toggle-group>
             <h3 class="md-title">Usage</h3>
             <p>HTML:</p>
             <pre lang="html">
       <![CDATA[
-        <md-button-toggle-group name="alignment">
-            <md-button-toggle value="left"><md-icon>format_align_left</md-icon></md-button-toggle>
-            <md-button-toggle value="center"><md-icon>format_align_center</md-icon></md-button-toggle>
-            <md-button-toggle value="right"><md-icon>format_align_right</md-icon></md-button-toggle>
-            <md-button-toggle value="justify"><md-icon>format_align_justify</md-icon></md-button-toggle>
+         <md-button-toggle-group name="alignment">
+            <md-button-toggle value="left">
+                <md-icon>format_align_left</md-icon>
+            </md-button-toggle>
+            <md-button-toggle value="center">
+                <md-icon>format_align_center</md-icon>
+            </md-button-toggle>
+            <md-button-toggle value="right">
+                <md-icon>format_align_right</md-icon>
+            </md-button-toggle>
+            <md-button-toggle value="justify">
+                <md-icon>format_align_justify</md-icon>
+            </md-button-toggle>
         </md-button-toggle-group>
-        <md-button-toggle-group multiple>
-            <md-button-toggle>Flour</md-button-toggle>
-            <md-button-toggle>Eggs</md-button-toggle>
-            <md-button-toggle>Sugar</md-button-toggle>
-            <md-button-toggle>Milk</md-button-toggle>
+        <div fxLayout="row" class="pad-top-md pad-bot-md"></div>
+        <md-button-toggle-group name="onOffToggle" class="on-off-toggle-group">
+            <md-button-toggle value="on" [checked]="true">
+                ON
+            </md-button-toggle>
+            <md-button-toggle value="off" class="off-toggle">
+                OFF
+            </md-button-toggle>
+        </md-button-toggle-group>
+        <div fxLayout="row" class="pad-top-md pad-bot-md"></div>
+        <md-button-toggle-group fxLayout="row" fxLayoutAlign="space-between center" class="expansion-panel-filter-toggle-group" multiple>
+            <md-button-toggle>
+                <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                    <div class="md-display-1 pad-top-sm" fxFlex="55">34</div>
+                    <div class="pad-top-sm" fxFlex="45">Assets</div>
+                </div>
+            </md-button-toggle>
+            <md-button-toggle>
+                <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                    <div class="md-display-1 pad-top-sm" fxFlex="55">300</div>
+                    <div class="pad-top-sm" fxFlex="45">Extensions</div>
+                </div>
+            </md-button-toggle>
+            <md-button-toggle>
+                <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                    <div class="md-display-1 pad-top-sm" fxFlex="55">5000</div>
+                    <div class="pad-top-sm" fxFlex="45">Flows</div>
+                </div>
+            </md-button-toggle>
+            <md-button-toggle>
+                <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
+                    <div class="md-display-1 pad-top-sm" fxFlex="55">0</div>
+                    <div class="pad-top-sm" fxFlex="45">Certifications</div>
+                </div>
+            </md-button-toggle>
+        </md-button-toggle-group>
+        <div fxLayout="row" class="pad-top-md pad-bot-md"></div>
+        <md-button-toggle-group name="nifi-registry-administration-perspective" fxLayout="row" class="tab-toggle-group">
+            <md-button-toggle value="general" class="uppercase">
+                general
+            </md-button-toggle>
+            <div fxLayout="row" class="pad-left-md"></div>
+            <md-button-toggle value="users" class="uppercase">
+                Users
+            </md-button-toggle>
+            <div fxLayout="row" class="pad-left-md"></div>
+            <md-button-toggle value="workflow" class="uppercase">
+                Workflow
+            </md-button-toggle>
         </md-button-toggle-group>
         ]]>
       </pre>
@@ -321,13 +417,13 @@
                     <md-input-container floatPlaceholder="always" flex>
                         <input mdInput disabled placeholder="First name">
                     </md-input-container>
-                    <md-input-container floatPlaceholder="always" flex>
+                    <md-input-container flex>
                         <input mdInput placeholder="Long Last Name That Will Be Truncated">
                     </md-input-container>
                 </div>
                 <div layout="row" layout-margin>
                     <div flex fxLayoutAlign="start center">
-                        <md-input-container floatPlaceholder="always" flex>
+                        <md-input-container flex>
                             <input mdInput placeholder="Button Addon with dropdown">
                         </md-input-container>
                         <button class="input-button" color="fds-regular" md-raised-button [mdMenuTriggerFor]="inputButtonDropdownAddonMenu">
@@ -368,7 +464,7 @@
                     </div>
                 </div>
                 <div layout="row" layout-margin>
-                    <md-input-container floatPlaceholder="always" flex>
+                    <md-input-container flex>
                         <textarea mdInput placeholder="Address" value="1600 Amphitheatre Pkway"></textarea>
                     </md-input-container>
                 </div>
@@ -405,13 +501,13 @@
                 <md-input-container floatPlaceholder="always" flex>
                     <input mdInput disabled placeholder="First name">
                 </md-input-container>
-                <md-input-container floatPlaceholder="always" flex>
+                <md-input-container flex>
                     <input mdInput placeholder="Long Last Name That Will Be Truncated">
                 </md-input-container>
             </div>
             <div layout="row" layout-margin>
                 <div flex fxLayoutAlign="start center">
-                    <md-input-container floatPlaceholder="always" flex>
+                    <md-input-container flex>
                         <input mdInput placeholder="Button Addon with dropdown">
                     </md-input-container>
                     <button class="input-button" color="fds-regular" md-raised-button [mdMenuTriggerFor]="inputButtonDropdownAddonMenu">
@@ -452,7 +548,7 @@
                 </div>
             </div>
             <div layout="row" layout-margin>
-                <md-input-container floatPlaceholder="always" flex>
+                <md-input-container flex>
                     <textarea mdInput placeholder="Address" value="1600 Amphitheatre Pkway"></textarea>
                 </md-input-container>
             </div>
@@ -807,10 +903,9 @@
         </md-card-content>
     </md-card>
     <md-card>
-        <md-card-title class="pad-bottom-sm">Searchable Expansion Panels</md-card-title>
+        <md-card-title class="pad-bottom-sm">Searchable/Filterable Expansion Panels</md-card-title>
         <md-divider></md-divider>
         <md-card-content>
-            <p>Example table with: Paging Bar / Filter / Sortable Columns / Multi-select with available Actions</p>
             <md-tab-group md-stretch-tabs>
                 <md-tab>
                     <ng-template md-tab-label>Demo</ng-template>
@@ -947,43 +1042,43 @@
                 <md-button-toggle-group fxLayout="row" fxLayoutAlign="space-between center" class="expansion-panel-filter-toggle-group" multiple>
                     <md-button-toggle (change)="toggleDropletsFilter('type:asset')" [checked]="isDropletFilterChecked('type:asset')">
                         <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
-                            <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletTypeCount('asset')}}</div>
+                            <div class="md-display-1 pad-top-sm" fxFlex="55">{ {getDropletTypeCount('asset')} }</div>
                             <div class="pad-top-sm" fxFlex="45">Assets</div>
                         </div>
                     </md-button-toggle>
                     <md-button-toggle (change)="toggleDropletsFilter('type:extension')" [checked]="isDropletFilterChecked('type:extension')">
                         <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
-                            <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletTypeCount('extension')}}</div>
+                            <div class="md-display-1 pad-top-sm" fxFlex="55">{ {getDropletTypeCount('extension')} }</div>
                             <div class="pad-top-sm" fxFlex="45">Extensions</div>
                         </div>
                     </md-button-toggle>
                     <md-button-toggle (change)="toggleDropletsFilter('type:flow')" [checked]="isDropletFilterChecked('type:flow')">
                         <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
-                            <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletTypeCount('flow')}}</div>
+                            <div class="md-display-1 pad-top-sm" fxFlex="55">{ {getDropletTypeCount('flow')} }</div>
                             <div class="pad-top-sm" fxFlex="45">Flows</div>
                         </div>
                     </md-button-toggle>
                     <md-button-toggle (change)="toggleDropletsFilter('compliant.label:Compliant')" [checked]="isDropletFilterChecked('compliant.label:Compliant')">
                         <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
-                            <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletCertificationCount('compliant')}}</div>
+                            <div class="md-display-1 pad-top-sm" fxFlex="55">{ {getDropletCertificationCount('compliant')} }</div>
                             <div class="pad-top-sm" fxFlex="45">Compliant</div>
                         </div>
                     </md-button-toggle>
                     <md-button-toggle (change)="toggleDropletsFilter('fleet.label:Fleet')" [checked]="isDropletFilterChecked('fleet.label:Fleet')">
                         <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
-                            <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletCertificationCount('fleet')}}</div>
+                            <div class="md-display-1 pad-top-sm" fxFlex="55">{ {getDropletCertificationCount('fleet')} }</div>
                             <div class="pad-top-sm" fxFlex="45">Fleet</div>
                         </div>
                     </md-button-toggle>
                     <md-button-toggle (change)="toggleDropletsFilter('prod.label:Production Ready')" [checked]="isDropletFilterChecked('prod.label:Production Ready')">
                         <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
-                            <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletCertificationCount('prod')}}</div>
+                            <div class="md-display-1 pad-top-sm" fxFlex="55">{ {getDropletCertificationCount('prod')} }</div>
                             <div class="pad-top-sm" fxFlex="45">Production Ready</div>
                         </div>
                     </md-button-toggle>
                     <md-button-toggle (change)="toggleDropletsFilter('secure.label:Secure')" [checked]="isDropletFilterChecked('secure.label:Secure')">
                         <div fxFlex fxLayout="column" fxLayoutAlign="space-around stretch">
-                            <div class="md-display-1 pad-top-sm" fxFlex="55">{{getDropletCertificationCount('secure')}}</div>
+                            <div class="md-display-1 pad-top-sm" fxFlex="55">{ {getDropletCertificationCount('secure')} }</div>
                             <div class="pad-top-sm" fxFlex="45">Secure</div>
                         </div>
                     </md-button-toggle>
@@ -995,38 +1090,38 @@
                     <td-chips [(ngModel)]="dropletsSearchTerms" [items]="autoCompleteDroplets" (add)="dropletsSearchAdd($event)" (remove)="dropletsSearchRemove($event)" class="push-right-sm"></td-chips>
                     <span class="pad-right-sm">Sort by:</span>
                     <button color="fds-primary" md-raised-button [mdMenuTriggerFor]="dropletGridSortMenu">
-                        {{getSortBy()}}<i class="fa fa-caret-down" aria-hidden="true"></i>
+                        { {getSortBy()} }<i class="fa fa-caret-down" aria-hidden="true"></i>
                     </button>
                 </div>
                 <md-menu class="fds-primary-dropdown-button-menu" #dropletGridSortMenu="mdMenu" [overlapTrigger]="false">
                     <div *ngFor="let column of dropletColumns">
-                        <button md-menu-item *ngIf="column.sortable" (click)="sortDroplets($event, column);">{{column.label}} {{(column.sortOrder === 'ASC') ? 'DESC' : 'ASC'}}</button>
+                        <button md-menu-item *ngIf="column.sortable" (click)="sortDroplets($event, column);">{ {column.label} } { {(column.sortOrder === 'ASC') ? 'DESC' : 'ASC'} }</button>
                     </div>
                 </md-menu>
             </div>
         </div>
         <div class="pad-right-xxl pad-left-xxl">
             <div *ngFor="let droplet of filteredDroplets">
-                <td-expansion-panel class="mat-elevation-z5" label={{droplet.label}} sublabel={{droplet.sublabel}} [disabled]="disabled">
+                <td-expansion-panel class="mat-elevation-z5" label={ {droplet.label} } sublabel={ {droplet.sublabel} } [disabled]="disabled">
                     <ng-template td-expansion-panel-label>
                         <div fxLayout="column" fxLayoutAlign="space-between start">
-                            <span class="md-title capitalize">{{droplet.displayName}}</span>
-                            <span class="md-subhead">{{droplet.type}}</span>
+                            <span class="md-title capitalize">{ {droplet.displayName} }</span>
+                            <span class="md-subhead">{ {droplet.type} }</span>
                         </div>
                     </ng-template>
                     <ng-template td-expansion-panel-sublabel>
                         <div fxLayout="row" fxLayoutAlign="space-between center">
                             <div class="pad-right-xxl pad-left-xxl" fxLayout="column" fxLayoutAlign="space-between start">
-                                <span class="uppercase">Versions</span> {{droplet.versions.length}}
+                                <span class="uppercase">Versions</span> { {droplet.versions.length} }
                             </div>
                             <div class="pad-right-xxl pad-left-xxl" fxLayout="column" fxLayoutAlign="space-between start">
-                                <span class="uppercase">Flows</span> {{droplet.flows.length}}
+                                <span class="uppercase">Flows</span> { {droplet.flows.length} }
                             </div>
                             <div class="pad-right-xxl pad-left-xxl" fxLayout="column" fxLayoutAlign="space-between start">
-                                <span class="uppercase">Extensions</span> {{droplet.extensions.length}}
+                                <span class="uppercase">Extensions</span> { {droplet.extensions.length} }
                             </div>
                             <div class="pad-right-xxl pad-left-xxl" fxLayout="column" fxLayoutAlign="space-between start">
-                                <span class="uppercase">Assests</span> {{droplet.assets.length}}
+                                <span class="uppercase">Assests</span> { {droplet.assets.length} }
                             </div>
                         </div>
                     </ng-template>
@@ -1038,7 +1133,7 @@
                                 </button>
                                 <md-menu class="fds-primary-dropdown-button-menu" #primaryButtonDropdownMenu="mdMenu" [overlapTrigger]="false">
                                     <button md-menu-item *ngFor="let action of droplet.actions">
-                                        <span>{{action.name}}</span>
+                                        <span>{ {action.name} }</span>
                                     </button>
                                 </md-menu>
                             </div>
@@ -1050,7 +1145,7 @@
                                 <div fxFlex="50">
                                     <md-card fxFlex>
                                         <md-card-content class="pad-top-sm">
-                                            <img src="{{droplet.img}}">
+                                            <img src="{ {droplet.img} }">
                                         </md-card-content>
                                     </md-card>
                                 </div>
@@ -1384,84 +1479,84 @@
             <md-tab-group md-stretch-tabs>
                 <md-tab>
                     <ng-template md-tab-label>Demo</ng-template>
-                    <div layout="row" layout-align="space-between center" class="pad-left-sm pad-right-sm pad-top-sm" [class.mat-selected-title]="selectedRows.length && selectable">
-                        <span class="table-title push-left-sm">
-                            <span *ngIf="(selectable && !selectedRows.length) || !selectable">Title here</span>
-                        <span *ngIf="selectedRows.length && selectable" class="md-body-1">{{selectedRows.length}} item(s) selected</span>
+                    <div layout="row" layout-align="space-between center" class="pad-top-md pad-bottom-sm pad-left-md pad-right-md">
+                        <span class="table-title">
+                            <span>Table title</span>
                         </span>
                         <div flex class="push-right-sm" fxLayout="row" fxLayoutAlign="end center">
-                            <td-chips [items]="autoCompleteData" (add)="searchAdd($event)" (remove)="searchRemove($event)" class="push-right-sm"></td-chips>
+                            <td-chips [items]="autoCompleteData" (add)="searchAdd($event)" (remove)="searchRemove($event)"></td-chips>
                             <button color="fds-primary" md-raised-button [mdMenuTriggerFor]="dataTableActionMenu">
                                 Actions<i class="fa fa-caret-down" aria-hidden="true"></i>
                             </button>
                         </div>
                         <md-menu class="fds-primary-dropdown-button-menu" #dataTableActionMenu="mdMenu" [overlapTrigger]="false">
-                            <button md-menu-item> Settings </button>
-                            <button md-menu-item> Details </button>
-                            <button md-menu-item disabled> Delete </button>
+                            <button md-menu-item> Option 1 </button>
+                            <button md-menu-item> Option 2 </button>
                         </md-menu>
                     </div>
-                    <table td-data-table>
-                        <th td-data-table-column [numeric]="column.numeric" (click)="sort($event, column)" [mdTooltip]="column.tooltip" *ngFor="let column of columns">
-                            {{column.label}}
-                            <i *ngIf="column.active && column.sortable && column.sortOrder === 'ASC'" class="fa fa-caret-up" aria-hidden="true"></i>
-                            <i *ngIf="column.active && column.sortable && column.sortOrder === 'DESC'" class="fa fa-caret-down" aria-hidden="true"></i>
-                        </th>
-                        <th td-data-table-column>
-                            <div fxLayout="row" fxLayoutAlign="end center">
-                                <md-checkbox [(ngModel)]="allRowsSelected" [checked]="allRowsSelected" (click)="toggleSelectAll()"></md-checkbox>
+                    <div class="pad-left-md pad-right-md">
+                        <div fxLayout="row" fxLayoutAlign="space-between center" class="td-data-table">
+                            <div class="td-data-table-column" (click)="sort($event, column)" [mdTooltip]="column.tooltip" *ngFor="let column of columns" fxFlex="{{column.width}}">
+                                {{column.label}}
+                                <i *ngIf="column.active && column.sortable && column.sortOrder === 'ASC'" class="fa fa-caret-up" aria-hidden="true"></i>
+                                <i *ngIf="column.active && column.sortable && column.sortOrder === 'DESC'" class="fa fa-caret-down" aria-hidden="true"></i>
                             </div>
-                        </th>
-                        <tr td-data-table-row [ngClass]="{'selected' : row.checked}" *ngFor="let row of filteredData">
-                            <td td-data-table-cell *ngFor="let column of columns" [numeric]="column.numeric" (click)="row.checked = !row.checked; toggleSelect(row)">
-                                <button md-button *ngIf="column.name === 'comments' && !row['comments']" [class.mat-accent]="!row['comments']" (click)="openDataTablePrompt(row, 'comments')">{{row['comments'] || 'Add Comment'}}</button>
-                                <div *ngIf="column.name !== 'comments' || row['comments']">
-                                    {{column.format ? column.format(row[column.name]) : row[column.name]}}
+                            <div class="td-data-table-column" fxFlex=10>
+                                <div fxLayout="row" fxLayoutAlign="end center">
+                                    <md-checkbox [(ngModel)]="allRowsSelected" (checked)="allRowsSelected" (change)="toggleSelectAll()"></md-checkbox>
                                 </div>
-                            </td>
-                            <td td-data-table-cell>
-                                <div *ngIf="row.actions">
-                                    <div *ngIf="row.actions.length < 4" fxLayout="row" fxLayoutAlign="end center">
-                                        <button *ngFor="let action of row.actions" mdTooltip="{{action.tooltip}}" md-icon-button color="accent" [disabled]="action.disabled ? '' : null">
-                                            <i class="{{action.icon}}" aria-hidden="true"></i>
-                                        </button>
-                                        <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)"></md-checkbox>
+                            </div>
+                        </div>
+                        <div>
+                            <div fxLayout="row" fxLayoutAlign="space-between center" class="td-data-table-row" [ngClass]="{'selected' : row.checked}" *ngFor="let row of filteredData" (click)="row.checked = !row.checked;toggleSelect(row)">
+                                <div class="td-data-table-cell" *ngFor="let column of columns" fxFlex="{{column.width}}">
+                                    <div *ngIf="column.name !== 'comments' || row['comments']">
+                                        {{column.format ? column.format(row[column.name]) : row[column.name]}}
                                     </div>
-                                    <div *ngIf="row.actions.length >= 4" fxLayout="row" fxLayoutAlign="end center">
-                                        <button mdTooltip="Actions" md-icon-button [mdMenuTriggerFor]="tableActionMenu">
-                                            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-                                        </button>
-                                        <md-menu #tableActionMenu="mdMenu" [overlapTrigger]="false">
-                                            <button *ngFor="let action of row.actions" mdTooltip="{{action.tooltip}}" md-menu-item [disabled]="action.disabled ? '' : null">
+                                </div>
+                                <div class="td-data-table-cell" fxFlex=10>
+                                    <div *ngIf="row.actions">
+                                        <div *ngIf="row.actions.length <= 4" fxLayout="row" fxLayoutAlign="end center">
+                                            <button (click)="row.checked = !row.checked" *ngFor="let action of row.actions" mdTooltip="{{action.tooltip}}" md-icon-button color="accent" [disabled]="action.disabled ? '' : null">
                                                 <i class="{{action.icon}}" aria-hidden="true"></i>
-                                                <span>{{action.name}}</span>
                                             </button>
-                                        </md-menu>
-                                        <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)"></md-checkbox>
+                                            <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
+                                        </div>
+                                        <div *ngIf="row.actions.length > 4" fxLayout="row" fxLayoutAlign="end center">
+                                            <button (click)="row.checked = !row.checked" mdTooltip="Actions" md-icon-button [mdMenuTriggerFor]="tableActionMenu">
+                                                <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                                            </button>
+                                            <md-menu #tableActionMenu="mdMenu" [overlapTrigger]="false">
+                                                <button *ngFor="let action of row.actions" mdTooltip="{{action.tooltip}}" md-menu-item [disabled]="action.disabled ? '' : null">
+                                                    <i class="{{action.icon}}" aria-hidden="true"></i>
+                                                    <span>{{action.name}}</span>
+                                                </button>
+                                            </md-menu>
+                                            <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="!row.actions" fxLayout="row" fxLayoutAlign="end center">
+                                        <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
                                     </div>
                                 </div>
-                                <div *ngIf="!row.actions" fxLayout="row" fxLayoutAlign="end center">
-                                    <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)"></md-checkbox>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                    <div class="md-padding" *ngIf="!filteredData.length > 0" layout="row" layout-align="center center">
-                        <h3>No results to display.</h3>
+                            </div>
+                        </div>
+                        <div class="md-padding" *ngIf="!filteredData.length > 0" layout="row" layout-align="center center">
+                            <h3>No results to display.</h3>
+                        </div>
+                        <td-paging-bar #pagingBar [pageSizeAll]="true" [pageSizes]="[1, 2, 5, 50, 100, 200, 500, 1000, 2000]" [initialPage]="1" [pageSize]="pageSize" [total]="pageCount" (change)="page($event)">
+                            <span td-paging-bar-label hide-xs>Row per page:</span> {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+                        </td-paging-bar>
                     </div>
-                    <td-paging-bar #pagingBar [pageSizes]="[5, 10, 15, 20]" [total]="filteredTotal" (change)="page($event)">
-                        <span td-paging-bar-label hide-xs>Row per page:</span> {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
-                    </td-paging-bar>
                 </md-tab>
                 <md-tab>
                     <ng-template md-tab-label>Code</ng-template>
                     <p>HTML:</p>
                     <pre lang="html">
                         <![CDATA[
-        <div layout="row" layout-align="space-between center" class="pad-left-sm pad-right-sm pad-top-sm" [class.mat-selected-title]="selectedRows.length && selectable">
+        <div layout="row" layout-align="space-between center" class="pad-left-sm pad-right-sm pad-top-sm">
             <span class="table-title push-left-sm">
-                <span *ngIf="(selectable && !selectedRows.length) || !selectable">Title here</span>
-            <span *ngIf="selectedRows.length && selectable" class="md-body-1">{ {selectedRows.length} } item(s) selected</span>
+                <span>Title here</span>
             </span>
             <div flex class="push-right-sm" fxLayout="row" fxLayoutAlign="end center">
                 <td-chips [items]="autoCompleteData" (add)="searchAdd($event)" (remove)="searchRemove($event)" class="push-right-sm"></td-chips>

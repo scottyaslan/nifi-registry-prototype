@@ -15,9 +15,6 @@
  * limitations under the License.
  */
 
-var NUMBER_FORMAT = v => v;
-var DECIMAL_FORMAT = v => v.toFixed(2);
-
 function NfRegistryGridListViewer(nfRegistryService, ActivatedRoute) {
     this.subscription$;
     this.route = ActivatedRoute;
@@ -40,14 +37,13 @@ NfRegistryGridListViewer.prototype = {
          */
         self.subscription$ = self.route.params
         .switchMap(function(params) {
-            self.nfRegistryService.selectedRegistryId = params['registryId'];
             return self.nfRegistryService.getRegistry(params['registryId']);
         })
         .subscribe(function(registry) {
             self.nfRegistryService.registry = registry;
-            self.nfRegistryService.getBuckets(self.nfRegistryService.selectedRegistryId).then(function(buckets) {
+            self.nfRegistryService.getBuckets(self.nfRegistryService.registry.id).then(function(buckets) {
                 self.nfRegistryService.buckets = buckets;
-                self.nfRegistryService.getDroplets(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId, self.nfRegistryService.selectedDropletId).then(function(droplets) {
+                self.nfRegistryService.getDroplets(self.nfRegistryService.registry.id, self.nfRegistryService.bucket.id, self.nfRegistryService.droplet.id).then(function(droplets) {
                     self.nfRegistryService.droplets = self.nfRegistryService.filteredDroplets = droplets;
                     self.nfRegistryService.filterDroplets();
                 });
@@ -56,7 +52,6 @@ NfRegistryGridListViewer.prototype = {
     },
     ngOnDestroy: function() {
         this.subscription$.unsubscribe();
-        this.nfRegistryService.selectedRegistryId = '';
         this.nfRegistryService.registry = {};
         this.nfRegistryService.buckets = [];
         this.nfRegistryService.droplets = [];

@@ -13,7 +13,7 @@
         </md-menu>
         <div class="list-header description">Name:</div>
         <md-list>
-            <md-list-item [attr.focus]="((droplet.id === nfRegistryService.selectedDropletId) || (droplet.checked)) ? '' : null" *ngFor="let droplet of nfRegistryService.droplets" routerLink="/nifi-registry/explorer/list/{{nfRegistryService.registry.id}}/{{nfRegistryService.selectedBucketId}}/{{droplet.id}}">
+            <md-list-item [attr.focus]="((droplet.id === nfRegistryService.droplet.id) || (droplet.checked)) ? '' : null" *ngFor="let droplet of nfRegistryService.droplets" routerLink="/nifi-registry/explorer/list/{{nfRegistryService.registry.id}}/{{nfRegistryService.bucket.id}}/{{droplet.id}}">
                 <span md-line> {{droplet.name}} </span>
                 <md-checkbox class="nf-checkbox" [(ngModel)]="droplet.checked"></md-checkbox>
             </md-list-item>

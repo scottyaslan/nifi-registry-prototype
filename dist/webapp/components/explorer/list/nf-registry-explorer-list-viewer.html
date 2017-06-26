@@ -21,7 +21,7 @@
         </md-menu>
         <div class="list-header description">Name:</div>
         <md-list>
-            <md-list-item [attr.focus]="((bucket.id === nfRegistryService.selectedBucketId) || (bucket.checked)) ? '' : null" *ngFor="let bucket of nfRegistryService.buckets" routerLink="/nifi-registry/explorer/list/{{nfRegistryService.registry.id}}/{{bucket.id}}">
+            <md-list-item [attr.focus]="((bucket.id === nfRegistryService.bucket.id) || (bucket.checked)) ? '' : null" *ngFor="let bucket of nfRegistryService.buckets" routerLink="/nifi-registry/explorer/list/{{nfRegistryService.registry.id}}/{{bucket.id}}">
                 <span md-line class="description"> {{bucket.name}} </span>
                 <button mdTooltip="Manage Permissions" md-icon-button routerLink="/nifi-registry/manage/{{nfRegistryService.registry.id}}/{{bucket.id}}">
                     <i class="fa fa-key" aria-hidden="true"></i>

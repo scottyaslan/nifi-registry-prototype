@@ -25,6 +25,7 @@ NfRegistryBucketPermissionsManager.prototype = {
     constructor: NfRegistryBucketPermissionsManager,
     ngOnInit: function() {
         var self = this;
+        self.nfRegistryService.perspective = 'manage';
         /**
          * The switchMap operator maps the id in the Observable route
          * parameters to a new Observable, the result of the
@@ -34,19 +35,17 @@ NfRegistryBucketPermissionsManager.prototype = {
          */
         this.subscription$ = this.route.params
             .switchMap(function(params) {
-                self.nfRegistryService.selectedRegistryId = params['registryId'];
-                self.nfRegistryService.selectedBucketId = params['bucketId'];
                 return self.nfRegistryService.getRegistry(params['registryId']).then(
                     function(registry) {
                         self.nfRegistryService.registry = registry;
                         return self.nfRegistryService.getBuckets(params['registryId'], params['bucketId']);
                     });
             })
-            .subscribe(bucket => this.nfRegistryService.bucket = bucket);
+            .subscribe(buckets => this.nfRegistryService.bucket = buckets[0]);
     },
     ngOnDestroy: function() {
         this.subscription$.unsubscribe();
-        delete this.nfRegistryService.selectedDropletId;
+        this.nfRegistryService.perspective = '';
     }
 };
 

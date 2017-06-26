@@ -16,17 +16,15 @@
  */
 
 function NfRegistryService(TdDataTableService) {
-    this.selectedRegistryId = '';
-    this.selectedBucketId = '';
-    this.selectedDropletId = '';
-    this.selectedUserId = '';
     this.registries = [];
     this.registry = {};
     this.bucket = {};
     this.buckets = [];
     this.droplet = {};
     this.droplets = [];
+    this.certifications = [];
     this.user = {};
+    this.users = [];
     this.alerts = [];
     this.explorerViewType = '';
 
@@ -47,6 +45,45 @@ function NfRegistryService(TdDataTableService) {
     this.autoCompleteDroplets = [];
     this.dropletsSearchTerms = [];
 
+    this.filteredUsers = [];
+
+    this.userColumns = [
+        { name: 'status', label: 'Status', sortable: true, tooltip: 'User Status.', width: 18 },
+        { name: 'name', label: 'Name', sortable: true, tooltip: 'User name.', width: 30 },
+        { name: 'provider', label: 'Provider', sortable: true, tooltip: 'Authentication provider.', width: 30 }
+    ];
+
+    this.allUsersSelected = false;
+    this.autoCompleteUsers = [];
+    this.selectedUsers = [];
+
+    this.usersSearchTerms = [];
+    this.usersFromRow = 1;
+    this.usersCurrentPage = 1;
+    this.usersPageSize = 1;
+    this.usersPageCount = 0;
+
+    this.filteredBuckets = [];
+
+    this.bucketColumns = [
+        { name: 'name', label: 'Bucket Name', sortable: true, tooltip: 'Sort Buckets by name.' }
+    ];
+
+    this.allBucketsSelected = false;
+    this.autoCompleteBuckets = [];
+    this.bucketsSearchTerms = [];
+
+    this.filteredCertifications = [];
+
+    this.certificationColumns = [
+        { name: 'name', label: 'Label Name', sortable: true, tooltip: 'Sort Certifications by name.', width: 40 },
+        { name: 'usage', label: 'Usage', sortable: true, tooltip: 'Sort Certifications by usage.', width: 30 },
+        { name: 'badge', label: 'Badge Design', sortable: false, tooltip: 'Certification badge.', width: 30 }
+    ];
+
+    this.autoCompleteCertifications = [];
+    this.certificationsSearchTerms = [];
+
     //</editor-fold>
 };
 
@@ -60,21 +97,172 @@ NfRegistryService.prototype = {
             setTimeout(() => resolve(this.registries = [{
                 id: '23f6cc59-0156-1000-06b4-2b0810089090',
                 name: "Flow Registry",
+                users: [{
+                    id: '23f6cc59-0156-1000-06b4-2b0810089090',
+                    name: 'Scotty 2 Hotty',
+                    status: 'authorized',
+                    provider: 'Friendly LDAP Provider',
+                    type: 'user',
+                    actions: [{
+                        'name': 'details',
+                        'icon': 'fa fa-info-circle',
+                        'tooltip': 'User Details'
+                    }, {
+                        'name': 'manage',
+                        'icon': 'fa fa-key',
+                        'tooltip': 'Manage User Policies'
+                    }, {
+                        'name': 'Delete',
+                        'icon': 'fa fa-trash',
+                        'tooltip': 'Delete User'
+                    }, {
+                        'name': 'Suspend',
+                        'icon': 'fa fa-ban',
+                        'tooltip': 'Suspend User'
+                    }]
+                }, {
+                    id: '25fd6vv87-3249-0001-05g6-4d4767890765',
+                    name: 'Group 1',
+                    status: 'suspended',
+                    provider: 'IOAT',
+                    type: 'group',
+                    actions: [{
+                        'name': 'details',
+                        'icon': 'fa fa-info-circle',
+                        'tooltip': 'User Details'
+                    }, {
+                        'name': 'manage',
+                        'icon': 'fa fa-key',
+                        'tooltip': 'Manage User Policies'
+                    }, {
+                        'name': 'Delete',
+                        'icon': 'fa fa-trash',
+                        'tooltip': 'Delete User'
+                    }, {
+                        'name': 'Reauthorize',
+                        'icon': 'fa fa-check-circle',
+                        'tooltip': 'Reauthorize User'
+                    }]
+                }, {
+                    id: '98f6cc59-0156-1000-06b4-2b0810089090',
+                    name: 'G$',
+                    status: 'authorized',
+                    provider: 'Friendly LDAP Provider',
+                    type: 'user',
+                    actions: [{
+                        'name': 'details',
+                        'icon': 'fa fa-info-circle',
+                        'tooltip': 'User Details'
+                    }, {
+                        'name': 'manage',
+                        'icon': 'fa fa-key',
+                        'tooltip': 'Manage User Policies'
+                    }, {
+                        'name': 'Delete',
+                        'icon': 'fa fa-trash',
+                        'tooltip': 'Delete User'
+                    }, {
+                        'name': 'Suspend',
+                        'icon': 'fa fa-ban',
+                        'tooltip': 'Suspend User'
+                    }]
+                }, {
+                    id: '65fd6vv87-3249-0001-05g6-4d4767890765',
+                    name: 'Group 2',
+                    status: 'suspended',
+                    provider: 'IOAT',
+                    type: 'group',
+                    actions: [{
+                        'name': 'details',
+                        'icon': 'fa fa-info-circle',
+                        'tooltip': 'User Details'
+                    }, {
+                        'name': 'manage',
+                        'icon': 'fa fa-key',
+                        'tooltip': 'Manage User Policies'
+                    }, {
+                        'name': 'Delete',
+                        'icon': 'fa fa-trash',
+                        'tooltip': 'Delete User'
+                    }, {
+                        'name': 'Reauthorize',
+                        'icon': 'fa fa-check-circle',
+                        'tooltip': 'Reauthorize User'
+                    }]
+                }],
+                certifications: [{
+                    id: '34fd6vv87-3549-0001-05g6-4d4567890765',
+                    name: "Compliant",
+                    usage: true,
+                    badge: {
+                        background: '#728E9B',
+                        color: 'white',
+                        tooltip: 'Whatever',
+                        icon: 'fa fa-plus'
+                    },
+                    actions: [{
+                        'name': 'edit',
+                        'icon': 'fa fa-pencil',
+                        'tooltip': 'Edit Certification Settings'
+                    }, {
+                        'name': 'delete',
+                        'icon': 'fa fa-trash',
+                        'tooltip': 'Delete Certificate'
+                    }]
+                }, {
+                    id: '43fd6vv87-3549-0001-05g6-4d4567890765',
+                    name: "Fleet",
+                    usage: false,
+                    badge: {
+                        background: '#3FAE2A',
+                        color: 'white',
+                        tooltip: 'Whatever',
+                        icon: 'fa fa-code-fork'
+                    },
+                    actions: [{
+                        'name': 'edit',
+                        'icon': 'fa fa-pencil',
+                        'tooltip': 'Edit Certification Settings'
+                    }, {
+                        'name': 'delete',
+                        'icon': 'fa fa-trash',
+                        'tooltip': 'Delete Certificate'
+                    }]
+                }, {
+                    id: '94fd6vv87-3549-0001-05g6-4d4567890765',
+                    name: "Production Ready",
+                    usage: false,
+                    badge: {
+                        background: '#E98A40',
+                        color: 'black',
+                        tooltip: 'Whatever',
+                        icon: 'fa fa-product-hunt'
+                    },
+                    actions: [{
+                        'name': 'edit',
+                        'icon': 'fa fa-pencil',
+                        'tooltip': 'Edit Certification Settings'
+                    }, {
+                        'name': 'delete',
+                        'icon': 'fa fa-trash',
+                        'tooltip': 'Delete Certificate'
+                    }]
+                }],
                 buckets: [{
                         id: '25fd6vv87-3549-0001-05g6-4d4567890765',
                         name: "My Flows",
                         actions: [{
+                            'name': 'details',
+                            'icon': 'fa fa-info-circle',
+                            'tooltip': 'Bucket Details'
+                        }, {
+                            'name': 'manage',
+                            'icon': 'fa fa-key',
+                            'tooltip': 'Manage Bucket Policies'
+                        }, {
                             'name': 'Delete',
-                            'icon': 'fa fa-close',
+                            'icon': 'fa fa-trash',
                             'tooltip': 'Delete User'
-                        }, {
-                            'name': 'Manage',
-                            'icon': 'fa fa-user',
-                            'tooltip': 'Manage User'
-                        }, {
-                            'name': 'Action 3',
-                            'icon': 'fa fa-question',
-                            'tooltip': 'Whatever else we want to do...'
                         }],
                         droplets: [{
                             id: '23f6cc59-0156-1000-09b4-2b0610089090',
@@ -203,15 +391,6 @@ NfRegistryService.prototype = {
                                 'icon': 'fa fa-user',
                                 'tooltip': 'Manage User'
                             }]
-                        }],
-                        users: [{
-                            id: '23f6cc59-0156-1000-06b4-2b0810089090',
-                            name: 'Scotty 2 Hotty',
-                            type: 'user'
-                        }, {
-                            id: '25fd6vv87-3249-0001-05g6-4d4767890765',
-                            name: 'Group 1',
-                            type: 'group'
                         }]
                     }, {
                         id: '23f6cc59-0156-1000-09b4-2b0810089080',
@@ -276,12 +455,25 @@ NfRegistryService.prototype = {
                                 'tooltip': 'Whatever else we want to do...'
                             }]
                         }],
-                        actions: [],
-                        users: []
+                        actions: [{
+                            'name': 'details',
+                            'icon': 'fa fa-info-circle',
+                            'tooltip': 'Bucket Details'
+                        }, {
+                            'name': 'manage',
+                            'icon': 'fa fa-key',
+                            'tooltip': 'Manage Bucket Policies'
+                        }, {
+                            'name': 'Delete',
+                            'icon': 'fa fa-trash',
+                            'tooltip': 'Delete User'
+                        }]
                     }] // some data model for the contents of a registry
             }, {
                 id: '25fd6vv87-3249-0001-05g6-4d4567890763',
                 name: "Variable Registry",
+                certifications: [],
+                users: [],
                 buckets: [] // some data model for the contents of a registry
             }]), 6)
         );
@@ -295,6 +487,12 @@ NfRegistryService.prototype = {
                             return registry;
                         }
                     });
+            });
+    },
+    getBucket: function(registryId, bucketId) {
+        return this.getBuckets(registryId, bucketId).then(
+            function(buckets) {
+                return buckets[0];
             });
     },
     getBuckets: function(registryIds, bucketIds) {
@@ -318,6 +516,40 @@ NfRegistryService.prototype = {
                 return buckets;
             });
 
+    },
+    getCertification: function(registryId, certificatonId) {
+        return this.getCertifications(registryId, certificatonId).then(
+            function(certificatons) {
+                return certificatons[0];
+            });
+    },
+    getCertifications: function(registryIds, certificatonIds) {
+        var self = this;
+        return this.getRegistries().then(
+            function(registries) {
+                var certificatons = [];
+
+                registries.find(
+                    function(registry) {
+                        if ((registryIds === undefined || registryIds.length === 0) || registryIds.indexOf(registry.id) >= 0) {
+                            registry.certifications.find(
+                                function(certificaton) {
+                                    if ((certificatonIds === undefined || certificatonIds.length === 0) || certificatonIds.indexOf(certificaton.id) >= 0) {
+                                        certificatons.push(certificaton);
+                                    }
+                                });
+                        }
+                    });
+
+                return certificatons;
+            });
+
+    },
+    getDroplet: function(registryId, bucketId, dropletId) {
+        return this.getDroplets(registryId, bucketId, dropletId).then(
+            function(droplets) {
+                return droplets[0];
+            });
     },
     getDroplets: function(registryIds, bucketIds, dropletIds) {
         var self = this;
@@ -353,41 +585,44 @@ NfRegistryService.prototype = {
             });
 
     },
-    getUser: function(registryId, bucketId, userId) {
-        var self = this;
-        return this.getBucket(registryId, bucketId).then(
-            function(bucket) {
-                return bucket.users.find(
-                    function(user) {
-                        if (user.id === userId) {
-                            return user;
-                        }
-                    });
+    getUser: function(registryId, userId) {
+        return this.getCertifications(registryId, userId).then(
+            function(users) {
+                return users[0];
             });
     },
-    getUserCount: function() {
-        var authUserCount = 0;
-        if (this.registry) {
-            for (var i = 0; i < this.registry.buckets.length; i++) {
-                for (var j = 0; j < this.registry.buckets[i].users; j++) {
-                    if (this.registry.buckets[i].users[j].type === 'user') {
-                        ++authUserCount;
-                    }
-                }
-            }
-        }
-        return authUserCount;
+    getUsers: function(registryIds, userIds) {
+        var self = this;
+        return this.getRegistries().then(
+            function(registries) {
+                var users = [];
+
+                registries.find(
+                    function(registry) {
+                        if ((registryIds === undefined || registryIds.length === 0) || registryIds.indexOf(registry.id) >= 0) {
+                            registry.users.find(
+                                function(user) {
+                                    if ((userIds === undefined || userIds.length === 0) || userIds.indexOf(user.id) >= 0) {
+                                        users.push(user);
+                                    }
+                                });
+                        }
+                    });
+
+                return users;
+            });
+
     },
     getExplorerViewRouterLink: function(viewType) {
         var routerLink = '/nifi-registry/explorer/' + viewType;
-        if (this.selectedRegistryId) {
-            routerLink += '/' + this.selectedRegistryId;
+        if (this.registry.id) {
+            routerLink += '/' + this.registry.id;
         }
-        if (this.selectedBucketId) {
-            routerLink += '/' + this.selectedBucketId;
+        if (this.bucket.id) {
+            routerLink += '/' + this.bucket.id;
         }
-        if (this.selectedDropletId) {
-            routerLink += '/' + this.selectedDropletId;
+        if (this.droplet.id) {
+            routerLink += '/' + this.droplet.id;
         }
 
         return routerLink;
@@ -432,7 +667,7 @@ NfRegistryService.prototype = {
             // toggle column sort order
             var sortOrder = column.sortOrder = (column.sortOrder === 'ASC') ? 'DESC' : 'ASC';
             this.filterDroplets(column.name, sortOrder);
-            this.activeColumn = column;
+            this.activeDropletColumn = column;
             //only one column can be actively sorted so we reset all to inactive
             this.dropletColumns.forEach(c => c.active = false);
             //and set this column as the actively sorted column
@@ -441,11 +676,11 @@ NfRegistryService.prototype = {
     },
 
     dropletsSearchRemove: function(searchTerm) {
-        this.filterDroplets(this.activeColumn.name, this.activeColumn.sortOrder);
+        this.filterDroplets(this.activeDropletColumn.name, this.activeDropletColumn.sortOrder);
     },
 
     dropletsSearchAdd: function(searchTerm) {
-        this.filterDroplets(this.activeColumn.name, this.activeColumn.sortOrder);
+        this.filterDroplets(this.activeDropletColumn.name, this.activeDropletColumn.sortOrder);
     },
 
     toggleDropletsFilter: function(searchTerm) {
@@ -467,7 +702,7 @@ NfRegistryService.prototype = {
             this.dropletsSearchTerms.push(searchTerm);
         }
 
-        this.filterDroplets(this.activeColumn.name, this.activeColumn.sortOrder);
+        this.filterDroplets(this.activeDropletColumn.name, this.activeDropletColumn.sortOrder);
     },
 
     filterData: function(data, searchTerm, ignoreCase) {
@@ -511,31 +746,31 @@ NfRegistryService.prototype = {
     },
 
     filterDroplets: function(sortBy, sortOrder) {
+        // if `sortOrder` is `undefined` then use 'ASC'
+        if (sortOrder === undefined) {
+            sortOrder = 'ASC'
+        }
         // if `sortBy` is `undefined` then find the first sortable column in this.dropletColumns
         if (sortBy === undefined) {
             var arrayLength = this.dropletColumns.length;
             for (var i = 0; i < arrayLength; i++) {
                 if (this.dropletColumns[i].sortable === true) {
                     sortBy = this.dropletColumns[i].name;
-                    this.activeColumn = this.dropletColumns[i];
+                    this.activeDropletColumn = this.dropletColumns[i];
                     //only one column can be actively sorted so we reset all to inactive
                     this.dropletColumns.forEach(c => c.active = false);
                     //and set this column as the actively sorted column
                     this.dropletColumns[i].active = true;
+                    this.dropletColumns[i].sortOrder = sortOrder;
                     break;
                 }
             }
         }
 
-        // if `sortOrder` is `undefined` then use 'ASC'
-        if (sortOrder === undefined) {
-            sortOrder = 'ASC'
-        }
-
         var newData = this.droplets;
 
         for (var i = 0; i < this.dropletsSearchTerms.length; i++) {
-            newData = this.filterData(newData, this.dropletsSearchTerms[i], true, this.activeColumn.name);
+            newData = this.filterData(newData, this.dropletsSearchTerms[i], true, this.activeDropletColumn.name);
         }
 
         newData = this.dataTableService.sortData(newData, sortBy, sortOrder);
@@ -547,6 +782,235 @@ NfRegistryService.prototype = {
         this.autoCompleteDroplets = [];
         this.dropletColumns.forEach(c => this.filteredDroplets.forEach(r => (r[c.name.toLowerCase()]) ? this.autoCompleteDroplets.push(r[c.name.toLowerCase()].toString()) : ''));
     },
+
+    filterBuckets: function(sortBy, sortOrder) {
+        // if `sortOrder` is `undefined` then use 'ASC'
+        if (sortOrder === undefined) {
+            sortOrder = 'ASC'
+        }
+
+        // if `sortBy` is `undefined` then find the first sortable column in this.bucketColumns
+        if (sortBy === undefined) {
+            var arrayLength = this.bucketColumns.length;
+            for (var i = 0; i < arrayLength; i++) {
+                if (this.bucketColumns[i].sortable === true) {
+                    sortBy = this.bucketColumns[i].name;
+                    this.activeBucketColumn = this.bucketColumns[i];
+                    //only one column can be actively sorted so we reset all to inactive
+                    this.bucketColumns.forEach(c => c.active = false);
+                    //and set this column as the actively sorted column
+                    this.bucketColumns[i].active = true;
+                    this.bucketColumns[i].sortOrder = sortOrder;
+                    break;
+                }
+            }
+        }
+
+        var newData = this.buckets;
+
+        for (var i = 0; i < this.bucketsSearchTerms.length; i++) {
+            newData = this.filterData(newData, this.bucketsSearchTerms[i], true, this.activeBucketColumn.name);
+        }
+
+        newData = this.dataTableService.sortData(newData, sortBy, sortOrder);
+        this.filteredBuckets = newData;
+        this.getAutoCompleteBuckets();
+    },
+
+    getAutoCompleteBuckets: function() {
+        this.autoCompleteBuckets = [];
+        this.bucketColumns.forEach(c => this.filteredBuckets.forEach(r => (r[c.name.toLowerCase()]) ? this.autoCompleteBuckets.push(r[c.name.toLowerCase()].toString()) : ''));
+    },
+
+    sortBuckets: function(sortEvent, column) {
+        if (column.sortable === true) {
+            // toggle column sort order
+            var sortOrder = column.sortOrder = (column.sortOrder === 'ASC') ? 'DESC' : 'ASC';
+            this.filterBuckets(column.name, sortOrder);
+            this.activeBucketsColumn = column;
+            //only one column can be actively sorted so we reset all to inactive
+            this.bucketColumns.forEach(c => c.active = false);
+            //and set this column as the actively sorted column
+            column.active = true;
+        }
+    },
+
+    bucketsSearchRemove: function(searchTerm) {
+        this.filterDroplets(this.activeBucketsColumn.name, this.activeBucketsColumn.sortOrder);
+    },
+
+    bucketsSearchAdd: function(searchTerm) {
+        this.filterDroplets(this.activeBucketsColumn.name, this.activeBucketsColumn.sortOrder);
+    },
+    allFilteredBucketsSelected: function() {
+        this.filteredBuckets.forEach(function(c) {
+            if (c.checked === undefined || c.checked === false) {
+                return false;
+            }
+        });
+
+        return true;
+    },
+    toggleBucketSelect: function(row) {
+        if (this.allFilteredBucketsSelected()) {
+            this.allBucketsSelected = true;
+        } else {
+            this.allBucketsSelected = false;
+        }
+    },
+    filterCertifications: function(sortBy, sortOrder) {
+        // if `sortOrder` is `undefined` then use 'ASC'
+        if (sortOrder === undefined) {
+            sortOrder = 'ASC'
+        }
+
+        // if `sortBy` is `undefined` then find the first sortable column in this.bucketColumns
+        if (sortBy === undefined) {
+            var arrayLength = this.bucketColumns.length;
+            for (var i = 0; i < arrayLength; i++) {
+                if (this.bucketColumns[i].sortable === true) {
+                    sortBy = this.bucketColumns[i].name;
+                    this.activeBucketColumn = this.bucketColumns[i];
+                    //only one column can be actively sorted so we reset all to inactive
+                    this.bucketColumns.forEach(c => c.active = false);
+                    //and set this column as the actively sorted column
+                    this.bucketColumns[i].active = true;
+                    this.bucketColumns[i].sortOrder = sortOrder;
+                    break;
+                }
+            }
+        }
+
+        var newData = this.certifications;
+
+        for (var i = 0; i < this.certificationsSearchTerms.length; i++) {
+            newData = this.filterData(newData, this.certificationsSearchTerms[i], true, this.activeBucketColumn.name);
+        }
+
+        newData = this.dataTableService.sortData(newData, sortBy, sortOrder);
+        this.filteredCertifications = newData;
+        this.getAutoCompleteCertifications();
+    },
+    getAutoCompleteCertifications: function() {
+        this.autoCompleteCertifications = [];
+        this.bucketColumns.forEach(c => this.filteredCertifications.forEach(r => (r[c.name.toLowerCase()]) ? this.autoCompleteCertifications.push(r[c.name.toLowerCase()].toString()) : ''));
+    },
+    sortCertifications: function(sortEvent, column) {
+        if (column.sortable === true) {
+            // toggle column sort order
+            var sortOrder = column.sortOrder = (column.sortOrder === 'ASC') ? 'DESC' : 'ASC';
+            this.filterCertifications(column.name, sortOrder);
+            this.activeCertificationsColumn = column;
+            //only one column can be actively sorted so we reset all to inactive
+            this.bucketColumns.forEach(c => c.active = false);
+            //and set this column as the actively sorted column
+            column.active = true;
+        }
+    },
+
+    certificationsSearchRemove: function(searchTerm) {
+        this.filterDroplets(this.activeCertificationsColumn.name, this.activeCertificationsColumn.sortOrder);
+    },
+
+    certificationsSearchAdd: function(searchTerm) {
+        this.filterDroplets(this.activeCertificationsColumn.name, this.activeCertificationsColumn.sortOrder);
+    },
+
+    sortUsers: function(sortEvent, column) {
+        if (column.sortable) {
+            var sortBy = column.name;
+            var sortOrder = column.sortOrder = (column.sortOrder === 'ASC') ? 'DESC' : 'ASC';
+            this.filterUsers(sortBy, sortOrder);
+
+            //only one column can be actively sorted so we reset all to inactive
+            this.userColumns.forEach(c => c.active = false);
+            //and set this column as the actively sorted column
+            column.active = true;
+        }
+    },
+
+    usersSearchRemove: function(searchTerm) {
+        //only remove the first occurrence of the search term
+        var index = this.usersSearchTerms.indexOf(searchTerm);
+        if (index !== -1) {
+            this.usersSearchTerms.splice(index, 1);
+        }
+        this.usersCurrentPage = 1;
+        this.usersFromRow = 1;
+        this.usersPageSize = 1;
+        this.filterUsers();
+    },
+
+    usersSearchAdd: function(searchTerm) {
+        this.usersSearchTerms.push(searchTerm);
+        this.usersCurrentPage = 1;
+        this.usersFromRow = 1;
+        this.usersPageSize = 1;
+        this.filterUsers();
+    },
+
+    pageUsers: function(pagingEvent) {
+        this.usersFromRow = pagingEvent.fromRow;
+        this.usersCurrentPage = pagingEvent.page;
+        this.usersPageSize = pagingEvent.pageSize;
+        this.filterUsers();
+    },
+
+    filterUsers: function(sortBy, sortOrder) {
+        if (this.allUsersSelected) {
+            this.toggleUsersSelectAll();
+        }
+        this.deselectAllUsers();
+        var newData = this.users;
+
+        for (var i = 0; i < this.usersSearchTerms.length; i++) {
+            newData = this.filterData(newData, this.usersSearchTerms[i], true);
+        }
+        newData = this.dataTableService.sortData(newData, sortBy, sortOrder);
+        this.usersPageCount = newData.length;
+        newData = this.dataTableService.pageData(newData, this.usersFromRow, this.usersCurrentPage * this.usersPageSize);
+        this.filteredUsers = newData;
+        this.getAutoCompleteUsers();
+    },
+
+    toggleUserSelect: function(row) {
+        if (this.allFilteredUsersSelected()) {
+            this.allUsersSelected = true;
+        } else {
+            this.allUsersSelected = false;
+        }
+    },
+
+    toggleUsersSelectAll: function() {
+        if (this.allUsersSelected) {
+            this.selectAllUsers();
+        } else {
+            this.deselectAllUsers();
+        }
+    },
+
+    selectAllUsers: function() {
+        this.filteredUsers.forEach(c => c.checked = true);
+    },
+
+    deselectAllUsers: function() {
+        this.filteredUsers.forEach(c => c.checked = false);
+    },
+    allFilteredUsersSelected: function() {
+        var allFilteredUsersSelected = true;
+        this.filteredUsers.forEach(function(c) {
+            if (c.checked === undefined || c.checked === false) {
+                allFilteredUsersSelected = false;
+            }
+        });
+
+        return allFilteredUsersSelected;
+    },
+
+    getAutoCompleteUsers: function() {
+        this.autoCompleteUsers = [];
+        this.userColumns.forEach(c => this.filteredUsers.forEach(r => (r[c.name.toLowerCase()]) ? this.autoCompleteUsers.push(r[c.name.toLowerCase()].toString()) : ''));
+    }
 
     //</editor-fold>
 };

@@ -2,7 +2,7 @@
     <div *ngIf="nfRegistryService.bucket">
         <div class="list-header description">User/Group Name</div>
         <md-list>
-            <md-list-item [attr.focus]="((user.id === nfRegistryService.selectedUserId) || (user.checked)) ? '' : null" *ngFor="let user of nfRegistryService.bucket.users" routerLink="/nifi-registry/manage/{{nfRegistryService.registry.id}}/{{nfRegistryService.bucket.id}}/{{user.id}}">
+            <md-list-item [attr.focus]="((user.id === nfRegistryService.user.id) || (user.checked)) ? '' : null" *ngFor="let user of nfRegistryService.bucket.users" routerLink="/nifi-registry/manage/{{nfRegistryService.registry.id}}/{{nfRegistryService.bucket.id}}/{{user.id}}">
                 <span md-line class="description"><i *ngIf="user.type === 'group'" class="fa fa-users" aria-hidden="true"></i>{{user.name}}</span>
                 <button mdTooltip="User Details" md-icon-button>
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
@@ -14,16 +14,16 @@
 </div>
 <div id="nf-registry-bucket-manager-users-and-groups-details-viewer">
     <md-toolbar class="details-header">
-        <div  *ngIf="nfRegistryService.selectedUserId" class="details-header-container">
+        <div  *ngIf="nfRegistryService.user.id" class="details-header-container">
             <div class="description camel-case">{{nfRegistryService.user.type}}</div>
             <div class="header">{{nfRegistryService.user.name}}</div>
         </div>
     </md-toolbar>
-    <div *ngIf="(nfRegistryService.selectedRegistryId && nfRegistryService.selectedBucketId && !nfRegistryService.selectedUserId)">
+    <div *ngIf="(nfRegistryService.registry.id && nfRegistryService.bucket.id && !nfRegistryService.user.id)">
         Please select a User/Group to manage.
     </div>
     <router-outlet></router-outlet>
 </div>
 <div class="nf-registry-button-container">
-    <button class="primary-button done-button" md-button routerLink="/nifi-registry/explorer/list/{{nfRegistryService.registry.id}}/{{nfRegistryService.bucket.id}}">Done</button>
+    <button class="primary-button done-button" md-button routerLink="/nifi-registry/explorer/{{(nfRegistryService.explorerViewType) ? nfRegistryService.explorerViewType : 'grid-list'}}/{{nfRegistryService.registry.id}}/{{nfRegistryService.bucket.id}}">Done</button>
 </div>

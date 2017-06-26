@@ -21,46 +21,13 @@
  * Import this file using the following HTML or equivalent:
  * <link href='/stylesheets/nifi-flow-registry.css' media='screen, projection' rel='stylesheet' type='text/css' /> */
 
+@import '../../../node_modules/@fluid-design-system/dist/platform/core/common/styles/globalVars';
 @import 'structureElements';
 @import 'helperClasses';
-@import '../../../node_modules/@fluid-design-system/dist/platform/core/common/styles/globalVars';
-
-body {
-    background: $grey5;
-}
-
-#nifi-registry-logo {
-    height: 44px;
-}
-
-#nifi-registry-alerts-count {
-    border-radius: 50%;
-    background: $warnColor;
-    height: 14px;
-    width: 14px;
-    position: relative;
-    left: 9px;
-    color: #FFFFFF;
-    font-size: 9px;
-    text-align: center;
-    line-height: 14px;
-}
-
-#toolbar {
-    background: $grey1;
-}
-
-#toolbar .mat-icon-button {
-    color: $grey5;
-    font-size: 20px;
-    margin: 0;
-}
-
-#toolbar .mat-select-value-text, #toolbar .mat-select-arrow{
-    color: white;
-}
-
-#toolbar span, #toolbar .link{
-    color: $grey5;
-}
-
+@import 'components/administration/structureElements';
+@import 'components/administration/general/structureElements';
+@import 'components/administration/users/structureElements';
+@import 'components/administration/workflow/structureElements';
+@import 'components/explorer/structureElements';
+@import 'components/explorer/grid-list/structureElements';
+@import 'components/explorer/list/structureElements';

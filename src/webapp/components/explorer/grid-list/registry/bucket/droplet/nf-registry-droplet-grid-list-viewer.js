@@ -27,8 +27,7 @@ NfRegistryDropletGridListViewer.prototype = {
         var self = this;
         this.subscription$ = this.route.params
             .switchMap(function(params) {
-                self.nfRegistryService.selectedDropletId = params['dropletId'];
-                return self.nfRegistryService.getDroplets(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId, self.nfRegistryService.selectedDropletId);
+                return self.nfRegistryService.getDroplets(self.nfRegistryService.registry.id, self.nfRegistryService.bucket.id, params['dropletId']);
             })
             .subscribe(function(droplets) {
                 self.nfRegistryService.droplet = droplets[0];
@@ -39,11 +38,10 @@ NfRegistryDropletGridListViewer.prototype = {
     ngOnDestroy: function() {
         var self = this;
         this.subscription$.unsubscribe();
-        this.nfRegistryService.selectedDropletId = '';
         this.nfRegistryService.droplet = {};
-        this.nfRegistryService.getDroplets(this.nfRegistryService.selectedRegistryId,
-            this.nfRegistryService.selectedBucketId,
-            this.nfRegistryService.selectedDropletId).then(
+        this.nfRegistryService.getDroplets(this.nfRegistryService.registry.id,
+            this.nfRegistryService.bucket.id,
+            this.nfRegistryService.droplet.id).then(
             function(droplets) {
                 self.nfRegistryService.droplets = self.nfRegistryService.filteredDroplets = droplets;
                 self.nfRegistryService.filterDroplets();

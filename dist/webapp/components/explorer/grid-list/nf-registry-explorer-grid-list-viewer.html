@@ -1,1 +1,13 @@
+<div id="nf-registry-explorer-grid-list-side-nav" fxLayout="column" fxLayoutAlign="start stretch">
+    <div class="pad-top-sm">
+        <button md-icon-button routerLink="/nifi-registry/explorer/{{(nfRegistryService.explorerViewType) ? nfRegistryService.explorerViewType : 'grid-list'}}/{{nfRegistryService.registry.id}}">
+            <i class="fa fa-tint" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="pad-top-sm">
+        <button md-icon-button routerLink="/nifi-registry/administration/{{nfRegistryService.registry.id}}/general">
+            <i class="fa fa-wrench" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
 <router-outlet></router-outlet>

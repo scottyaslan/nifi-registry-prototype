@@ -15,176 +15,118 @@
  * limitations under the License.
  */
 
-@import 'src/platform/core/common/styles/globalVars';
-
-#toolbar {
-    min-width: 900px;
-    background-color: #FFFFFF;
-    position: absolute;
-    z-index: 1000;
-}
-
-#nf-registry-bucket-manager-users-and-groups-viewer {
-    position: absolute;
-    top: 0px;
-    bottom: 64px;
-    left: 0px;
-    width: 50%;
-    border-right: 1px solid $grey4;
-    z-index: 1;
-}
-
-#nf-registry-bucket-manager-users-and-groups-details-viewer {
-    position: absolute;
-    top: 0px;
-    bottom: 64px;
-    right: 0px;
-    width: 50%;
-}
-
-.nf-registry-button-container {
-    position: absolute;
-    bottom: 0px;
-    height: 64px;
-    left: 0px;
-    right: 0px;
-    border-top: 1px solid $grey4;
-}
-
-#nf-registry-viewer {
-    position: absolute;
-    top: 64px;
-    left: 0px;
-    right: 0px;
-    min-width: 900px;
+body {
     background: $grey5;
 }
 
-#nf-registry-bucket-list-viewer {
+#nifi-registry-logo {
+    height: 44px;
+}
+
+#nifi-registry-alerts-count {
+    border-radius: 50%;
+    background: $warnColor;
+    height: 14px;
+    width: 14px;
+    position: relative;
+    left: 9px;
+    color: #FFFFFF;
+    font-size: 9px;
+    text-align: center;
+    line-height: 14px;
+}
+
+#nifi-registry-toolbar {
+    min-width: 700px;
+    background-color: #FFFFFF;
     position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    width: 299px;
-    border-right: 1px solid $grey4;
+    z-index: 1000;
+    background: $grey1;
 }
 
-#nf-registry-droplet-list-viewer {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 300px;
-    width: 299px;
-    border-right: 1px solid $grey4;
+#nifi-registry-toolbar .mat-icon-button {
+    color: $grey5;
+    font-size: 20px;
+    margin: 0;
 }
 
-#nf-registry-details-list-viewer {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 600px;
-    right: 0px;
-    min-width: 300px;
+#nifi-registry-toolbar .mat-select-value-text, #nifi-registry-toolbar .mat-select-arrow{
+    color: white;
 }
 
-#nf-registry-bucket-grid-list-viewer {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    width: 299px;
-    border-right: 1px solid $grey4;
+#nifi-registry-toolbar span, #nifi-registry-toolbar .link{
+    color: $grey5;
 }
 
-#nf-registry-droplet-grid-list-viewer {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 300px;
-    width: 299px;
-    border-right: 1px solid $grey4;
+.td-expansion-content {
+    background: $grey6;
 }
 
-#nf-registry-details-grid-list-viewer {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 600px;
-    right: 0px;
-    min-width: 300px;
-}
+// #nf-registry-bucket-manager-users-and-groups-viewer {
+//     position: absolute;
+//     top: 0px;
+//     bottom: 64px;
+//     left: 0px;
+//     width: 50%;
+//     border-right: 1px solid $grey4;
+//     z-index: 1;
+// }
 
-#nf-registry-settings-left-container  {
-    position: absolute;
-    top: 0px;
-    bottom: 64px;
-    left: 0px;
-    width: 500px;
-    padding: 30px 35px;
-}
+// #nf-registry-bucket-manager-users-and-groups-details-viewer {
+//     position: absolute;
+//     top: 0px;
+//     bottom: 64px;
+//     right: 0px;
+//     width: 50%;
+// }
 
-#nf-registry-settings-right-container  {
-    position: absolute;
-    top: 0px;
-    bottom: 64px;
-    left: 535px;
-    right: 0px;
-    padding: 30px 35px;
-}
+// #nf-registry-settings-left-container  {
+//     position: absolute;
+//     top: 0px;
+//     bottom: 64px;
+//     left: 0px;
+//     width: 500px;
+//     padding: 30px 35px;
+// }
 
-#nf-registry-users-and-groups-left-container  {
-    position: absolute;
-    top: 0px;
-    bottom: 64px;
-    left: 0px;
-    right: 50%;
-    padding: 30px 35px;
-}
+// #nf-registry-settings-right-container  {
+//     position: absolute;
+//     top: 0px;
+//     bottom: 64px;
+//     left: 535px;
+//     right: 0px;
+//     padding: 30px 35px;
+// }
 
-#nf-registry-users-and-groups-right-container  {
-    position: absolute;
-    top: 0px;
-    bottom: 64px;
-    left: 50%;
-    right: 0px;
-    padding: 30px 35px;
-}
+// #nf-registry-users-and-groups-left-container  {
+//     position: absolute;
+//     top: 0px;
+//     bottom: 64px;
+//     left: 0px;
+//     right: 50%;
+//     padding: 30px 35px;
+// }
 
-#bucketActionMenu {
-    float: right;
-    margin-right: 20px;
-    margin-top: 15px;
-}
+// #nf-registry-users-and-groups-right-container  {
+//     position: absolute;
+//     top: 0px;
+//     bottom: 64px;
+//     left: 50%;
+//     right: 0px;
+//     padding: 30px 35px;
+// }
 
-#dropletActionMenu {
-    float: right;
-    margin-right: 20px;
-    margin-top: 15px;
-}
+// .nf-registry-button-container {
+//     position: absolute;
+//     bottom: 0px;
+//     height: 64px;
+//     left: 0px;
+//     right: 0px;
+//     border-top: 1px solid $grey4;
+// }
 
-#dropletVersionActionMenu {
-    position: absolute;
-    right: 25px;
-}
-
-.nf-registry-explorer-view-toggle.mat-button-toggle-group {
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    z-index: 2;
-}
-
-.nf-registry-button-container .done-button {
-    float: right;
-    margin-right: 15px;
-    margin-top: 15px;
-}
-
-.nf-registry-droplet-filter-clear-grouping-button-container {
-    height: 36px;
-    line-height: 36px;
-}
-
-.nf-registry-droplet-filter-clear-grouping-button-container i{
-    color: $red2;
-}
+// .nf-registry-button-container .done-button {
+//     float: right;
+//     margin-right: 15px;
+//     margin-top: 15px;
+// }

@@ -18,56 +18,68 @@
 
 /* Tables */
 
-body[fds] table[td-data-table].mat-selectable tbody > tr.td-data-table-row:not([disabled]):hover {
-    background-color: $blue2;
-}
-
-body[fds] table[td-data-table].mat-selectable tbody > tr.td-data-table-row.mat-selected {
-    background-color: $grey5;
-}
-
-body[fds] table[td-data-table] .td-data-table-cell{
+body[fds] .td-data-table-cell{
     font-size: 13px;
     color: $grey2;
+    padding: 0 28px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-body[fds] table[td-data-table] .td-data-table-column{
+body[fds] .td-data-table-column{
     color: $grey3;
     font-weight: normal;
 }
 
-body[fds] table[td-data-table] .td-data-table-row {
+body[fds] .td-data-table-row {
     height: 34px;
+    border-bottom: 1px solid $grey5;
 }
 
-body[fds] table[td-data-table] .td-data-table-row.selected {
+body[fds] .td-data-table-row.selected {
     background-color: $grey5;
 }
 
-body[fds] table[td-data-table] tbody .td-data-table-row:hover {
+body[fds] .td-data-table-row:hover {
     background-color: $blue2;
 }
 
-body[fds] table[td-data-table] .mat-icon-button {
+body[fds] .td-data-table-cell .mat-icon-button {
     color: $linkColor;
 }
 
-body[fds] table[td-data-table] .mat-button, body[fds] table[td-data-table] .mat-icon-button, body[fds] table[td-data-table] .mat-raised-button {
-    height: 32px;
-    padding: 0;
+body[fds] .td-data-table-cell .mat-button, body[fds] .td-data-table-cell .mat-icon-button, body[fds] .td-data-table-cell .mat-raised-button {
+    height: 24px;
+    width: 24px;
+    line-height: 0;
 }
 
-body[fds] table[td-data-table] .mat-button-focus-overlay, body[fds] table[td-data-table] .mat-button-ripple {
-    display: none;
+body[fds] .td-data-table-cell .mat-icon-button.badge {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
 }
 
-body[fds] table[td-data-table] .mat-icon-button, body[fds] table[td-data-table] .mat-mini-fab {
-    width: 14px;
-    margin-right: 5px;
-    line-height: 14px;
+body[fds] .td-data-table-cell .mat-icon-button.badge[disabled] {
+    opacity: .3;
 }
 
-body[fds] table[td-data-table] .td-data-table-column .fa-caret-up, body[fds] table[td-data-table] .td-data-table-column .fa-caret-down {
+// body[fds] .td-data-table-cell .mat-button-focus-overlay, body[fds] .td-data-table-cell .mat-button-ripple {
+//     display: none;
+// }
+
+body[fds] .td-data-table-column {
+    font-size: 12px;
+    color: $grey3;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 28px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+body[fds] .td-data-table-column .fa-caret-up, body[fds] .td-data-table-column .fa-caret-down {
     color: $blue1;
     font-size: 12px;
     margin-bottom: 2px;
@@ -90,6 +102,10 @@ body[fds] .table-title {
     text-overflow: ellipsis;
     max-width: 50%;
     margin-right: 10px;
+}
+
+body[fds] div .td-data-table {
+    border-bottom: 2px solid $grey7;
 }
 
 // .table-header {

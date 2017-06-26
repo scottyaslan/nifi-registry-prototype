@@ -31,6 +31,14 @@
     text-transform: uppercase;
 }
 
-.td-expansion-content {
-    background: $grey6;
+.info {
+    color: $blue8;
+}
+
+.authorized {
+    color: $red2;
+}
+
+.suspended {
+    color: $green3;
 }

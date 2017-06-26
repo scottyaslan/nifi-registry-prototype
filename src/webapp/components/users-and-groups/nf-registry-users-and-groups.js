@@ -25,6 +25,7 @@ NfRegistryUsersAndGroups.prototype = {
     constructor: NfRegistryUsersAndGroups,
     ngOnInit: function() {
         var self = this;
+        self.nfRegistryService.perspective = 'users-and-groups';
         /**
          * The switchMap operator maps the id in the Observable route
          * parameters to a new Observable, the result of the
@@ -34,13 +35,13 @@ NfRegistryUsersAndGroups.prototype = {
          */
         this.subscription$ = this.route.params
             .switchMap(function(params) {
-                self.nfRegistryService.selectedRegistryId = params['registryId'];
                 return self.nfRegistryService.getRegistry(params['registryId']);
             })
             .subscribe(registry => this.nfRegistryService.registry = registry);
     },
     ngOnDestroy: function() {
         this.subscription$.unsubscribe();
+        this.nfRegistryService.perspective = '';
     }
 };
 

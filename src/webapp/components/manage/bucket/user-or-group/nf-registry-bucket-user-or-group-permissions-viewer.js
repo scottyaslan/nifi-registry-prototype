@@ -34,14 +34,12 @@ NfRegistryBucketUserOrGroupPermissionsViewer.prototype = {
          */
         this.subscription$ = this.route.params
             .switchMap(function(params) {
-                self.nfRegistryService.selectedUserId = params['userOrGroupId'];
-                return self.nfRegistryService.getUser(self.nfRegistryService.selectedRegistryId, self.nfRegistryService.selectedBucketId, params['userOrGroupId']);
+                return self.nfRegistryService.getUser(self.nfRegistryService.registry.id, self.nfRegistryService.bucket.id, params['userOrGroupId']);
             })
             .subscribe(user => this.nfRegistryService.user = user);
     },
     ngOnDestroy: function() {
         this.subscription$.unsubscribe();
-        delete this.nfRegistryService.selectedUserId;
     }
 };
 

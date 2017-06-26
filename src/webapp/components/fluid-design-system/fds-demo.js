@@ -247,7 +247,7 @@ function FdsDemo(snackBarService, dialog, TdDialogService, TdDataTableService) {
 
     this.dropletColumns = [
         { name: 'id', label: 'ID', sortable: true },
-        { name: 'name', label: 'Name', sortable: true },
+        { name: 'name', label: 'Name', sortable: true, },
         { name: 'displayName', label: 'Display Name', sortable: true },
         { name: 'sublabel', label: 'Label', sortable: true },
         { name: 'type', label: 'Type', sortable: true }
@@ -257,6 +257,8 @@ function FdsDemo(snackBarService, dialog, TdDialogService, TdDataTableService) {
     this.dropletsSearchTerms = [];
 
     //</editor-fold>
+
+    //<editor-fold desc="Data Tables">
 
     this.data = [{
         'id': 1,
@@ -452,16 +454,16 @@ function FdsDemo(snackBarService, dialog, TdDialogService, TdDataTableService) {
     this.filteredTotal = this.data.length;
 
     this.columns = [
-        { name: 'comments', label: 'Comments' },
-        { name: 'name', label: 'Dessert (100g serving)', sortable: true },
-        { name: 'type', label: 'Type', sortable: true },
-        { name: 'calories', label: 'Calories', numeric: true, format: NUMBER_FORMAT, sortable: true },
-        { name: 'fat', label: 'Fat (g)', numeric: true, format: DECIMAL_FORMAT, sortable: true },
-        { name: 'carbs', label: 'Carbs (g)', numeric: true, format: NUMBER_FORMAT, sortable: true },
-        { name: 'protein', label: 'Protein (g)', numeric: true, format: DECIMAL_FORMAT, sortable: true },
-        { name: 'sodium', label: 'Sodium (mg)', numeric: true, format: NUMBER_FORMAT, sortable: true },
-        { name: 'calcium', label: 'Calcium (%)', numeric: true, format: NUMBER_FORMAT, sortable: true },
-        { name: 'iron', label: 'Iron (%)', numeric: true, format: NUMBER_FORMAT },
+        { name: 'comments', label: 'Comments', width: 10 },
+        { name: 'name', label: 'Dessert (100g serving)', sortable: true, width: 10 },
+        { name: 'type', label: 'Type', sortable: true, width: 10 },
+        { name: 'calories', label: 'Calories', numeric: true, format: NUMBER_FORMAT, sortable: true, width: 10 },
+        { name: 'fat', label: 'Fat (g)', numeric: true, format: DECIMAL_FORMAT, sortable: true, width: 10 },
+        { name: 'carbs', label: 'Carbs (g)', numeric: true, format: NUMBER_FORMAT, sortable: true, width: 10 },
+        { name: 'protein', label: 'Protein (g)', numeric: true, format: DECIMAL_FORMAT, sortable: true, width: 10 },
+        { name: 'sodium', label: 'Sodium (mg)', numeric: true, format: NUMBER_FORMAT, sortable: true, width: 10 },
+        { name: 'calcium', label: 'Calcium (%)', numeric: true, format: NUMBER_FORMAT, sortable: true, width: 10 },
+        { name: 'iron', label: 'Iron (%)', numeric: true, format: NUMBER_FORMAT, width: 10 },
     ];
 
     this.allRowsSelected = false;
@@ -471,7 +473,8 @@ function FdsDemo(snackBarService, dialog, TdDialogService, TdDataTableService) {
     this.searchTerm = [];
     this.fromRow = 1;
     this.currentPage = 1;
-    this.pageSize = 5;
+    this.pageSize = 1;
+    this.pageCount = 0;
 
     //</editor-fold>
 
@@ -741,6 +744,10 @@ FdsDemo.prototype = {
     },
 
     filterDroplets: function(sortBy, sortOrder) {
+        // if `sortOrder` is `undefined` then use 'ASC'
+        if (sortOrder === undefined) {
+            sortOrder = 'ASC'
+        }
         // if `sortBy` is `undefined` then find the first sortable column in this.dropletColumns
         if (sortBy === undefined) {
             var arrayLength = this.dropletColumns.length;
@@ -752,14 +759,10 @@ FdsDemo.prototype = {
                     this.dropletColumns.forEach(c => c.active = false);
                     //and set this column as the actively sorted column
                     this.dropletColumns[i].active = true;
+                    this.dropletColumns[i].sortOrder = sortOrder;
                     break;
                 }
             }
-        }
-
-        // if `sortOrder` is `undefined` then use 'ASC'
-        if (sortOrder === undefined) {
-            sortOrder = 'ASC'
         }
 
         var newData = this.droplets;
@@ -841,11 +844,17 @@ FdsDemo.prototype = {
         if (index !== -1) {
             this.searchTerm.splice(index, 1);
         }
+        this.fromRow = 1;
+        this.currentPage = 1;
+        this.pageSize = 1;
         this.filter();
     },
 
     searchAdd: function(searchTerm) {
         this.searchTerm.push(searchTerm);
+        this.fromRow = 1;
+        this.currentPage = 1;
+        this.pageSize = 1;
         this.filter();
     },
 
@@ -868,25 +877,21 @@ FdsDemo.prototype = {
         }
         this.filteredTotal = newData.length;
         newData = this.dataTableService.sortData(newData, sortBy, sortOrder);
+        this.pageCount = newData.length;
         newData = this.dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
         this.filteredData = newData;
         this.getAutoCompleteData();
     },
 
     toggleSelect: function(row) {
-        if (!row.checked) {
-            this.allRowsSelected = false;
+        if (this.allFilteredRowsSelected()) {
+            this.allRowsSelected = true;
         } else {
-            if (this.allFilteredRowsSelected()) {
-                this.allRowsSelected = true;
-            } else {
-                this.allRowsSelected = false;
-            }
+            this.allRowsSelected = false;
         }
     },
 
     toggleSelectAll: function() {
-        this.allRowsSelected = !this.allRowsSelected;
         if (this.allRowsSelected) {
             this.selectAll();
         } else {

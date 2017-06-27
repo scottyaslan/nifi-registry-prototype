@@ -4,11 +4,11 @@
         <div class="header">{{nfRegistryService.droplet.name}}</div>
     </div>
 </md-toolbar>
-<div class="padding2035">
+<div class="pad-top-md pad-bottom-md pad-left-sm pad-right-sm">
     <button id="dropletVersionActionMenu" [mdMenuTriggerFor]="dropletVersionActionMenu" md-raised-button color="fds-primary">
         Actions<i class="fa fa-caret-down" aria-hidden="true"></i>
     </button>
-    <md-menu class="regular-button-menu" #dropletVersionActionMenu="mdMenu" [overlapTrigger]="false">
+    <md-menu class="fds-primary-dropdown-button-menu" #dropletVersionActionMenu="mdMenu" [overlapTrigger]="false">
         <button md-menu-item>
             <span>Option 1</span>
         </button>

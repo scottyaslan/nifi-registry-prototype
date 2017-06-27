@@ -1,8 +1,8 @@
-<div id="nf-registry-bucket-manager-users-and-groups-viewer">
-    <div *ngIf="nfRegistryService.bucket">
+<div id="nf-registry-bucket-manager-users-and-groups-viewer" class="pad-top-md pad-bottom-sm pad-left-md pad-right-md">
+    <div *ngIf="nfRegistryService.registry">
         <div class="list-header description">User/Group Name</div>
         <md-list>
-            <md-list-item [attr.focus]="((user.id === nfRegistryService.user.id) || (user.checked)) ? '' : null" *ngFor="let user of nfRegistryService.bucket.users" routerLink="/nifi-registry/manage/{{nfRegistryService.registry.id}}/{{nfRegistryService.bucket.id}}/{{user.id}}">
+            <md-list-item [attr.focus]="((user.id === nfRegistryService.user.id) || (user.checked)) ? '' : null" *ngFor="let user of nfRegistryService.registry.users" routerLink="/nifi-registry/manage/{{nfRegistryService.registry.id}}/{{nfRegistryService.bucket.id}}/{{user.id}}">
                 <span md-line class="description"><i *ngIf="user.type === 'group'" class="fa fa-users" aria-hidden="true"></i>{{user.name}}</span>
                 <button mdTooltip="User Details" md-icon-button>
                     <i class="fa fa-info-circle" aria-hidden="true"></i>

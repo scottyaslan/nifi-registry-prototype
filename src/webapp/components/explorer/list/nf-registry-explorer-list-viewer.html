@@ -6,19 +6,19 @@
         <i class="fa fa-columns" aria-hidden="true"></i>
     </md-button-toggle>
 </md-button-toggle-group>
-<div id="nf-registry-bucket-list-viewer">
-    <div *ngIf="nfRegistryService.registries">
-        <button color="primary" id="bucketActionMenu" [mdMenuTriggerFor]="bucketActionMenu" md-raised-button class="primary-button dropdown">
-            Actions<i class="fa fa-caret-down" aria-hidden="true"></i>
+<div id="nf-registry-bucket-list-viewer" class="pad-top-md pad-bottom-md pad-left-sm pad-right-sm">
+    <button color="fds-primary" id="bucketActionMenu" [mdMenuTriggerFor]="bucketActionMenu" md-raised-button>
+        Actions<i class="fa fa-caret-down" aria-hidden="true"></i>
+    </button>
+    <md-menu class="fds-primary-dropdown-button-menu" #bucketActionMenu="mdMenu" [overlapTrigger]="false">
+        <button md-menu-item>
+            <span>Option 1</span>
         </button>
-        <md-menu class="primary-button-menu" #bucketActionMenu="mdMenu" [overlapTrigger]="false">
-            <button md-menu-item>
-                <span>Option 1</span>
-            </button>
-            <button md-menu-item disabled>
-                <span>Option 2</span>
-            </button>
-        </md-menu>
+        <button md-menu-item disabled>
+            <span>Option 2</span>
+        </button>
+    </md-menu>
+    <div *ngIf="nfRegistryService.registries">
         <div class="list-header description">Name:</div>
         <md-list>
             <md-list-item [attr.focus]="((bucket.id === nfRegistryService.bucket.id) || (bucket.checked)) ? '' : null" *ngFor="let bucket of nfRegistryService.buckets" routerLink="/nifi-registry/explorer/list/{{nfRegistryService.registry.id}}/{{bucket.id}}">

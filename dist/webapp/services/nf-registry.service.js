@@ -586,7 +586,7 @@ NfRegistryService.prototype = {
 
     },
     getUser: function(registryId, userId) {
-        return this.getCertifications(registryId, userId).then(
+        return this.getUsers(registryId, userId).then(
             function(users) {
                 return users[0];
             });

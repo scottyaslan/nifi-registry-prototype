@@ -34,15 +34,20 @@ body[fds] .td-data-table-column{
 
 body[fds] .td-data-table-row {
     height: 34px;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
     border-bottom: 1px solid $grey5;
 }
 
 body[fds] .td-data-table-row.selected {
     background-color: $grey5;
+    border: 1px solid $grey5;
 }
 
 body[fds] .td-data-table-row:hover {
     background-color: $blue2;
+    border: 1px solid $blue3;
 }
 
 body[fds] .td-data-table-cell .mat-icon-button {
@@ -107,13 +112,3 @@ body[fds] .table-title {
 body[fds] div .td-data-table {
     border-bottom: 2px solid $grey7;
 }
-
-// .table-header {
-//     font-size: 12px;
-//     color: $grey3;
-// }
-
-// .table-footer {
-//     font-size: 12px;
-//     color: $grey3;
-// }

@@ -1503,7 +1503,7 @@
                             </div>
                             <div class="td-data-table-column" fxFlex=10>
                                 <div fxLayout="row" fxLayoutAlign="end center">
-                                    <md-checkbox [(ngModel)]="allRowsSelected" (checked)="allRowsSelected" (change)="toggleSelectAll()"></md-checkbox>
+                                    <md-checkbox class="pad-left-sm" [(ngModel)]="allRowsSelected" (checked)="allRowsSelected" (change)="toggleSelectAll()"></md-checkbox>
                                 </div>
                             </div>
                         </div>
@@ -1520,7 +1520,7 @@
                                             <button (click)="row.checked = !row.checked" *ngFor="let action of row.actions" mdTooltip="{{action.tooltip}}" md-icon-button color="accent" [disabled]="action.disabled ? '' : null">
                                                 <i class="{{action.icon}}" aria-hidden="true"></i>
                                             </button>
-                                            <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
+                                            <md-checkbox class="pad-left-sm" [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
                                         </div>
                                         <div *ngIf="row.actions.length > 4" fxLayout="row" fxLayoutAlign="end center">
                                             <button (click)="row.checked = !row.checked" mdTooltip="Actions" md-icon-button [mdMenuTriggerFor]="tableActionMenu">
@@ -1532,11 +1532,11 @@
                                                     <span>{{action.name}}</span>
                                                 </button>
                                             </md-menu>
-                                            <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
+                                            <md-checkbox class="pad-left-sm" [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
                                         </div>
                                     </div>
                                     <div *ngIf="!row.actions" fxLayout="row" fxLayoutAlign="end center">
-                                        <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
+                                        <md-checkbox class="pad-left-sm" [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
                                     </div>
                                 </div>
                             </div>

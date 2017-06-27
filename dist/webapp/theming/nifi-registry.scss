@@ -15,10 +15,8 @@
  * limitations under the License.
  */
 
-
 /* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
+ * In this file you should centralize your imports. After compilation simply import this file using the following HTML or equivalent:
  * <link href='/stylesheets/nifi-flow-registry.css' media='screen, projection' rel='stylesheet' type='text/css' /> */
 
 @import '../../../node_modules/@fluid-design-system/dist/platform/core/common/styles/globalVars';
@@ -31,3 +29,6 @@
 @import 'components/explorer/structureElements';
 @import 'components/explorer/grid-list/structureElements';
 @import 'components/explorer/list/structureElements';
+@import 'components/manage/structureElements';
+@import 'components/settings/structureElements';
+@import 'components/users-and-groups/structureElements';

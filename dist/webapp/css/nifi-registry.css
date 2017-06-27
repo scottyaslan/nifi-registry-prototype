@@ -15,8 +15,7 @@
  * limitations under the License.
  */
 /* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
+ * In this file you should centralize your imports. After compilation simply import this file using the following HTML or equivalent:
  * <link href='/stylesheets/nifi-flow-registry.css' media='screen, projection' rel='stylesheet' type='text/css' /> */
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
@@ -131,6 +130,19 @@ body {
 
 .suspended {
   color: #429929; }
+
+.nf-registry-button-container {
+  position: absolute;
+  bottom: 0px;
+  height: 64px;
+  left: 0px;
+  right: 0px;
+  border-top: 1px solid #CCCCCC; }
+
+.nf-registry-button-container .done-button {
+  float: right;
+  margin-right: 15px;
+  margin-top: 15px; }
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
@@ -356,7 +368,7 @@ body {
   position: absolute;
   top: 0px;
   bottom: 0px;
-  left: 300px;
+  left: 320px;
   width: 299px;
   border-right: 1px solid #CCCCCC; }
 
@@ -364,22 +376,117 @@ body {
   position: absolute;
   top: 0px;
   bottom: 0px;
-  left: 600px;
+  left: 639px;
   right: 0px;
-  min-width: 300px; }
+  min-width: 300px;
+  border-left: 1px solid #CCCCCC; }
 
 #bucketActionMenu {
-  float: right;
-  margin-right: 20px;
-  margin-top: 15px; }
+  position: absolute;
+  right: 35px;
+  top: 7px; }
 
 #dropletActionMenu {
-  float: right;
-  margin-right: 20px;
-  margin-top: 15px; }
+  position: absolute;
+  right: 35px;
+  top: 7px; }
 
 #dropletVersionActionMenu {
   position: absolute;
   right: 25px; }
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+#nf-registry-bucket-manager-users-and-groups-viewer {
+  position: absolute;
+  top: 0px;
+  bottom: 64px;
+  left: 0px;
+  width: calc(50% - 60px);
+  border-right: 1px solid #CCCCCC;
+  z-index: 1; }
+
+#nf-registry-bucket-manager-users-and-groups-details-viewer {
+  position: absolute;
+  top: 0px;
+  bottom: 64px;
+  right: 0px;
+  width: 50%; }
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+#nf-registry-settings-left-container {
+  position: absolute;
+  top: 0px;
+  bottom: 64px;
+  left: 0px;
+  width: 500px; }
+
+#nf-registry-settings-right-container {
+  position: absolute;
+  top: 0px;
+  bottom: 64px;
+  left: 535px;
+  right: 0px; }
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+#nf-registry-users-and-groups-left-container {
+  position: absolute;
+  top: 0px;
+  bottom: 64px;
+  left: 0px;
+  right: 50%;
+  padding: 30px 35px; }
+
+#nf-registry-users-and-groups-right-container {
+  position: absolute;
+  top: 0px;
+  bottom: 64px;
+  left: 50%;
+  right: 0px;
+  padding: 30px 35px; }
 
 /*# sourceMappingURL=nifi-registry.css.map */

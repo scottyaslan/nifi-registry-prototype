@@ -34,7 +34,7 @@ NfRegistryBucketUserOrGroupPermissionsViewer.prototype = {
          */
         this.subscription$ = this.route.params
             .switchMap(function(params) {
-                return self.nfRegistryService.getUser(self.nfRegistryService.registry.id, self.nfRegistryService.bucket.id, params['userOrGroupId']);
+                return self.nfRegistryService.getUser(self.nfRegistryService.registry.id, params['userOrGroupId']);
             })
             .subscribe(user => this.nfRegistryService.user = user);
     },

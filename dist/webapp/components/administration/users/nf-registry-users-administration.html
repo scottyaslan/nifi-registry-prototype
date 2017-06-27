@@ -1,6 +1,6 @@
 <div id="nifi-registry-users-administration-perspective" class="mat-elevation-z5">
     <div layout="row" layout-align="space-between top" class="pad-top-md pad-bottom-sm pad-left-md pad-right-md">
-        <span class="mat-card-title">Authorized Users ({{nfRegistryService.users.length}})</span>
+        <span class="mat-card-title">Authorized Users ({{usersPagingBar.range}}) <span hide-xs>of {{usersPagingBar.total}}</span></span>
         <div flex class="push-right-sm" fxLayout="row" fxLayoutAlign="end center">
             <td-chips [items]="nfRegistryService.autoCompleteUsers" (add)="nfRegistryService.usersSearchAdd($event)" (remove)="nfRegistryService.usersSearchRemove($event)"></td-chips>
             <button class="push-right-sm" color="fds-secondary" md-raised-button>
@@ -23,7 +23,7 @@
             </div>
             <div class="td-data-table-column">
                 <div fxLayout="row" fxLayoutAlign="end center">
-                    <md-checkbox [(ngModel)]="nfRegistryService.allUsersSelected" (checked)="nfRegistryService.allUsersSelected" (change)="nfRegistryService.toggleUsersSelectAll()"></md-checkbox>
+                    <md-checkbox class="pad-left-sm" [(ngModel)]="nfRegistryService.allUsersSelected" (checked)="nfRegistryService.allUsersSelected" (change)="nfRegistryService.toggleUsersSelectAll()"></md-checkbox>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
                             <button (click)="row.checked = !row.checked" *ngFor="let action of row.actions" mdTooltip="{{action.tooltip}}" md-icon-button color="accent" [disabled]="action.disabled ? '' : null">
                                 <i class="{{action.icon}}" aria-hidden="true"></i>
                             </button>
-                            <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="nfRegistryService.toggleUserSelect(row)" (click)="row.checked = !row.checked;nfRegistryService.toggleUserSelect(row)"></md-checkbox>
+                            <md-checkbox class="pad-left-sm" [(ngModel)]="row.checked" [checked]="row.checked" (change)="nfRegistryService.toggleUserSelect(row)" (click)="row.checked = !row.checked;nfRegistryService.toggleUserSelect(row)"></md-checkbox>
                         </div>
                         <div *ngIf="row.actions.length > 4" fxLayout="row" fxLayoutAlign="end center">
                             <button (click)="row.checked = !row.checked" mdTooltip="Actions" md-icon-button [mdMenuTriggerFor]="userTableActionMenu">
@@ -55,11 +55,11 @@
                                     <span>{{action.name}}</span>
                                 </button>
                             </md-menu>
-                            <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="nfRegistryService.toggleUserSelect(row)" (click)="row.checked = !row.checked;nfRegistryService.toggleUserSelect(row)"></md-checkbox>
+                            <md-checkbox class="pad-left-sm" [(ngModel)]="row.checked" [checked]="row.checked" (change)="nfRegistryService.toggleUserSelect(row)" (click)="row.checked = !row.checked;nfRegistryService.toggleUserSelect(row)"></md-checkbox>
                         </div>
                     </div>
                     <div *ngIf="!row.actions" fxLayout="row" fxLayoutAlign="end center">
-                        <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="nfRegistryService.toggleUserSelect(row)" (click)="row.checked = !row.checked;nfRegistryService.toggleUserSelect(row)"></md-checkbox>
+                        <md-checkbox class="pad-left-sm" [(ngModel)]="row.checked" [checked]="row.checked" (change)="nfRegistryService.toggleUserSelect(row)" (click)="row.checked = !row.checked;nfRegistryService.toggleUserSelect(row)"></md-checkbox>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,6 @@
         <td-paging-bar id="nifi-registry-users-administration-list-paging-bar" #usersPagingBar [pageSizeAll]="true" [pageSizes]="[1, 2, 50, 100, 200, 500, 1000, 2000]"
                 [initialPage]="1" [pageSize]="nfRegistryService.usersPageSize" [total]="nfRegistryService.usersPageCount" (change)="nfRegistryService.pageUsers($event)">
   <span td-paging-bar-label hide-xs>Row per page:</span>
-  {{usersPagingBar.range}} <span hide-xs>of {{usersPagingBar.total}}</span>
 </td-paging-bar>
     </div>
 </div>

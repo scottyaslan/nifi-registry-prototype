@@ -38,10 +38,12 @@ NfRegistryBucketPermissionsManager.prototype = {
                 return self.nfRegistryService.getRegistry(params['registryId']).then(
                     function(registry) {
                         self.nfRegistryService.registry = registry;
-                        return self.nfRegistryService.getBuckets(params['registryId'], params['bucketId']);
+                        return self.nfRegistryService.getBucket(params['registryId'], params['bucketId']);
                     });
             })
-            .subscribe(buckets => this.nfRegistryService.bucket = buckets[0]);
+            .subscribe(function(bucket) {
+                self.nfRegistryService.bucket = bucket;
+            });
     },
     ngOnDestroy: function() {
         this.subscription$.unsubscribe();

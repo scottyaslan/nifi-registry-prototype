@@ -21,7 +21,7 @@ module.exports = function(grunt) {
             },
             dev: {
                 files: [{
-                    'dist/webapp/css/nifi-registry.css': ['src/webapp/sass/nifi-registry.scss'],
+                    'dist/webapp/css/nifi-registry.css': ['src/webapp/theming/nifi-registry.scss'],
                     'dist/platform/core/common/styles/css/fluid-design-system.css': ['src/platform/core/common/styles/fluid-design-system.scss']
                 }]
             }

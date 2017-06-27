@@ -1,6 +1,4 @@
-<div id="nf-registry-droplet-list-viewer">
-    <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
 <div id="nf-registry-details-list-viewer">
     <nf-registry-details-viewer *ngIf="(nfRegistryService.registry.id && !nfRegistryService.bucket.id && !nfRegistryService.droplet.id)"></nf-registry-details-viewer>
     <nf-registry-bucket-details-viewer *ngIf="(nfRegistryService.registry.id && nfRegistryService.bucket.id && !nfRegistryService.droplet.id)"></nf-registry-bucket-details-viewer>

@@ -19,6 +19,12 @@ body {
     background: $grey5;
 }
 
+#nf-registry {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
 #nifi-registry-logo {
     height: 44px;
 }
@@ -37,7 +43,7 @@ body {
 }
 
 #nifi-registry-toolbar {
-    min-width: 700px;
+    min-width: 1045px;
     background-color: #FFFFFF;
     position: absolute;
     z-index: 1000;
@@ -58,6 +64,14 @@ body {
     color: $grey5;
 }
 
-.td-expansion-content {
-    background: $grey6;
+#nf-registry-viewer {
+    position: absolute;
+    top: 64px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: $grey5;
+    min-height: 370px;
+    min-width: 1045px;
+    overflow: auto;
 }

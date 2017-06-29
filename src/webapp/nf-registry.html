@@ -1,26 +1,19 @@
+<div id="nf-registry">
 <md-toolbar id="nifi-registry-toolbar" class="mat-elevation-z5">
     <img id="nifi-registry-logo" src="nifi-registry/src/webapp/images/registry-logo-web-app.svg">
     <div fxFlex="1 1 auto" class="pad-left-xl">
         <span *ngIf="nfRegistryService.registry" [mdMenuTriggerFor]="availableRegistriesMenu"> {{nfRegistryService.registry.name}}</span>
-
         <md-menu #availableRegistriesMenu="mdMenu" [overlapTrigger]="false">
             <button md-menu-item *ngFor="let registry of nfRegistryService.registries" routerLink="/nifi-registry/explorer/{{(nfRegistryService.explorerViewType) ? nfRegistryService.explorerViewType : 'grid-list'}}/{{registry.id}}">
                 <span>{{registry.name}}</span>
             </button>
         </md-menu>
-
         <span *ngIf="(nfRegistryService.perspective === 'explorer' || nfRegistryService.perspective === 'manage') && nfRegistryService.bucket.id" [mdMenuTriggerFor]="availableBucketsMenu"> / {{nfRegistryService.bucket.name}}</span>
-
         <span *ngIf="nfRegistryService.perspective === 'explorer' && nfRegistryService.registry.id && !nfRegistryService.bucket.id" [mdMenuTriggerFor]="availableBucketsMenu"> / All Buckets</span>
-
         <span *ngIf="nfRegistryService.perspective === 'settings'"> / Settings</span>
-
         <span *ngIf="nfRegistryService.perspective === 'users-and-groups'"> / Users and Groups</span>
-
         <span *ngIf="nfRegistryService.perspective === 'manage'"> / Manage Permissions</span>
-
         <span *ngIf="nfRegistryService.perspective === 'administration'"> / Administration</span>
-
         <md-menu #availableBucketsMenu="mdMenu" [overlapTrigger]="false">
             <button md-menu-item routerLink="/nifi-registry/explorer/{{(nfRegistryService.explorerViewType) ? nfRegistryService.explorerViewType : 'grid-list'}}/{{nfRegistryService.registry.id}}">
                 <span>All {{nfRegistryService.registry.name}} buckets...</span>
@@ -29,11 +22,8 @@
                 <span>{{bucket.name}}</span>
             </button>
         </md-menu>
-
         <span *ngIf="nfRegistryService.perspective === 'explorer' && nfRegistryService.droplet.id" [mdMenuTriggerFor]="availableDropletsMenu"> / {{nfRegistryService.droplet.name}}</span>
-
         <span [mdMenuTriggerFor]="availableDropletsMenu" *ngIf="nfRegistryService.perspective === 'explorer' && nfRegistryService.bucket.id && !nfRegistryService.droplet.id"> / All Droplets</span>
-
         <md-menu #availableDropletsMenu="mdMenu" [overlapTrigger]="false">
             <button md-menu-item routerLink="/nifi-registry/explorer/{{(nfRegistryService.explorerViewType) ? nfRegistryService.explorerViewType : 'grid-list'}}/{{nfRegistryService.registry.id}}/{{nfRegistryService.bucket.id}}">
                 <span>All {{nfRegistryService.bucket.name}} droplets...</span>
@@ -42,7 +32,6 @@
                 <span>{{droplet.name}}</span>
             </button>
         </md-menu>
-
     </div>
     <div id="nifi-registry-alerts-count" *ngIf="nfRegistryService.alerts.length > 0">
         {{nfRegistryService.alerts.length}}
@@ -54,6 +43,7 @@
         <i class="fa fa-user " aria-hidden="true"></i>
     </button>
 </md-toolbar>
-<div id="nf-registry-viewer">
-    <router-outlet></router-outlet>
+    <div id="nf-registry-viewer">
+        <router-outlet></router-outlet>
+    </div>
 </div>

@@ -57,6 +57,11 @@
 body {
   background: #EEEEEE; }
 
+#nf-registry {
+  margin: 0;
+  width: 100%;
+  height: 100%; }
+
 #nifi-registry-logo {
   height: 44px; }
 
@@ -73,7 +78,7 @@ body {
   line-height: 14px; }
 
 #nifi-registry-toolbar {
-  min-width: 700px;
+  min-width: 1045px;
   background-color: #FFFFFF;
   position: absolute;
   z-index: 1000;
@@ -90,8 +95,16 @@ body {
 #nifi-registry-toolbar span, #nifi-registry-toolbar .link {
   color: #EEEEEE; }
 
-.td-expansion-content {
-  background: #FAFAFA; }
+#nf-registry-viewer {
+  position: absolute;
+  top: 64px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: #EEEEEE;
+  min-height: 370px;
+  min-width: 1045px;
+  overflow: auto; }
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
@@ -143,6 +156,9 @@ body {
   float: right;
   margin-right: 15px;
   margin-top: 15px; }
+
+.td-expansion-content {
+  background: #FAFAFA; }
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
@@ -294,17 +310,6 @@ body {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#nf-registry-viewer {
-  position: absolute;
-  top: 64px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  min-width: 700px;
-  min-height: 335px;
-  background: #EEEEEE;
-  overflow: auto; }
-
 .nf-registry-explorer-view-toggle.mat-button-toggle-group {
   position: absolute;
   top: 15px;
@@ -488,5 +493,29 @@ body {
   left: 50%;
   right: 0px;
   padding: 30px 35px; }
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+#fds-demo {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  overflow: auto; }
 
 /*# sourceMappingURL=nifi-registry.css.map */

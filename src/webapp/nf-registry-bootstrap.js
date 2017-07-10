@@ -19,7 +19,7 @@ var FdsDemo = require('fds.Demo');
 var ngMaterial = require('@angular/material');
 var covalentCore = require('@covalent/core');
 // var slideInDownAnimation = require('@covalent/core');
-var ngForms = require('@angular/forms');
+// var ngForms = require('@angular/forms');
 var NfRegistry = require('nf.Registry');
 var NfRegistryDetailsViewer = require('nf.RegistryDetailsViewer');
 var NfRegistryService = require('nf.RegistryService');
@@ -284,7 +284,7 @@ NfRegistry.annotations = [
 ];
 
 // inject the NfRegistryService
-NfRegistry.parameters = [NfRegistryService];
+NfRegistry.parameters = [NfRegistryService, ngCore.ChangeDetectorRef];
 
 function NfRegistryAppModule() {};
 

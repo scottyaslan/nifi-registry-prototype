@@ -15,14 +15,21 @@
  * limitations under the License.
  */
 
-function NfRegistry(nfRegistryService) {
+function NfRegistry(nfRegistryService, changeDetectorRef) {
     this.nfRegistryService = nfRegistryService;
+    this.cd = changeDetectorRef;
 };
 
 NfRegistry.prototype = {
     constructor: NfRegistry,
     ngOnInit: function() {
         this.nfRegistryService.getRegistries().then(registries => this.nfRegistryService.registries = registries);
+    },
+    ngAfterViewChecked: function() {
+        // since the child views are updating the nfRegistryService values that are used to display
+        // the breadcrumbs in this component's view we need to manually detect changes at the correct
+        // point in the lifecycle.
+        this.cd.detectChanges();
     }
 };
 

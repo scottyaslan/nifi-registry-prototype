@@ -18,9 +18,9 @@
 
 /* Inputs */
 
-// body[fds] .mat-input-container {
-//     min-width: 200px;
-// }
+body[fds] .mat-input-container {
+    min-width: 200px;
+}
 
 body[fds] .mat-input-wrapper {
     margin: 0;
@@ -47,7 +47,8 @@ body[fds] input.mat-input-element[disabled], body[fds] textarea.mat-input-elemen
 }
 
 body[fds] .mat-input-subscript-wrapper {
-    margin-top: 0;
+    margin-top: 18px;
+    width: calc(100% - 23px);
 }
 
 body[fds] input.mat-input-element:focus, body[fds] textarea.mat-input-element:focus {
@@ -70,25 +71,25 @@ body[fds] .mat-input-placeholder-wrapper {
 }
 
 body[fds] .mat-input-placeholder {
-    padding-top: 33px;
-    padding-left: 10px;
+    top: 39px;
+    left: 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: calc(100% - 37px);
+    width: calc(100% - 35px);
 }
 
 body[fds] md-input-container.mat-focused .mat-input-placeholder {
-    transform: translateY(-28px) scale(0.75);
+    transform: translateY(-25px) translateX(-10px)  scale(0.75);
 }
 
 body[fds] .mat-input-placeholder.mat-float:not(.mat-empty) {
-    transform: translateY(-31px) scale(.75);
+    transform: translateY(-25px) translateX(-10px)  scale(.75);
 }
 
 body[fds] .input-button {
-    left: -3px;
-    margin-right: -3px;
+    top: 3.5px;
+    left: -24px;
     z-index: 1;
 }
 
@@ -96,12 +97,17 @@ body[fds] .input-button.mat-raised-button[disabled] {
     opacity: 1;
 }
 
+body[fds] .mat-input-infix {
+    padding: 7px 23px 0px 0px;
+    border-top: 0;
+}
+
 body[fds] td-chips .mat-input-placeholder-wrapper::after {
     content: '\f0b0';
     display: inline-table;
     font-family: FontAwesome;
     float: right;
-    margin: -1px 5px 0px 0px;
+    margin: 5px 10px 0px 0px;
     color: $grey3;
 }
 

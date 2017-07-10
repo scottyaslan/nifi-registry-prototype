@@ -17,8 +17,9 @@
 
 var $ = require('jquery');
 var ngCore = require('@angular/core');
+var ngFlex = require('@angular/flex-layout');
+var ngMaterial = require('@angular/material');
 var ngCommon = require('@angular/common');
-var ngForms = require('@angular/forms');
 var ngHttp = require('@angular/http');
 var ngPlatformBrowser = require('@angular/platform-browser');
 var ngAnimations = require('@angular/platform-browser/animations');
@@ -44,22 +45,48 @@ FluidDesignSystemModule.prototype = {
 FluidDesignSystemModule.annotations = [
     new ngCore.NgModule({
         imports: [
+            ngFlex.FlexLayoutModule,
             ngAnimations.BrowserAnimationsModule,
             ngCommon.CommonModule,
-            ngForms.FormsModule,
             ngPlatformBrowser.BrowserModule,
             ngHttp.HttpModule,
             ngHttp.JsonpModule,
-            covalentCore.CovalentCoreModule
+            ngMaterial.MaterialModule,
+            covalentCore.CovalentCommonModule,
+            covalentCore.CovalentChipsModule,
+            covalentCore.CovalentDataTableModule,
+            covalentCore.CovalentDialogsModule,
+            covalentCore.CovalentExpansionPanelModule,
+            covalentCore.CovalentFileModule,
+            covalentCore.CovalentJsonFormatterModule,
+            covalentCore.CovalentLoadingModule,
+            covalentCore.CovalentMediaModule,
+            covalentCore.CovalentMenuModule,
+            covalentCore.CovalentNotificationsModule,
+            covalentCore.CovalentPagingModule,
+            covalentCore.CovalentSearchModule,
         ],
         exports: [
+            ngFlex.FlexLayoutModule,
             ngAnimations.BrowserAnimationsModule,
             ngCommon.CommonModule,
-            ngForms.FormsModule,
             ngPlatformBrowser.BrowserModule,
             ngHttp.HttpModule,
             ngHttp.JsonpModule,
-            covalentCore.CovalentCoreModule
+            ngMaterial.MaterialModule,
+            covalentCore.CovalentCommonModule,
+            covalentCore.CovalentChipsModule,
+            covalentCore.CovalentDataTableModule,
+            covalentCore.CovalentDialogsModule,
+            covalentCore.CovalentExpansionPanelModule,
+            covalentCore.CovalentFileModule,
+            covalentCore.CovalentJsonFormatterModule,
+            covalentCore.CovalentLoadingModule,
+            covalentCore.CovalentMediaModule,
+            covalentCore.CovalentMenuModule,
+            covalentCore.CovalentNotificationsModule,
+            covalentCore.CovalentPagingModule,
+            covalentCore.CovalentSearchModule,
         ],
     })
 ];

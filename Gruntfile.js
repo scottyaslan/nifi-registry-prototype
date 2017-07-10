@@ -27,5 +27,5 @@ module.exports = function(grunt) {
             }
         }
     });
-    grunt.registerTask('release', ['copy:main', 'copy:install', 'sass:dev']);
+    grunt.registerTask('release', ['copy:main', 'copy:install', 'sass:dev', 'copy:install']);
 };

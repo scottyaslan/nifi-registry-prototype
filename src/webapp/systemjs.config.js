@@ -13,10 +13,11 @@
             // our app is within the app folder
             'app': 'src/webapp',
 
-            // jquery bundles
+            // jquery
             'jquery': 'npm:jquery/dist/jquery.min.js',
 
-            // Angular bundles
+            // Angular
+            '@angular/cdk': 'npm:@angular/cdk/bundles/cdk.umd.js',
             '@angular/material': 'npm:@angular/material/bundles/material.umd.js',
             '@angular/flex-layout': 'npm:@angular/flex-layout/bundles/flex-layout.umd.js',
             '@angular/animations': 'npm:@angular/animations/bundles/animations.umd.js',
@@ -34,21 +35,15 @@
             '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
             '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
 
-            // Covalent bundles
+            // Covalent
             '@covalent/core': 'npm:@covalent/core/core.umd.js',
-            '@covalent/dynamic-forms': 'npm:@covalent/dynamic-forms/dynamic-forms.umd.js',
-            '@covalent/highlight': 'npm:@covalent/highlight/highlight.umd.js',
-            '@covalent/http': 'npm:@covalent/http/http.umd.js',
-            '@covalent/markdown': 'npm:@covalent/markdown/markdown.umd.js',
 
             // other libraries
             'rxjs': 'npm:rxjs',
             'switchMap': 'npm:rxjs/add/operator/switchMap',
-            'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             'hammerjs': 'npm:hammerjs/hammer.min.js',
-            'highlight.js/lib': 'npm:highlight.js/lib/highlight.js',
 
-            // Fluid Design System bundles
+            // Fluid Design System
             '@fluid-design-system/core': 'npm:@fluid-design-system/dist/platform/core/fluid-design-system.module.js',
 
             // Nifi Registry

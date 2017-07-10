@@ -27,6 +27,7 @@ function NfRegistryService(TdDataTableService) {
     this.users = [];
     this.alerts = [];
     this.explorerViewType = '';
+    this.perspective = '';
 
     //<editor-fold desc="Data Tables">
 
@@ -60,7 +61,7 @@ function NfRegistryService(TdDataTableService) {
     this.usersSearchTerms = [];
     this.usersFromRow = 1;
     this.usersCurrentPage = 1;
-    this.usersPageSize = 1;
+    this.usersPageSize = 5;
     this.usersPageCount = 0;
 
     this.filteredBuckets = [];

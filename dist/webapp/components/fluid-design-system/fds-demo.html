@@ -956,7 +956,9 @@
                                         </div>
                                     </md-button-toggle>
                                 </md-button-toggle-group>
-                                <button *ngIf="activeColumn" md-button color="primary" (click)="dropletsSearchTerms = [];filterDroplets(activeColumn.name, activeColumn.sortOrder);">Clear Grouping</button>
+                                <div id="nf-registry-droplet-filter-clear-grouping-button-container">
+                                    <span *ngIf="dropletsSearchTerms.length > 0" (click)="dropletsSearchTerms = [];filterDroplets(activeColumn.name, activeColumn.sortOrder);"><i class="fa fa-plus-circle fa-rotate-45" aria-hidden="true"></i><span class="pad-left-sm link">Clear Grouping</span></span>
+                                </div>
                             </div>
                             <div layout="row" layout-align="space-between center">
                                 <div flex fxLayout="row" fxLayoutAlign="end center">
@@ -1524,7 +1526,7 @@
                                                 <md-checkbox class="pad-left-sm" [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
                                             </div>
                                             <div *ngIf="row.actions.length > 4" fxLayout="row" fxLayoutAlign="end center">
-                                                <button (click)="row.checked = !row.checked" mdTooltip="Actions" md-icon-button [mdMenuTriggerFor]="tableActionMenu">
+                                                <button (click)="row.checked = !row.checked" mdTooltip="Actions" md-icon-button color="accent" [mdMenuTriggerFor]="tableActionMenu">
                                                     <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                                                 </button>
                                                 <md-menu #tableActionMenu="mdMenu" [overlapTrigger]="false">
@@ -1555,73 +1557,75 @@
                         <p>HTML:</p>
                         <pre lang="html">
                         <![CDATA[
-        <div layout="row" layout-align="space-between center" class="pad-left-sm pad-right-sm pad-top-sm">
-            <span class="table-title push-left-sm">
-                <span>Title here</span>
+        <div layout="row" layout-align="space-between center" class="pad-top-md pad-bottom-sm pad-left-md pad-right-md">
+            <span class="table-title">
+            <span>Table title</span>
             </span>
             <div flex class="push-right-sm" fxLayout="row" fxLayoutAlign="end center">
-                <td-chips [items]="autoCompleteData" (add)="searchAdd($event)" (remove)="searchRemove($event)" class="push-right-sm"></td-chips>
+                <td-chips [items]="autoCompleteData" (add)="searchAdd($event)" (remove)="searchRemove($event)"></td-chips>
                 <button color="fds-primary" md-raised-button [mdMenuTriggerFor]="dataTableActionMenu">
                     Actions<i class="fa fa-caret-down" aria-hidden="true"></i>
                 </button>
             </div>
             <md-menu class="fds-primary-dropdown-button-menu" #dataTableActionMenu="mdMenu" [overlapTrigger]="false">
-                <button md-menu-item> Settings </button>
-                <button md-menu-item> Details </button>
-                <button md-menu-item disabled> Delete </button>
+                <button md-menu-item> Option 1 </button>
+                <button md-menu-item> Option 2 </button>
             </md-menu>
         </div>
-        <table td-data-table>
-            <th td-data-table-column [numeric]="column.numeric" (click)="sort($event, column)" [mdTooltip]="column.tooltip" *ngFor="let column of columns">
-                { {column.label} }
-                <i *ngIf="column.active && column.sortable && column.sortOrder === 'ASC'" class="fa fa-caret-up" aria-hidden="true"></i>
-                <i *ngIf="column.active && column.sortable && column.sortOrder === 'DESC'" class="fa fa-caret-down" aria-hidden="true"></i>
-            </th>
-            <th td-data-table-column>
-                <div fxLayout="row" fxLayoutAlign="end center">
-                    <md-checkbox [(ngModel)]="allRowsSelected" [checked]="allRowsSelected" (click)="toggleSelectAll()"></md-checkbox>
+        <div class="pad-left-md pad-right-md">
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="td-data-table">
+                <div class="td-data-table-column" (click)="sort($event, column)" [mdTooltip]="column.tooltip" *ngFor="let column of columns" fxFlex="{{column.width}}">
+                    {{column.label}}
+                    <i *ngIf="column.active && column.sortable && column.sortOrder === 'ASC'" class="fa fa-caret-up" aria-hidden="true"></i>
+                    <i *ngIf="column.active && column.sortable && column.sortOrder === 'DESC'" class="fa fa-caret-down" aria-hidden="true"></i>
                 </div>
-            </th>
-            <tr td-data-table-row [ngClass]="{'selected' : row.checked}" *ngFor="let row of filteredData">
-                <td td-data-table-cell *ngFor="let column of columns" [numeric]="column.numeric" (click)="row.checked = !row.checked; toggleSelect(row)">
-                    <button md-button *ngIf="column.name === 'comments' && !row['comments']" [class.mat-accent]="!row['comments']" (click)="openDataTablePrompt(row, 'comments')">{ {row['comments'] || 'Add Comment'} }</button>
-                    <div *ngIf="column.name !== 'comments' || row['comments']">
-                        { {column.format ? column.format(row[column.name]) : row[column.name]} }
+                <div class="td-data-table-column" fxFlex=10>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                        <md-checkbox class="pad-left-sm" [(ngModel)]="allRowsSelected" (checked)="allRowsSelected" (change)="toggleSelectAll()"></md-checkbox>
                     </div>
-                </td>
-                <td td-data-table-cell>
-                    <div *ngIf="row.actions">
-                        <div *ngIf="row.actions.length < 4" fxLayout="row" fxLayoutAlign="end center">
-                            <button *ngFor="let action of row.actions" mdTooltip="{ {action.tooltip} }" md-icon-button color="accent" [disabled]="action.disabled ? '' : null">
-                                <i class="{ {action.icon} }" aria-hidden="true"></i>
-                            </button>
-                            <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)"></md-checkbox>
+                </div>
+            </div>
+            <div>
+                <div fxLayout="row" fxLayoutAlign="space-between center" class="td-data-table-row" [ngClass]="{'selected' : row.checked}" *ngFor="let row of filteredData" (click)="row.checked = !row.checked;toggleSelect(row)">
+                    <div class="td-data-table-cell" *ngFor="let column of columns" fxFlex="{{column.width}}">
+                        <div *ngIf="column.name !== 'comments' || row['comments']">
+                            {{column.format ? column.format(row[column.name]) : row[column.name]}}
                         </div>
-                        <div *ngIf="row.actions.length >= 4" fxLayout="row" fxLayoutAlign="end center">
-                            <button mdTooltip="Actions" md-icon-button [mdMenuTriggerFor]="tableActionMenu">
-                                <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-                            </button>
-                            <md-menu #tableActionMenu="mdMenu" [overlapTrigger]="false">
-                                <button *ngFor="let action of row.actions" mdTooltip="{ {action.tooltip} }" md-menu-item [disabled]="action.disabled ? '' : null">
-                                    <i class="{ {action.icon} }" aria-hidden="true"></i>
-                                    <span>{ {action.name} }</span>
+                    </div>
+                    <div class="td-data-table-cell" fxFlex=10>
+                        <div *ngIf="row.actions">
+                            <div *ngIf="row.actions.length <= 4" fxLayout="row" fxLayoutAlign="end center">
+                                <button (click)="row.checked = !row.checked" *ngFor="let action of row.actions" mdTooltip="{{action.tooltip}}" md-icon-button color="accent" [disabled]="action.disabled ? '' : null">
+                                    <i class="{{action.icon}}" aria-hidden="true"></i>
                                 </button>
-                            </md-menu>
-                            <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)"></md-checkbox>
+                                <md-checkbox class="pad-left-sm" [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
+                            </div>
+                            <div *ngIf="row.actions.length > 4" fxLayout="row" fxLayoutAlign="end center">
+                                <button (click)="row.checked = !row.checked" mdTooltip="Actions" md-icon-button color="accent" [mdMenuTriggerFor]="tableActionMenu">
+                                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                                </button>
+                                <md-menu #tableActionMenu="mdMenu" [overlapTrigger]="false">
+                                    <button *ngFor="let action of row.actions" mdTooltip="{{action.tooltip}}" md-menu-item [disabled]="action.disabled ? '' : null">
+                                        <i class="{{action.icon}}" aria-hidden="true"></i>
+                                        <span>{{action.name}}</span>
+                                    </button>
+                                </md-menu>
+                                <md-checkbox class="pad-left-sm" [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
+                            </div>
+                        </div>
+                        <div *ngIf="!row.actions" fxLayout="row" fxLayoutAlign="end center">
+                            <md-checkbox class="pad-left-sm" [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
                         </div>
                     </div>
-                    <div *ngIf="!row.actions" fxLayout="row" fxLayoutAlign="end center">
-                        <md-checkbox [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)"></md-checkbox>
-                    </div>
-                </td>
-            </tr>
-        </table>
-        <div class="md-padding" *ngIf="!filteredData.length > 0" layout="row" layout-align="center center">
-            <h3>No results to display.</h3>
+                </div>
+            </div>
+            <div class="md-padding" *ngIf="!filteredData.length > 0" layout="row" layout-align="center center">
+                <h3>No results to display.</h3>
+            </div>
+            <td-paging-bar #pagingBar [pageSizeAll]="true" [pageSizes]="[1, 2, 5, 50, 100, 200, 500, 1000, 2000]" [initialPage]="1" [pageSize]="pageSize" [total]="pageCount" (change)="page($event)">
+                <span td-paging-bar-label hide-xs>Row per page:</span> {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+            </td-paging-bar>
         </div>
-        <td-paging-bar #pagingBar [pageSizes]="[5, 10, 15, 20]" [total]="filteredTotal" (change)="page($event)">
-            <span td-paging-bar-label hide-xs>Row per page:</span> { {pagingBar.range} } <span hide-xs>of { {pagingBar.total} }</span>
-        </td-paging-bar>
           ]]>
                     </pre>
                         <p>Javascript:</p>

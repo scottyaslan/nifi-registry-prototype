@@ -473,7 +473,7 @@ function FdsDemo(snackBarService, dialog, TdDialogService, TdDataTableService) {
     this.searchTerm = [];
     this.fromRow = 1;
     this.currentPage = 1;
-    this.pageSize = 1;
+    this.pageSize = 5;
     this.pageCount = 0;
 
     //</editor-fold>
@@ -961,7 +961,6 @@ FdsDemo.prototype = {
     ngOnInit: function() {
         this.filter();
         this.filterDroplets();
-        this.getAutoCompleteDroplets();
     }
 
     //</editor-fold>

@@ -1574,8 +1574,8 @@
         </div>
         <div class="pad-left-md pad-right-md">
             <div fxLayout="row" fxLayoutAlign="space-between center" class="td-data-table">
-                <div class="td-data-table-column" (click)="sort($event, column)" [mdTooltip]="column.tooltip" *ngFor="let column of columns" fxFlex="{{column.width}}">
-                    {{column.label}}
+                <div class="td-data-table-column" (click)="sort($event, column)" [mdTooltip]="column.tooltip" *ngFor="let column of columns" fxFlex="{ { column.width } }">
+                    { { column.label } }
                     <i *ngIf="column.active && column.sortable && column.sortOrder === 'ASC'" class="fa fa-caret-up" aria-hidden="true"></i>
                     <i *ngIf="column.active && column.sortable && column.sortOrder === 'DESC'" class="fa fa-caret-down" aria-hidden="true"></i>
                 </div>
@@ -1587,16 +1587,16 @@
             </div>
             <div>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="td-data-table-row" [ngClass]="{'selected' : row.checked}" *ngFor="let row of filteredData" (click)="row.checked = !row.checked;toggleSelect(row)">
-                    <div class="td-data-table-cell" *ngFor="let column of columns" fxFlex="{{column.width}}">
+                    <div class="td-data-table-cell" *ngFor="let column of columns" fxFlex="{ { column.width } }">
                         <div *ngIf="column.name !== 'comments' || row['comments']">
-                            {{column.format ? column.format(row[column.name]) : row[column.name]}}
+                            { { column.format ? column.format(row[column.name]) : row[column.name] } }
                         </div>
                     </div>
                     <div class="td-data-table-cell" fxFlex=10>
                         <div *ngIf="row.actions">
                             <div *ngIf="row.actions.length <= 4" fxLayout="row" fxLayoutAlign="end center">
-                                <button (click)="row.checked = !row.checked" *ngFor="let action of row.actions" mdTooltip="{{action.tooltip}}" md-icon-button color="accent" [disabled]="action.disabled ? '' : null">
-                                    <i class="{{action.icon}}" aria-hidden="true"></i>
+                                <button (click)="row.checked = !row.checked" *ngFor="let action of row.actions" mdTooltip="{ { action.tooltip } }" md-icon-button color="accent" [disabled]="action.disabled ? '' : null">
+                                    <i class="{ { action.icon } }" aria-hidden="true"></i>
                                 </button>
                                 <md-checkbox class="pad-left-sm" [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
                             </div>
@@ -1605,9 +1605,9 @@
                                     <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                                 </button>
                                 <md-menu #tableActionMenu="mdMenu" [overlapTrigger]="false">
-                                    <button *ngFor="let action of row.actions" mdTooltip="{{action.tooltip}}" md-menu-item [disabled]="action.disabled ? '' : null">
-                                        <i class="{{action.icon}}" aria-hidden="true"></i>
-                                        <span>{{action.name}}</span>
+                                    <button *ngFor="let action of row.actions" mdTooltip="{ { action.tooltip } }" md-menu-item [disabled]="action.disabled ? '' : null">
+                                        <i class="{ { action.icon } }" aria-hidden="true"></i>
+                                        <span>{ { action.name } }</span>
                                     </button>
                                 </md-menu>
                                 <md-checkbox class="pad-left-sm" [(ngModel)]="row.checked" [checked]="row.checked" (change)="toggleSelect(row)" (click)="row.checked = !row.checked;toggleSelect(row)"></md-checkbox>
@@ -1623,7 +1623,7 @@
                 <h3>No results to display.</h3>
             </div>
             <td-paging-bar #pagingBar [pageSizeAll]="true" [pageSizes]="[1, 2, 5, 50, 100, 200, 500, 1000, 2000]" [initialPage]="1" [pageSize]="pageSize" [total]="pageCount" (change)="page($event)">
-                <span td-paging-bar-label hide-xs>Row per page:</span> {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+                <span td-paging-bar-label hide-xs>Row per page:</span> { { pagingBar.range } } <span hide-xs>of { { pagingBar.total } }</span>
             </td-paging-bar>
         </div>
           ]]>

@@ -23,6 +23,7 @@ function NfRegistry(nfRegistryService, changeDetectorRef) {
 NfRegistry.prototype = {
     constructor: NfRegistry,
     ngOnInit: function() {
+        this.nfRegistryService.sidenav = this.sidenav;
         this.nfRegistryService.getRegistries().then(registries => this.nfRegistryService.registries = registries);
     },
     ngAfterViewChecked: function() {

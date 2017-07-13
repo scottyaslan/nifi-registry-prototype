@@ -25,13 +25,6 @@ NfRegistryBucketUserOrGroupPermissionsViewer.prototype = {
     constructor: NfRegistryBucketUserOrGroupPermissionsViewer,
     ngOnInit: function() {
         var self = this;
-        /**
-         * The switchMap operator maps the id in the Observable route
-         * parameters to a new Observable, the result of the
-         * this.nfRegistryService.getBucket() method. If a user re-navigates to this
-         * component while a getBucket request is still processing, switchMap
-         * cancels the old request and then calls this.nfRegistryService.getBucket() again.
-         */
         this.subscription$ = this.route.params
             .switchMap(function(params) {
                 return self.nfRegistryService.getUser(self.nfRegistryService.registry.id, params['userOrGroupId']);

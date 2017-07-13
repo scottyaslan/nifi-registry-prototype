@@ -15,24 +15,24 @@
  * limitations under the License.
  */
 
-function NfRegistryUsersAdministration(nfRegistryService, ActivatedRoute) {
+function NfRegistryUsersAdministration(nfRegistryService, ActivatedRoute, Router) {
     this.subscription$;
     this.route = ActivatedRoute;
     this.nfRegistryService = nfRegistryService;
+    this.router = Router;
 };
 
 NfRegistryUsersAdministration.prototype = {
     constructor: NfRegistryUsersAdministration,
+    rowAction: function(row, action) {
+        row.checked = !row.checked;
+        this.router.navigateByUrl('/nifi-registry/administration/' + this.nfRegistryService.registry.id + '/users(' + action.type + ':user/' + action.name + '/' + row.id + ')');
+    },
+    addUser: function() {
+        this.router.navigateByUrl('/nifi-registry/administration/' + this.nfRegistryService.registry.id + '/users(sidenav:user/add)');
+    },
     ngOnInit: function() {
         var self = this;
-
-        /**
-         * The switchMap operator maps the id in the Observable route
-         * parameters to a new Observable, the result of the
-         * this.nfRegistryService.getRegistry() method. If a user re-navigates to this
-         * component while a getRegistry request is still processing, switchMap
-         * cancels the old request and then calls this.nfRegistryService.getRegistry() again.
-         */
         self.subscription$ = self.route.params
         .switchMap(function(params) {
             self.nfRegistryService.adminPerspective = 'users';

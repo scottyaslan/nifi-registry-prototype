@@ -94,7 +94,16 @@ var NifiRegistry = function() {
         self.app.get('/nifi-registry/administration/:registryId', function(req, res) {
             res.render('src/webapp/index.html');
         });
-        self.app.get('/nifi-registry/administration/:registryId/:adminPerpective', function(req, res) {
+        self.app.get('/nifi-registry/administration/:registryId/general', function(req, res) {
+            res.render('src/webapp/index.html');
+        });
+        self.app.get('/nifi-registry/administration/:registryId/users', function(req, res) {
+            res.render('src/webapp/index.html');
+        });
+        self.app.get('/nifi-registry/administration/:registryId/workflow', function(req, res) {
+            res.render('src/webapp/index.html');
+        });
+        self.app.get('/nifi-registry/administration/:registryId/users/details/:userId', function(req, res) {
             res.render('src/webapp/index.html');
         });
         self.app.get('/nifi-registry/settings/:registryId', function(req, res) {

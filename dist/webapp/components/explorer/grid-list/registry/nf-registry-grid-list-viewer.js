@@ -27,14 +27,6 @@ NfRegistryGridListViewer.prototype = {
     ngOnInit: function() {
         var self = this;
         self.nfRegistryService.explorerViewType = 'grid-list';
-
-        /**
-         * The switchMap operator maps the id in the Observable route
-         * parameters to a new Observable, the result of the
-         * this.nfRegistryService.getRegistry() method. If a user re-navigates to this
-         * component while a getRegistry request is still processing, switchMap
-         * cancels the old request and then calls this.nfRegistryService.getRegistry() again.
-         */
         self.subscription$ = self.route.params
         .switchMap(function(params) {
             return self.nfRegistryService.getRegistry(params['registryId']);

@@ -15,24 +15,21 @@
  * limitations under the License.
  */
 
-function NfRegistryWorkflowAdministration(nfRegistryService, ActivatedRoute) {
+function NfRegistryWorkflowAdministration(nfRegistryService, ActivatedRoute, Router) {
     this.subscription$;
     this.route = ActivatedRoute;
     this.nfRegistryService = nfRegistryService;
+    this.router = Router;
 };
 
 NfRegistryWorkflowAdministration.prototype = {
     constructor: NfRegistryWorkflowAdministration,
+    rowAction: function(row, action) {
+        row.checked = !row.checked;
+        this.router.navigateByUrl('/nifi-registry/administration/' + this.nfRegistryService.registry.id + '/workflow(' + action.type + ':bucket/' + action.name + '/' + row.id + ')');
+    },
     ngOnInit: function() {
         var self = this;
-
-        /**
-         * The switchMap operator maps the id in the Observable route
-         * parameters to a new Observable, the result of the
-         * this.nfRegistryService.getRegistry() method. If a user re-navigates to this
-         * component while a getRegistry request is still processing, switchMap
-         * cancels the old request and then calls this.nfRegistryService.getRegistry() again.
-         */
         self.subscription$ = self.route.params
             .subscribe(function() {
                 self.nfRegistryService.adminPerspective = 'workflow';
@@ -47,7 +44,6 @@ NfRegistryWorkflowAdministration.prototype = {
                 });
 
             });
-
 
     },
     ngOnDestroy: function() {

@@ -6,22 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel=”shortcut icon” href=”nifi-registry/src/webapp/images/registry-favicon.png” type=”image/png>
-    <link rel=”icon” href=”nifi-registry/src/webapp/images/registry-favicon.png” type=”image/png>
+    <link rel=”shortcut icon” href=”nifi-registry/dist/webapp/images/registry-favicon.png” type=”image/png>
+    <link rel=”icon” href=”nifi-registry/dist/webapp/images/registry-favicon.png” type=”image/png>
     <link rel="stylesheet" href="nifi-registry/node_modules/@covalent/core/common/platform.css">
-    <link rel="stylesheet" href='nifi-registry/node_modules/@fluid-design-system/dist/platform/core/common/styles/css/fluid-design-system.css' />
+    <link rel="stylesheet" href='nifi-registry/dist/platform/core/common/styles/css/fluid-design-system.css' />
     <link rel="stylesheet" href='nifi-registry/dist/webapp/css/nifi-registry.css' />
     <link rel="stylesheet" href='nifi-registry/node_modules/font-awesome/css/font-awesome.css' />
     <!-- Polyfills -->
     <script src="nifi-registry/node_modules/core-js/client/shim.min.js"></script>
     <script src="nifi-registry/node_modules/zone.js/dist/zone.js"></script>
     <script src="nifi-registry/node_modules/systemjs/dist/system.src.js"></script>
-    <script src="nifi-registry/src/webapp/systemjs.config.js"></script>
+    <script src="nifi-registry/dist/webapp/systemjs.config.js"></script>
     <script>
         // needed to support gestures for angular material
         System.import('hammerjs');
         // bootstrap the Angular app
-        System.import('nifi-registry/src/webapp/nf-registry-bootstrap.js').catch(function(err) {
+        System.import('nifi-registry/dist/webapp/nf-registry-bootstrap.js').catch(function(err) {
             console.error(err);
         });
     </script>

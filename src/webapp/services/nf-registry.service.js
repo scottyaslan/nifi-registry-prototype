@@ -104,14 +104,23 @@ NfRegistryService.prototype = {
                     status: 'authorized',
                     provider: 'Friendly LDAP Provider',
                     type: 'user',
+                    activities: [{
+                        id: '25fd6vv87-3249-0001-05g6-4d4767890765',
+                        description: 'Saved something...',
+                        created: date.setDate(date.getDate() - 1),
+                        updated: new Date()
+                    }],
                     actions: [{
                         'name': 'details',
                         'icon': 'fa fa-info-circle',
-                        'tooltip': 'User Details'
+                        'tooltip': 'User Details',
+                        'type': 'sidenav',
+
                     }, {
-                        'name': 'manage',
+                        'name': 'permissions',
                         'icon': 'fa fa-key',
-                        'tooltip': 'Manage User Policies'
+                        'tooltip': 'Manage User Policies',
+                        'type': 'sidenav'
                     }, {
                         'name': 'Delete',
                         'icon': 'fa fa-trash',
@@ -130,11 +139,13 @@ NfRegistryService.prototype = {
                     actions: [{
                         'name': 'details',
                         'icon': 'fa fa-info-circle',
-                        'tooltip': 'User Details'
+                        'tooltip': 'User Details',
+                        'type': 'sidenav'
                     }, {
-                        'name': 'manage',
+                        'name': 'permissions',
                         'icon': 'fa fa-key',
-                        'tooltip': 'Manage User Policies'
+                        'tooltip': 'Manage User Policies',
+                        'type': 'sidenav'
                     }, {
                         'name': 'Delete',
                         'icon': 'fa fa-trash',
@@ -153,11 +164,13 @@ NfRegistryService.prototype = {
                     actions: [{
                         'name': 'details',
                         'icon': 'fa fa-info-circle',
-                        'tooltip': 'User Details'
+                        'tooltip': 'User Details',
+                        'type': 'sidenav'
                     }, {
-                        'name': 'manage',
+                        'name': 'permissions',
                         'icon': 'fa fa-key',
-                        'tooltip': 'Manage User Policies'
+                        'tooltip': 'Manage User Policies',
+                        'type': 'sidenav'
                     }, {
                         'name': 'Delete',
                         'icon': 'fa fa-trash',
@@ -176,11 +189,13 @@ NfRegistryService.prototype = {
                     actions: [{
                         'name': 'details',
                         'icon': 'fa fa-info-circle',
-                        'tooltip': 'User Details'
+                        'tooltip': 'User Details',
+                        'type': 'sidenav'
                     }, {
-                        'name': 'manage',
+                        'name': 'permissions',
                         'icon': 'fa fa-key',
-                        'tooltip': 'Manage User Policies'
+                        'tooltip': 'Manage User Policies',
+                        'type': 'sidenav'
                     }, {
                         'name': 'Delete',
                         'icon': 'fa fa-trash',
@@ -255,11 +270,13 @@ NfRegistryService.prototype = {
                         actions: [{
                             'name': 'details',
                             'icon': 'fa fa-info-circle',
-                            'tooltip': 'Bucket Details'
+                            'tooltip': 'Bucket Details',
+                            'type': 'sidenav'
                         }, {
-                            'name': 'manage',
+                            'name': 'permissions',
                             'icon': 'fa fa-key',
-                            'tooltip': 'Manage Bucket Policies'
+                            'tooltip': 'Manage Bucket Policies',
+                            'type': 'sidenav'
                         }, {
                             'name': 'Delete',
                             'icon': 'fa fa-trash',
@@ -316,7 +333,7 @@ NfRegistryService.prototype = {
                                 'icon': 'fa fa-close',
                                 'tooltip': 'Delete User'
                             }, {
-                                'name': 'Manage',
+                                'name': 'permissions',
                                 'icon': 'fa fa-user',
                                 'tooltip': 'Manage User'
                             }, {
@@ -459,11 +476,13 @@ NfRegistryService.prototype = {
                         actions: [{
                             'name': 'details',
                             'icon': 'fa fa-info-circle',
-                            'tooltip': 'Bucket Details'
+                            'tooltip': 'Bucket Details',
+                            'type': 'sidenav'
                         }, {
-                            'name': 'manage',
+                            'name': 'permissions',
                             'icon': 'fa fa-key',
-                            'tooltip': 'Manage Bucket Policies'
+                            'tooltip': 'Manage Bucket Policies',
+                            'type': 'sidenav'
                         }, {
                             'name': 'Delete',
                             'icon': 'fa fa-trash',

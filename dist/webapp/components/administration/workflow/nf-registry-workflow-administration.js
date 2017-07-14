@@ -14,6 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
+var ngRouter = require('@angular/router');
 
 function NfRegistryWorkflowAdministration(nfRegistryService, ActivatedRoute, Router) {
     this.subscription$;
@@ -55,5 +58,14 @@ NfRegistryWorkflowAdministration.prototype = {
         this.autoCompleteBuckets = [];
     }
 };
+
+NfRegistryWorkflowAdministration.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        templateUrl: 'nf-registry-workflow-administration.html'
+    })
+];
+
+NfRegistryWorkflowAdministration.parameters = [NfRegistryService, ngRouter.ActivatedRoute, ngRouter.Router];
 
 module.exports = NfRegistryWorkflowAdministration;

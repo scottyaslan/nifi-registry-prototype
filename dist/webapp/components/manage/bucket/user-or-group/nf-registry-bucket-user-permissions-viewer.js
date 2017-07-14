@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
 
 function NfRegistryBucketUserPermissionsViewer(nfRegistryService) {
     this.nfRegistryService = nfRegistryService;
@@ -22,5 +24,15 @@ function NfRegistryBucketUserPermissionsViewer(nfRegistryService) {
 NfRegistryBucketUserPermissionsViewer.prototype = {
     constructor: NfRegistryBucketUserPermissionsViewer
 };
+
+NfRegistryBucketUserPermissionsViewer.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        selector: 'nf-registry-bucket-user-permissions-viewer',
+        templateUrl: 'nf-registry-bucket-user-permissions-viewer.html'
+    })
+];
+
+NfRegistryBucketUserPermissionsViewer.parameters = [NfRegistryService];
 
 module.exports = NfRegistryBucketUserPermissionsViewer;

@@ -14,6 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
+var ngRouter = require('@angular/router');
 
 function NfRegistryUsersAdministration(nfRegistryService, ActivatedRoute, Router) {
     this.subscription$;
@@ -49,5 +52,14 @@ NfRegistryUsersAdministration.prototype = {
         this.nfRegistryService.users = this.nfRegistryService.filteredUsers = [];
     }
 };
+
+NfRegistryUsersAdministration.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        templateUrl: 'nf-registry-users-administration.html'
+    })
+];
+
+NfRegistryUsersAdministration.parameters = [NfRegistryService, ngRouter.ActivatedRoute, ngRouter.Router];
 
 module.exports = NfRegistryUsersAdministration;

@@ -14,6 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
+var ngRouter = require('@angular/router');
 
 function NfRegistryExplorerListViewer(nfRegistryService, ActivatedRoute) {
     this.subscription$;
@@ -24,5 +27,14 @@ function NfRegistryExplorerListViewer(nfRegistryService, ActivatedRoute) {
 NfRegistryExplorerListViewer.prototype = {
     constructor: NfRegistryExplorerListViewer
 };
+
+NfRegistryExplorerListViewer.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        templateUrl: 'nf-registry-explorer-list-viewer.html'
+    })
+];
+
+NfRegistryExplorerListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
 
 module.exports = NfRegistryExplorerListViewer;

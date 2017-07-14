@@ -14,6 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
+var ngRouter = require('@angular/router');
 
 function NfRegistryBucketPermissionsManager(nfRegistryService, ActivatedRoute) {
     this.subscription$;
@@ -43,5 +46,14 @@ NfRegistryBucketPermissionsManager.prototype = {
         this.nfRegistryService.perspective = '';
     }
 };
+
+NfRegistryBucketPermissionsManager.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        templateUrl: 'nf-registry-bucket-permissions-manager.html'
+    })
+];
+
+NfRegistryBucketPermissionsManager.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
 
 module.exports = NfRegistryBucketPermissionsManager;

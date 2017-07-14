@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
 
 function NfRegistryBucketGroupPermissionsViewer(nfRegistryService) {
     this.nfRegistryService = nfRegistryService;
@@ -22,5 +24,15 @@ function NfRegistryBucketGroupPermissionsViewer(nfRegistryService) {
 NfRegistryBucketGroupPermissionsViewer.prototype = {
     constructor: NfRegistryBucketGroupPermissionsViewer
 };
+
+NfRegistryBucketGroupPermissionsViewer.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        selector: 'nf-registry-bucket-group-permissions-viewer',
+        templateUrl: 'nf-registry-bucket-group-permissions-viewer.html'
+    })
+];
+
+NfRegistryBucketGroupPermissionsViewer.parameters = [NfRegistryService];
 
 module.exports = NfRegistryBucketGroupPermissionsViewer;

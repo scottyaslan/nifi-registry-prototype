@@ -14,15 +14,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
+var ngRouter = require('@angular/router');
 
-function NfRegistryUsersDetails(nfRegistryService, ActivatedRoute) {
+function NfRegistryUserDetails(nfRegistryService, ActivatedRoute) {
     this.subscription$;
     this.route = ActivatedRoute;
     this.nfRegistryService = nfRegistryService;
 };
 
-NfRegistryUsersDetails.prototype = {
-    constructor: NfRegistryUsersDetails,
+NfRegistryUserDetails.prototype = {
+    constructor: NfRegistryUserDetails,
     ngOnInit: function() {
         var self = this;
         self.nfRegistryService.sidenav.open();
@@ -32,4 +35,13 @@ NfRegistryUsersDetails.prototype = {
     }
 };
 
-module.exports = NfRegistryUsersDetails;
+NfRegistryUserDetails.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        templateUrl: 'nf-registry-user-details.html'
+    })
+];
+
+NfRegistryUserDetails.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
+
+module.exports = NfRegistryUserDetails;

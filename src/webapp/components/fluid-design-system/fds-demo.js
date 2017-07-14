@@ -15,7 +15,11 @@
  * limitations under the License.
  */
 
-var NfRegistryExplorer = require('nf.RegistryExplorer');
+var ngCore = require('@angular/core');
+var NfRegistryExplorer = require('nifi-registry/dist/webapp/components/explorer/nf-registry-explorer.js');
+var covalentCore = require('@covalent/core');
+var ngRouter = require('@angular/router');
+var ngMaterial = require('@angular/material');
 
 var NUMBER_FORMAT = v => v;
 var DECIMAL_FORMAT = v => v.toFixed(2);
@@ -965,5 +969,19 @@ FdsDemo.prototype = {
 
     //</editor-fold>
 };
+
+FdsDemo.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        templateUrl: 'fds-demo.html',
+        // animations: [slideInDownAnimation],
+        // host: {
+        //   '[@routeAnimation]': 'routeAnimation',
+        //   '[class.heading]': 'headingClass'
+        // }
+    })
+];
+
+FdsDemo.parameters = [ngMaterial.MdSnackBar, ngMaterial.MdDialog, covalentCore.TdDialogService, covalentCore.TdDataTableService];
 
 module.exports = FdsDemo;

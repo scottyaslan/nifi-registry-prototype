@@ -14,300 +14,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 var switchMap = require('switchMap');
-var FdsDemo = require('fds.Demo');
-var ngMaterial = require('@angular/material');
-var covalentCore = require('@covalent/core');
-// var slideInDownAnimation = require('@covalent/core');
-var NfRegistry = require('nf.Registry');
-var NfRegistryDetailsViewer = require('nf.RegistryDetailsViewer');
-var NfRegistryService = require('nf.RegistryService');
-var NfRegistryExplorer = require('nf.RegistryExplorer');
-var NfRegistryExplorerListViewer = require('nf.RegistryExplorerListViewer');
-var NfRegistryExplorerGridListViewer = require('nf.RegistryExplorerGridListViewer');
-var NfRegistryBucketDetailsViewer = require('nf.RegistryBucketDetailsViewer');
-var NfRegistryBucketPermissionsManager = require('nf.RegistryBucketPermissionsManager');
-var NfRegistryBucketUserOrGroupPermissionsViewer = require('nf.RegistryBucketUserOrGroupPermissionsViewer');
-var NfRegistryBucketUserPermissionsViewer = require('nf.RegistryBucketUserPermissionsViewer');
-var NfRegistryBucketGroupPermissionsViewer = require('nf.RegistryBucketGroupPermissionsViewer');
-var NfRegistryAdministration = require('nf.RegistryAdministration');
-var NfRegistryGeneralAdministration = require('nf.RegistryGeneralAdministration');
-var NfRegistryUsersAdministration = require('nf.RegistryUsersAdministration');
-var NfRegistryAddUser = require('nf.RegistryAddUser');
-var NfRegistryUserDetails = require('nf.RegistryUserDetails');
-var NfRegistryUserPermissions = require('nf.RegistryUserPermissions');
-var NfRegistryBucketDetails = require('nf.RegistryBucketDetails');
-var NfRegistryBucketPermissions = require('nf.RegistryBucketPermissions');
-var NfRegistryWorkflowAdministration = require('nf.RegistryWorkflowAdministration');
-var NfRegistrySettings = require('nf.RegistrySettings');
-var NfRegistryUsersAndGroups = require('nf.RegistryUsersAndGroups');
-var NfRegistryListViewer = require('nf.RegistryListViewer');
-var NfRegistryGridListViewer = require('nf.RegistryGridListViewer');
-var NfRegistryBucketListViewer = require('nf.RegistryBucketListViewer');
-var NfRegistryBucketGridListViewer = require('nf.RegistryBucketGridListViewer');
-var NfRegistryDropletListViewer = require('nf.RegistryDropletListViewer');
-var NfRegistryDropletGridListViewer = require('nf.RegistryDropletGridListViewer');
-var NfRegistryDropletDetailsViewer = require('nf.RegistryDropletDetailsViewer');
-var NfPageNotFoundComponent = require('nf.PageNotFoundComponent');
+var FdsDemo = require('nifi-registry/dist/webapp/components/fluid-design-system/fds-demo.js');
+var NfRegistry = require('nifi-registry/dist/webapp/nf-registry.js');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
+var NfPageNotFoundComponent = require('nifi-registry/dist/webapp/components/page-not-found/nf-registry-page-not-found.js');
+var NfRegistryExplorer = require('nifi-registry/dist/webapp/components/explorer/nf-registry-explorer.js');
+var NfRegistryExplorerListViewer = require('nifi-registry/dist/webapp/components/explorer/list/nf-registry-explorer-list-viewer.js');
+var NfRegistryExplorerGridListViewer = require('nifi-registry/dist/webapp/components/explorer/grid-list/nf-registry-explorer-grid-list-viewer.js');
+var NfRegistryBucketPermissionsManager = require('nifi-registry/dist/webapp/components/manage/bucket/nf-registry-bucket-permissions-manager.js');
+var NfRegistryBucketUserOrGroupPermissionsViewer = require('nifi-registry/dist/webapp/components/manage/bucket/user-or-group/nf-registry-bucket-user-or-group-permissions-viewer.js');
+var NfRegistryBucketUserPermissionsViewer = require('nifi-registry/dist/webapp/components/manage/bucket/user-or-group/nf-registry-bucket-user-permissions-viewer.js');
+var NfRegistryBucketGroupPermissionsViewer = require('nifi-registry/dist/webapp/components/manage/bucket/user-or-group/nf-registry-bucket-group-permissions-viewer.js');
+var NfRegistrySettings = require('nifi-registry/dist/webapp/components/settings/nf-registry-settings.js');
+var NfRegistryAdministration = require('nifi-registry/dist/webapp/components/administration/nf-registry-administration.js');
+var NfRegistryGeneralAdministration = require('nifi-registry/dist/webapp/components/administration/general/nf-registry-general-administration.js');
+var NfRegistryUsersAdministration = require('nifi-registry/dist/webapp/components/administration/users/nf-registry-users-administration.js');
+var NfRegistryAddUser = require('nifi-registry/dist/webapp/components/administration/users/add/nf-registry-add-user.js');
+var NfRegistryUserDetails = require('nifi-registry/dist/webapp/components/administration/users/details/nf-registry-user-details.js');
+var NfRegistryUserPermissions = require('nifi-registry/dist/webapp/components/administration/users/permissions/nf-registry-user-permissions.js');
+var NfRegistryBucketDetails = require('nifi-registry/dist/webapp/components/administration/workflow/buckets/details/nf-registry-bucket-details.js');
+var NfRegistryBucketPermissions = require('nifi-registry/dist/webapp/components/administration/workflow/buckets/permissions/nf-registry-bucket-permissions.js');
+var NfRegistryWorkflowAdministration = require('nifi-registry/dist/webapp/components/administration/workflow/nf-registry-workflow-administration.js');
+var NfRegistryUsersAndGroups = require('nifi-registry/dist/webapp/components/users-and-groups/nf-registry-users-and-groups.js');
+var NfRegistryListViewer = require('nifi-registry/dist/webapp/components/explorer/list/registry/nf-registry-list-viewer.js');
+var NfRegistryGridListViewer = require('nifi-registry/dist/webapp/components/explorer/grid-list/registry/nf-registry-grid-list-viewer.js');
+var NfRegistryBucketListViewer = require('nifi-registry/dist/webapp/components/explorer/list/registry/bucket/nf-registry-bucket-list-viewer.js');
+var NfRegistryBucketGridListViewer = require('nifi-registry/dist/webapp/components/explorer/grid-list/registry/bucket/nf-registry-bucket-grid-list-viewer.js');
+var NfRegistryDropletListViewer = require('nifi-registry/dist/webapp/components/explorer/list/registry/bucket/droplet/nf-registry-droplet-list-viewer.js');
+var NfRegistryDropletGridListViewer = require('nifi-registry/dist/webapp/components/explorer/grid-list/registry/bucket/droplet/nf-registry-droplet-grid-list-viewer.js');
+var NfRegistryDetailsViewer = require('nifi-registry/dist/webapp/components/explorer/list/registry/nf-registry-details-viewer.js');
+var NfRegistryBucketDetailsViewer = require('nifi-registry/dist/webapp/components/explorer/list/registry/bucket/nf-registry-bucket-details-viewer.js');
+var NfRegistryDropletDetailsViewer = require('nifi-registry/dist/webapp/components/explorer/list/registry/bucket/droplet/nf-registry-droplet-details-viewer.js');
 var fdsCore = require('@fluid-design-system/core');
 var ngCore = require('@angular/core');
 var ngRouter = require('@angular/router');
 var ngPlatformBrowserDynamic = require('@angular/platform-browser-dynamic');
-
-FdsDemo.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/fluid-design-system/fds-demo.html',
-        // animations: [slideInDownAnimation],
-        // host: {
-        //   '[@routeAnimation]': 'routeAnimation',
-        //   '[class.heading]': 'headingClass'
-        // }
-    })
-];
-
-FdsDemo.parameters = [ngMaterial.MdSnackBar, ngMaterial.MdDialog, covalentCore.TdDialogService, covalentCore.TdDataTableService];
-
-NfPageNotFoundComponent.annotations = [
-    new ngCore.Component({
-        template: '<h1>Hello {{title}}!</h1>'
-    })
-];
-
-NfRegistryExplorer.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/explorer/nf-registry-explorer.html'
-    })
-];
-
-NfRegistryExplorer.parameters = [NfRegistryService];
-
-NfRegistryExplorerListViewer.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/explorer/list/nf-registry-explorer-list-viewer.html'
-    })
-];
-
-NfRegistryExplorerListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryExplorerGridListViewer.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/explorer/grid-list/nf-registry-explorer-grid-list-viewer.html'
-    })
-];
-
-NfRegistryExplorerGridListViewer.parameters = [NfRegistryService];
-
-NfRegistryDetailsViewer.annotations = [
-    new ngCore.Component({
-        selector: 'nf-registry-details-viewer',
-        templateUrl: 'nifi-registry/dist/webapp/components/explorer/list/registry/nf-registry-details-viewer.html'
-    })
-];
-
-NfRegistryDetailsViewer.parameters = [NfRegistryService];
-
-NfRegistryDropletListViewer.annotations = [
-    new ngCore.Component({
-        template: ''
-    })
-];
-
-NfRegistryDropletListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryDropletGridListViewer.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/explorer/grid-list/registry/bucket/droplet/nf-registry-droplet-grid-list-viewer.html'
-    })
-];
-
-NfRegistryDropletGridListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryDropletDetailsViewer.annotations = [
-    new ngCore.Component({
-        selector: 'nf-registry-droplet-details-viewer',
-        templateUrl: 'nifi-registry/dist/webapp/components/explorer/list/registry/bucket/droplet/nf-registry-droplet-details-viewer.html'
-    })
-];
-
-NfRegistryDropletDetailsViewer.parameters = [NfRegistryService];
-
-NfRegistrySettings.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/settings/nf-registry-settings.html'
-    })
-];
-
-NfRegistrySettings.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryAdministration.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/administration/nf-registry-administration.html'
-    })
-];
-
-NfRegistryAdministration.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryGeneralAdministration.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/administration/general/nf-registry-general-administration.html'
-    })
-];
-
-NfRegistryGeneralAdministration.parameters = [NfRegistryService];
-
-NfRegistryUsersAdministration.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/administration/users/nf-registry-users-administration.html'
-    })
-];
-
-NfRegistryUsersAdministration.parameters = [NfRegistryService, ngRouter.ActivatedRoute, ngRouter.Router];
-
-NfRegistryAddUser.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/administration/users/add/nf-registry-add-user.html'
-    })
-];
-
-NfRegistryAddUser.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryUserDetails.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/administration/users/details/nf-registry-user-details.html'
-    })
-];
-
-NfRegistryUserDetails.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryUserPermissions.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/administration/users/permissions/nf-registry-user-permissions.html'
-    })
-];
-
-NfRegistryUserPermissions.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryBucketDetails.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/administration/workflow/buckets/details/nf-registry-bucket-details.html'
-    })
-];
-
-NfRegistryBucketDetails.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryBucketPermissions.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/administration/workflow/buckets/permissions/nf-registry-bucket-permissions.html'
-    })
-];
-
-NfRegistryBucketPermissions.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryWorkflowAdministration.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/administration/workflow/nf-registry-workflow-administration.html'
-    })
-];
-
-NfRegistryWorkflowAdministration.parameters = [NfRegistryService, ngRouter.ActivatedRoute, ngRouter.Router];
-
-NfRegistryUsersAndGroups.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/users-and-groups/nf-registry-users-and-groups.html'
-    })
-];
-
-NfRegistryUsersAndGroups.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryListViewer.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/explorer/list/registry/nf-registry-list-viewer.html'
-    })
-];
-
-NfRegistryListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute, covalentCore.TdDataTableService];
-
-NfRegistryGridListViewer.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/explorer/grid-list/registry/nf-registry-grid-list-viewer.html'
-    })
-];
-
-NfRegistryGridListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryBucketDetailsViewer.annotations = [
-    new ngCore.Component({
-        selector: 'nf-registry-bucket-details-viewer',
-        templateUrl: 'nifi-registry/dist/webapp/components/explorer/list/registry/bucket/nf-registry-bucket-details-viewer.html'
-    })
-];
-
-NfRegistryBucketDetailsViewer.parameters = [NfRegistryService];
-
-NfRegistryBucketPermissionsManager.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/manage/bucket/nf-registry-bucket-permissions-manager.html'
-    })
-];
-
-NfRegistryBucketPermissionsManager.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryBucketListViewer.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/explorer/list/registry/bucket/nf-registry-bucket-list-viewer.html'
-    })
-];
-
-NfRegistryBucketListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryBucketGridListViewer.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/explorer/grid-list/registry/bucket/nf-registry-bucket-grid-list-viewer.html'
-    })
-];
-
-NfRegistryBucketGridListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryBucketUserOrGroupPermissionsViewer.annotations = [
-    new ngCore.Component({
-        templateUrl: 'nifi-registry/dist/webapp/components/manage/bucket/user-or-group/nf-registry-bucket-user-or-group-permissions-viewer.html'
-    })
-];
-
-NfRegistryBucketUserOrGroupPermissionsViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
-
-NfRegistryBucketUserPermissionsViewer.annotations = [
-    new ngCore.Component({
-        selector: 'nf-registry-bucket-user-permissions-viewer',
-        templateUrl: 'nifi-registry/dist/webapp/components/manage/bucket/user-or-group/nf-registry-bucket-user-permissions-viewer.html'
-    })
-];
-
-NfRegistryBucketUserPermissionsViewer.parameters = [NfRegistryService];
-
-NfRegistryBucketGroupPermissionsViewer.annotations = [
-    new ngCore.Component({
-        selector: 'nf-registry-bucket-group-permissions-viewer',
-        templateUrl: 'nifi-registry/dist/webapp/components/manage/bucket/user-or-group/nf-registry-bucket-group-permissions-viewer.html'
-    })
-];
-
-NfRegistryBucketGroupPermissionsViewer.parameters = [NfRegistryService];
-
-NfRegistryService.parameters = [covalentCore.TdDataTableService];
-
-NfRegistry.annotations = [
-    new ngCore.Component({
-        selector: 'nf-registry-app',
-        templateUrl: 'nifi-registry/dist/webapp/nf-registry.html',
-        queries : {
-          sidenav : new ngCore.ViewChild('sidenav')
-        }
-    })
-];
-
-NfRegistry.parameters = [NfRegistryService, ngCore.ChangeDetectorRef];
 
 function NfRegistryAppModule() {};
 
@@ -319,7 +61,6 @@ NfRegistryAppModule.annotations = [
     new ngCore.NgModule({
         imports: [
             fdsCore,
-            //setting routes
             new ngRouter.RouterModule.forRoot([{
                 path: 'nifi-registry/explorer',
                 component: NfRegistryExplorer,
@@ -423,7 +164,6 @@ NfRegistryAppModule.annotations = [
             }])
         ],
         declarations: [FdsDemo, NfRegistry, NfRegistryDetailsViewer, NfRegistryExplorer, NfRegistryExplorerListViewer, NfRegistryExplorerGridListViewer, NfRegistryBucketDetailsViewer, NfRegistryBucketPermissionsManager, NfRegistryBucketUserOrGroupPermissionsViewer, NfRegistryBucketUserPermissionsViewer, NfRegistryBucketGroupPermissionsViewer, NfRegistrySettings, NfRegistryAdministration, NfRegistryGeneralAdministration, NfRegistryUsersAdministration, NfRegistryUserDetails, NfRegistryUserPermissions, NfRegistryBucketDetails, NfRegistryBucketPermissions, NfRegistryAddUser, NfRegistryWorkflowAdministration, NfRegistryUsersAndGroups, NfRegistryListViewer, NfRegistryGridListViewer, NfRegistryBucketListViewer, NfRegistryBucketGridListViewer, NfRegistryDropletListViewer, NfRegistryDropletGridListViewer, NfRegistryDropletDetailsViewer, NfPageNotFoundComponent],
-        //creates a service singletons to be available to all components of the app.
         providers: [NfRegistryService],
         bootstrap: [NfRegistry]
     })

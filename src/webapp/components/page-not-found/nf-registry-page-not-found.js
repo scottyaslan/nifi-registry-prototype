@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
 
 function NfPageNotFoundComponent() {
     this.title = "Page Not Found!!!!";
@@ -22,5 +23,12 @@ function NfPageNotFoundComponent() {
 NfPageNotFoundComponent.prototype = {
     constructor: NfPageNotFoundComponent
 };
+
+NfPageNotFoundComponent.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        template: '<h1>Hello {{title}}!</h1>'
+    })
+];
 
 module.exports = NfPageNotFoundComponent;

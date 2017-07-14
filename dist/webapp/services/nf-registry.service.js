@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var covalentCore = require('@covalent/core');
 
 function NfRegistryService(TdDataTableService) {
     this.registries = [];
@@ -1034,5 +1035,7 @@ NfRegistryService.prototype = {
 
     //</editor-fold>
 };
+
+NfRegistryService.parameters = [covalentCore.TdDataTableService];
 
 module.exports = NfRegistryService;

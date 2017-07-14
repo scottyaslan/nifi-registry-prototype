@@ -14,6 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
+var ngRouter = require('@angular/router');
 
 function NfRegistryBucketListViewer(nfRegistryService, ActivatedRoute) {
     this.subscription$;
@@ -42,5 +45,14 @@ NfRegistryBucketListViewer.prototype = {
         this.nfRegistryService.droplets = [];
     }
 };
+
+NfRegistryBucketListViewer.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        templateUrl: 'nf-registry-bucket-list-viewer.html'
+    })
+];
+
+NfRegistryBucketListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
 
 module.exports = NfRegistryBucketListViewer;

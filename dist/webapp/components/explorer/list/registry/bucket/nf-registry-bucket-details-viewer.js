@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
 
 function NfRegistryBucketDetailsViewer(nfRegistryService) {
     this.nfRegistryService = nfRegistryService;
@@ -22,5 +24,15 @@ function NfRegistryBucketDetailsViewer(nfRegistryService) {
 NfRegistryBucketDetailsViewer.prototype = {
     constructor: NfRegistryBucketDetailsViewer
 };
+
+NfRegistryBucketDetailsViewer.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        selector: 'nf-registry-bucket-details-viewer',
+        templateUrl: 'nf-registry-bucket-details-viewer.html'
+    })
+];
+
+NfRegistryBucketDetailsViewer.parameters = [NfRegistryService];
 
 module.exports = NfRegistryBucketDetailsViewer;

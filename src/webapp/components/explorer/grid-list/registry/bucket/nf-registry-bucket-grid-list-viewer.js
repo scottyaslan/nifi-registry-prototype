@@ -14,6 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
+var ngRouter = require('@angular/router');
 
 function NfRegistryBucketGridListViewer(nfRegistryService, ActivatedRoute) {
     this.subscription$;
@@ -51,5 +54,14 @@ NfRegistryBucketGridListViewer.prototype = {
             });
     }
 };
+
+NfRegistryBucketGridListViewer.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        templateUrl: 'nf-registry-bucket-grid-list-viewer.html'
+    })
+];
+
+NfRegistryBucketGridListViewer.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
 
 module.exports = NfRegistryBucketGridListViewer;

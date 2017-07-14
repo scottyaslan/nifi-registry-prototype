@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
 
 function NfRegistryDropletDetailsViewer(nfRegistryService) {
     this.nfRegistryService = nfRegistryService;
@@ -22,5 +24,15 @@ function NfRegistryDropletDetailsViewer(nfRegistryService) {
 NfRegistryDropletDetailsViewer.prototype = {
     constructor: NfRegistryDropletDetailsViewer
 };
+
+NfRegistryDropletDetailsViewer.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        selector: 'nf-registry-droplet-details-viewer',
+        templateUrl: 'nf-registry-droplet-details-viewer.html'
+    })
+];
+
+NfRegistryDropletDetailsViewer.parameters = [NfRegistryService];
 
 module.exports = NfRegistryDropletDetailsViewer;

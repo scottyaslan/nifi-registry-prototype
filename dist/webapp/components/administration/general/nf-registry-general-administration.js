@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
 
 function NfRegistryGeneralAdministration(nfRegistryService) {
     this.nfRegistryService = nfRegistryService;
@@ -28,5 +30,14 @@ NfRegistryGeneralAdministration.prototype = {
         this.nfRegistryService.adminPerspective = '';
     }
 };
+
+NfRegistryGeneralAdministration.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        templateUrl: 'nf-registry-general-administration.html'
+    })
+];
+
+NfRegistryGeneralAdministration.parameters = [NfRegistryService];
 
 module.exports = NfRegistryGeneralAdministration;

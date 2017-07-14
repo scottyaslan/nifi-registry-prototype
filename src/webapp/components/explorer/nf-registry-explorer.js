@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
 
 function NfRegistryExplorer(nfRegistryService) {
     this.nfRegistryService = nfRegistryService;
@@ -28,5 +30,14 @@ NfRegistryExplorer.prototype = {
         this.nfRegistryService.perspective = '';
     }
 };
+
+NfRegistryExplorer.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        templateUrl: 'nf-registry-explorer.html'
+    })
+];
+
+NfRegistryExplorer.parameters = [NfRegistryService];
 
 module.exports = NfRegistryExplorer;

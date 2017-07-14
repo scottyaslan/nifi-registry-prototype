@@ -14,6 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
+var ngRouter = require('@angular/router');
 
 function NfRegistryAddUser(nfRegistryService, ActivatedRoute) {
     this.subscription$;
@@ -31,5 +34,14 @@ NfRegistryAddUser.prototype = {
         this.nfRegistryService.sidenav.close();
     }
 };
+
+NfRegistryAddUser.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        templateUrl: 'nf-registry-add-user.html'
+    })
+];
+
+NfRegistryAddUser.parameters = [NfRegistryService, ngRouter.ActivatedRoute];
 
 module.exports = NfRegistryAddUser;

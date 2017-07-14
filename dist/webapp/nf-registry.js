@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var ngCore = require('@angular/core');
+var NfRegistryService = require('nifi-registry/dist/webapp/services/nf-registry.service.js');
 
 function NfRegistry(nfRegistryService, changeDetectorRef) {
     this.nfRegistryService = nfRegistryService;
@@ -33,5 +35,18 @@ NfRegistry.prototype = {
         this.cd.detectChanges();
     }
 };
+
+NfRegistry.annotations = [
+    new ngCore.Component({
+        moduleId: __filename,
+        selector: 'nf-registry-app',
+        templateUrl: 'nf-registry.html',
+        queries : {
+          sidenav : new ngCore.ViewChild('sidenav')
+        }
+    })
+];
+
+NfRegistry.parameters = [NfRegistryService, ngCore.ChangeDetectorRef];
 
 module.exports = NfRegistry;

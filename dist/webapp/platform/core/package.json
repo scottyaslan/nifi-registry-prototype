@@ -1,0 +1,44 @@
+{
+  "name": "@fluid-design-system/core",
+  "version": "0.0.0",
+  "description": "Fluid Design System atomic UI Platform.",
+  "module": "./fluid-design-system.module.js",
+  "keywords": [
+    "fluid design system",
+    "angular",
+    "material",
+    "material design",
+    "components",
+    "reusable",
+    "covalent"
+  ],
+  "scripts": {
+  },
+  "engines": {
+    "node": ">=6.9",
+    "npm": ">= 3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scottyaslan/nifi-registry"
+  },
+  "bugs": {
+    "url": "https://github.com/scottyaslan/nifi-registry/issues"
+  },
+  "license": "MIT",
+  "author": "Apache Nifi Registry",
+  "contributors": [
+    "Scott Aslan <scottyaslan@gmail.com>"
+  ],
+  "dependencies": {
+    "@angular/flex-layout": "^2.0.0-beta.7",
+    "@angular/material": "2.0.0-beta.3"
+  },
+  "peerDependencies": {
+    "@angular/common": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/forms": "^4.0.0",
+    "@angular/http": "^4.0.0",
+    "@angular/router": "^4.0.0"
+  }
+}
